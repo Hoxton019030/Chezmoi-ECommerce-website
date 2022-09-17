@@ -5,6 +5,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -443,6 +444,9 @@ h4,
   }
 }
 
+
+
+
 h5,
 .h5 {
   font-size: 1.25rem;
@@ -571,7 +575,8 @@ mark,
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;
-  border: 1px solid #dee2e6;
+  /* border: 1px solid #dee2e6; */
+  /* border-radius: 0.2em; */
   max-width: 100%;
   height: auto;
 }
@@ -641,6 +646,13 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+.container-products{
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: 0;
+  margin-left: 0 ;
 }
 
 @media (min-width: 576px) {
@@ -1191,6 +1203,7 @@ pre code {
   .offset-sm-11 {
     margin-left: 91.66667%;
   }
+  
 }
 
 @media (min-width: 768px) {
@@ -1826,6 +1839,12 @@ pre code {
 
   .offset-xl-11 {
     margin-left: 91.66667%;
+  }
+}
+@media (max-width:570px){
+  .prosImg-mw-1{
+    width: 50%;
+    height: auto;
   }
 }
 
@@ -5117,6 +5136,9 @@ input[type="button"].btn-block {
   outline: 0;
   box-shadow: none;
 }
+.page-title{
+  display: flex;
+}
 
 .page-item:first-child .page-link {
   margin-left: 0;
@@ -6701,7 +6723,7 @@ button.bg-primary:hover,
 button.bg-primary:focus {
   background-color: #c17a74 !important;
 }
-
+/* 頁面顏色 */
 .bg-secondary {
   background-color: #EDF1FF !important;
 }
@@ -10116,6 +10138,9 @@ button.bg-dark:focus {
   .px-xl-5 {
     padding-right: 3rem !important;
   }
+  .px-xl-6{
+    padding-right: 3rem !important;
+  }
 
   .pb-xl-5,
   .py-xl-5 {
@@ -10738,7 +10763,85 @@ a.text-dark:focus {
 .product-item .btn:hover {
   color: #D19C97 !important;
 }
+.pros-ul{
+display: block;
 
+ height: auto;
+ list-style: none;
+padding: 0 ;
+margin: 0 auto;
+border-top: 1.5px solid whitesmoke;
+}
+.pros-ul li{
+  display: inline-block;
+ 
+}
+@media (min-width:900.00001px){
+  .pros-li{
+  width: 24.45444445%;
+  /* max-width: 80%; */
+  }
+}
+@media (max-width:900px){
+  .pros-li{
+    max-width: 32.33333333333%;
+  }
+}
+
+@media(max-width:650px){
+  .pros-li{
+    max-width:48.4444444445%;
+  }
+  .pros-ul{
+    max-width: 100%;
+  }
+}
+@media(min-width:651px){ 
+  .pros-ul{
+    max-width:80%;
+  } 
+}
+/* @media(max-width:450px){
+  .pros-ul{
+    max-width:100%;
+  }
+} */
+.pro-li{
+  height:auto;
+  display: inline;
+  list-style: none;
+}
+
+.pros-box{
+max-width: 100%;
+margin-left: 5px;
+margin-right: 5px;
+
+
+}
+.pros-imgbox{
+  max-width: 100%;
+  height: auto;
+  margin-top: 3em;
+  margin-bottom:5px;
+  position: relative;
+}
+.pros-wish{
+  max-width: 100%;
+  position: absolute;
+  z-index:10;
+  right: 10px;
+  bottom:10px;
+}
+.pros-info p{
+  margin-bottom: 0;
+ 
+}
+
+.pros-price{
+  font-size: 2em;
+  
+}
 .contact-form .help-block ul {
   margin: 0;
   padding: 0;
