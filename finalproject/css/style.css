@@ -93,6 +93,10 @@ h6 {
   margin-bottom: 0.5rem;
 }
 
+#saleprice {
+  color: rgb(131, 8, 8)
+}
+
 p {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -388,7 +392,7 @@ h6,
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
-  color: #1C1C1C;
+  color: #1b1919;
 }
 
 h1,
@@ -1489,8 +1493,8 @@ pre code {
   }
 
   .col-lg-9 {
-    flex: 0 0 75%;
-    max-width: 75%;
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 
   .col-lg-10 {
@@ -4783,6 +4787,7 @@ input[type="button"].btn-block {
 
 .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.5);
+
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
@@ -10648,7 +10653,8 @@ a.text-dark:focus {
 }
 
 .navbar-light .navbar-nav .nav-link {
-  padding: 20px 10px;
+  margin: auto;
+  padding: 20px 18px;
   color: #1C1C1C;
   outline: none;
 }
@@ -10681,7 +10687,7 @@ a.text-dark:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: #FFFFFF00;
   z-index: 1;
 }
 
@@ -10690,7 +10696,7 @@ a.text-dark:focus {
   display: inline-block;
   letter-spacing: 1px;
   font-weight: bold;
-  color: #1C1C1C;
+  color: #7e0303;
 }
 
 .section-title span {
@@ -10707,7 +10713,7 @@ a.text-dark:focus {
   width: 100%;
   height: 2px;
   margin-top: -1px;
-  background: #1C1C1C;
+  background: #101010ad;
 }
 
 .offer img {
