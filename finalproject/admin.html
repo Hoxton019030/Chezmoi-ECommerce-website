@@ -25,6 +25,12 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/admin_style.css" rel="stylesheet">
+    <style>
+        li,
+        ul {
+            list-style: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,11 +48,12 @@
     <!-- Navbar Start -->
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-3">
-            <div class="col-lg-3 d-none d-lg-block">
-                <div class="box">
-                    <ul class="menu">
+            <div class="col-lg-3 d-none d-lg-block pt-5">
+                <div class="container-fluid">
+                    <ul class="menu p-0">
                         <li>
-                            <a href="#">選單1</a>
+                            <a
+                                class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100">會員資料管理</a>
                             <ul class="inmenu">
                                 <li>選單內容1-1</li>
                                 <li>選單內容1-2</li>
@@ -54,7 +61,8 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">選單2</a>
+                            <a
+                                class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100">產品管理</a>
                             <ul class="inmenu">
                                 <li>選單內容2-1</li>
                                 <li>選單內容2-2</li>
@@ -62,11 +70,27 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">選單3</a>
+                            <a
+                                class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100">結帳管理</a>
                             <ul class="inmenu">
-                                <li>選單內容3-1</li>
-                                <li>選單內容3-2</li>
-                                <li>選單內容3-3</li>
+                                <li>金流管理</li>
+                                <li>物流管理</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a
+                                class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100">訂單管理</a>
+                            <ul class="inmenu">
+                                <li>金流管理</li>
+                                <li>物流管理</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a
+                                class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100">營運表現</a>
+                            <ul class="inmenu">
+                                <li>金流管理</li>
+                                <li>物流管理</li>
                             </ul>
                         </li>
                     </ul>
