@@ -73,6 +73,13 @@ body {
   text-align: left;
   background-color: #fff;
 }
+.shop-body{
+  padding-top: 70px;
+  
+}
+.shop-body a:hover{
+  text-decoration: none;
+}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
@@ -2696,6 +2703,7 @@ textarea.form-control.is-invalid {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+
 @media (prefers-reduced-motion: reduce) {
   .btn {
     transition: none;
@@ -5138,6 +5146,9 @@ input[type="button"].btn-block {
 }
 .page-title{
   display: flex;
+}
+.page-title a{
+  text-decoration: none;
 }
 
 .page-item:first-child .page-link {
@@ -10765,17 +10776,48 @@ a.text-dark:focus {
 }
 .pros-ul{
 display: block;
-
  height: auto;
  list-style: none;
 padding: 0 ;
-margin: 0 auto;
-border-top: 1.5px solid whitesmoke;
+margin: 70px auto;
 }
+
 .pros-ul li{
   display: inline-block;
  
 }
+.shop-container{
+  background-color: white ;
+   padding-bottom: 10 px;
+}
+.shop-ul{
+  border-bottom: 1.5px solid whitesmoke;
+}
+.shop-ul .line{
+  color: #572000;
+}
+.shop-ul a:hover{
+text-decoration: none;
+}
+.ad-img{
+<<<<<<< HEAD
+<<<<<<< HEAD
+  max-width: 100%;
+=======
+  width: 100vw;
+>>>>>>> 0c52b008419aaa68c0323884c67bd9acb0795734
+=======
+  width: 100vw;
+>>>>>>> 0c52b008419aaa68c0323884c67bd9acb0795734
+  height: auto;
+  display: flex;
+}
+@media(min-width:768px){
+  .ad-img{
+    width: 78vw;
+  }
+}
+
 @media (min-width:900.00001px){
   .pros-li{
   width: 24.45444445%;
@@ -10801,11 +10843,9 @@ border-top: 1.5px solid whitesmoke;
     max-width:80%;
   } 
 }
-/* @media(max-width:450px){
-  .pros-ul{
-    max-width:100%;
-  }
-} */
+.pros-ul .page-index{
+  margin-left: 10px;
+}
 .pro-li{
   height:auto;
   display: inline;
@@ -10822,7 +10862,7 @@ margin-right: 5px;
 .pros-imgbox{
   max-width: 100%;
   height: auto;
-  margin-top: 3em;
+  margin-top: 10px;
   margin-bottom:5px;
   position: relative;
 }
@@ -10835,12 +10875,33 @@ margin-right: 5px;
 }
 .pros-info p{
   margin-bottom: 0;
- 
 }
 
 .pros-price{
-  font-size: 2em;
-  
+  font-size: 1.7em;
+  color:  #572000; 
+}
+.pros-pricebox{
+  position: relative;
+}
+.pros-btn{
+  display: inline-block;
+  line-height: 15px;
+  font-weight: 400;
+  color:6f6f6f;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid ;
+  font-size: 16px;
+  border-radius: 3px;
+  position: absolute;
+  right: 5px;
+  bottom: 10px;
+
+}
+.pros-btn a:hover{
+  text-decoration: none;
 }
 .contact-form .help-block ul {
   margin: 0;
