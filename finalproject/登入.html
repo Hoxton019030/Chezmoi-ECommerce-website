@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/登入註冊.css">
+</head>
+
+<body>
+    <div id="login-box" class="bg-secondary">
+        <h1 class="text-dark">Login</h1>
+        <form method="post" action="login.js">
+            <div>
+                <input type="text" id="email" class="text-field" placeholder="e-mail" /></p>
+            </div>
+            <div>
+                <input type="password" id="password" class="text-field" placeholder="password" /></p>
+            </div>
+            <div>
+                <a id="forget-pwd" class="text-primary" href="">忘記密碼？</a>
+            </div>
+            <br>
+            <div>
+                <input type="button" id="btn-login" class="btn-primary text-dark" value="登入"
+                    onclick="login();"></button>
+            </div>
+            <p class="text-center">
+                <a href="" id="customer_register_link" class="text-primary">註冊帳號</a>
+            </p>
+
+            <p>
+                <a href="" class="text-primary">返回到商店</a>
+            </p>
+
+        </form>
+    </div>
+</body>
+
+</html>
