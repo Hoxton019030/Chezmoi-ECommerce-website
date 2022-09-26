@@ -59,7 +59,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-3">
-            <div class="col-lg-3 d-none d-lg-block pt-3">
+            <div class="col-lg-3 d-none d-lg-block pt-3 pr-0">
                 <div class="container-fluid">
                     <ul class="p-0 menu border">
                         <li class="p-0">
@@ -133,24 +133,88 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-9">
-                <div class="col-lg-12 border-secondary  border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
+            <div class="row col-lg-9 justify-content-center pl-0">
+                <div class="col-lg-3 border-secondary border mb-5 mt-3 mr-3" style="padding-left: 0; padding-right:0;">
 
                     <div class="card-header border bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">折扣碼設定</h4>
                     </div>
                     <div class="card-body">
-                        <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium"></h6>
+                        <div class="d-flex justify-content-between pt-1 mb-2" style="clear:both;">
+                            <h6 class=" font-weight-medium">折扣券名稱</h6>
                         </div>
-                        <div>
-                            <!-- 需再新增表格 -->
+                        <div class="input-group">
+                            <input type="text" class="form-control p-4 mb-2" placeholder="歡慶中秋節">
+                        </div>
+                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
+                            <h6 class=" font-weight-medium">折扣券代碼</h6>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control p-4 mb-2" placeholder="Chezmoi152">
+                        </div>
+                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
+                            <h6 class=" font-weight-medium">折扣金額</h6>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control p-4 mb-2" placeholder="100">
+                        </div>
+                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
+                            <h6 class=" font-weight-medium">最低消費金額</h6>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control p-4 mb-2" placeholder="2000">
+                        </div>
+                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
+                            <h6 class=" font-weight-medium">折扣期限</h6>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control p-4 mb-2" placeholder="2022/9/26 00:00">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control p-4 mb-2" placeholder="2022/11/20 23:59">
+                        </div>
+                        <div class="input-group-append pt-4">
+                            <button class="btn btn-primary">新增折扣碼</button>
                         </div>
                     </div>
-
-
                 </div>
+                <div class="col-lg-8 border-secondary  border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
+                    <div class="card-header border bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">折扣碼管理</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between pt-1 mb-2" style="clear:both;">
+                            <h5 class=" font-weight-medium">進行中的折扣活動</h6>
+                        </div>
+                        <div class="row table-responsive ml-0 mb-5 p-0">
+                            <table class="table table-bordered text-center mb-0">
+                                <thead class="bg-secondary text-dark">
+                                    <tr>
+                                        <th>名稱</th>
+                                        <th>代碼</th>
+                                        <th>折扣金額</th>
+                                        <th>最低消費</th>
+                                        <th>折扣期限</th>
+                                        <th>結束</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-middle">
+                                    <tr>
+                                        <td class="align-middle">100000</td>
+                                        <td class="align-middle">Chezmoi152</td>
+                                        <td class="align-middle">$100</td>
+                                        <td class="align-middle">$2000</td>
+                                        <td class="align-middle">2022/11/20 23:59</td>
+                                        <td class="align-middle"><button class="btn btn-sm btn-primary"><i
+                                                    class="fa fa-times"></i></button>
+                                        </td>
+                                    </tr>
 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- Navbar End -->
 
