@@ -461,11 +461,6 @@ h6, .h6 {
   font-weight: 300;
   line-height: 1.2;
 }
-.display-5 {
-  font-size: 1.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-}
 
 @media (max-width: 1200px) {
   .display-4 {
@@ -7269,9 +7264,6 @@ button.bg-dark:focus {
 .w-75 {
   width: 75% !important;
 }
-.w-90 {
-  width: 90% !important;
-}
 
 .w-100 {
   width: 100% !important;
@@ -7281,14 +7273,8 @@ button.bg-dark:focus {
   width: auto !important;
 }
 
-.h-10 {
-  height: 10% !important;
-}
 .h-25 {
   height: 25% !important;
-}
-.h-30 {
-  height: 30% !important;
 }
 
 .h-50 {
@@ -7329,12 +7315,6 @@ button.bg-dark:focus {
 
 .vh-100 {
   height: 100vh !important;
-}
-.vh-70 {
-  height: 70vh !important;
-}
-.vh-20 {
-  height: 20vh !important;
 }
 
 .m-0 {
@@ -9587,7 +9567,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .back-to-top {
   position: fixed;
-msg-list  display: none;
+  display: none;
   right: 30px;
   bottom: 30px;
   z-index: 11;
@@ -9602,35 +9582,3 @@ msg-list  display: none;
     transform: translateY(-15px);
   }
 }
-/******* back_msgcheck CSS ********/
-/* .msg-box{
-  display: flex;
-  border: 2px solid #000;
-} */
-.unread-msg{
-  margin:0 5px 0 5px ;
-  color:#dc3545 ;
-}
-.chat-input{
-  bottom: 0;
-  right: 0;
-
-}
-.chat-input textarea{
-  border-radius: 2px;
-}
-.chat-box{
-  right: 0;
-  bottom: 0;
-  width: 100%;
-}
-.sent-btn{
-  bottom: 10px;
-  right: 10px;
-  background-color: lightblue;
-}
-/* 為美觀先建，沒用到可以刪 */
-.color{
-  background-color: #6c9dc6;
-}
-
