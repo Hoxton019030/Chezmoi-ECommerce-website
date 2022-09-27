@@ -8269,6 +8269,9 @@ button.bg-dark:focus {
 .mx-4 {
   margin-left: 1.5rem !important;
 }
+.m-6{
+  margin-top: 2rem !important;
+}
 
 .m-5 {
   margin: 3rem !important;
