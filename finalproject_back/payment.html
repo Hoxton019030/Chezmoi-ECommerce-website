@@ -134,40 +134,49 @@
                 </div>
             </div>
             <div class="col-lg-9">
-                <div class="col-lg-12 border-secondary  border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
+                <div class="container-fluid pt-1">
+                    <div class="row px-xl-5 table-responsive mb-5">
+                        <table class="table table-bordered text-center mb-5">
+                            <thead class="bg-secondary text-dark">
+                                <h4>Payment Methods</h4>
 
-                    <div class="card-header border bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">金流管理</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium"></h6>
-                        </div>
-                        <div>
-                            <!-- 需再新增表格 -->
-                        </div>
-                    </div>
+                                <tr>
+                                    <th>方法</th>
+                                    <th>啟用</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead>
+                            <tbody class="align-middle">
+                                <tr>
+                                    <td class="align-middle">銀行轉帳</td>
+                                    <td> <a href="#" id="toggle-example2" class="button">開啟/關閉</a>
+                                    </td>
+                                    <td><input type="button" class="btn btn-primary" value="管理"></td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">綠界信用卡</td>
+                                    <td> <a href="#" id="toggle-example2" class="button">開啟/關閉</a>
+                                    </td>
+                                    <td><input type="button" class="btn btn-primary" value="管理"></td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">綠界超商代碼</td>
+                                    <td> <a href="#" id="toggle-example2" class="button">開啟/關閉</a>
+                                    </td>
+                                    <td><input type="button" class="btn btn-primary" value="管理"></td>
+                                </tr>
 
+                            </tbody>
+                        </table>
+                    </div>
 
                 </div>
 
             </div>
 
+
         </div>
-        <!-- Navbar End -->
 
-
-        <!-- Cart Start -->
-
-        <!-- Cart End -->
-
-
-        <!-- Footer Start -->
-
-        <!-- Footer End -->
-
-
-        <!-- Back to Top -->
         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
@@ -191,6 +200,16 @@
                     $(this).siblings('.inmenu').slideDown().parent().siblings().find('.inmenu').slideUp();
                     //點選到的.menu>li>a 顯示動態active
                     $(this).addClass('active').parent().siblings().find('a').removeClass('active');
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $('.example2').hide();
+                $('a#toggle-example2').click(function () {
+                    $('.example2').slideToggle(1000);
+                    return false;
                 });
             });
         </script>
