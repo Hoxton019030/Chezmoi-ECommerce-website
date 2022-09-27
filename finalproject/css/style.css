@@ -5156,7 +5156,7 @@ input[type="button"].btn-block {
 }
 
 .page-title {
-  display: flex;
+  display: none;
 }
 
 .page-title a {
