@@ -31,6 +31,47 @@
             list-style: none;
             padding: 0%;
         }
+
+        input[type=checkbox] {
+            height: 0;
+            width: 0;
+            visibility: hidden;
+
+        }
+
+        label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 50px;
+            height: 25px;
+            background: grey;
+            /* display: block; */
+            border-radius: 25px;
+            position: relative;
+        }
+
+        label:after {
+
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 5px;
+            width: 23px;
+            height: 23px;
+            background: #fff;
+            border-radius: 23px;
+            transition: 0.3s;
+        }
+
+        input:checked+label {
+            background: #bada55;
+        }
+
+        input:checked+label:after {
+
+            left: calc(100% - 5px);
+            transform: translateX(-100%);
+        }
     </style>
 </head>
 
@@ -149,19 +190,19 @@
                             <tbody class="align-middle">
                                 <tr>
                                     <td class="align-middle">銀行轉帳</td>
-                                    <td> <a href="#" id="toggle-example2" class="button">開啟/關閉</a>
+                                    <td><input type="checkbox" id="switch1" /><label for="switch1">Toggle</label>
                                     </td>
                                     <td><input type="button" class="btn btn-primary" value="管理"></td>
                                 </tr>
                                 <tr>
                                     <td class="align-middle">綠界信用卡</td>
-                                    <td> <a href="#" id="toggle-example2" class="button">開啟/關閉</a>
+                                    <td><input type="checkbox" id="switch2" /><label for="switch2">Toggle</label>
                                     </td>
                                     <td><input type="button" class="btn btn-primary" value="管理"></td>
                                 </tr>
                                 <tr>
                                     <td class="align-middle">綠界超商代碼</td>
-                                    <td> <a href="#" id="toggle-example2" class="button">開啟/關閉</a>
+                                    <td><input type="checkbox" id="switch3" /><label for="switch3">Toggle</label>
                                     </td>
                                     <td><input type="button" class="btn btn-primary" value="管理"></td>
                                 </tr>
