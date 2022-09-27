@@ -455,12 +455,9 @@ h4,
   }
 }
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> c99f775a64302d9353562d6a221c367e3cb77489
 h5,
 .h5 {
   font-size: 1.25rem;
@@ -5156,7 +5153,7 @@ input[type="button"].btn-block {
   box-shadow: none;
 }
 .page-title{
-  display: flex;
+  display: none;
 }
 .page-title a{
   text-decoration: none;
@@ -8268,6 +8265,10 @@ button.bg-dark:focus {
   margin-left: 1.5rem !important;
 }
 
+.m-6 {
+  margin-top: 2rem !important;
+}
+
 .m-5 {
   margin: 3rem !important;
 }
@@ -10805,6 +10806,7 @@ margin: 70px auto;
   background-color: white ;
    padding-bottom: 10 px;
 }
+
 .shop-ul{
   border-bottom: 1.5px solid whitesmoke;
 }
@@ -10954,7 +10956,12 @@ position: relative;
   text-align: center;
   line-height: 3rem;
 }
-.pro-dea-img{
+.pro-deta-img{
+  max-width: 100%;
+  max-height: auto;
+  display: inline-flexbox;
+}
+.pro-deta-img img{
   max-width: 100%;
 }
 .pro-deta-title{
@@ -10963,9 +10970,14 @@ position: relative;
   padding: 30px;
   font-size: 1.5rem;
 }
+.detail-img-ul{
+  padding: 0;
+}
+
 .detail-img-ul li{
   list-style: none;
   margin-bottom: 20px;
+ 
 }
 @media(max-width:375px){
   .detailArea{
