@@ -34,13 +34,15 @@
 
     //shop_topNavbar_fix
     $(window).scroll(function(){
-        if($(this).scrollTop()>50){
+        if($(this).scrollTop()>60){
             $('.page-title').css('display','flex');
-            $('.shop-container').addClass('fixed-top').addClass('m-6');
+            $('.shop-container').addClass('fixed-top');
+            $('#shop-nav').addClass('m-6');
             $('.ad-topline').addClass('fixed-top');
-        }if($(this).scrollTop()<50){
+        }if($(this).scrollTop()<60){
             $('.page-title').hide();
-            $('.shop-container').removeClass('fixed-top').removeClass('m-6');
+            $('.shop-container').removeClass('fixed-top');
+            $('#shop-nav').removeClass('m-6');
             $('.ad-topline').removeClass('fixed-top');
         }
     })
