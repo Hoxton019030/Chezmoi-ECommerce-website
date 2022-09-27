@@ -32,6 +32,19 @@
         return false;
     });
 
+    //shop_topNavbar_fix
+    $(window).scroll(function(){
+        if($(this).scrollTop()>50){
+            $('.page-title').css('display','flex');
+            $('.shop-container').addClass('fixed-top').addClass('m-6');
+            $('.ad-topline').addClass('fixed-top');
+        }if($(this).scrollTop()<50){
+            $('.page-title').hide();
+            $('.shop-container').removeClass('fixed-top').removeClass('m-6');
+            $('.ad-topline').removeClass('fixed-top');
+        }
+    })
+
 
     // Vendor carousel
     $('.vendor-carousel').owlCarousel({
