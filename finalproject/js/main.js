@@ -35,15 +35,13 @@
     //shop_topNavbar_fix
     $(window).scroll(function(){
         if($(this).scrollTop()>60){
-            $('.page-title').css('display','flex');
-            $('.shop-container').addClass('fixed-top');
-            $('#shop-nav').addClass('m-6');
-            $('.ad-topline').addClass('fixed-top');
+            $('.shop-nav-none').show().addClass('fixed-top');
+            // $('.page-title').css('display','flex');
+            // $('.shop-container').addClass('fixed-top');
         }if($(this).scrollTop()<60){
-            $('.page-title').hide();
-            $('.shop-container').removeClass('fixed-top');
-            $('#shop-nav').removeClass('m-6');
-            $('.ad-topline').removeClass('fixed-top');
+            $('.shop-nav-none').hide();
+            // $('.shop-container').removeClass('fixed-top');
+            // $('.ad-topline').removeClass('fixed-top');
         }
     })
 

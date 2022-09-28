@@ -666,9 +666,6 @@ pre code {
   margin-left: 0;
 }
 
-.container-detail {
-  margin-top: 6%;
-}
 
 @media (min-width: 576px) {
 
@@ -5156,7 +5153,10 @@ input[type="button"].btn-block {
 }
 
 .page-title {
-  display: none;
+  display: inline-block;
+}
+.title-shop{
+
 }
 
 .page-title a {
@@ -10809,6 +10809,12 @@ a.text-dark:focus {
 .shop-container {
   background-color: white;
   padding-bottom: 10 px;
+}
+.shop-nav-none{
+  display: none;
+}
+.shop-nav-a a{
+  margin: 20px 18px 20px 18px;
 }
 
 .shop-ul {
