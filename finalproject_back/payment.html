@@ -31,6 +31,50 @@
             list-style: none;
             padding: 0%;
         }
+<<<<<<< HEAD
+=======
+
+        input[type=checkbox] {
+            height: 0;
+            width: 0;
+            visibility: hidden;
+
+        }
+
+        label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 50px;
+            height: 25px;
+            background: grey;
+            /* display: block; */
+            border-radius: 25px;
+            position: relative;
+        }
+
+        label:after {
+
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 5px;
+            width: 23px;
+            height: 23px;
+            background: #fff;
+            border-radius: 23px;
+            transition: 0.3s;
+        }
+
+        input:checked+label {
+            background: #bada55;
+        }
+
+        input:checked+label:after {
+
+            left: calc(100% - 5px);
+            transform: translateX(-100%);
+        }
+>>>>>>> 3daa30fb71040f17be5d99db37c80b0d32a38e20
     </style>
 </head>
 
@@ -134,6 +178,7 @@
                 </div>
             </div>
             <div class="col-lg-9">
+<<<<<<< HEAD
                 <div class="col-lg-12 border-secondary  border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
 
                     <div class="card-header border bg-secondary border-0">
@@ -148,11 +193,49 @@
                         </div>
                     </div>
 
+=======
+                <div class="container-fluid pt-1">
+                    <div class="row px-xl-5 table-responsive mb-5">
+                        <table class="table table-bordered text-center mb-5">
+                            <thead class="bg-secondary text-dark">
+                                <h4>Payment Methods</h4>
+
+                                <tr>
+                                    <th>方法</th>
+                                    <th>啟用</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead>
+                            <tbody class="align-middle">
+                                <tr>
+                                    <td class="align-middle">銀行轉帳</td>
+                                    <td><input type="checkbox" id="switch1" /><label for="switch1">Toggle</label>
+                                    </td>
+                                    <td><input type="button" class="btn btn-primary" value="管理"></td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">綠界信用卡</td>
+                                    <td><input type="checkbox" id="switch2" /><label for="switch2">Toggle</label>
+                                    </td>
+                                    <td><input type="button" class="btn btn-primary" value="管理"></td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">綠界超商代碼</td>
+                                    <td><input type="checkbox" id="switch3" /><label for="switch3">Toggle</label>
+                                    </td>
+                                    <td><input type="button" class="btn btn-primary" value="管理"></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+>>>>>>> 3daa30fb71040f17be5d99db37c80b0d32a38e20
 
                 </div>
 
             </div>
 
+<<<<<<< HEAD
         </div>
         <!-- Navbar End -->
 
@@ -168,6 +251,11 @@
 
 
         <!-- Back to Top -->
+=======
+
+        </div>
+
+>>>>>>> 3daa30fb71040f17be5d99db37c80b0d32a38e20
         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
@@ -194,6 +282,19 @@
                 });
             });
         </script>
+<<<<<<< HEAD
+=======
+
+        <script>
+            $(document).ready(function () {
+                $('.example2').hide();
+                $('a#toggle-example2').click(function () {
+                    $('.example2').slideToggle(1000);
+                    return false;
+                });
+            });
+        </script>
+>>>>>>> 3daa30fb71040f17be5d99db37c80b0d32a38e20
 </body>
 
 </html>
