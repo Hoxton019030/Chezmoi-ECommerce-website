@@ -1,5 +1,5 @@
 #login-box {
-    width: 30%;
+    width: 20%;
     /* height: 260px; */
     padding: 20px 50px;
     /* position: absolute; */
@@ -69,7 +69,7 @@
     height: 80%;
     border-radius: 5px;
     border: 0;
-    margin-bottom: 1px;
+    margin-bottom: 3%;
 }
 
 .bg-secondary {
@@ -88,4 +88,8 @@
 
 .text-primary {
     color: #D19C97 !important;
+}
+
+div.ui-datepicker {
+    font-size: 62.5%;
 }
