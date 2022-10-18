@@ -107,19 +107,19 @@ public class ProductsAddUpdateController {
 	
 	
 	//刪除商品
-	@DeleteMapping("/MyProduct/delete/{id}")
+	@GetMapping("/MyProduct/delete/{id}")
 	public String deleteProduct(@PathVariable("id") String productId) {
 		if(productService.existsById(productId)) {
-			productService.deleteById(productId);
-			System.out.println("刪除ID="+productId+"商品成功");	
-		}return "redirect:/Back/MyProduct";
+			productService.deleteById(productId);	
+		}
+		return "redirect:/Back/MyProduct";
 	}
 	
 	//修改單一商品功能post
 	@PostMapping("Post/editProduct")
 	public String postUpdate(@RequestParam("product")Products editProduct) {
 		productService.addProduct(editProduct);
-		return"redirect:/Back/Get/MyProduct";
+		return"redirect:/Back/MyProduct";
 
 	//增加單一商品(顯示在MyProduct頁)
 		

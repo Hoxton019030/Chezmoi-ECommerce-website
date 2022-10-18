@@ -154,9 +154,9 @@
                                         <form class="btn-block" action="">
                                             <div class="input-group justify-content-between ">
                                                 <div class="d-flex pt-1 mb-2 ">
-                                                    <select class="rounded-sm p-0 " name="commodity ">
-                                                        <option value="name">商品名稱</option>
-                                                        <option value="number">商品編號</option>
+                                                    <select class="rounded-sm p-0 " name="commodity">
+                                                        <option value="productName">商品名稱</option>
+                                                        <option value="ProductId">商品編號</option>
                                                     </select>
                                                 </div>
                                                 <input type="text" class="form-control p-4 m-1" placeholder="search">
@@ -243,26 +243,8 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="align-middle" id="tbody">
-                                                    <!--                                     <tr class="text-center"> -->
-                                                    <!--                                         <td><input class="" type="checkbox" style="zoom:150%"></td> -->
-                                                    <!--                                         <td class="align-middle"> -->
-                                                    <!--                                             <img src="" style="width: 50px;height:auto"> -->
-                                                    <!--                                         </td> -->
-                                                    <!--                                         <td class="align-middle"><a class="a font-weight-medium" href="" -->
-                                                    <!--                                                 target="_blank">100000</a></td> -->
-                                                    <!--                                         <td class="align-middle">Colorful -->
-                                                    <!--                                             Stylish Shirt</td> -->
-                                                    <!--                                         <td class="align-middle">黑</td> -->
-                                                    <!--                                         <td class="align-middle">S</td> -->
-                                                    <!--                                         <td class="align-middle">9457</td> -->
-                                                    <!--                                         <td class="align-middle">ON</td> -->
-                                                    <!--                                         <td class="align-middle"> -->
-                                                    <!--                                             <a class="btn btn-sm btn-primary" href="">修改</a> -->
-                                                    <!--                                         </td> -->
-                                                    <!--                                         <td class="align-middle"> -->
-                                                    <!--                                             <a class="btn btn-sm btn-primary" href="">刪除</a> -->
-                                                    <!--                                         </td>    -->
-                                                    <!--                                     </tr> -->
+                                                <!-- getProductAjax.js -->
+                                                                                   
                                                 </tbody>
                                             </table>
 
@@ -296,6 +278,7 @@
                                 //點選到的.menu>li>a 顯示動態active
                                 $(this).addClass('active').parent().siblings().find('a').removeClass('active');
                             });
+                           
                         });
                     </script>
                     <script type="text/javascript">var ctx = "${contextRoot}";</script>

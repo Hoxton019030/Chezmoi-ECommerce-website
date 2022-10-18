@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.finalProject.demo.model.entity.product.Products;
@@ -26,7 +28,7 @@ public class MyProductRestApiController {
 		this.photoService = photoService;
 	}
 	
-	
+	//分頁控制
 //	@GetMapping(value = "/MyProduct/all",produces = { "application/json; charset=UTF-8" })//進入畫面就會顯示全部
 //	public List<Products> getProducts(@RequestParam(name = "page",defaultValue = "1") Integer pageNumber) {	
 //		Page<Products> findByPage = productService.findByPage(pageNumber);
@@ -49,7 +51,11 @@ public class MyProductRestApiController {
 		return productService.findByProductState(productState);
 	}
 	
-	
-	
+	//search
+	@PostMapping(value="/MyProduct/searchById",produces = {"application/json;charset=UTF-8"})
+	public List<Products> search(@RequestParam("id")String productId){
+		return null;
+	}
+		
 	
 }
