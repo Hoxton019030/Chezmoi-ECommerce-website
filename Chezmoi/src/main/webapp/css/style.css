@@ -9436,7 +9436,6 @@ a.text-dark:hover, a.text-dark:focus {
   .table-bordered td {
     border: 1px solid #dee2e6 !important;
   }
-  
   .table-dark {
     color: inherit;
   }
@@ -9582,6 +9581,4 @@ a.text-dark:hover, a.text-dark:focus {
   100% {
     transform: translateY(-15px);
   }
-  
 }
-

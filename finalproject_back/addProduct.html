@@ -154,31 +154,28 @@
                         <div class="d-flex justify-content-between pt-1 mb-2">
                             <h6 class=" font-weight-medium">商品圖片</h6>
                         </div>
-
-                        <!-- <div style="text-align:center;">
-                            <span class="pp1"><img src="img/cat-1.jpg" width="150px"></span>
-                            <span class="pp1"><img src="img/cat-2.jpg" width="150px"></span>
-                            <span class="pp1"><img src="範例圖片網址"></span>
-                            <span class="pp1"><img src="範例圖片網址"></span>
-                            <span class="pp1"><img src="範例圖片網址"></span>
-                        </div> -->
-
                         <div>
-                            <input type="file" name="file1"><label class="title">圖片1</label>
+                            <input  type="file" name="mainProduct_pic"/><label class="title">主要商品圖片</label>
                         </div>
                         <div>
-                            <input type="file" name="file2"><label class="title">圖片2</label>
+                            <input type="file" name="brand_pic"/><label class="title">品牌圖片</label>
                         </div>
                         <div>
-                            <input type="file" name="file3"><label class="title">圖片3</label>
+                            <input  type="file" name="detail_pic" multiple/><label class="title" >圖片3</label>
+                        </div>  
+                        <div class="d-flex justify-content-between pt-1 mb-2">
+                            <h6 class=" font-weight-medium">類別</h6>
                         </div>
-                        <div>
-                            <input type="file" name="file4"><label class="title">圖片4</label>
-                        </div>
-                        <div>
-                            <input type="file" name="file5"><label class="title">圖片5</label>
-                        </div>
-
+                        <div class="dropdown">
+                            <select path="category" class="dropdown-toggle" id="category" data-bs-toggle="dropdown" aria-expanded="false">							  
+                                <option value="-1" label="category" />				
+                                <option value="Top">Top</option>
+                                <option value="Bottom">Bottom</option>
+                                <option value="Outer">Outer</option>
+                                <option value="Dress">Dress</option>
+                                <option value="Accessories">Accessories</option>
+                            </select>
+                       </div>
 
                         <div class="d-flex justify-content-between pt-1 mb-2" style="clear:both;">
                             <h6 class=" font-weight-medium">商品名稱</h6>
@@ -192,16 +189,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control p-4" placeholder="very good">
                         </div>
-                        <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium">類別</h6>
-                        </div>
-                        <div class="category">
-                            <input type="button" name="Top" id="Top" value="Top">
-                            <input type="button" name="Bottom" id="Bottom" value="Bottom">
-                            <input type="button" name="Outer" id="Outer" value="Outer">
-                            <input type="button" name="Dress" id="Dress" value="Dress">
-                            <input type="button" name="Accessories" id="Accessories" value="Accessories">
-                        </div>
+                        
                     </div>
                 </div>
 
@@ -215,36 +203,38 @@
                             <h6 class=" font-weight-medium">尺寸</h6>
                         </div>
                         <div class="size">
-                            <input type="button" name="S" id="S" value="S">
-                            <input type="button" name="M" id="M" value="M">
-                            <input type="button" name="L" id="L" value="L">
-                            <input type="button" name="XL" id="XL" value="XL">
+                            <input type="checkbox" name="size" value="S"> S     
+                            <input type="checkbox" name="size" value="M"> M
+                            <input type="checkbox" name="size" value="L"> L
+                            <input type="checkbox" name="size" value="XL"> XL
+                            <input type="checkbox" name="size" value="F"> F
                         </div>
                     </div>
 
                     <div class="card-body">
                         <div class="d-flex justify-content-between pt-1 mb-2">
                             <h6 class=" font-weight-medium">顏色</h6>
+                           <span><input value="addColor" type="button"></span>
                         </div>
+                        <!-- 後續要增加顏色的功能!! -->
                         <div class="color">
-                            <input type="checkbox" name="white" value="white">白
-                            <input type="checkbox" name="red" value="red">紅
-                            <input type="checkbox" name="black" value="black">黑
-                            <input type="checkbox" name="blue" value="blue">藍
-                            <input type="checkbox" name="orange" value="orange">橙
-                            <input type="checkbox" name="green" value="green">綠
+                            <input type="checkbox" name="color" value="Cream"> cream
+                            <input type="checkbox" name="color" value="Pink"> pink
+                            <input type="checkbox" name="color" value="Blue"> blue
+                            <input type="checkbox" name="color" value="black"> Black
+                            <input type="checkbox" name="color" value="White"> white
+                            <input type="checkbox" name="color" value="Gray"> gray
+                            <input type="checkbox" name="color" value="Green"> green
+                            <input type="checkbox" name="color" value="Oatmeal"> oatmeal
+                            <input type="checkbox" name="color" value="Navy"> navy
+                            <input type="checkbox" name="color" value="Brown"> brown
+                            <input type="checkbox" name="color" value="Beige"> beige
+                            <input type="checkbox" name="color" value="Ivory"> ivory
+                            <input type="checkbox" name="color" value="Sora"> sora
+                            <input type="checkbox" name="color" value="Mint"> mint
+                            <input type="checkbox" name="color" value="Purple"> purple
                         </div>
                     </div>
-
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium">數量</h6>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" placeholder="10">
-                        </div>
-                    </div>
-
                     <div class="card-body">
                         <div class="d-flex justify-content-between pt-1 mb-2">
                             <h6 class=" font-weight-medium">商品價格</h6>
