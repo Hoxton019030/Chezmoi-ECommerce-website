@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+z<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -145,14 +144,14 @@
             </div>
             
             <div class="col-lg-9"> 
-              <form:form method="POST" modelAttribute="product" enctype="multipart/form-data" class="border-0">
+              <form method="POST" modelAttribute="product" enctype="multipart/form-data" class="border-0">
                 <div class="col-lg-12 border-secondary border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">修改單一商品</h4>
+                        <h4 class="font-weight-semi-bold m-0">修改商品</h4>
                     </div>
                     
                     <div class="card-body">
-                    	<form method="POST" enctype="multipart/form-data">
+                    	<form  method="POST" enctype="multipart/form-data">
 	                        <div class="d-flex justify-content-between pt-1 mb-2">
 	                            <h6 class=" font-weight-medium">商品圖片</h6>
 	                        </div>
@@ -164,31 +163,28 @@
 	                            <input type="file" name="brand_pic"/><label class="title">品牌圖片</label>
 	                        </div>
 	                        <div>
-	                            <input  type="file" name="detail_pic" multiple/><label class="title" >圖片3</label>
+	                            <input  type="file" name="detail_pic" multiple/><label class="title" >其他圖片</label>
 	                        </div>             
                         </form>
-                        <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium">類別</h6>
+                        <div class="d-flex pt-1 mb-2 mt-2 align-items-center ">
+                            <h6 class=" font-weight-medium">類別:</h6>
+                            <span class="ml-2 mb-2">${product.category}</span>   
                         </div>
-                        <div class="dropdown">				
-		                           	<input type="radio" name="category" value="Top"> Top
-		                           	<input type="radio" name="category" value="Bottom"> Bottom
-		                           	<input type="radio" name="category" value="Outer"> Outer
-		                           	<input type="radio" name="category" value="Dress"> Dress
-		                           	<input type="radio" name="category" value="Accessories"> Accessories
-						</div>
-                        <div class="d-flex justify-content-between pt-1 mb-2" style="clear:both;">
+                        
+                           
+                        
+                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
                             <h6 class=" font-weight-medium">商品名稱</h6>
                         </div>
                         <div class="input-group">
-                            <form:input path="name" type="text" class="form-control p-4 mb-2" placeholder="商品名稱" id="product_name"/>
+                            <input  type="text" class="form-control p-4 mb-2" value="${product.name}" />
                         </div>
                         
                         <div class="d-flex justify-content-between pt-1 mb-2">
                             <h6 class=" font-weight-medium">商品描述</h6>
                         </div>
                         <div class="input-group">
-                            <form:textarea path="descriptText" type="text" class="form-control p-4" placeholder="商品描述"/>
+                            <form:textarea path="product.descript.text" type="text" class="form-control p-4" value="${product.descript.text}"/>
                         </div> 
 
                     
@@ -217,8 +213,7 @@
                             <h6 class=" font-weight-medium">顏色</h6>
                            <span><input value="addColor" type="button"></span>
                         </div>
-                        <!-- 後續前台要增加addColor的功能!! -->
-                        < class="color">
+                        <div class="color">
                             <input type="checkbox" name="color" value="Cream">Cream
                             <input type="checkbox" name="color" value="Pink">Pink
                             <input type="checkbox" name="color" value="Blue">Blue
@@ -234,24 +229,24 @@
                             <input type="checkbox" name="color" value="Sora">Sora
                             <input type="checkbox" name="color" value="Mint">Mint
                             <input type="checkbox" name="color" value="Purple">Purple
-                radio
-                    </div>
+                    	</div>
 
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium">商品價格</h6>
-                        </div>
-                        <div class="input-group">
-                            <form:input path="price" type="text" class="form-control p-4 mb-2" placeholder="商品價格" />
-                        </div>
-                    </div>
-                </div>
-                <div class="creat">
-                    <input type="submit" value="修改商品">
-                </div>
-                
-               </form:form>
-            </div>
+	                    <div class="card-body">
+	                        <div class="d-flex justify-content-between pt-1 mb-2">
+	                            <h6 class=" font-weight-medium">商品價格</h6>
+	                        </div>
+	                        <div class="input-group">
+	                            <input value="${product.price}" type="text" class="form-control p-4 mb-2" placeholder="商品價格" />
+	                        </div>
+	                    </div>
+                	</div>
+	                <div class="creat">
+	                    <input type="submit" value="修改商品">
+	                </div>
+               	</div> 
+               </div> 
+              </form>
+          </div>
 		 
         </div>
    </div>
@@ -281,10 +276,10 @@
 
         <!-- Contact Javascript File -->
         <script src="${contextRoot}/mail/jqBootstrapValidation.min.js"></script>
-        <script src="${contextRoot}/mail/contact.js"></script>
 
         <!-- Template Javascript -->
         <script src="${contextRoot}/js/main.js"></script>
+        <script src="${contextRoot}/js/getProductAjax.js"></script>
         <script>
             $(document).ready(function () {
                 $('.menu>li>a').click(function (e) {

@@ -20,11 +20,6 @@ public class PhotoService {
 		return photoRespository.save(photo);
 	}
 	
-	//delete(先不加，不然會整筆刪除)
-	
-	
-	
-	//get all photo
 	
 	
 }

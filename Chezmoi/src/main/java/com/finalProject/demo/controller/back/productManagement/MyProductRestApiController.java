@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.finalProject.demo.model.entity.product.Products;
 import com.finalProject.demo.service.product.PhotoService;
 import com.finalProject.demo.service.product.ProductService;
 
+/**
+ * @author AJ
+ *
+ */
 @RestController
 @RequestMapping("Back")
 public class MyProductRestApiController {

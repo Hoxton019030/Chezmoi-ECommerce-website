@@ -188,7 +188,7 @@
                             <h6 class=" font-weight-medium">商品描述</h6>
                         </div>
                         <div class="input-group">
-                            <form:textarea path="descriptText" type="text" class="form-control p-4" placeholder="商品描述"/>
+                            <textarea name="descriptText" type="text" class="form-control p-4" placeholder="商品描述"></textarea>
                         </div> 
 
                     

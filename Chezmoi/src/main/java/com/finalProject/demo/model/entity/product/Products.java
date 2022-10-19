@@ -15,6 +15,10 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
+/**
+ * @author AJ
+ *
+ */
 @Entity
 @Table(name = "Products")
 public class Products {
@@ -30,10 +34,6 @@ public class Products {
 	//價格
 	@Column(nullable = false)
 	private Integer price;
-	
-	//descript商品描述
-	@JoinColumn(name="descriptId")
-	private String descriptText;
 	 
 	//分類
 	@Column(name = "category")
@@ -53,6 +53,11 @@ public class Products {
 	@JoinColumn(name = "photoId")
 	private Photo photo;
 	
+	//商品描述(關聯)
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "descriptId")
+	private DescriptText descript;
+	
 	//創建時間
 	@CreationTimestamp
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -66,9 +71,10 @@ public class Products {
 	private Date updateTime;
 	
 	//狀態(上/下架) 預設為 ON-上架
-	
 	@Column(name = "productState",columnDefinition="nvarchar(10) default 'ON'")
 	private String productState;
+	
+	
 
 	
 	
@@ -104,15 +110,6 @@ public class Products {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-
-	public String getDescriptText() {
-		return descriptText;
-	}
-	
-	public void setDescriptText(String descriptText) {
-		this.descriptText = descriptText;
-	}
-
 
 	public String getCategory() {
 		return category;
@@ -169,6 +166,14 @@ public String getProductState() {
 		this.productState = productState;
 	}
 
+	public DescriptText getDescript() {
+		return descript;
+	}
+
+	public void setDescript(DescriptText descript) {
+		this.descript = descript;
+	}
+
 
 
 	@Override
@@ -178,7 +183,6 @@ public String getProductState() {
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((color == null) ? 0 : color.hashCode());
 		result = prime * result + ((createTime == null) ? 0 : createTime.hashCode());
-		result = prime * result + ((descriptText == null) ? 0 : descriptText.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((photo == null) ? 0 : photo.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
@@ -214,11 +218,6 @@ public String getProductState() {
 			if (other.createTime != null)
 				return false;
 		} else if (!createTime.equals(other.createTime))
-			return false;
-		if (descriptText == null) {
-			if (other.descriptText != null)
-				return false;
-		} else if (!descriptText.equals(other.descriptText))
 			return false;
 		if (name == null) {
 			if (other.name != null)
