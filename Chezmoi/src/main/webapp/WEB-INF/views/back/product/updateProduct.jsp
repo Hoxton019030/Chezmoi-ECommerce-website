@@ -1,6 +1,10 @@
+z<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="utf-8">
     <title>Chezmoi 後台管理中心</title>
@@ -9,7 +13,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/logo.jpg" rel="icon">
+    <link href="${contextRoot}/img/logo.jpg" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,11 +24,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/admin_style.css" rel="stylesheet">
+    <link href="${contextRoot}/css/style.css" rel="stylesheet">
+
     <style>
         li,
         ul {
@@ -32,19 +36,20 @@
             padding: 0%;
         }
 
-        .submit {
-            margin-top: 10px;
+        li,
+        ul {
+            list-style: none;
         }
+
     </style>
 </head>
-
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid align-items-center justify-content-center">
         <div class="row">
             <div class="col-lg-1 d-none d-lg-block pt-1">
                 <div class="container-fluid">
-                    <a href="admin_index.html" class="nav-item nav-link active"><img src="img/logo.png" width="50"
+                    <a href="admin_index.html" class="nav-item nav-link active"><img src="${contextRoot}/img/logo.png" width="50"
                             height="50"></a>
 
                 </div>
@@ -64,7 +69,7 @@
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-3">
             <div class="col-lg-3 d-none d-lg-block pt-3">
-                <div class="container-fluid">
+                <div class="container-fluid p-0">
                     <ul class="p-0 menu border">
                         <li class="p-0">
                             <a
@@ -137,113 +142,125 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-9">
-                <div class="col-lg-12 border-secondary  border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
+            
+            <div class="col-lg-9"> 
+              <form method="POST" modelAttribute="product" enctype="multipart/form-data" class="border-0">
+                <div class="col-lg-12 border-secondary border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">我的商品</h4>
-                    </div>
-                    <div class="card-body border-bottom">
-
-                        <form class="btn-block" action="">
-                            <div class="input-group justify-content-between ">
-                                <div class="d-flex pt-1 mb-2 ">
-                                    <select class="rounded-sm p-0 " name="commodity ">
-                                        <option value="name">商品名稱</option>
-                                        <option value="number">商品編號</option>
-                                    </select>
-                                </div>
-                                <input type="text" class="form-control p-4 m-1" placeholder="search">
-                                <div class="submit">
-                                    <input class="btn-primary m-1 rounded-sm border-1" type="submit" value="search">
-                                </div>
-                            </div>
-                            
-                        </form>
-                    </div>
-
-                    <div class="container-fluid row px-xl-4 ">
-                        <div class="row  px-xl-3  pt-3 ">
-
-                            <div class="col-lg-12">
-                                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                                    <div class="collapse navbar-collapse  justify-content-between" id="navbarCollapse">
-                                        <div class="mr-auto py-0">
-                                            <ul class="nav navbar-nav">
-                                                <li class="dropdown mr-3">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                        按分類顯示 
-                                                        <b class="caret"></b>
-                                                    </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li class="dropdown-item"><a href="#">TOP</a></li>
-                                                        <li class="dropdown-item"><a href="#">BOTTOM</a></li>
-                                                        <li class="dropdown-item"><a href="#">DRESS</a></li>
-                                                        <li class="dropdown-item"><a href="#">OUTER</a></li>
-                                                        <li class="dropdown-item"><a href="#">ACCESSORITIES</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="active mr-3"><a href="#">已上架商品</a></li>
-                                                <li class="active mr-3"><a href="#">未上架商品</a></li>  
-                                            </ul>
-                                        </div>
-                                        <div class="">
-                                            <button class="btn btn-primary rounded-sm" type="button"
-                                                onclick="javascript:location.href='#'" name="creatProduct" id="creatProduct">全部刪除
-                                            </button>
-                                        </div>    
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
+                        <h4 class="font-weight-semi-bold m-0">修改商品</h4>
                     </div>
                     
-                    <div class="col-lg-12 border-secondary  mb-5 mt-3" style="padding-left: 0; padding-right:0;">
-                        <div class="row px-xl-4 table-responsive p-0 m-0">
-                            <table class="table table-bordered text-center mb-5">
-                                <thead class="bg-secondary text-dark">
-                                    <tr>
-                                        <th>選取</th>
-                                        <th>商品編號</th>
-                                        <th>商品名稱</th>
-                                        <th>顏色</th>
-                                        <th>尺寸</th>
-                                        <th>單價</th>
-                                        <th>已售出</th>
-                                        <th>修改</th>
-                                        <th>刪除</th>
+                    <div class="card-body">
+                    	<form  method="POST" enctype="multipart/form-data">
+	                        <div class="d-flex justify-content-between pt-1 mb-2">
+	                            <h6 class=" font-weight-medium">商品圖片</h6>
+	                        </div>
+	
+	                        <div>
+	                            <input  type="file" name="mainProduct_pic"/><label class="title">主要商品圖片</label>
+	                        </div>
+	                        <div>
+	                            <input type="file" name="brand_pic"/><label class="title">品牌圖片</label>
+	                        </div>
+	                        <div>
+	                            <input  type="file" name="detail_pic" multiple/><label class="title" >其他圖片</label>
+	                        </div>             
+                        </form>
+                        <div class="d-flex pt-1 mb-2 mt-2 align-items-center ">
+                            <h6 class=" font-weight-medium">類別:</h6>
+                            <span class="ml-2 mb-2">${product.category}</span>   
+                        </div>
+                        
+                           
+                        
+                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
+                            <h6 class=" font-weight-medium">商品名稱</h6>
+                        </div>
+                        <div class="input-group">
+                            <input  type="text" class="form-control p-4 mb-2" value="${product.name}" />
+                        </div>
+                        
+                        <div class="d-flex justify-content-between pt-1 mb-2">
+                            <h6 class=" font-weight-medium">商品描述</h6>
+                        </div>
+                        <div class="input-group">
+                            <form:textarea path="product.descript.text" type="text" class="form-control p-4" value="${product.descript.text}"/>
+                        </div> 
 
+                    
+                </div>
 
-                                    </tr>
-                                </thead>
-                                <tbody class="align-middle">
-                                    <tr class="text-center">
-                                        <td><input class="" type="checkbox" style="zoom:150%"></td>
-                                        <td class="align-middle"><a class="a font-weight-medium" href=""
-                                                target="_blank">100000</a></td>
-                                        <td class="align-middle"><img src="img/product-1.jpg" alt=""
-                                                style="width: 50px;"> Colorful
-                                            Stylish Shirt</td>
-                                        <td class="align-middle">黑</td>
-                                        <td class="align-middle">S</td>
-                                        <td class="align-middle">9457</td>
-                                        <td class="align-middle">77</td>
-                                        <td><input type="checkbox" id="switch1" /><label for="switch1">Toggle</label></td>
-                                        <td class="align-middle">
-                                            <a class="btn btn-sm btn-primary" href="">修改</a>
-                                        </td>
-                                        <td class="align-middle">
-                                            <a class="btn btn-sm btn-primary" href="">刪除</a>
-                                        </td>   
-                                    </tr>
-                                </tbody>
-                            </table>
+                <div class="col-lg-12 border-secondary  border mb-5" style="padding-left: 0; padding-right:0;">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">銷售資訊</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between pt-1 mb-2">
+                            <h6 class=" font-weight-medium">尺寸</h6>
+                        </div>
+                        <div class="size">
+                            <input type="radio" name="size" value="S"> S     
+                            <input type="radio" name="size" value="M"> M
+                            <input type="radio" name="size" value="L"> L
+                            <input type="radio" name="size" value="XL"> XL
+                            <input type="radio" name="size" value="F"> F
                         </div>
                     </div>
-                </div>
-            </div>
 
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between pt-1 mb-2">
+                            <h6 class=" font-weight-medium">顏色</h6>
+                           <span><input value="addColor" type="button"></span>
+                        </div>
+                        <div class="color">
+                            <input type="checkbox" name="color" value="Cream">Cream
+                            <input type="checkbox" name="color" value="Pink">Pink
+                            <input type="checkbox" name="color" value="Blue">Blue
+                            <input type="checkbox" name="color" value="Black">Black
+                            <input type="checkbox" name="color" value="White">White
+                            <input type="checkbox" name="color" value="Gray">Gray
+                            <input type="checkbox" name="color" value="Green">Green
+                            <input type="checkbox" name="color" value="Oatmeal">Oatmeal
+                            <input type="checkbox" name="color" value="Navy">Navy
+                            <input type="checkbox" name="color" value="Brown">Brown
+                            <input type="checkbox" name="color" value="Beige">Beige
+                            <input type="checkbox" name="color" value="Ivory">Ivory
+                            <input type="checkbox" name="color" value="Sora">Sora
+                            <input type="checkbox" name="color" value="Mint">Mint
+                            <input type="checkbox" name="color" value="Purple">Purple
+                    	</div>
+
+	                    <div class="card-body">
+	                        <div class="d-flex justify-content-between pt-1 mb-2">
+	                            <h6 class=" font-weight-medium">商品價格</h6>
+	                        </div>
+	                        <div class="input-group">
+	                            <input value="${product.price}" type="text" class="form-control p-4 mb-2" placeholder="商品價格" />
+	                        </div>
+	                    </div>
+                	</div>
+	                <div class="creat">
+	                    <input type="submit" value="修改商品">
+	                </div>
+               	</div> 
+               </div> 
+              </form>
+          </div>
+		 
         </div>
- 
+   </div>
+        <!-- Navbar End -->
+
+
+        <!-- Cart Start -->
+
+        <!-- Cart End -->
+
+
+        <!-- Footer Start -->
+
+        <!-- Footer End -->
 
 
         <!-- Back to Top -->
@@ -251,18 +268,18 @@
 
 
         <!-- JavaScript Libraries -->
+        <script src="${contextRoot}/js/jquery-3.6.1.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="${contextRoot}/lib/easing/easing.min.js"></script>
+        <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
-        <script src="js/getProductAjax.js"></script>
+        <script src="${contextRoot}/mail/jqBootstrapValidation.min.js"></script>
 
         <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+        <script src="${contextRoot}/js/main.js"></script>
+        <script src="${contextRoot}/js/getProductAjax.js"></script>
         <script>
             $(document).ready(function () {
                 $('.menu>li>a').click(function (e) {
@@ -274,15 +291,5 @@
                 });
             });
         </script>
-        <script>
-            $(document).ready(function () {
-                $('.example2').hide();
-                $('a#toggle-example2').click(function () {
-                    $('.example2').slideToggle(1000);
-                    return false;
-                });
-            });
-        </script>
 </body>
-
 </html>
