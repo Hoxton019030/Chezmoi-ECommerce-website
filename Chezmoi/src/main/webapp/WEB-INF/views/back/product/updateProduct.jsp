@@ -27,7 +27,7 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="${contextRoot}/css/style.css" rel="stylesheet">
+    <link href="${contextRoot}/css/back_style.css" rel="stylesheet">
 
     <style>
         li,
@@ -44,104 +44,14 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
     </style>
 </head>
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid align-items-center justify-content-center">
-        <div class="row">
-            <div class="col-lg-1 d-none d-lg-block pt-1">
-                <div class="container-fluid">
-                    <a href="admin_index.html" class="nav-item nav-link active"><img src="${contextRoot}/img/logo.png" width="50"
-                            height="50"></a>
+    <!-- Topbar  -->
+      <jsp:include page="../layout/topbar.jsp"></jsp:include>
 
-                </div>
-            </div>
-            <div class="col-lg-5 d-none d-lg-block pt-3" style="padding-left:1em;">
 
-                <a href="admin_index.html" class="text-decoration-none">
-                    <h1 class="display-5 font-weight-semi-bold">後台管理中心</h1>
-                </a>
-            </div>
-        </div>
-
-    </div>
-    <!-- Topbar End -->
-
-    <!-- Navbar Start -->
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-3">
-            <div class="col-lg-3 d-none d-lg-block pt-3">
-                <div class="container-fluid p-0">
-                    <ul class="p-0 menu border">
-                        <li class="p-0">
-                            <a
-                                class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">會員管理</a>
-                            <ul class="inmenu">
-                                <li><a href="member.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">會員資料表</a>
-                                </li>
-                            </ul>
-                            <ul class="inmenu">
-                                <li><a href="messageCheck.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">留言板查看/回覆</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li>
-                            <a
-                                class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">產品管理</a>
-                            <ul class="inmenu">
-                                <li><a href="myProduct.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">我的產品</a>
-                                </li>
-                            </ul>
-                            <ul class="inmenu">
-                                <li><a href="addProduct.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">產品上架</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a
-                                class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">結帳管理</a>
-                            <ul class="inmenu">
-                                <li><a href="shipping.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">物流管理</a>
-                                </li>
-                                <li><a href="payment.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">金流管理</a>
-                                </li>
-                                <li><a href="coupon.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">折扣碼設定</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a
-                                class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">訂單管理</a>
-                            <ul class="inmenu">
-                                <li><a href="orderSales.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">銷售訂單</a>
-                                </li>
-                                <li><a href="orderShip.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">訂單出貨</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a
-                                class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">營運表現</a>
-                            <ul class="inmenu">
-                                <li><a href="salesData.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">商品銷售狀況</a>
-                                </li>
-                                <li><a href="salesReport.html"
-                                        class="btn d-flex align-items-center justify-content-between text-black w-100">業績報表</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+             <!-- Navbar  -->
+           <jsp:include page="../layout/navbar.jsp"></jsp:include>
             
             <div class="col-lg-9"> 
               <form method="POST" modelAttribute="product" enctype="multipart/form-data" class="border-0">
@@ -160,7 +70,7 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
 	                            <input  type="file" name="mainProduct_pic"/><label class="title">主要商品圖片</label>
 	                        </div>
 	                        <div>
-	                            <input type="file" name="brand_pic"/><label class="title">品牌圖片</label>
+	                            <input type="file" name="fit_pic"/><label class="title">品牌圖片</label>
 	                        </div>
 	                        <div>
 	                            <input  type="file" name="detail_pic" multiple/><label class="title" >其他圖片</label>
@@ -278,6 +188,7 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
         <script src="${contextRoot}/mail/jqBootstrapValidation.min.js"></script>
 
         <!-- Template Javascript -->
+       
         <script src="${contextRoot}/js/main.js"></script>
         <script src="${contextRoot}/js/getProductAjax.js"></script>
         <script>

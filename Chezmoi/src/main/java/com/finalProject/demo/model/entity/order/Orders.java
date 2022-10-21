@@ -81,11 +81,9 @@ public class Orders {
 	
 	
 	//總金額
-//	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "total")
 	private Integer total;
 	//增加在orderdetail中
-	
 	
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)

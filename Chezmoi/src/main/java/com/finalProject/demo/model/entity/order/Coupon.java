@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -18,6 +20,9 @@ public class Coupon {
 	private String couponName;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer couponId;
+
 	@Column(name="couponCode")
 	private String couponCode;
 	
@@ -37,7 +42,19 @@ public class Coupon {
 	@Column(name="dateEnd" , columnDefinition = "datetime")
 	private Date dateEnd;
 	
+	
 	public Coupon() {
+	}
+	
+	
+
+  
+	public Integer getCouponId() {
+		return couponId;
+	}
+	
+	public void setCouponId(Integer couponId) {
+		this.couponId = couponId;
 	}
 
 	public String getCouponName() {

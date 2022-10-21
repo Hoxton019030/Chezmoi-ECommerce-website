@@ -65,7 +65,7 @@ public class addProductController {
 		Photo newphoto = new Photo();
 		try {
 			newphoto.setMainProduct_pic(mainPic.getBytes());
-			newphoto.setBrand_pic(brandPic.getBytes());
+			newphoto.setFit_pic(brandPic.getBytes());
 			photoService.addPhoto(newphoto);
 			product.setPhoto(newphoto);
 		} catch (IOException e) {

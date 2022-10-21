@@ -21,7 +21,9 @@ public class productPageController {
 	public String getMyProduct() {
 		return "back/product/myProduct";	
 	}
+
 	
+
 
 
 }
