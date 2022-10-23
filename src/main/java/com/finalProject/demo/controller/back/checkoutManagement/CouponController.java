@@ -31,7 +31,6 @@ public class CouponController {
 		
 		Coupon latestCode = cService.findLatest();
 		model.addAttribute("latestCode",latestCode);
-		
 		return "/back/checkout/coupon";
 	}
 	

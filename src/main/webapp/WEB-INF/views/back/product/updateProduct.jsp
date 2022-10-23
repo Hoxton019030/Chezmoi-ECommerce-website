@@ -1,4 +1,4 @@
-z<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -54,14 +54,20 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
            <jsp:include page="../layout/navbar.jsp"></jsp:include>
             
             <div class="col-lg-9"> 
-              <form method="POST" modelAttribute="product" enctype="multipart/form-data" class="border-0">
+              <form action="${contextRoot}/Back/MyProduct/edit" method="POST" modelAttribute="product" enctype="multipart/form-data" class="border-0">
                 <div class="col-lg-12 border-secondary border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
                     <div class="card-header bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">修改商品</h4>
                     </div>
+
                     
                     <div class="card-body">
-                    	<form  method="POST" enctype="multipart/form-data">
+                            <div class="d-flex pt-1 mb-2 mt-2 align-items-center ">
+                                <h6 class=" font-weight-medium">商品編號:</h6>
+                                <span class="ml-2 mb-2">${product.productId}</span>
+                                <input type="hidden" name="productId" value="${product.productId}"/>
+                            </div>
+
 	                        <div class="d-flex justify-content-between pt-1 mb-2">
 	                            <h6 class=" font-weight-medium">商品圖片</h6>
 	                        </div>
@@ -75,10 +81,11 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
 	                        <div>
 	                            <input  type="file" name="detail_pic" multiple/><label class="title" >其他圖片</label>
 	                        </div>             
-                        </form>
+
                         <div class="d-flex pt-1 mb-2 mt-2 align-items-center ">
                             <h6 class=" font-weight-medium">類別:</h6>
-                            <span class="ml-2 mb-2">${product.category}</span>   
+                            <span class="ml-2 mb-2">${product.category}</span>
+                            <input type="hidden" name="category" value="${product.category}"/>
                         </div>
                         
                            
@@ -90,19 +97,20 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
                             <input  type="text" class="form-control p-4 mb-2" value="${product.name}" />
                         </div>
                         
-                        <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium">商品描述</h6>
+                        <div class="d-flex justify-content-between pt-1 mb-2" >
+                            <h6 class=" font-weight-medium" >商品描述</h6>
                         </div>
                         <div class="input-group">
-                            <form:textarea path="product.descript.text" type="text" class="form-control p-4" value="${product.descript.text}"/>
+                            <textarea name="descriptText" type="text" class="form-control p-4">${product.descript.text}</textarea>
+                            <input type="hidden" name="descId" value="${product.descript.descriptId}"/>
                         </div> 
 
                     
                 </div>
 
-                <div class="col-lg-12 border-secondary  border mb-5" style="padding-left: 0; padding-right:0;">
+                <div class="col-lg-12 border-secondary border mb-5" style="padding-left: 0; padding-right:0;">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">銷售資訊</h4>
+                        <h4 class="font-weight-semi-bold m-0">商品資訊</h4>
                     </div>
 
                     <div class="card-body">
@@ -115,6 +123,7 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
                             <input type="radio" name="size" value="L"> L
                             <input type="radio" name="size" value="XL"> XL
                             <input type="radio" name="size" value="F"> F
+                            <input type="hidden" id="siz" value="${product.size}">
                         </div>
                     </div>
 
@@ -124,21 +133,22 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
                            <span><input value="addColor" type="button"></span>
                         </div>
                         <div class="color">
-                            <input type="checkbox" name="color" value="Cream">Cream
-                            <input type="checkbox" name="color" value="Pink">Pink
-                            <input type="checkbox" name="color" value="Blue">Blue
-                            <input type="checkbox" name="color" value="Black">Black
-                            <input type="checkbox" name="color" value="White">White
-                            <input type="checkbox" name="color" value="Gray">Gray
-                            <input type="checkbox" name="color" value="Green">Green
-                            <input type="checkbox" name="color" value="Oatmeal">Oatmeal
-                            <input type="checkbox" name="color" value="Navy">Navy
-                            <input type="checkbox" name="color" value="Brown">Brown
-                            <input type="checkbox" name="color" value="Beige">Beige
-                            <input type="checkbox" name="color" value="Ivory">Ivory
-                            <input type="checkbox" name="color" value="Sora">Sora
-                            <input type="checkbox" name="color" value="Mint">Mint
-                            <input type="checkbox" name="color" value="Purple">Purple
+                            <input type="radio" name="color" value="Cream">Cream
+                            <input type="radio" name="color" value="Pink">Pink
+                            <input type="radio" name="color" value="Blue">Blue
+                            <input type="radio" name="color" value="Black">Black
+                            <input type="radio" name="color" value="White">White
+                            <input type="radio" name="color" value="Gray">Gray
+                            <input type="radio" name="color" value="Green">Green
+                            <input type="radio" name="color" value="Oatmeal">Oatmeal
+                            <input type="radio" name="color" value="Navy">Navy
+                            <input type="radio" name="color" value="Brown">Brown
+                            <input type="radio" name="color" value="Beige">Beige
+                            <input type="radio" name="color" value="Ivory">Ivory
+                            <input type="radio" name="color" value="Sora">Sora
+                            <input type="radio" name="color" value="Mint">Mint
+                            <input type="radio" name="color" value="Purple">Purple
+                            <input type="hidden" id="col" value="${product.color}">
                     	</div>
 
 	                    <div class="card-body">
@@ -146,12 +156,13 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
 	                            <h6 class=" font-weight-medium">商品價格</h6>
 	                        </div>
 	                        <div class="input-group">
-	                            <input value="${product.price}" type="text" class="form-control p-4 mb-2" placeholder="商品價格" />
+	                            <input type="number" name="price" class="form-control p-4 mb-2" value="${product.price}" />
 	                        </div>
 	                    </div>
                 	</div>
 	                <div class="creat">
 	                    <input type="submit" value="修改商品">
+
 	                </div>
                	</div> 
                </div> 
@@ -160,17 +171,8 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
 		 
         </div>
    </div>
-        <!-- Navbar End -->
-
-
-        <!-- Cart Start -->
-
-        <!-- Cart End -->
-
-
-        <!-- Footer Start -->
-
-        <!-- Footer End -->
+       <!--error msg hidden-->
+    <c:if test="${param.msg!='' || !(empty param.msg) }"><script>confirm("${param.msg}");</script></c:if>
 
 
         <!-- Back to Top -->
@@ -200,6 +202,12 @@ z<%@ page language="java" contentType="text/html; charset=UTF-8"
                     //點選到的.menu>li>a 顯示動態active
                     $(this).addClass('active').parent().siblings().find('a').removeClass('active');
                 });
+            });
+            $(function () {
+                let color = $("#col").val();
+                $("input:radio[name='color'][value="+color+"]").attr("checked",true);
+                let size = $("#siz").val();
+                $("input:radio[name='size'][value="+size+"]").attr("checked",true);
             });
         </script>
 </body>

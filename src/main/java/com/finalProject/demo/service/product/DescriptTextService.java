@@ -18,4 +18,8 @@ public class DescriptTextService {
 		return descriptTextRepository.save(descriptText);
 	}
 
+	public void updateById(Long id,String text){
+		descriptTextRepository.updateById(text, id);
+	}
+
 }

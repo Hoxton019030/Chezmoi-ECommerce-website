@@ -4,7 +4,6 @@
 $(document).ready(function () {
     
     $('#getAllProduct').click(function(){
-        alert("按了all");
         $('#tbody').empty();
         fetch("http://localhost:8080/Chezmoi/Back/MyProduct/all").then(function(response){
             return response.json();
@@ -42,7 +41,7 @@ $(document).ready(function () {
                     .append($('<td class="align-middle">').text(value.size))
                     .append($('<td class="align-middle">').text(value.price))
                     .append($('<td class="align-middle">').text(value.productState))
-                    .append($('<td class="align-middle"><a class="btn btn-sm btn-primary" href="">修改</a></td>'))
+                    .append($('<td class="align-middle"><a href="MyProduct/edit?id='+value.productId+'"><button class="btn btn-sm btn-primary">修改</button></a></td>'))
                     .append($('<td class="align-middle"><a id="remove" href="MyProduct/delete/'+value.productId+'"  onClick="return confirm(`確定要刪除此商品嗎?`);" ><button class="btn btn-sm btn-primary">刪除</button></a></td>'))
                     .append($('</tr>'));
                 })
@@ -65,7 +64,7 @@ $(document).ready(function () {
                 .append($('<td class="align-middle">').text(value.size))
                 .append($('<td class="align-middle">').text(value.price))
                 .append($('<td class="align-middle">').text(value.productState))
-                .append($('<td class="align-middle"><a class="btn btn-sm btn-primary" href="">修改</a></td>'))
+                .append($('<td class="align-middle"><a href="MyProduct/edit?id='+value.productId+'"><button class="btn btn-sm btn-primary">修改</button></a></td>'))
                 .append($('<td class="align-middle"><a id="remove" href="MyProduct/delete/'+value.productId+'" onClick="return confirm(`確定要刪除此商品嗎?`);"><button class="btn btn-sm btn-primary">刪除</button></a></td>'))
             })
         })
@@ -86,7 +85,7 @@ $(document).ready(function () {
                 .append($('<td class="align-middle">').text(value.size))
                 .append($('<td class="align-middle">').text(value.price))
                 .append($('<td class="align-middle">').text(value.productState))
-                .append($('<td class="align-middle"><a class="btn btn-sm btn-primary" href="">修改</a></td>'))
+                .append($('<td class="align-middle"><a href="MyProduct/edit?id='+value.productId+'"><button class="btn btn-sm btn-primary">修改</button></a></td>'))
                 .append($('<td class="align-middle"><a id="remove" href="MyProduct/delete/'+value.productId+'" onClick="return confirm(`確定要刪除此商品嗎?`);"><button class="btn btn-sm btn-primary">刪除</button></a></td>'))
                 .append($('</tr>'));
             })
@@ -108,7 +107,7 @@ $(document).ready(function () {
                 .append($('<td class="align-middle">').text(value.size))
                 .append($('<td class="align-middle">').text(value.price))
                 .append($('<td class="align-middle">').text(value.productState))
-                .append($('<td class="align-middle"><a class="btn btn-sm btn-primary" href="">修改</a></td>'))
+                .append($('<td class="align-middle"><a href="MyProduct/edit?id='+value.productId+'"><button class="btn btn-sm btn-primary">修改</button></a></td>'))
                 .append($('<td class="align-middle"><a id="remove" href="MyProduct/delete/'+value.productId+'" onClick="return confirm(`確定要刪除此商品嗎?`);"><button class="btn btn-sm btn-primary">刪除</button></a></td>'))
                 .append($('</tr>'));
             })
@@ -131,7 +130,7 @@ $(document).ready(function () {
                 .append($('<td class="align-middle">').text(value.size))
                 .append($('<td class="align-middle">').text(value.price))
                 .append($('<td class="align-middle">').text(value.productState))
-                .append($('<td class="align-middle"><a class="btn btn-sm btn-primary" href="">修改</a></td>'))
+                .append($('<td class="align-middle"><a href="MyProduct/edit?id='+value.productId+'"><button class="btn btn-sm btn-primary">修改</button></a></td>'))
                 .append($('<td class="align-middle"><a id="remove" href="MyProduct/delete/'+value.productId+'" onClick="return confirm(`確定要刪除此商品嗎?`);"><button class="btn btn-sm btn-primary">刪除</button></a></td>'))
                 .append($('</tr>'));
             })
@@ -153,7 +152,7 @@ $(document).ready(function () {
                 .append($('<td class="align-middle">').text(value.size))
                 .append($('<td class="align-middle">').text(value.price))
                 .append($('<td class="align-middle">').text(value.productState))
-                .append($('<td class="align-middle"><a class="btn btn-sm btn-primary" href="">修改</a></td>'))
+                .append($('<td class="align-middle"><a href="MyProduct/edit?id='+value.productId+'"><button class="btn btn-sm btn-primary">修改</button></a></td>'))
                 .append($('<td class="align-middle"><a id="remove" href="MyProduct/delete/'+value.productId+'" onClick="return confirm(`確定要刪除此商品嗎?`);"><button class="btn btn-sm btn-primary">刪除</button></a></td>'))
                 .append($('</tr>'));            
             })
@@ -175,7 +174,7 @@ $(document).ready(function () {
                 .append($('<td class="align-middle">').text(value.size))
                 .append($('<td class="align-middle">').text(value.price))
                 .append($('<td class="align-middle">').text(value.productState))
-                .append($('<td class="align-middle"><a class="btn btn-sm btn-primary" href="">修改</a></td>'))
+                .append($('<td class="align-middle"><a href="MyProduct/edit?id='+value.productId+'"><button class="btn btn-sm btn-primary">修改</button></a></td>'))
                 .append($('<td class="align-middle"><a id="remove" href="MyProduct/delete/'+value.productId+'" onClick="return confirm(`確定要刪除此商品嗎?`);"><button class="btn btn-sm btn-primary">刪除</button></a></td>'))
                 .append($('</tr>'));            
             })

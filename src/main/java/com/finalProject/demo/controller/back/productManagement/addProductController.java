@@ -42,30 +42,44 @@ public class addProductController {
 	
 	
 	//新增商品Post
-	/**
-	 * @param product
-	 * @param mainPic
-	 * @param brandPic
-	 * @param sizeList
-	 * @param colorList
-	 * @param model
-	 * @return
-	 */
+
 	@PostMapping(value={"/Product/add","/fileUpload"})
 	public String postAddProduct(
 			@ModelAttribute("product")Products product,
 			@RequestParam(value = "mainProduct_pic",required = false)MultipartFile mainPic,
-			@RequestParam(value = "mainProduct_pic",required = false)MultipartFile brandPic,
+			@RequestParam(value = "fit_pic",required = false)MultipartFile fitPic,
+			@RequestParam(value = "detail_pic",required = false) List<MultipartFile>  pics,
 			@RequestParam(value = "size",required = false)List<String> sizeList,
 			@RequestParam(value = "color",required=false)List<String> colorList,
 			@RequestParam(value = "descriptText",required = false) String descriptText,
+			@RequestParam("state") String state,
 			Model model) {
 		
 		//PHOTO(10.19需增加判斷)
 		Photo newphoto = new Photo();
 		try {
-			newphoto.setMainProduct_pic(mainPic.getBytes());
-			newphoto.setFit_pic(brandPic.getBytes());
+			if (mainPic!=null && !(mainPic.isEmpty())){
+				String name = mainPic.getName();
+				newphoto.setMainProduct_pic(mainPic.getBytes());
+				System.out.println(name);
+			}
+			if (fitPic!=null && !(fitPic.isEmpty())){
+				newphoto.setFit_pic(fitPic.getBytes());
+			}
+			if (pics!=null && !(pics.isEmpty())){
+				for (int i=0;i< pics.size();i++){
+					MultipartFile file = pics.get(i);
+					byte[] fileBytes = file.getBytes();
+
+
+
+				}
+
+
+			}
+
+
+
 			photoService.addPhoto(newphoto);
 			product.setPhoto(newphoto);
 		} catch (IOException e) {
@@ -110,7 +124,7 @@ public class addProductController {
 								newProduct.setDescript(product.getDescript());
 								productId=createId+"-"+size+"-"+color;
 								newProduct.setProductId(productId);
-								newProduct.setProductState("ON");
+								newProduct.setProductState(state);
 								
 								try {
 									productService.addProduct(newProduct);	
@@ -144,7 +158,7 @@ public class addProductController {
 								newProduct.setPrice(product.getPrice());
 								newProduct.setPhoto(product.getPhoto());
 								newProduct.setDescript(product.getDescript());
-								newProduct.setProductState("ON");
+								newProduct.setProductState(state);
 								try {
 									productService.addProduct(newProduct);	
 									if(productService.existsById(newProduct.getProductId())) {
@@ -163,7 +177,7 @@ public class addProductController {
 							newProduct.setPrice(product.getPrice());
 							newProduct.setPhoto(product.getPhoto());
 							newProduct.setDescript(product.getDescript());
-							newProduct.setProductState("ON");
+							newProduct.setProductState(state);
 							try {
 								productService.addProduct(newProduct);	
 								if(productService.existsById(newProduct.getProductId())) {
@@ -188,7 +202,7 @@ public class addProductController {
 							newProduct.setPrice(product.getPrice());
 							newProduct.setPhoto(product.getPhoto());
 							newProduct.setDescript(product.getDescript());
-							newProduct.setProductState("ON");
+							newProduct.setProductState(state);
 							try {
 								productService.addProduct(newProduct);	
 								if(productService.existsById(newProduct.getProductId())) {

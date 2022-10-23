@@ -30,7 +30,8 @@ public class ProductService {
 	public Products addProduct(Products product) {
 		return productRepository.save(product);
 	}
-	
+
+
 	//delete product
 	public void deleteById(String id) {
 		productRepository.deleteById(id);
@@ -106,7 +107,10 @@ public class ProductService {
 		return productRepository.findByName(name);
 	}
 	
-	
+	//updateById
+	public void updateById(String newId,String color, String size,Integer price,String oldId){
+		productRepository.updateById(newId,color,size,price,oldId);
+	}
 	
 	
 }

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.finalProject.demo.model.entity.product.Photo;
 import com.finalProject.demo.repository.product.PhotoRepository;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class PhotoService {
@@ -19,6 +21,8 @@ public class PhotoService {
 	public Photo addPhoto(Photo photo) {
 		return photoRespository.save(photo);
 	}
+
+	public List<Photo> findAll(){return photoRespository.findAll();}
 	
 	
 	

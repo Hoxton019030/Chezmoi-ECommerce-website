@@ -67,7 +67,7 @@ public class Products {
 	//更新時間
 	@UpdateTimestamp
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	@Column(name = "updateTime")
+	@Column(name = "updateTime",insertable = false,updatable = false,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
 	private Date updateTime;
 	
 	//狀態(上/下架) 預設為 ON-上架

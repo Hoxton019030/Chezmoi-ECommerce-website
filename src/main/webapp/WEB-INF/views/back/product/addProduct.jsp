@@ -53,7 +53,7 @@
         <div class="row border-top px-xl-3">
             <!-- Navbar  -->
             <jsp:include page="../layout/navbar.jsp"></jsp:include>
-            
+
             <div class="col-lg-9"> 
               <form:form method="POST" modelAttribute="product" enctype="multipart/form-data" class="border-0">
                 <div class="col-lg-12 border-secondary border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
@@ -64,38 +64,48 @@
                     <div class="card-body">
                     	<form method="POST" enctype="multipart/form-data">
 	                        <div class="d-flex justify-content-between pt-1 mb-2">
-	                            <h6 class=" font-weight-medium">商品圖片</h6>
-	                        </div>
-	
-	                        <div>
-	                            <input  type="file" name="mainProduct_pic"/><label class="title">主要商品圖片</label>
+	                            <h5 class=" font-weight-medium">商品圖片</h5>
 	                        </div>
 	                        <div>
-	                            <input type="file" name="fit_pic"/><label class="title">平拍圖片</label>
+                                <div class="mb-2"><img id="output1" width="150" height="auto" style="display: none" ></div>
+                                <label class="title btn btn-sm btn-secondary">主要商品圖片
+                                <input style="display:none" type="file" accept="image/gif, image/jpeg, image/png" name="mainProduct_pic" id="mainPic"/>
+                                </label>
 	                        </div>
-	                        <div>
-	                            <input  type="file" name="detail_pic" multiple/><label class="title" >圖片3</label>
+	                        <div class="mt-2">
+                                <div class="mb-2"><img id="output2" width="150" height="auto" style="display: none" ></div>
+                                <label class="title btn btn-sm btn-secondary">平拍圖片
+	                            <input style="display:none" class="btn btn-sm btn-outline-secondary "  type="file" accept="image/gif, image/jpeg, image/png" name="fit_pic" id="fitPic"/>
+                                </label>
+	                        </div>
+	                        <div class="mt-2">
+                                <div class="mb-2" id="output3"></div>
+                                <label class="title btn btn-sm btn-secondary">細節圖片
+	                            <input style="display:none" class="btn btn-sm btn-outline-secondary" type="file" accept="image/gif, image/jpeg, image/png" name="detail_pic" id="detailPics" multiple/>
+                                </label><label id="error">*最多上傳9張圖片</label>
 	                        </div>             
                         </form>
+
+
                         <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium">類別</h6>
+                            <h5 class=" font-weight-medium">類別</h5>
                         </div>
-                        <div class="dropdown">				
+                        <div class="dropdown mb-2">
 		                           	<input type="radio" name="category" value="Top"> Top
 		                           	<input type="radio" name="category" value="Bottom"> Bottom
 		                           	<input type="radio" name="category" value="Outer"> Outer
 		                           	<input type="radio" name="category" value="Dress"> Dress
 		                           	<input type="radio" name="category" value="Accessories"> Accessories
 						</div>
-                        <div class="d-flex justify-content-between pt-1 mb-2" style="clear:both;">
-                            <h6 class=" font-weight-medium">商品名稱</h6>
+                        <div class="d-flex justify-content-between pt-1 mb-2 mt-2" style="clear:both;">
+                            <h5 class=" font-weight-medium">商品名稱</h5>
                         </div>
                         <div class="input-group">
                             <form:input path="name" type="text" class="form-control p-4 mb-2" placeholder="商品名稱" id="product_name"/>
                         </div>
                         
                         <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium">商品描述</h6>
+                            <h5 class=" font-weight-medium">商品描述</h5>
                         </div>
                         <div class="input-group">
                             <textarea name="descriptText" type="text" class="form-control p-4" placeholder="商品描述"></textarea>
@@ -106,12 +116,12 @@
 
                 <div class="col-lg-12 border-secondary  border mb-5" style="padding-left: 0; padding-right:0;">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">銷售資訊</h4>
+                        <h4 class="font-weight-semi-bold m-0">商品資訊</h4>
                     </div>
 
                     <div class="card-body">
                         <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium">尺寸</h6>
+                            <h5 class=" font-weight-medium">尺寸</h5>
                         </div>
                         <div class="size">
                             <input type="checkbox" name="size" value="S"> S     
@@ -124,7 +134,7 @@
 
                     <div class="card-body">
                         <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium">顏色</h6>
+                            <h5 class=" font-weight-medium">顏色</h5>
                            <span><input value="addColor" type="button"></span>
                         </div>
                         <!-- 後續前台要增加addColor的功能!! -->
@@ -149,17 +159,26 @@
 
                     <div class="card-body">
                         <div class="d-flex justify-content-between pt-1 mb-2">
-                            <h6 class=" font-weight-medium">商品價格</h6>
+                            <h5 class=" font-weight-medium">商品價格</h5>
                         </div>
                         <div class="input-group">
                             <form:input path="price" type="text" class="form-control p-4 mb-2" placeholder="商品價格" />
                         </div>
                     </div>
+                    <div class="card-body">
+                        <div class="d-flex align-content-center ">
+                            <h5 class=" font-weight-medium">立即上架</h5><br>
+                            <div class="align-content-center ml-1">
+                                <input type="radio" name="state" value="ON" checked> ON
+                                <input type="radio" name="state" value="OFF"> OFF
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <input type="submit" value="上架商品">
+                    </div>
                 </div>
-                <div class="creat">
-                    <input type="submit" value="上架商品">
-                </div>
-                
+
                </form:form>
             </div>
 		 
@@ -204,7 +223,49 @@
                     //點選到的.menu>li>a 顯示動態active
                     $(this).addClass('active').parent().siblings().find('a').removeClass('active');
                 });
+
+                    $('#mainPic').on('change',function(e){
+                    const file = this.files[0];
+                    const  fr = new FileReader();
+                    fr.onload=function (e){
+                    $('#output1').attr('src',e.target.result).show();
+                };
+                    fr.readAsDataURL(file);
+                });
+                $('#fitPic').on('change',function(e){
+                    const file = this.files[0];
+                    const  fr = new FileReader();
+                    fr.onload=function (e){
+                        $('#output2').attr('src',e.target.result).show();
+                    };
+                    fr.readAsDataURL(file);
+                });
+                $('#detailPics').change(function (){
+                    readURL(this);
+                });
+                function readURL(input){
+                    if (input.files && input.files.length>=0) {
+                        if (input.files.length<=9){
+                            for (var i = 0; i < input.files.length; i++) {
+                                const fr = new FileReader();
+                                fr.onload = function (e) {
+                                    const img = $("<img width='150' height='auto' class='mr-1 mt-1'>").attr('src',e.target.result);
+                                    $('#output3').append(img);
+                                }
+                                fr.readAsDataURL(input.files[i]);
+                            }
+                        }else{
+                            $('#error').append($("<span class='border'>已達上限數量!!!</span>"))
+                        }
+                    }
+                }
+
+
+
+
+
             });
         </script>
+
 </body>
 </html>
