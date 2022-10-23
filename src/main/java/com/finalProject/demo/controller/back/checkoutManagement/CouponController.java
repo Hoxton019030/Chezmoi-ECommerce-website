@@ -1,15 +1,10 @@
 package com.finalProject.demo.controller.back.checkoutManagement;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,7 +17,7 @@ public class CouponController {
 	
 	@Autowired
 	private CouponService cService;
-	
+
 	//過來的controller
 	@RequestMapping("/Coupon")
 	public String addCoupon(Model model) {
@@ -37,29 +32,21 @@ public class CouponController {
 	
 	//送出的controller
 	@RequestMapping("/addCoupon")
-	public String postCoupon(HttpServletRequest request, Model model) throws ParseException {
+	public String postCoupon(@ModelAttribute(name="couponadd") Coupon add,Model model) {
+		cService.insert(add);
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-		
-		String couponName = request.getParameter("couponName");
-		String couponCode = request.getParameter("couponCode");
-		Integer discountPrice = Integer.parseInt(request.getParameter("discountPrice"));
-		Integer minimum = Integer.parseInt(request.getParameter("minimum"));
-		Date dateStart = formatter.parse(request.getParameter("dateStart"));
-		Date dateEnd = formatter.parse(request.getParameter("dateEnd"));
-		
+		//空的
 		Coupon c1 = new Coupon();
-		c1.setCouponName(couponName);
-		c1.setCouponCode(couponCode);
-		c1.setDiscountPrice(discountPrice);
-		c1.setMinimum(minimum);
-		c1.setDateStart(dateStart);
-		c1.setDateEnd(dateEnd);
-		cService.insert(c1);
-		return "redirect:/Back/Coupon/view";
-	}
+		model.addAttribute("couponadd",c1);
 		
-	@RequestMapping("/Coupon/view")
+		//最新的
+		Coupon latestCode = cService.findLatest();
+		model.addAttribute("latestCode",latestCode);
+		
+		return "redirect:/Back/view";
+	}
+	
+	@RequestMapping("/view")
 	public String viewCoupon(@RequestParam(name = "p",defaultValue = "1") Integer pageNumber,Model model) {
 		Page<Coupon> page = cService.findByPage(pageNumber);
 		model.addAttribute("page",page);
@@ -67,4 +54,25 @@ public class CouponController {
 	}
 	
 	
+	@RequestMapping("/editCoupon")
+	public String editCoupon(@RequestParam("couponId") Integer couponId,Model model) {
+		Coupon edit = cService.findById(couponId);
+		model.addAttribute("edit",edit);
+		return "/back/checkout/editCoupon";
+	}
+	
+	@RequestMapping("/postEditCoupon")
+	public String postEditCoupon(@ModelAttribute("edit") Coupon cou) {
+		cService.insert(cou);
+		return "redirect:/Back/view";
+	}
+	
+	@RequestMapping("/deleteCoupon")
+	public String deleteCoupon(@RequestParam("couponId")Integer couponId) {
+		cService.deleteById(couponId);
+		return "redirect:/Back/view";
+	}
+	
+	
+
 }
