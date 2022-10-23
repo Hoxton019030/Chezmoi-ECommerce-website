@@ -23,7 +23,7 @@ public class Coupon {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer couponId;
 
-	@Column(name="couponCode")
+	@Column(name="couponCode", unique = true, nullable = false)
 	private String couponCode;
 	
 	@Column(name="discountPrice")
@@ -42,17 +42,13 @@ public class Coupon {
 	@Column(name="dateEnd" , columnDefinition = "datetime")
 	private Date dateEnd;
 	
-	
 	public Coupon() {
 	}
 	
-	
-
-  
 	public Integer getCouponId() {
 		return couponId;
 	}
-	
+
 	public void setCouponId(Integer couponId) {
 		this.couponId = couponId;
 	}
