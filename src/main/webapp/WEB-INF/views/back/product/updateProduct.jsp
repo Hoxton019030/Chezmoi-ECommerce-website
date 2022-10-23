@@ -33,7 +33,7 @@
         li,
         ul {
             list-style: none;
-            padding: 0%;
+            padding: 0;
         }
 
         li,
@@ -172,7 +172,7 @@
         </div>
    </div>
        <!--error msg hidden-->
-    <c:if test="${param.msg!='' || !(empty param.msg) }"><script>confirm("123${msgMap}");</script></c:if>
+    <c:if test="${param.msg!='' || !(empty param.msg) }"><script>confirm("123${param.get("msg")}");</script></c:if>
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

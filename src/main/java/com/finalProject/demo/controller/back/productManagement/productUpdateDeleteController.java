@@ -13,7 +13,6 @@ import com.finalProject.demo.service.product.ProductService;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -76,9 +75,9 @@ public class productUpdateDeleteController {
 
 
 			//商品描述
-			if (text.indexOf("\n")!=-1) {
+			if (text.contains("\n")) {
 				text = text.replace("\n", "<br>");
-				if (text.indexOf(" ")!=-1) {
+				if (text.contains(" ")) {
 					text = text.replace(" ","&nbsp;");
 				}
 			}
@@ -99,7 +98,6 @@ public class productUpdateDeleteController {
 					if (!productService.existsById(newProductId)) {
 						productService.updateById(newProductId, size, color, price, productId);
 						descriptTextService.updateById(dId,text);
-						System.out.println("11111111111111111111111");
 						msgMap.put("msg","修改商品成功!");
 						System.out.println();
 					}else {
@@ -145,20 +143,12 @@ public class productUpdateDeleteController {
 					}
 				}
 			}
-//			if (!msgMap.isEmpty()){
-//				return"forward:/Back/MyProduct/edit?id="+productId;
-//			}
 			return"redirect:/Back/MyProduct";
 		
 		//應該要做成當重複id時停留在當前畫面並跳出警告
 			//成功則跳轉畫面
 		}
-	@GetMapping("/listGoodPhoto")
-	public String listPhotoPage( Model model) {
-		List<Photo> photos = photoService.findAll();
-		model.addAttribute("goodPhotoList",photos);
-		return "product/listPhoto";
-	}
+
 		
 		
 	

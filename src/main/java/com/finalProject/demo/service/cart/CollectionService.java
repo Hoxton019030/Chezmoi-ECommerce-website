@@ -24,12 +24,8 @@ public class CollectionService {
 	
 	public Collection findById(Long id) {
 		Optional<Collection> optional = collectionRepository.findById(id);
-		
-		if(optional.isPresent()) {
-			return optional.get();
-		}
-		
-		return null;
+
+		return optional.orElse(null);
 	}
 	
 	public void deleteById(Long id) {

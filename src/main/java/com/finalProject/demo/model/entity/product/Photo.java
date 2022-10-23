@@ -32,6 +32,9 @@ public class Photo {
 	//detail商品敘述圖:含多圖
 	@Column(name = "detailPic",columnDefinition = "varbinary(MAX)")
 	private byte[] detail_pic;
+
+	@Column(columnDefinition = "nvarchar(MAX)")
+	private String pic1;
 	
 	
 	
@@ -87,5 +90,4 @@ public class Photo {
 	public void setDetail_pic(byte[] detail_pic) {
 		this.detail_pic = detail_pic;
 	}
-
 }

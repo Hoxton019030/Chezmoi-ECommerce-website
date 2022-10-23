@@ -18,8 +18,8 @@ public class PhotoService {
 	PhotoRepository photoRespository;
 	
 	//add photo
-	public Photo addPhoto(Photo photo) {
-		return photoRespository.save(photo);
+	public void addPhoto(Photo photo) {
+		photoRespository.save(photo);
 	}
 
 	public List<Photo> findAll(){return photoRespository.findAll();}

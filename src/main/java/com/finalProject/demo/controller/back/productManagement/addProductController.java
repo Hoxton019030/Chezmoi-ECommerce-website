@@ -1,6 +1,7 @@
 package com.finalProject.demo.controller.back.productManagement;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,12 @@ public class addProductController {
 			@ModelAttribute("product")Products product,
 			@RequestParam(value = "mainProduct_pic",required = false)MultipartFile mainPic,
 			@RequestParam(value = "fit_pic",required = false)MultipartFile fitPic,
-			@RequestParam(value = "detail_pic",required = false) List<MultipartFile>  pics,
+			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic1,
+//			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic2,
+//			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic3,
+//			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic4,
+//			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic5,
+//			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic6,
 			@RequestParam(value = "size",required = false)List<String> sizeList,
 			@RequestParam(value = "color",required=false)List<String> colorList,
 			@RequestParam(value = "descriptText",required = false) String descriptText,
@@ -56,27 +62,28 @@ public class addProductController {
 			Model model) {
 		
 		//PHOTO(10.19需增加判斷)
+
 		Photo newphoto = new Photo();
 		try {
+
 			if (mainPic!=null && !(mainPic.isEmpty())){
 				String name = mainPic.getName();
-				newphoto.setMainProduct_pic(mainPic.getBytes());
+				String s = Base64.getEncoder().encodeToString(mainPic.getBytes());
 				System.out.println(name);
 			}
 			if (fitPic!=null && !(fitPic.isEmpty())){
-				newphoto.setFit_pic(fitPic.getBytes());
+				byte[] encode = Base64.getEncoder().encode(fitPic.getBytes());
+				newphoto.setFit_pic(encode);
 			}
-			if (pics!=null && !(pics.isEmpty())){
-				for (int i=0;i< pics.size();i++){
-					MultipartFile file = pics.get(i);
-					byte[] fileBytes = file.getBytes();
-
-
-
-				}
-
-
-			}
+//			if (pic1!=null && !(pic1.isEmpty())){
+//				for (int i=0;i< pic1.size();i++){
+//					MultipartFile file = pic1.get(i);
+//					byte[] fileBytes = file.getBytes();
+//
+//				}
+//
+//
+//			}
 
 
 

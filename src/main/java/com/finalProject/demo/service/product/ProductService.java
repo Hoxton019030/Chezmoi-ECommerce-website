@@ -108,8 +108,8 @@ public class ProductService {
 	}
 	
 	//updateById
-	public void updateById(String newId,String color, String size,Integer price,String oldId){
-		productRepository.updateById(newId,color,size,price,oldId);
+	public void updateById(String newId,String size, String color,Integer price,String oldId){
+		productRepository.updateById(newId,size,color,price,oldId);
 	}
 	
 	
