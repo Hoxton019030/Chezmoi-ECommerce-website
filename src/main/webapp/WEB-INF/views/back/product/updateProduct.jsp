@@ -172,8 +172,7 @@
         </div>
    </div>
        <!--error msg hidden-->
-    <c:if test="${param.msg!='' || !(empty param.msg) }"><script>confirm("${param.msg}");</script></c:if>
-
+    <c:if test="${param.msg!='' || !(empty param.msg) }"><script>confirm("123${msgMap}");</script></c:if>
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

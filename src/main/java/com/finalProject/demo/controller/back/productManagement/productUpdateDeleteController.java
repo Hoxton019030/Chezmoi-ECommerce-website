@@ -67,7 +67,8 @@ public class productUpdateDeleteController {
 				@RequestParam(value = "size",required = false)String size,
 				@RequestParam("price")Integer price,
 				HttpServletRequest request,
-				Map<String,String> msgMap) {
+				Map<String,String> msgMap,
+				Model model) {
 
 			//photo
 
@@ -98,12 +99,14 @@ public class productUpdateDeleteController {
 					if (!productService.existsById(newProductId)) {
 						productService.updateById(newProductId, size, color, price, productId);
 						descriptTextService.updateById(dId,text);
+						System.out.println("11111111111111111111111");
 						msgMap.put("msg","修改商品成功!");
 						System.out.println();
 					}else {
 						System.out.println("商品重複!請重新選擇顏色及尺寸");
 						msgMap.put("msg","商品重複!請重新選擇顏色及尺寸!");
-//						return"forward:/Back/MyProduct/edit?id="+productId;
+						model.addAttribute("msg","商品重複!請重新選擇顏色及尺寸!");
+						return"redirect:/Back/MyProduct/edit?id="+productId;
 					}
 			}else {
 				if (product.getSize()!=null && !(product.getSize().isEmpty())){
