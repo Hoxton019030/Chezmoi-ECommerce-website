@@ -70,14 +70,14 @@ public class ProductService {
 	}
 	
 	//newPorductId
-	public String newProductId(String category) {
+	public String newSeriesId(String category) {
 		String newId = null;
 		char shortName = category.charAt(0);
 		List<Products> productList = productRepository.findByCategoryOrderByProductIdDesc(category);
 		//如果分類中沒有product就直接從1開始
 		newId=shortName+"001";
 		
-		if(!productList.isEmpty() && productList.size()>0){
+		if(!productList.isEmpty()){
 			String productId = productList.get(0).getProductId();
 			String regEx = "[^0-9]";
 			Matcher matcher = Pattern.compile(regEx).matcher(productId);

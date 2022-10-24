@@ -36,8 +36,12 @@ public class Products {
 	private Integer price;
 	 
 	//分類
-	@Column(name = "category")
+	@Column(name = "category",nullable = false)
 	private String category;
+
+	//系列
+	@Column(name = "series",nullable = false)
+	private  String series;
 	
 	//顏色
 	@Column(name = "color")
@@ -52,7 +56,7 @@ public class Products {
 	@ManyToOne(cascade =CascadeType.MERGE )
 	@JoinColumn(name = "photoId")
 	private Photo photo;
-	
+
 	//商品描述(關聯)
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "descriptId")
@@ -67,11 +71,11 @@ public class Products {
 	//更新時間
 	@UpdateTimestamp
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	@Column(name = "updateTime",insertable = false,updatable = false,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+	@Column(name = "updateTime")
 	private Date updateTime;
 	
 	//狀態(上/下架) 預設為 ON-上架
-	@Column(name = "productState",columnDefinition="nvarchar(10) default 'ON'")
+	@Column(name = "productState",columnDefinition="nvarchar(10)")
 	private String productState;
 	
 	
@@ -135,6 +139,8 @@ public class Products {
 		this.size = size;
 	}
 
+
+
 	public Photo getPhoto() {
 		return photo;
 	}
@@ -174,90 +180,12 @@ public String getProductState() {
 		this.descript = descript;
 	}
 
-
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((category == null) ? 0 : category.hashCode());
-		result = prime * result + ((color == null) ? 0 : color.hashCode());
-		result = prime * result + ((createTime == null) ? 0 : createTime.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((photo == null) ? 0 : photo.hashCode());
-		result = prime * result + ((price == null) ? 0 : price.hashCode());
-		result = prime * result + ((productId == null) ? 0 : productId.hashCode());
-		result = prime * result + ((productState == null) ? 0 : productState.hashCode());
-		result = prime * result + ((size == null) ? 0 : size.hashCode());
-		result = prime * result + ((updateTime == null) ? 0 : updateTime.hashCode());
-		return result;
+	public String getSeries() {
+		return series;
 	}
 
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Products other = (Products) obj;
-		if (category == null) {
-			if (other.category != null)
-				return false;
-		} else if (!category.equals(other.category))
-			return false;
-		if (color == null) {
-			if (other.color != null)
-				return false;
-		} else if (!color.equals(other.color))
-			return false;
-		if (createTime == null) {
-			if (other.createTime != null)
-				return false;
-		} else if (!createTime.equals(other.createTime))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (photo == null) {
-			if (other.photo != null)
-				return false;
-		} else if (!photo.equals(other.photo))
-			return false;
-		if (price == null) {
-			if (other.price != null)
-				return false;
-		} else if (!price.equals(other.price))
-			return false;
-		if (productId == null) {
-			if (other.productId != null)
-				return false;
-		} else if (!productId.equals(other.productId))
-			return false;
-		if (productState == null) {
-			if (other.productState != null)
-				return false;
-		} else if (!productState.equals(other.productState))
-			return false;
-		if (size == null) {
-			if (other.size != null)
-				return false;
-		} else if (!size.equals(other.size))
-			return false;
-		if (updateTime == null) {
-			if (other.updateTime != null)
-				return false;
-		} else if (!updateTime.equals(other.updateTime))
-			return false;
-		return true;
+	public void setSeries(String series) {
+		this.series = series;
 	}
 
-	
-	
-	
 	}

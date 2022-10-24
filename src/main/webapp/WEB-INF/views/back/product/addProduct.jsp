@@ -82,7 +82,7 @@
                                 <div class="mb-2" id="output3"></div>
                                 <label class="title btn btn-sm btn-secondary">細節圖片
 	                            <input style="display:none" class="btn btn-sm btn-outline-secondary" type="file" accept="image/gif, image/jpeg, image/png" name="detail_pic" id="detailPics" multiple/>
-                                </label><label id="error">*最多上傳9張圖片</label>
+                                </label><label id="error">*最多上傳4張圖片</label>
 	                        </div>             
                         </form>
 
@@ -184,18 +184,7 @@
 		 
         </div>
    </div>
-        <!-- Navbar End -->
-
-
-        <!-- Cart Start -->
-
-        <!-- Cart End -->
-
-
-        <!-- Footer Start -->
-
-        <!-- Footer End -->
-
+        <c:if test="${param.msg!='' && !(empty param.msg) }"><script>confirm("${param.get("msg")}");</script></c:if>
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
@@ -245,7 +234,7 @@
                 });
                 function readURL(input){
                     if (input.files && input.files.length>=0) {
-                        if (input.files.length<=9){
+                        if (input.files.length<=4){
                             for (var i = 0; i < input.files.length; i++) {
                                 const fr = new FileReader();
                                 fr.onload = function (e) {

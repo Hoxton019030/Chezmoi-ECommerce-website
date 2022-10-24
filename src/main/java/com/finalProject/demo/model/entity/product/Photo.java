@@ -1,5 +1,7 @@
 package com.finalProject.demo.model.entity.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -33,11 +35,20 @@ public class Photo {
 	@Column(name = "detailPic",columnDefinition = "varbinary(MAX)")
 	private byte[] detail_pic;
 
-	@Column(columnDefinition = "nvarchar(MAX)")
-	private String pic1;
-	
-	
-	
+	@Column(columnDefinition = "varbinary(MAX)")
+	private byte[] picOne;
+
+	@Column(columnDefinition = "varbinary(MAX)")
+	private byte[] picTwo;
+
+	@Column(columnDefinition = "varbinary(MAX)")
+	private byte[] picThree;
+
+
+	@Column(columnDefinition = "varbinary(MAX)")
+	private byte[] picFour;
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "photo")
 	private List<Products> productId;
 	
@@ -90,4 +101,55 @@ public class Photo {
 	public void setDetail_pic(byte[] detail_pic) {
 		this.detail_pic = detail_pic;
 	}
+
+
+
+	public byte[] getPicOne() {
+		return picOne;
+	}
+
+
+
+	public void setPicOne(byte[] picOne) {
+		this.picOne = picOne;
+	}
+
+
+
+	public byte[] getPicTwo() {
+		return picTwo;
+	}
+
+
+
+	public void setPicTwo(byte[] picTwo) {
+		this.picTwo = picTwo;
+	}
+
+
+
+	public byte[] getPicThree() {
+		return picThree;
+	}
+
+
+
+	public void setPicThree(byte[] picThree) {
+		this.picThree = picThree;
+	}
+
+	public byte[] getPicFour() {
+		return picFour;
+	}
+
+
+
+	public void setPicFour(byte[] picFour) {
+		this.picFour = picFour;
+	}
+
+
+
+
+
 }

@@ -25,8 +25,6 @@ public class DescriptText {
 	@Column(name = "text", columnDefinition = "nvarchar(MAX)")
 	private String text;
 
-	@OneToMany(mappedBy = "descript")
-	private List<Products> productId;
 
 	
 
@@ -66,36 +64,6 @@ public class DescriptText {
 		}
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((descriptId == null) ? 0 : descriptId.hashCode());
-		result = prime * result + ((text == null) ? 0 : text.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DescriptText other = (DescriptText) obj;
-		if (descriptId == null) {
-			if (other.descriptId != null)
-				return false;
-		} else if (!descriptId.equals(other.descriptId))
-			return false;
-		if (text == null) {
-			if (other.text != null)
-				return false;
-		} else if (!text.equals(other.text))
-			return false;
-		return true;
-	}
 	
 	
 	/**
@@ -105,10 +73,10 @@ public class DescriptText {
 	 * @throws Exception
 	 */
 	public static String replaceIn(String text) throws Exception {
-		while(text.indexOf("\n")!=-1) {
+		while(text.contains("\n")) {
 			text = text.replace("\n", "<br>");
 		}
-		while(text.indexOf(" ")!=-1) {
+		while(text.contains(" ")) {
 			text = text.replace(" ","&nbsp;");
 		}
 		return text;
@@ -122,10 +90,10 @@ public class DescriptText {
 	 * @throws Exception
 	 */
 	public static String replaceOut(String text)throws Exception {
-		while(text.indexOf("<br>")!=-1) {
+		while(text.contains("<br>")) {
 			text = text.replace("<br>", "\n");
 		}
-		while(text.indexOf("&nbsp;")!=-1) {
+		while(text.contains("&nbsp;")) {
 			text = text.replace("&nbsp;"," ");
 		}
 		return text;

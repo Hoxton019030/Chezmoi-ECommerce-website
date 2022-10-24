@@ -3,6 +3,7 @@ package com.finalProject.demo.controller.back.productManagement;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,8 @@ import com.finalProject.demo.model.entity.product.Products;
 import com.finalProject.demo.service.product.DescriptTextService;
 import com.finalProject.demo.service.product.PhotoService;
 import com.finalProject.demo.service.product.ProductService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 /**
  * @author AJ
@@ -59,7 +62,8 @@ public class addProductController {
 			@RequestParam(value = "color",required=false)List<String> colorList,
 			@RequestParam(value = "descriptText",required = false) String descriptText,
 			@RequestParam("state") String state,
-			Model model) {
+			Model model,
+			RedirectAttributes re) {
 		
 		//PHOTO(10.19需增加判斷)
 
@@ -100,152 +104,166 @@ public class addProductController {
 		 *一個為new product(新增商品系列)
 		 *一個為new old product(在已經有舊商品的情況下，在那個系列下新增商品)
 		 * */
-		
-		//處理商品描述
-		var text = new DescriptText();
-		text.setText(descriptText);
-		descriptTextService.save(text);
-		product.setDescript(text);
-		
-		
+
 		String size ;
 		String color;
 		String productId;
-		String createId = productService.newProductId(product.getCategory());
+		String seriesId = productService.newSeriesId(product.getCategory());
 		Products newProduct = new Products();
-		//判斷分類(將acc分類與其他分類分開)
-		if((product.getCategory()!=null) && (!product.getCategory().isEmpty())) {
-			if(!product.getCategory().equals("Accessories")) {
-				//判斷list中有無顏色及尺寸
-				if(( sizeList!=null&&(!sizeList.isEmpty())) && (colorList!=null&&(!colorList.isEmpty()))) {	
-					for(int i=0;i<sizeList.size();i++) {
-						size=sizeList.get(i);
-							for(int j=0; j<colorList.size();j++) {
-								color = colorList.get(j);
-								newProduct.setColor(color);
-								newProduct.setSize(size);
-								newProduct.setCategory(product.getCategory());
-								newProduct.setName(product.getName());
-								newProduct.setPrice(product.getPrice());
-								newProduct.setPhoto(product.getPhoto());
-								newProduct.setDescript(product.getDescript());
-								productId=createId+"-"+size+"-"+color;
-								newProduct.setProductId(productId);
-								newProduct.setProductState(state);
-								
-								try {
-									productService.addProduct(newProduct);	
-									if(productService.existsById(newProduct.getProductId())) {
-										System.out.println("新增商品成功!商品Id為:"+newProduct.getProductId()+"商品名稱為:"+newProduct.getName());
-									}
-								} catch (Exception ex) {
-									System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
-								}
+		//處理商品描述
+		if(descriptText!=null && !descriptText.isEmpty()) {
+			DescriptText text = new DescriptText();
+			text.setText(descriptText);
+			descriptTextService.save(text);
+			product.setDescript(text);
+			if (product.getPrice()!=null && product.getName()!=null){
+				//判斷分類(將acc分類與其他分類分開)
+				if((product.getCategory()!=null) && (!product.getCategory().isEmpty())) {
+					if(!product.getCategory().equals("Accessories")) {
+						//判斷list中有無顏色及尺寸
+						if(( sizeList!=null&&(!sizeList.isEmpty())) && (colorList!=null&&(!colorList.isEmpty()))) {
+							for (String s : sizeList) {
+								size = s;
+								for (String value : colorList) {
+									color = value;
+									newProduct.setColor(color);
+									newProduct.setSize(size);
+									newProduct.setCategory(product.getCategory());
+									newProduct.setName(product.getName());
+									newProduct.setPrice(product.getPrice());
+									newProduct.setPhoto(product.getPhoto());
+									newProduct.setDescript(product.getDescript());
+									productId = seriesId + "-" + size + "-" + color;
+									newProduct.setProductId(productId);
+									newProduct.setSeries(seriesId);
+									newProduct.setProductState(state);
 
-							}
-					}
-				}
-				
-			}
-			//類別為acc時執行
-			else {
-				if(sizeList!=null && (!sizeList.isEmpty()) ) {
-					for(int i=0;i<sizeList.size();i++) {
-						size = sizeList.get(i);
-						newProduct.setSize(size);
-						if(colorList!=null && !(colorList.isEmpty())) {
-							for(int j=0;j<colorList.size();j++) {
-							//size&color 都有
-								color=colorList.get(j);
-								newProduct.setColor(color);
-								productId=createId+"-"+size+"-"+color;
-								newProduct.setProductId(productId);
-								newProduct.setCategory(product.getCategory());
-								newProduct.setName(product.getName());
-								newProduct.setPrice(product.getPrice());
-								newProduct.setPhoto(product.getPhoto());
-								newProduct.setDescript(product.getDescript());
-								newProduct.setProductState(state);
-								try {
-									productService.addProduct(newProduct);	
-									if(productService.existsById(newProduct.getProductId())) {
-										System.out.println("新增商品成功!商品Id為:"+newProduct.getProductId()+"商品名稱為:"+newProduct.getName());
+									try {
+										productService.addProduct(newProduct);
+										if (productService.existsById(newProduct.getProductId())) {
+											re.addAttribute("msg", "新增商品成功!");
+
+										} else {
+											re.addAttribute("msg", "新增商品失敗!");
+											return "redirect:/Back/Product/add";
+										}
+									} catch (Exception ex) {
+										System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
 									}
-								} catch (Exception ex) {
-									System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
+								}
+							}
+						}
+
+					}
+					//類別為acc時執行
+					else {
+						if(sizeList!=null && (!sizeList.isEmpty()) ) {
+							for(int i=0;i<sizeList.size();i++) {
+								size = sizeList.get(i);
+								newProduct.setSize(size);
+								if(colorList!=null && !(colorList.isEmpty())) {
+									for(int j=0;j<colorList.size();j++) {
+										//size&color 都有
+										color=colorList.get(j);
+										newProduct.setColor(color);
+										productId=seriesId+"-"+size+"-"+color;
+										newProduct.setProductId(productId);
+										newProduct.setCategory(product.getCategory());
+										newProduct.setName(product.getName());
+										newProduct.setPrice(product.getPrice());
+										newProduct.setPhoto(product.getPhoto());
+										newProduct.setDescript(product.getDescript());
+										newProduct.setProductState(state);
+										newProduct.setSeries(seriesId);
+										try {
+											productService.addProduct(newProduct);
+											if(productService.existsById(newProduct.getProductId())) {
+												re.addAttribute("msg","新增商品成功!");
+
+											}else {
+												re.addAttribute("msg","新增商品失敗!");
+												return "redirect:/Back/Product/add";
+											}
+										} catch (Exception ex) {
+											System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
+										}
+									}
+								}else {
+									//沒有color只有size
+									productId=seriesId+"-"+size;
+									newProduct.setProductId(productId);
+									newProduct.setCategory(product.getCategory());
+									newProduct.setName(product.getName());
+									newProduct.setPrice(product.getPrice());
+									newProduct.setPhoto(product.getPhoto());
+									newProduct.setDescript(product.getDescript());
+									newProduct.setProductState(state);
+									newProduct.setSeries(seriesId);
+									try {
+										productService.addProduct(newProduct);
+										if(productService.existsById(newProduct.getProductId())) {
+											re.addAttribute("msg","新增商品成功!");
+
+										}else {
+											re.addAttribute("msg","新增商品失敗!");
+											return "redirect:/Back/Product/add";
+										}
+									} catch (Exception ex) {
+										System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
+									}
 								}
 							}
 						}else {
-							//沒有color只有size	
-							productId=createId+"-"+size;
-							newProduct.setProductId(productId);
-							newProduct.setCategory(product.getCategory());
-							newProduct.setName(product.getName());
-							newProduct.setPrice(product.getPrice());
-							newProduct.setPhoto(product.getPhoto());
-							newProduct.setDescript(product.getDescript());
-							newProduct.setProductState(state);
-							try {
-								productService.addProduct(newProduct);	
-								if(productService.existsById(newProduct.getProductId())) {
-									System.out.println("新增商品成功!商品Id為:"+newProduct.getProductId()+"商品名稱為:"+newProduct.getName());
+							if(colorList!=null && !(colorList.isEmpty())) {
+								for(int j=0;j<colorList.size();j++) {
+									color=colorList.get(j);
+									newProduct.setColor(color);
+									productId=seriesId+"-"+color;
+									newProduct.setProductId(productId);
+									newProduct.setCategory(product.getCategory());
+									newProduct.setName(product.getName());
+									newProduct.setPrice(product.getPrice());
+									newProduct.setPhoto(product.getPhoto());
+									newProduct.setDescript(product.getDescript());
+									newProduct.setProductState(state);
+									newProduct.setSeries(seriesId);
+									try {
+										productService.addProduct(newProduct);
+										if(productService.existsById(newProduct.getProductId())) {
+											re.addAttribute("msg","新增商品成功!");
+
+										}else {
+											re.addAttribute("msg","新增商品失敗!");
+											return "redirect:/Back/Product/add";
+										}
+									} catch (Exception ex) {
+										System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
+									}
+
 								}
-							} catch (Exception ex) {
-								System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
 							}
 						}
-						
+
 					}
-					
+
 				}else {
-					if(colorList!=null && !(colorList.isEmpty())) {
-						for(int j=0;j<colorList.size();j++) {
-							color=colorList.get(j);
-							newProduct.setColor(color);
-							productId=createId+"-"+color;
-							newProduct.setProductId(productId);
-							newProduct.setCategory(product.getCategory());
-							newProduct.setName(product.getName());
-							newProduct.setPrice(product.getPrice());
-							newProduct.setPhoto(product.getPhoto());
-							newProduct.setDescript(product.getDescript());
-							newProduct.setProductState(state);
-							try {
-								productService.addProduct(newProduct);	
-								if(productService.existsById(newProduct.getProductId())) {
-									System.out.println("新增商品成功!商品Id為:"+newProduct.getProductId()+"商品名稱為:"+newProduct.getName());
-								}
-							} catch (Exception ex) {
-								System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
-							}
-							
-						}
-					}	
+					//顯示錯誤訊息(未選擇分類)
+					re.addAttribute("msg","未選取分類!");
+					return "redirect:/Back/Product/add";
 				}
-				
+			}else {
+				re.addAttribute("msg","商品名稱或商品價格內容不可空白!");
+				return "redirect:/Back/Product/add";
 			}
-			
+		}else {
+			re.addAttribute("msg","商品描述不得為空白!");
+			return "redirect:/Back/Product/add";
 		}
-		//顯示錯誤訊息(未選擇分類)
-		
+
 		//刷新頁面
 		model.addAttribute("product",new Products());
 		return "back/product/addProduct";
 	}
 
-	
-	
-	
-	//增加單一商品(顯示在MyProduct頁)
-		
-		
-		
-	
-	
-	
-	
-	
-	
-	
 }
      
