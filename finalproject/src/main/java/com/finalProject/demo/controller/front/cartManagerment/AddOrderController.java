@@ -39,7 +39,6 @@ public class AddOrderController {
 	@Autowired
 	private OrderDetailService odService;
 	
-	
 	//送出空白訂單表單
 	@GetMapping("/cartOrderDetail")
 	public String viewInputOrderDetail(Model model){
@@ -130,7 +129,5 @@ public class AddOrderController {
 			Orders topOrder = oService.findTopOrder();
 			return topOrder;
 		}
-	
-	
 	
 }

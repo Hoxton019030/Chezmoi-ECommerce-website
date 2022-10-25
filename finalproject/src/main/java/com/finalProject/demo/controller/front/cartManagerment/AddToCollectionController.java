@@ -39,7 +39,7 @@ public class AddToCollectionController {
 		collection.setMemberId(memberId);
 		collection.setProductId(productId);
 		collectionService.insert(collection);
-		return "front/shop/shop";
+		return "redirect:/shop";
 	}
 	
 	//在cart頁面加入收藏
@@ -54,7 +54,7 @@ public class AddToCollectionController {
 		collection.setMemberId(memberId);
 		collection.setProductId(productId);
 		collectionService.insert(collection);
-		return "front/cart/wish";
+		return "redirect:/cartAll";
 	}
 	
 	//取得所有Products

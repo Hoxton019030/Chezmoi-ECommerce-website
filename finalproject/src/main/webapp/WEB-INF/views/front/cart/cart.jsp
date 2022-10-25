@@ -36,40 +36,8 @@
 
             <body>
 
-                <!-- Topbar Start -->
-                <div class="px-xl-5">
-                    <nav class=" fixed-top navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 border">
-                        <div class="collapse navbar-collapse  justify-content-between" id="navbarCollapse">
-                            <div class="navbar-nav mr-auto align-items-center py-0">
-                                <a href="index.html" class="nav-item nav-link active"><img
-                                        src="${contextRoot}/img/logo.jpg" width="50" height="50">
-                                </a>
-                                <a href="<c:url value='/shop' />" class="nav-item nav-link">Shop</a>
-                                <a href="detail.html" class="nav-item nav-link">Notice</a>
-                                <a href="https://www.instagram.com/chezmoiiiiiii/?hl=en" class="nav-item nav-link"
-                                    target="_blank">Instagram</a>
-                                <a href="contact.html" class="nav-item nav-link">Contact</a>
-                            </div>
-                            <div class="navbar-nav ml-auto py-0">
-                                <a href="Product_set.html" class="nav-item nav-link"><img
-                                        src="${contextRoot}/img/set.png" width="20" height="20"></a>
-                                <a href="wish.html" class="nav-item nav-link"><img src="${contextRoot}/img/wish.png"
-                                        width="20" height="20"></a>
-                                <a href="<c:url value='/cartAll' />" class="nav-item nav-link"><img
-                                        src="${contextRoot}/img/cart.png" width="20" height="20"></a>
-                                <a href="member.html" class="nav-item nav-link"><img src="${contextRoot}/img/user.png"
-                                        width="20" height="20"></a>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-                <!-- Topbar End -->
-
-
-                <!-- Navbar Start -->
-
-                <!-- Navbar End -->
-
+              <!-- Topbar Start -->
+				<jsp:include page="../layout/navbar.jsp"></jsp:include>
 
                 <!-- Page Header Start -->
                 <div class="container-fluid  mb-0 mt-5">
@@ -242,13 +210,7 @@
 
 
                 <!-- Footer Start -->
-                <div class="container-fluid  text-dark mt-5 pt-5 border-top-1">
-                    <p class="text-center"><span
-                            style="color: rgb(86, 84, 84); font-size: 12px;">Email：chezmoiiiiiii@gmail.com</span></p>
-
-                    <p class="text-center"><span style="color: rgb(86, 84, 84); font-size: 12px;">Service time：Mon - Sun
-                            10:00-22:00</span></p>
-                </div>
+             <jsp:include page="../layout/footer.jsp"></jsp:include>
                 <!-- Footer End -->
 
 

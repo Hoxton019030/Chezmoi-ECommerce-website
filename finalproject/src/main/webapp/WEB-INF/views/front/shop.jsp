@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary
+                            <a href="${contextRoot}/shop/addToCollection?id=${products.productId}" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary
                                 mr-1"></i>Wishlist</a>
                             <a href="${contextRoot}/shop/addToCart?id=${products.productId}" class="btn btn-sm text-dark p-0"><i
                                     class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
