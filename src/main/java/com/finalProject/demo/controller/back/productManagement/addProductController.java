@@ -52,12 +52,7 @@ public class addProductController {
 			@ModelAttribute("product")Products product,
 			@RequestParam(value = "mainProduct_pic",required = false)MultipartFile mainPic,
 			@RequestParam(value = "fit_pic",required = false)MultipartFile fitPic,
-			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic1,
-//			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic2,
-//			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic3,
-//			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic4,
-//			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic5,
-//			@RequestParam(value = "detail_pic",required = false) MultipartFile  pic6,
+			@RequestParam(value = "detail_pic",required = false) MultipartFile[]  pics,
 			@RequestParam(value = "size",required = false)List<String> sizeList,
 			@RequestParam(value = "color",required=false)List<String> colorList,
 			@RequestParam(value = "descriptText",required = false) String descriptText,
@@ -71,28 +66,32 @@ public class addProductController {
 		try {
 
 			if (mainPic!=null && !(mainPic.isEmpty())){
-				String name = mainPic.getName();
-				String s = Base64.getEncoder().encodeToString(mainPic.getBytes());
-				System.out.println(name);
+				newphoto.setMainProduct_pic(mainPic.getBytes());
 			}
 			if (fitPic!=null && !(fitPic.isEmpty())){
-				byte[] encode = Base64.getEncoder().encode(fitPic.getBytes());
-				newphoto.setFit_pic(encode);
+				newphoto.setFit_pic(fitPic.getBytes());
 			}
-//			if (pic1!=null && !(pic1.isEmpty())){
-//				for (int i=0;i< pic1.size();i++){
-//					MultipartFile file = pic1.get(i);
-//					byte[] fileBytes = file.getBytes();
-//
-//				}
-//
-//
-//			}
-
-
-
-			photoService.addPhoto(newphoto);
-			product.setPhoto(newphoto);
+			byte[] bytePic;
+			int max=4;
+			if (pics.length!=0 && pics.length<=max){
+				for (int i=0;i<pics.length;i++){
+					bytePic = pics[i].getBytes();
+					if (i==0){
+						newphoto.setPicOne(bytePic);
+					} else if (i==1) {
+						newphoto.setPicTwo(bytePic);
+					} else if (i==2) {
+						newphoto.setPicThree(bytePic);
+					} else {
+						newphoto.setPicFour(bytePic);
+					}
+				}
+				photoService.addPhoto(newphoto);
+				product.setPhoto(newphoto);
+			}else {
+				re.addAttribute("msg","圖片超過上限數量!新增商品失敗!");
+				return "redirect:/Back/Product/add";
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
@@ -108,7 +107,6 @@ public class addProductController {
 		String size ;
 		String color;
 		String productId;
-		String seriesId = productService.newSeriesId(product.getCategory());
 		Products newProduct = new Products();
 		//處理商品描述
 		if(descriptText!=null && !descriptText.isEmpty()) {
@@ -119,6 +117,7 @@ public class addProductController {
 			if (product.getPrice()!=null && product.getName()!=null){
 				//判斷分類(將acc分類與其他分類分開)
 				if((product.getCategory()!=null) && (!product.getCategory().isEmpty())) {
+					String seriesId = productService.newSeriesId(product.getCategory());
 					if(!product.getCategory().equals("Accessories")) {
 						//判斷list中有無顏色及尺寸
 						if(( sizeList!=null&&(!sizeList.isEmpty())) && (colorList!=null&&(!colorList.isEmpty()))) {
@@ -137,20 +136,8 @@ public class addProductController {
 									newProduct.setProductId(productId);
 									newProduct.setSeries(seriesId);
 									newProduct.setProductState(state);
-
-									try {
-										productService.addProduct(newProduct);
-										if (productService.existsById(newProduct.getProductId())) {
-											re.addAttribute("msg", "新增商品成功!");
-
-										} else {
-											re.addAttribute("msg", "新增商品失敗!");
-											return "redirect:/Back/Product/add";
-										}
-									} catch (Exception ex) {
-										System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
-									}
 								}
+
 							}
 						}
 
@@ -158,15 +145,15 @@ public class addProductController {
 					//類別為acc時執行
 					else {
 						if(sizeList!=null && (!sizeList.isEmpty()) ) {
-							for(int i=0;i<sizeList.size();i++) {
-								size = sizeList.get(i);
+							for (String s : sizeList) {
+								size = s;
 								newProduct.setSize(size);
-								if(colorList!=null && !(colorList.isEmpty())) {
-									for(int j=0;j<colorList.size();j++) {
+								if (colorList != null && !(colorList.isEmpty())) {
+									for (int j = 0; j < colorList.size(); j++) {
 										//size&color 都有
-										color=colorList.get(j);
+										color = colorList.get(j);
 										newProduct.setColor(color);
-										productId=seriesId+"-"+size+"-"+color;
+										productId = seriesId + "-" + size + "-" + color;
 										newProduct.setProductId(productId);
 										newProduct.setCategory(product.getCategory());
 										newProduct.setName(product.getName());
@@ -175,22 +162,10 @@ public class addProductController {
 										newProduct.setDescript(product.getDescript());
 										newProduct.setProductState(state);
 										newProduct.setSeries(seriesId);
-										try {
-											productService.addProduct(newProduct);
-											if(productService.existsById(newProduct.getProductId())) {
-												re.addAttribute("msg","新增商品成功!");
-
-											}else {
-												re.addAttribute("msg","新增商品失敗!");
-												return "redirect:/Back/Product/add";
-											}
-										} catch (Exception ex) {
-											System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
-										}
 									}
-								}else {
+								} else {
 									//沒有color只有size
-									productId=seriesId+"-"+size;
+									productId = seriesId + "-" + size;
 									newProduct.setProductId(productId);
 									newProduct.setCategory(product.getCategory());
 									newProduct.setName(product.getName());
@@ -199,26 +174,14 @@ public class addProductController {
 									newProduct.setDescript(product.getDescript());
 									newProduct.setProductState(state);
 									newProduct.setSeries(seriesId);
-									try {
-										productService.addProduct(newProduct);
-										if(productService.existsById(newProduct.getProductId())) {
-											re.addAttribute("msg","新增商品成功!");
-
-										}else {
-											re.addAttribute("msg","新增商品失敗!");
-											return "redirect:/Back/Product/add";
-										}
-									} catch (Exception ex) {
-										System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
-									}
 								}
 							}
 						}else {
 							if(colorList!=null && !(colorList.isEmpty())) {
-								for(int j=0;j<colorList.size();j++) {
-									color=colorList.get(j);
+								for (String s : colorList) {
+									color = s;
 									newProduct.setColor(color);
-									productId=seriesId+"-"+color;
+									productId = seriesId + "-" + color;
 									newProduct.setProductId(productId);
 									newProduct.setCategory(product.getCategory());
 									newProduct.setName(product.getName());
@@ -227,19 +190,6 @@ public class addProductController {
 									newProduct.setDescript(product.getDescript());
 									newProduct.setProductState(state);
 									newProduct.setSeries(seriesId);
-									try {
-										productService.addProduct(newProduct);
-										if(productService.existsById(newProduct.getProductId())) {
-											re.addAttribute("msg","新增商品成功!");
-
-										}else {
-											re.addAttribute("msg","新增商品失敗!");
-											return "redirect:/Back/Product/add";
-										}
-									} catch (Exception ex) {
-										System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
-									}
-
 								}
 							}
 						}
@@ -262,6 +212,7 @@ public class addProductController {
 
 		//刷新頁面
 		model.addAttribute("product",new Products());
+		re.addAttribute("msg","新增商品成功!");
 		return "back/product/addProduct";
 	}
 

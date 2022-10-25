@@ -82,7 +82,7 @@
                                 <div class="mb-2" id="output3"></div>
                                 <label class="title btn btn-sm btn-secondary">細節圖片
 	                            <input style="display:none" class="btn btn-sm btn-outline-secondary" type="file" accept="image/gif, image/jpeg, image/png" name="detail_pic" id="detailPics" multiple/>
-                                </label><label id="error">*最多上傳4張圖片</label>
+                                </label><label id="error">*最多上傳4張圖片(接受*.JPEG/.JPG)</label>
 	                        </div>             
                         </form>
 

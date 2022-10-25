@@ -11,8 +11,8 @@ $(document).ready(function () {
             console.log(array);
             $.each(array,function(index,value){
                 $('#tbody').append('<tr class="text-center">')
-                .append($('<td><input class="" type="checkbox" style="zoom:150%">'))
-                .append($('<td class="align-middle"><img src="" style="width: 50px;height:auto">'))
+                .append($('<td><input type="checkbox" style="zoom:150%">'))
+                .append($('<td class="align-middle"><img src="http://localhost:8080/Chezmoi/getMainPic/'+value.photo.photoId+'" style="width: 80px;height:auto">'))
                 .append($('<td class="align-middle"><a class="a font-weight-medium" target="_blank" id="productId" ').text(value.productId))
                 .append($('<td class="align-middle">').text(value.name))
                 .append($('<td class="align-middle">').text(value.color))
@@ -34,7 +34,7 @@ $(document).ready(function () {
                 $.each(array,function(index,value){
                     $('#tbody').append('<tr class="text-center">')
                     .append($('<td><input class="" type="checkbox" style="zoom:150%">'))
-                    .append($('<td class="align-middle"><img src="" style="width: 50px;height:auto">'))
+                    .append($('<td class="align-middle"><img src="http://localhost:8080/Chezmoi/getMainPic/'+value.photo.photoId+'" style="width: 80px;height:auto">'))
                     .append($('<td class="align-middle"><a class="a font-weight-medium" href=""target="_blank">').text(value.productId))
                     .append($('<td class="align-middle">').text(value.name))
                     .append($('<td class="align-middle">').text(value.color))
@@ -57,7 +57,7 @@ $(document).ready(function () {
             $.each(array,function(index,value){
                 $('#tbody').append('<tr class="text-center">')
                 .append($('<td><input class="" type="checkbox" style="zoom:150%">'))
-                .append($('<td class="align-middle"><img src="" style="width: 50px;height:auto">'))
+                .append($('<td class="align-middle"><img src="http://localhost:8080/Chezmoi/getMainPic/'+value.photo.photoId+'" style="width: 80px;height:auto">'))
                 .append($('<td class="align-middle"><a class="a font-weight-medium" href=""target="_blank">').text(value.productId))
                 .append($('<td class="align-middle">').text(value.name))
                 .append($('<td class="align-middle">').text(value.color))
@@ -78,7 +78,7 @@ $(document).ready(function () {
             $.each(array,function(index,value){
                 $('#tbody').append('<tr class="text-center">')
                 .append($('<td><input class="" type="checkbox" style="zoom:150%">'))
-                .append($('<td class="align-middle"><img src="" style="width: 50px;height:auto">'))
+                .append($('<td class="align-middle"><img src="http://localhost:8080/Chezmoi/getMainPic/'+value.photo.photoId+'" style="width: 80px;height:auto">'))
                 .append($('<td class="align-middle"><a class="a font-weight-medium" href=""target="_blank">').text(value.productId))
                 .append($('<td class="align-middle">').text(value.name))
                 .append($('<td class="align-middle">').text(value.color))
@@ -100,7 +100,7 @@ $(document).ready(function () {
             $.each(array,function(index,value){
                 $('#tbody').append('<tr class="text-center">')
                 .append($('<td><input class="" type="checkbox" style="zoom:150%">'))
-                .append($('<td class="align-middle"><img src="" style="width: 50px;height:auto">'))
+                .append($('<td class="align-middle"><img src="http://localhost:8080/Chezmoi/getMainPic/'+value.photo.photoId+'" style="width: 80px;height:auto">'))
                 .append($('<td class="align-middle"><a class="a font-weight-medium" href=""target="_blank">').text(value.productId))
                 .append($('<td class="align-middle">').text(value.name))
                 .append($('<td class="align-middle">').text(value.color))
@@ -123,7 +123,7 @@ $(document).ready(function () {
             $.each(array,function(index,value){
                 $('#tbody').append('<tr class="text-center">')
                 .append($('<td><input class="" type="checkbox" style="zoom:150%">'))
-                .append($('<td class="align-middle"><img src="" style="width: 50px;height:auto">'))
+                .append($('<td class="align-middle"><img src="http://localhost:8080/Chezmoi/getMainPic/'+value.photo.photoId+'" style="width: 80px;height:auto">'))
                 .append($('<td class="align-middle"><a class="a font-weight-medium" href=""target="_blank">').text(value.productId))
                 .append($('<td class="align-middle">').text(value.name))
                 .append($('<td class="align-middle">').text(value.color))
@@ -145,7 +145,7 @@ $(document).ready(function () {
             $.each(array,function(index,value){
                 $('#tbody').append('<tr class="text-center">')
                 .append($('<td><input class="" type="checkbox" style="zoom:150%">'))
-                .append($('<td class="align-middle"><img src="" style="width: 50px;height:auto">'))
+                .append($('<td class="align-middle"><img src="http://localhost:8080/Chezmoi/getMainPic/'+value.photo.photoId+'" style="width: 80px;height:auto">'))
                 .append($('<td class="align-middle"><a class="a font-weight-medium" href=""target="_blank">').text(value.productId))
                 .append($('<td class="align-middle">').text(value.name))
                 .append($('<td class="align-middle">').text(value.color))
@@ -167,7 +167,7 @@ $(document).ready(function () {
             $.each(array,function(index,value){
                 $('#tbody').append('<tr class="text-center">')
                 .append($('<td><input class="" type="checkbox" style="zoom:150%">'))
-                .append($('<td class="align-middle"><img src="" style="width: 50px;height:auto">'))
+                .append($('<td class="align-middle"><img src="http://localhost:8080/Chezmoi/getMainPic/'+value.photo.photoId+'" style="width: 80px;height:auto">'))
                 .append($('<td class="align-middle"><a class="a font-weight-medium" href=""target="_blank">').text(value.productId))
                 .append($('<td class="align-middle">').text(value.name))
                 .append($('<td class="align-middle">').text(value.color))

@@ -9,6 +9,7 @@ import com.finalProject.demo.model.entity.product.Photo;
 import com.finalProject.demo.repository.product.PhotoRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -23,6 +24,11 @@ public class PhotoService {
 	}
 
 	public List<Photo> findAll(){return photoRespository.findAll();}
+
+	public  Photo findById(Long id){
+		Optional<Photo> byId = photoRespository.findById(id);
+		return byId.orElse(null);
+	}
 	
 	
 	

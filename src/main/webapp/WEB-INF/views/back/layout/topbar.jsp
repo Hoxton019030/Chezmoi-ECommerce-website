@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-lg-1 d-none d-lg-block pt-1">
                 <div class="container-fluid">
-                    <a href="admin_index.html" class="nav-item nav-link active"><img src="${contextRoot}/img/logo.png" width="50"
+                    <a href="admin_index.html" class="nav-item nav-link active"><img src="https://i.imgur.com/11vzfsu.jpg" width="50"
                             height="50"></a>
 
                 </div>
