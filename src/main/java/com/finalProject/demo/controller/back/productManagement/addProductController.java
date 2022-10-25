@@ -136,6 +136,7 @@ public class addProductController {
 									newProduct.setProductId(productId);
 									newProduct.setSeries(seriesId);
 									newProduct.setProductState(state);
+									productService.addProduct(newProduct);
 								}
 
 							}
@@ -162,6 +163,7 @@ public class addProductController {
 										newProduct.setDescript(product.getDescript());
 										newProduct.setProductState(state);
 										newProduct.setSeries(seriesId);
+										productService.addProduct(newProduct);
 									}
 								} else {
 									//沒有color只有size
@@ -174,6 +176,7 @@ public class addProductController {
 									newProduct.setDescript(product.getDescript());
 									newProduct.setProductState(state);
 									newProduct.setSeries(seriesId);
+									productService.addProduct(newProduct);
 								}
 							}
 						}else {
@@ -190,6 +193,7 @@ public class addProductController {
 									newProduct.setDescript(product.getDescript());
 									newProduct.setProductState(state);
 									newProduct.setSeries(seriesId);
+									productService.addProduct(newProduct);
 								}
 							}
 						}
