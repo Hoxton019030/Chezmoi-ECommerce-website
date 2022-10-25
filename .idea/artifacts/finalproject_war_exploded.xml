@@ -1,17 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="finalproject:war exploded">
+  <artifact type="exploded-war" name="finalProject:war exploded">
     <output-path>$PROJECT_DIR$/target/finalProject-0.0.1-SNAPSHOT</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
-        <module>finalproject</module>
+        <module>finalProject</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="finalproject" />
+          <element id="module-output" name="finalProject" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.7.4" />
@@ -75,7 +75,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/finalProject-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="finalproject/web/Web" />
+      <element id="javaee-facet-resources" facet="finalProject/web/Web" />
     </root>
   </artifact>
 </component>

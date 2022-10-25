@@ -38,3 +38,5 @@ build/
 *.jpg
 *.jpeg
 
+###idea ###
+.idea/*
