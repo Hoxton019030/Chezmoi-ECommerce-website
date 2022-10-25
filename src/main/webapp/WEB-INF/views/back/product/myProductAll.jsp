@@ -36,7 +36,7 @@
                         li,
                         ul {
                             list-style: none;
-                            padding: 0%;
+                            padding: 0;
                         }
 
                         li,
@@ -93,8 +93,8 @@
                                                         <div class="mr-auto py-0">
                                                             <ul class="nav navbar-nav">
                                                                 <li class="active mr-3">
-                                                                    <button class="btn btn-sm btn-primary"
-                                                                        id="getAllProduct">全部商品</button>
+                                                                    <a href="${contextRoot}/Back/MyProduct">
+                                                                        <button class="btn btn-sm btn-primary">全部商品</button></a>
                                                                 </li>
                                                                 <li class="dropdown mr-3">
                                                                     <a href="" class="dropdown-toggle"
@@ -156,10 +156,40 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="align-middle" id="tbody">
-                                                <!-- getProductAjax.js -->
-                                                                                   
+                                                <c:forEach var="product" items="${page.content}">
+                                                    <tr class="text-center">
+                                                        <td><input type="checkbox" style="zoom:150%"></td>
+                                                        <td class="align-middle">
+                                                        <img src="http://localhost:8080/Chezmoi/getMainPic/${product.photo.photoId}" style="width: 80px;height:auto">
+                                                        </td>
+                                                        <td class="align-middle">${product.productId}</td>
+                                                        <td class="align-middle" >${product.name}</td>
+                                                        <td class="align-middle" >${product.color}</td>
+                                                        <td class="align-middle" >${product.size}</td>
+                                                        <td class="align-middle" >${product.price}</td>
+                                                        <td class="align-middle" >${product.productState}</td>
+                                                        <td class="align-middle"><a href="MyProduct/edit/${product.productId}"><button class="btn btn-sm btn-primary">修改</button></a></td>
+                                                        <td class="align-middle"><a id="remove" href="MyProduct/delete/${product.productId}"  onClick="return confirm(`確定要刪除此商品嗎?`);" ><button class="btn btn-sm btn-primary">刪除</button></a></td>
+                                                    </tr>
+                                                </c:forEach>
+
                                                 </tbody>
                                             </table>
+                                            <div id="pageNumber" class="align-content-center">
+                                                <c:forEach var="proPage" begin="1" end="${page.totalPages}">
+
+                                                    <c:choose>
+
+                                                        <c:when test="${proPage != page.number+1}">
+                                                            <a href="${contextRoot}/Back/MyProduct?page=${proPage}">${proPage}</a>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <span class="align-content-center"> ${proPage}</span>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </c:forEach>
+
+                                            </div>
 
                                         </div>
                                     </div>

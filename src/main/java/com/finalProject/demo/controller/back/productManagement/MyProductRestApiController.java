@@ -3,6 +3,8 @@ package com.finalProject.demo.controller.back.productManagement;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,16 +35,15 @@ public class MyProductRestApiController {
 	
 	//分頁控制
 //	@GetMapping(value = "/MyProduct/all",produces = { "application/json; charset=UTF-8" })//進入畫面就會顯示全部
-//	public List<Products> getProducts(@RequestParam(name = "page",defaultValue = "1") Integer pageNumber) {	
+//	public List<Products> getProducts(@RequestParam(name = "page",defaultValue = "1") Integer pageNumber) {
 //		Page<Products> findByPage = productService.findByPage(pageNumber);
-//		List<Products> listProduct = findByPage.getContent();	
-//		return listProduct;
+//		return findByPage.getContent();
 //	}
 		
-	@GetMapping(value = "/MyProduct/all",produces = { "application/json; charset=UTF-8" })
-	public List<Products> getProducts(){
-		return productService.findAll();
-	}
+//	@GetMapping(value = "/MyProduct/all",produces = { "application/json; charset=UTF-8" })
+//	public List<Products> getProducts(Model model){
+//		return productService.findAll();
+//	}
 	
 	@GetMapping(value = "/MyProduct/{category}",produces = {"application/json;charset=UTF-8"})
 	public List<Products> getByCategory(@PathVariable("category") String category){

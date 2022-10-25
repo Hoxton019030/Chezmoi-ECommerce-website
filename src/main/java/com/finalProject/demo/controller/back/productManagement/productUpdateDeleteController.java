@@ -52,6 +52,7 @@ public class productUpdateDeleteController {
 		Products product = productService.findById(id);
 		model.addAttribute("product",product);
 		return"back/product/updateProduct";
+		//要增加修改圖片功能(一起給model送過去)
 	}
 
 
@@ -61,7 +62,7 @@ public class productUpdateDeleteController {
 			@ModelAttribute("product")Products product,
 			@RequestParam(value = "mainProduct_pic",required = false) MultipartFile mainPic,
 			@RequestParam(value = "fit_pic",required = false) MultipartFile fitPic,
-			@RequestParam(value = "detail_pic",required = false) MultipartFile detailPics,
+			@RequestParam(value = "detail_pic",required = false) MultipartFile[] detailPics,
 			@RequestParam(value = "descriptText",required = false) String text,
 			@RequestParam(value = "color",required = false)String color,
 			@RequestParam(value = "size",required = false)String size,

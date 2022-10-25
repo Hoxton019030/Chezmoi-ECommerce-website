@@ -45,16 +45,13 @@ public class ProductService {
 	//find a product by id
 	public Products findById(String id) {
 		 Optional<Products> optional = productRepository.findById(id);
-		if(optional.isPresent()) {
-			return optional.get();
-		}
-		return null;
+		return optional.orElse(null);
 	}
 	
 	//find by page
 	public Page<Products> findByPage(Integer pageNumber) {
 		//Pageable 
-		Pageable pageable = PageRequest.of(pageNumber-1, 10, Sort.Direction.DESC, "id");
+		Pageable pageable = PageRequest.of(pageNumber-1, 10, Sort.Direction.DESC, "createTime");
 		//父層:Page<T> findAll(Pageable pageable);
 		 return productRepository.findAll(pageable);	
 	}

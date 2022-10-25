@@ -217,7 +217,7 @@ public class addProductController {
 		//刷新頁面
 		model.addAttribute("product",new Products());
 		re.addAttribute("msg","新增商品成功!");
-		return "back/product/addProduct";
+		return "redirect:/Back/Product/add";
 	}
 
 }
