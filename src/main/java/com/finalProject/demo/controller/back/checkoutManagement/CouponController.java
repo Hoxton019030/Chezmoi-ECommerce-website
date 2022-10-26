@@ -19,16 +19,16 @@ public class CouponController {
 	private CouponService cService;
 
 	//過來的controller
-	@RequestMapping("/Coupon")
-	public String addCoupon(Model model) {
-		Coupon c1 = new Coupon();
-		model.addAttribute("couponadd",c1);
-		
-		Coupon latestCode = cService.findLatest();
-		model.addAttribute("latestCode",latestCode);
-		
-		return "/back/checkout/coupon";
-	}
+//	@RequestMapping("/Coupon")
+//	public String addCoupon(Model model) {
+//		Coupon c1 = new Coupon();
+//		model.addAttribute("couponadd",c1);
+//		
+//		Coupon latestCode = cService.findLatest();
+//		model.addAttribute("latestCode",latestCode);
+//		
+//		return "/back/checkout/coupon";
+//	}
 	
 	//送出的controller
 	@RequestMapping("/addCoupon")
@@ -36,17 +36,17 @@ public class CouponController {
 		cService.insert(add);
 		
 		//空的
-		Coupon c1 = new Coupon();
-		model.addAttribute("couponadd",c1);
+//		Coupon c1 = new Coupon();
+//		model.addAttribute("couponadd",c1);
 		
 		//最新的
 		Coupon latestCode = cService.findLatest();
 		model.addAttribute("latestCode",latestCode);
 		
-		return "redirect:/Back/view";
+		return "redirect:/Back/Coupon";
 	}
 	
-	@RequestMapping("/view")
+	@RequestMapping("/Coupon")
 	public String viewCoupon(@RequestParam(name = "p",defaultValue = "1") Integer pageNumber,Model model) {
 		Page<Coupon> page = cService.findByPage(pageNumber);
 		model.addAttribute("page",page);
@@ -64,13 +64,13 @@ public class CouponController {
 	@RequestMapping("/postEditCoupon")
 	public String postEditCoupon(@ModelAttribute("edit") Coupon cou) {
 		cService.insert(cou);
-		return "redirect:/Back/view";
+		return "redirect:/Back/Coupon";
 	}
 	
 	@RequestMapping("/deleteCoupon")
 	public String deleteCoupon(@RequestParam("couponId")Integer couponId) {
 		cService.deleteById(couponId);
-		return "redirect:/Back/view";
+		return "redirect:/Back/Coupon";
 	}
 	
 	
