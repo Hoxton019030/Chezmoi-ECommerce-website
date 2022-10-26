@@ -212,8 +212,7 @@
                 <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
                 <!--JavaScript & Jquery-->
-                <script src="https://code.jquery.com/jquery-3.6.1.js"
-                    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+                <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
                 <!-- JavaScript Libraries -->
                 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -230,114 +229,9 @@
                 <!-- Contact Javascript File -->
                 <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
                 <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
-
-                <script type="text/javascript">
                 
-                //價錢計算,數量減少
-                $(document).ready(function () {
-	                $(".numberMinus").click(function () {
-	                	 var num = parseInt($(this).siblings(".textNum").val());
-	                	 var productId = $(this).parent().parent().prev().prev().prev().prev().prev().text();
-	                	 var productPrice = parseInt($(this).parent().parent().next().text());
-	                	 var productTotal = parseInt($(this).parent().parent().next().next().text());
-	                	 var cartTotal = parseInt($('#cartTotal').text());
-	                	 var subTotal = parseInt($('#subTotal').text());
-	                	 num--;
-	                	 if(num <=0){
-	                		 num=1;
-	                	 }
-	                	 var newTotal = parseInt(num*productPrice);
-	                	 $(this).siblings(".textNum").val(num);
-	                	 $(this).parent().parent().next().next().text(num*productPrice);
-	                	 parseInt($('#cartTotal').text(cartTotal-productPrice));
-	                	 $('#subTotal').text(subTotal-productPrice);
-	                	 if(num ==1){
-	                		 parseInt($('#cartTotal').text(productPrice));
-		                	 $('#subTotal').text(subTotal);
-	                	 }
-	                	 
-	                	 var dtoObject = {
-	                                'quantity': num,
-	                                'total': newTotal,
-	                                'productId': productId,
-	                     };
-	                     var dtoJson = JSON.stringify(dtoObject);
-
-	                     $.ajax({
-	                                url: 'http://localhost:8080/Chezmoi/api/updateCart',
-	                                contentType: 'application/json; charset=UTF-8',
-	                                dataType: 'json',
-	                                method: 'post',
-	                                data: dtoJson,
-	                     })
-	                })
-                
-	                //價錢計算,數量增加
-	                $(".numberPlus").click(function () {
-	                	 var num = parseInt($(this).siblings(".textNum").val());
-	                	 var productId = ($(this).parent().parent().prev().prev().prev().prev().prev().text());
-	                	 var productPrice = parseInt($(this).parent().parent().next().text());
-	                	 var productTotal = parseInt($(this).parent().parent().next().next().text());
-	                	 var cartTotal = parseInt($('#cartTotal').text());
-	                	 var subTotal = parseInt($('#subTotal').text());
-	                	 num++;
-	                	 var newTotal =  parseInt(num*productPrice);
-	                	 $(this).siblings(".textNum").val(num);
-	                	 $(this).parent().parent().next().next().text(num*productPrice);
-	                	 $('#cartTotal').text(cartTotal+productPrice);
-	                	 $('#subTotal').text(subTotal+productPrice);
-	                	 
-	                	 var dtoObject = {
-	                                'quantity': num,
-	                                'total': newTotal,
-	                                'productId': productId,
-	                       };
-	                      var dtoJson = JSON.stringify(dtoObject);
-
-	                            $.ajax({
-	                                url: 'http://localhost:8080/Chezmoi/api/updateCart',
-	                                contentType: 'application/json; charset=UTF-8',
-	                                dataType: 'json',
-	                                method: 'post',
-	                                data: dtoJson,
-	                      })
-	                })
-                })
-                
-                
-                	//傳送shippingWay,paymentWay,couponCode,subtotal到後端
-                    $(document).ready(function () {
-                        $('#nextStep').click(function () {
-                            //選shippingWay的id
-                            var shippingId = parseInt($("#shippingWay").val());
-
-                            //選paymentWay的id
-                            var paymentId = parseInt($("#paymentWay").val());
-
-                            //選總金額
-                            var total = parseInt($('#subTotal').text());
-                            
-                            //選折扣碼
-                            var couponCode = $('.couponCode').text();
-
-                            var dtoObject = {
-                                'shippingId': shippingId,
-                                'paymentId': paymentId,
-                                'total': total,
-                                'couponCode':couponCode
-                            };
-                            var dtoJson = JSON.stringify(dtoObject);
-
-                            $.ajax({
-                                url: 'http://localhost:8080/Chezmoi/api/postOrders',
-                                contentType: 'application/json; charset=UTF-8',
-                                dataType: 'json',
-                                method: 'post',
-                                data: dtoJson,
-                            })
-                        })
-                    })
-                </script>
+                 <!-- Ajax -->
+                 <script src="${contextRoot}/js/cartAjax.js"></script>
 
             </body>
 
