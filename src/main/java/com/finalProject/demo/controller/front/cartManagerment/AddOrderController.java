@@ -41,10 +41,11 @@ public class AddOrderController {
 	
 	//送出空白訂單表單
 	@GetMapping("/cartOrderDetail")
-	public String viewInputOrderDetail(Model model){
-		Member member = (Member) model.getAttribute("Member");
+	public String viewInputOrderDetail(Model model1,Model model2,Model model3){
+		Member member = (Member) model2.getAttribute("Member");
+		model3.addAttribute("Member",member);
 		Orders order = oService.findTopOrder();
-		model.addAttribute("Orders",order);
+		model1.addAttribute("Orders",order);
 		return "front/cart/cart_orderDetail_1";
 	}
 	
@@ -130,5 +131,6 @@ public class AddOrderController {
 			Orders topOrder = oService.findTopOrder();
 			return topOrder;
 		}
+		
 	
 }

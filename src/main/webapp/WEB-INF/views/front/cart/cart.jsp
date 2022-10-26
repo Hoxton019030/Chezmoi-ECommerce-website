@@ -36,8 +36,8 @@
 
             <body>
 
-              <!-- Topbar Start -->
-				<jsp:include page="../layout/navbar.jsp"></jsp:include>
+                <!-- Topbar Start -->
+                <jsp:include page="../layout/navbar.jsp"></jsp:include>
 
                 <!-- Page Header Start -->
                 <div class="container-fluid  mb-0 mt-5">
@@ -80,17 +80,20 @@
                                     <tr>
                                         <td class="align-middle">${c.productId}</td>
                                         <td class="align-middle">${c.productName}</td>
-                                        <td class="align-middle"><img src="http://localhost:8080/Chezmoi/getMainPic/${c.photoId}"
+                                        <td class="align-middle"><img
+                                                src="http://localhost:8080/Chezmoi/getMainPic/${c.photoId}"
                                                 style="width: 5em;">
                                         <td class="align-middle">${c.productColor}</td>
                                         <td class="align-middle">${c.productSize}</td>
                                         <td class="align-middle">
                                             <div class="input-group quantity mx-auto" style="width: 100px;">
-                                               	<input type="button" name="minus" value="-"class="numberMinus btn btn-sm btn-primary btn-minus" />
+                                                <input type="button" name="minus" value="-"
+                                                    class="numberMinus btn btn-sm btn-primary btn-minus" />
                                                 <input type="text"
                                                     class="textNum form-control form-control-sm bg-secondary text-center"
                                                     id="quantity" name="${carListId}" value="${c.quantity}">
-                                                <input type="button" name="add" value="+" class="numberPlus btn btn-sm btn-primary btn-plus" />
+                                                <input type="button" name="add" value="+"
+                                                    class="numberPlus btn btn-sm btn-primary btn-plus" />
                                             </div>
                                         </td>
                                         <td class="align-middle" id="price">${c.price}</td>
@@ -133,10 +136,10 @@
                                     <h6 class=" font-weight-medium">運送方式</h6>
                                 </div>
                                 <div class="d-flex justify-content-between mb-2 pt-1">
-                                    <select name="shoppingWay" id="shippingWay" style="width: 100em;height:3em ;">
+                                    <select name="shoppingWay" id="shippingWay" style="width: 100em;height:3em ;"
+                                        onchange="changeDeliveryFee()">
                                         <c:forEach items="${Shipping}" var="s">
-                                            <c:set var="deliveryFee" value="${s.shippingFee}" />
-                                            <option id="shippingId" value="${s.shippingId}">${s.shippingWay}
+                                            <option id="${s.shippingFee}" value="${s.shippingId}">${s.shippingWay}
                                             </option>
                                         </c:forEach>
                                     </select>
@@ -152,36 +155,40 @@
                                 <div class="card-header bg-secondary border-0">
                                     <h4 class="font-weight-semi-bold m-0">購物車明細</h4>
                                 </div>
-                                <form:form  action="${contextRoot}/cartAll" class="mt-4  btn-block" 
-                                    method="post" modelAttribute="Coupon">
-                                <div class="card-body">
-                                    <div class="input-group">
-                                        <form:input type="text" path="couponCode"  class="form-control p-4" placeholder="請輸入折扣碼"/>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="submit">使用折扣碼</button>
+                                <form:form action="${contextRoot}/cartAll" class="mt-4  btn-block" method="post"
+                                    modelAttribute="Coupon">
+                                    <div class="card-body">
+                                        <div class="input-group">
+                                            <form:input type="text" path="couponCode" class="form-control p-4"
+                                                placeholder="請輸入折扣碼" />
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="submit">使用折扣碼</button>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex pt-1">
+                                            <h6 class="font-weight-medium subtotal mt-3 mr-2">折扣碼: </h6>
+                                            <h6 class="font-weight-medium subtotal mt-3 text-primary mr-2 couponCode"
+                                                id="couponCode">${param.couponCode}</h6>
+                                            <c:set var="couponCode" value="${param.couponCode}" />
+                                            <h6 class="font-weight-medium subtotal mt-3 text-primary"> ${param.msg}</h6>
                                         </div>
                                     </div>
-                                     <div class="d-flex pt-1">
-                                        <h6 class="font-weight-medium subtotal mt-3 mr-2">折扣碼: </h6>
-                                        <h6 class="font-weight-medium subtotal mt-3 text-primary mr-2 couponCode" id="couponCode">${param.couponCode}</h6>
-                                        <c:set var="couponCode" value="${param.couponCode}"/>
-                                        <h6 class="font-weight-medium subtotal mt-3 text-primary"> ${param.msg}</h6>
+                                    <div class="card-body">
+                                        <div class="d-flex mb-3 pt-1">
+                                            <h6 class="font-weight-medium subtotal">小計:</h6>
+                                            <h6 class="font-weight-medium subtotal" id="cartTotal">${total}</h6>
+                                        </div>
+                                        <div class="d-flex mb-3 pt-1">
+                                            <c:set var="deliveryFee" value="0" />
+                                            <h6 class="font-weight-medium">運費:</h6>
+                                            <h6 class="font-weight-medium" id="deliveryFee"></h6>
+                                        </div>
+                                        <div class="d-flex mb-3 pt-1">
+                                            <h6 class="font-weight-medium">折扣金額:</h6>
+                                            <h6 class="font-weight-medium" id="discount">${param.discount}</h6>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="d-flex mb-3 pt-1">
-                                        <h6 class="font-weight-medium subtotal">小計:</h6>
-                                        <h6 class="font-weight-medium subtotal" id="cartTotal">${total}</h6>
-                                    </div>
-                                    <div class="d-flex mb-3 pt-1">
-                                        <h6 class="font-weight-medium">運費:</h6>
-                                        <h6 class="font-weight-medium">${deliveryFee}</h6>
-                                    </div>
-                                    <div class="d-flex justify-content-between mb-3 pt-1">
-                                        <h6 class="font-weight-medium">折扣金額: ${param.discount}</h6>
-                                    </div>
-                                </div>
-                                <c:set var="subtotal" value="${deliveryFee+total-param.discount}" />
+                                    <c:set var="subtotal" value="${total-param.discount}" />
                                 </form:form>
                                 <div class="card-footer border-secondary bg-transparent">
                                     <div class="d-flex justify-content-between  mt-2">
@@ -203,7 +210,7 @@
 
 
                 <!-- Footer Start -->
-             <jsp:include page="../layout/footer.jsp"></jsp:include>
+                <jsp:include page="../layout/footer.jsp"></jsp:include>
                 <!-- Footer End -->
 
 
@@ -229,9 +236,10 @@
                 <!-- Contact Javascript File -->
                 <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
                 <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
-                
-                 <!-- Ajax -->
-                 <script src="${contextRoot}/js/cartAjax.js"></script>
+
+                <!-- Ajax -->
+                <script src="${contextRoot}/js/cartAjax.js"></script>
+
 
             </body>
 

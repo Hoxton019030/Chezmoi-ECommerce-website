@@ -1,4 +1,51 @@
    //cart頁面用ajax
+   
+   				//頁面自動刷新
+   				window.onload = function() {
+					    if(!window.location.hash) {
+					        window.location = window.location + '#loaded';
+					        window.location.reload();
+					    }
+				}	
+   					
+   					
+   				//運費選擇(剛進頁面時)			
+   				 $(document).ready(function () {
+                        var select = document.getElementById("shippingWay");
+                        var index = select.selectedIndex;
+                        var value = parseInt(select.options[index].getAttribute("id"));
+                        $('#deliveryFee').text(value);
+                        var cartTotal = parseInt($('#cartTotal').text());
+                        var paramDiscount = $('#discount').text()
+                        if (paramDiscount.length == 0) {
+                            var noDiscount = $('#discount').text(0);
+                            var discount = parseInt($('#discount').text());
+                            $('#subTotal').text(cartTotal + value - discount);
+                        } else {
+                            var discount = parseInt($('#discount').text());
+                            $('#subTotal').text(cartTotal + value - discount);
+                        }
+                   })
+                    
+                   //運費選擇(換另外一種運送方式時) 
+                    function changeDeliveryFee() {
+                        var select = document.getElementById("shippingWay")
+                        var index = select.selectedIndex;
+                        var value = parseInt(select.options[index].getAttribute("id"));
+                        $('#deliveryFee').text(value);
+                        var cartTotal = parseInt($('#cartTotal').text());
+                        var paramDiscount = $('#discount').text()
+                        if (paramDiscount.length == 0) {
+                            var noDiscount = $('#discount').text(0);
+                            var discount = parseInt($('#discount').text());
+                            $('#subTotal').text(cartTotal + value - discount);
+                        } else {
+                            var discount = parseInt($('#discount').text());
+                            $('#subTotal').text(cartTotal + value - discount);
+                        }
+                    }
+   
+   
                 //價錢計算,數量減少
                 $(document).ready(function () {
 	                $(".numberMinus").click(function () {

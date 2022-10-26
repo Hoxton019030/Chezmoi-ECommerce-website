@@ -12,6 +12,7 @@
                 <meta content="width=device-width, initial-scale=1.0" name="viewport">
                 <meta content="Free HTML Templates" name="keywords">
                 <meta content="Free HTML Templates" name="description">
+<!--                 <meta http-equiv="refresh" content="1"> -->
 
                 <!-- Favicon -->
                 <link href="${contextRoot}/img/logo.jpg" rel="icon">
@@ -175,7 +176,7 @@
 
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between pt-3">
-                                                <h5 class=" font-weight-semi-bold m-0">合計: NT$ ${Order.total}</h5>
+                                                <h5 class=" font-weight-semi-bold m-0">合計: NT$ ${Orders.total}</h5>
                                             </div>
                                         </div>
                                         <div class="card-footer border-secondary bg-transparent">
@@ -230,7 +231,13 @@
                         var memberPhone = $('#memberPhone').text();
                         $('#inputMemberPhone').attr("value", memberPhone);
                     })
-
+					window.onload = function() {
+					    if(!window.location.hash) {
+					        window.location = window.location + '#loaded';
+					        window.location.reload();
+					    }
+					}
+								
                 </script>
 
             </body>
