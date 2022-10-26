@@ -19,6 +19,9 @@ public class Payment {
 	@Column(name="paymentWay")
 	private String paymentWay;
 	
+	@Column(name="paymentState")
+	private String paymentState;
+	
 	public Payment() {
 	}
 
@@ -36,6 +39,14 @@ public class Payment {
 
 	public void setPaymentWay(String paymentWay) {
 		this.paymentWay = paymentWay;
+	}
+
+	public String getPaymentState() {
+		return paymentState;
+	}
+
+	public void setPaymentState(String paymentState) {
+		this.paymentState = paymentState;
 	}
 	
 }

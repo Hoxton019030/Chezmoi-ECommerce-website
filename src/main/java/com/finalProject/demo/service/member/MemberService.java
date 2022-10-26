@@ -1,5 +1,7 @@
 package com.finalProject.demo.service.member;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -38,15 +40,15 @@ public class MemberService {
 	
 
 	
-//	public Member findById(Integer memberId) {
-//		Optional<Member> optional = mDao.findById(memberId);
-//		
-//		if(optional.isPresent()) {
-//			return optional.get();
-//		}
-//		
-//		return null;
-//	}
+	public Member findById(Long memberId) {
+		Optional<Member> optional = mDao.findById(memberId);
+		
+		if(optional.isPresent()) {
+			return optional.get();
+		}
+		
+		return null;
+	}
 	
 	
 //	public void deleteById(Integer id) {

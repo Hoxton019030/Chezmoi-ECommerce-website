@@ -13,21 +13,15 @@
 <body>
 <div class="col-lg-3 d-none d-lg-block pt-3">
                 <div class="container-fluid">
-                    <ul class="p-0 menu border">
+                    <ul class="p-0 menu border-left border-right">
                         <li class="p-0">
                             <a
                                 class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">會員管理</a>
                             <ul class="inmenu">
                                 <li><a href="${contextRoot}/Back/member/showMember"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">會員資料表</a>
+                                        class="btn d-flex border-bottom  align-items-center justify-content-between text-black w-100">會員資料表</a>
                                 </li>
                             </ul>
-<!--                             <ul class="inmenu"> -->
-<!--                                 <li><a href="messageCheck.html" -->
-<!--                                         class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">留言板查看/回覆</a> -->
-<!--                                 </li> -->
-<!--                             </ul> -->
-
                         </li>
                         <li>
                             <a
@@ -47,10 +41,10 @@
                             <a
                                 class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">結帳管理</a>
                             <ul class="inmenu">
-                                <li><a href="#"
+                                <li><a href="${contextRoot}/back/shipping"
                                         class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">物流管理</a>
                                 </li>
-                                <li><a href="payment.html"
+                                <li><a href="${contextRoot}/back/payment"
                                         class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">金流管理</a>
                                 </li>
                                 <li><a href="${contextRoot}/Back/Coupon"
@@ -67,18 +61,6 @@
                                 </li>
                             </ul>
                         </li>
-<!--                         <li> -->
-<!--                             <a -->
-<!--                                 class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">營運表現</a> -->
-<!--                             <ul class="inmenu"> -->
-<!--                                 <li><a href="salesData.html" -->
-<!--                                         class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">商品銷售狀況</a> -->
-<!--                                 </li> -->
-<!--                                 <li><a href="salesReport.html" -->
-<!--                                         class="btn d-flex align-items-center justify-content-between text-black w-100">業績報表</a> -->
-<!--                                 </li> -->
-<!--                             </ul> -->
-<!--                         </li> -->
                     </ul>
                 </div>
             </div>

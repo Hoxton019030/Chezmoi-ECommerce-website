@@ -16,14 +16,6 @@ public class productPageController {
 	public String addProduct(@ModelAttribute("product") Products porduct) { 
 		return"back/product/addProduct";
 	}
-	
-	@GetMapping("MyProduct")
-	public String getMyProduct() {
-		return "back/product/myProduct";	
-	}
-
-	
-
 
 
 }

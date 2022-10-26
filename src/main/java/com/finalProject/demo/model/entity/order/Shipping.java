@@ -19,10 +19,13 @@ public class Shipping {
 	@Column(name="shippingWay")
 	private String shippingWay;
 	
-	
 	@Column(name = "shippingFee")
 	private Integer shippingFee;
 	//增加在orderdetail
+	
+	@Column(name="shippingState")
+	private String shippingState;
+	
 	
 	public Shipping() {
 	}
@@ -49,6 +52,14 @@ public class Shipping {
 
 	public void setShippingFee(Integer shippingFee) {
 		this.shippingFee = shippingFee;
+	}
+
+	public String getShippingState() {
+		return shippingState;
+	}
+
+	public void setShippingState(String shippingState) {
+		this.shippingState = shippingState;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.finalProject.demo.repository.cart;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,5 +12,5 @@ public interface CartRepository extends JpaRepository<Cart, CartTableMultiKeysCl
 
 	@Override Optional<com.finalProject.demo.model.entity.cart.Cart> findById(CartTableMultiKeysClass id);
 	
-	
+	List<Cart> findByMemberId(Long memberId);
 }

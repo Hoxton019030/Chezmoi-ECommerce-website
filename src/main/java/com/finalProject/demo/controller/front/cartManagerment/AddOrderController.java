@@ -9,22 +9,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.finalProject.demo.model.dto.OrdersDto;
 import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
+import com.finalProject.demo.model.entity.order.Coupon;
 import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.order.Orders;
 import com.finalProject.demo.model.entity.order.Payment;
 import com.finalProject.demo.model.entity.order.Shipping;
 import com.finalProject.demo.service.cart.CartService;
+import com.finalProject.demo.service.member.MemberService;
 import com.finalProject.demo.service.order.OrderDetailService;
 import com.finalProject.demo.service.order.OrdersService;
-import com.finalProject.demo.service.order.PaymentService;
-import com.finalProject.demo.service.order.ShippingService;
 
 @Controller
+@SessionAttributes("Member")
 public class AddOrderController {
 	
 	@Autowired
@@ -33,42 +33,37 @@ public class AddOrderController {
 	@Autowired
 	private CartService cService;
 	
+	@Autowired
+	private MemberService memberService;
 	
 	@Autowired
 	private OrderDetailService odService;
 	
-	@Autowired
-	private PaymentService paymentService;
-	
-	@Autowired
-	private ShippingService shippingService;
-
 	//送出空白訂單表單
 	@GetMapping("/cartOrderDetail")
-	public String viewInputOrderDetail(Model model){
+	public String viewInputOrderDetail(Model model1,Model model2,Model model3){
+		Member member = (Member) model2.getAttribute("Member");
+		model3.addAttribute("Member",member);
+		Long memberId = member.getMemberId();
+		List<Cart> findCart = cService.findByMemberId(member);
+		if(findCart.size()==0) {
+			return "front/cart/cartNotFound";
+		}
 		Orders order = oService.findTopOrder();
-		model.addAttribute("Orders",order);
+		model1.addAttribute("Orders",order);
 		return "front/cart/cart_orderDetail_1";
 	}
 	
-	@PostMapping("/api/postOrders")
-	public void postOrdersApi(@RequestBody OrdersDto dto){
-		Integer paymentId = dto.getPaymentId();
-		Payment payment = paymentService.findById(paymentId);
-		Integer shippingId = dto.getShippingId();
-		Shipping shipping = shippingService.findById(shippingId);
-		Integer total = dto.getTotal();
-		Orders order = new Orders();
-		order.setPayment(payment);
-		order.setShipping(shipping);
-		order.setTotal(total);
-		order.setShipName("");
-		order.setShipPhone("");
-		order.setStoreName("");
-		order.setStoreNumber("");
-		oService.insert(order);
-		return;
-	}
+	//送出空白訂單表單
+		@GetMapping("/cartOrderDetail#loaded")
+		public String viewInputOrderDetailLoad(Model model1,Model model2,Model model3){
+			Member member = (Member) model2.getAttribute("Member");
+			model3.addAttribute("Member",member);
+			Orders order = oService.findTopOrder();
+			model1.addAttribute("Orders",order);
+			return "front/cart/cart_orderDetail_1";
+		}
+	
 	
 	//傳遞前端訂單資料並insert到資料庫(Orders & OrderDetail)
 	//以及刪除購物車商品
@@ -81,14 +76,20 @@ public class AddOrderController {
 		Long memberId = member.getMemberId();
 		
 		//add new order
-//		Orders topOrder = oService.findTopOrder();
+		Orders topOrder = oService.findTopOrder();
+		Long orderId = topOrder.getOrderId();
+		Payment payment = topOrder.getPayment();
+		Shipping shipping = topOrder.getShipping();
+		Integer total = topOrder.getTotal();
+		Coupon coupon = topOrder.getCoupon();
+		orders.setOrderId(orderId);
 		orders.setMember(member);
 		orders.setOrderState("未付款");
-		
-		//設定總金額還沒處理好!!!
-		orders.setTotal(10000);
+		orders.setPayment(payment);
+		orders.setShipping(shipping);
+		orders.setTotal(total);
+		orders.setCoupon(coupon);
 		Orders newOrder = oService.insert(orders);
-		
 	
 		//add new orderDetail
 		OrderDetail orderDetail = new OrderDetail();
@@ -119,15 +120,33 @@ public class AddOrderController {
 	
 	//現在的會員是誰
 	@ModelAttribute("Member")
-	public Member viewMember(Model model) {
-		Member memberLogin = new Member();
-		memberLogin.setMemberId(2L);
+	public Member viewMember() {
+		Member memberLogin = memberService.findById(2L);
 		return memberLogin;
 	}
 	
-	
-	
-	
-	
+	//將選好的付款方式顯示在orderDetail
+		@ModelAttribute("Payment")
+		public Payment findPayment(Model model) {
+			Orders topOrder = oService.findTopOrder();
+			Payment payment = topOrder.getPayment();
+			return payment;
+		}
+		
+		//將選好的運送方式顯示在orderDetail
+		@ModelAttribute("Shipping")
+		public Shipping findShipping() {
+			Orders topOrder = oService.findTopOrder();
+			Shipping shipping = topOrder.getShipping();
+			return shipping;
+		}
+		
+		//將總金額顯示在orderDetail
+		@ModelAttribute("Order")
+		public Orders findTotal() {
+			Orders topOrder = oService.findTopOrder();
+			return topOrder;
+		}
+		
 	
 }

@@ -36,7 +36,7 @@ public class CollectionService {
 		collectionRepository.deleteById(id);
 	}
 	
-	public List<Collection> findAllCart(){
+	public List<Collection> findAllCollection(){
 		return collectionRepository.findAll();
 	}
 	
