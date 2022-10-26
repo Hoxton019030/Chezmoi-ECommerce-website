@@ -33,15 +33,15 @@ public class CartService {
 		return null;
 	}
 	
+	public List<Cart> findAllCart(){
+		return cartRepository.findAll();
+	}
+	
 	public void deleteById(Long memberId,String productId) {
 		CartTableMultiKeysClass cartTableMultiKeysClass = new CartTableMultiKeysClass();
 		cartTableMultiKeysClass.setMemberId(memberId);
 		cartTableMultiKeysClass.setProductId(productId);
 		cartRepository.deleteById(cartTableMultiKeysClass);
-	}
-	
-	public List<Cart> findAllCart(){
-		return cartRepository.findAll();
 	}
 	
 	public Cart save(Cart cart) {

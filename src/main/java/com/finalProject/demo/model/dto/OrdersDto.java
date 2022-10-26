@@ -12,6 +12,8 @@ public class OrdersDto implements Serializable{
 	
 	private Integer total;
 	
+	private String couponCode;
+	
 	public OrdersDto() {
 	}
 
@@ -37,6 +39,14 @@ public class OrdersDto implements Serializable{
 
 	public void setTotal(Integer total) {
 		this.total = total;
+	}
+
+	public String getCouponCode() {
+		return couponCode;
+	}
+
+	public void setCouponCode(String couponCode) {
+		this.couponCode = couponCode;
 	}
 	
 }

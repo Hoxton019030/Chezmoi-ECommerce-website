@@ -24,15 +24,19 @@ public class CollectionService {
 	
 	public Collection findById(Long id) {
 		Optional<Collection> optional = collectionRepository.findById(id);
-
-		return optional.orElse(null);
+		
+		if(optional.isPresent()) {
+			return optional.get();
+		}
+		
+		return null;
 	}
 	
 	public void deleteById(Long id) {
 		collectionRepository.deleteById(id);
 	}
 	
-	public List<Collection> findAllCart(){
+	public List<Collection> findAllCollection(){
 		return collectionRepository.findAll();
 	}
 	
