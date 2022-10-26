@@ -1,8 +1,5 @@
 package com.finalProject.demo.repository.order;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -15,19 +12,4 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
 	Orders findTopOrder();
 	
 	Orders findByMember(Member member);
-	
-	Optional<Orders> findByOrderId(Long orderId);
-	
-//	List<Orders> findByOrderDate(Date orderDate);
-	
-	List<Orders> findByOrderState(String orderState);
-	
-//	List<Orders> findByShippingCode(Long shippingCode);
-	
-//	List<Orders> findByCustomerId(Long customerId);
-	
-	List<Orders> findByTotal(Long total);
-	
-
-	
 }

@@ -9,10 +9,6 @@ import java.util.Optional;
 import javax.persistence.criteria.Order;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +23,6 @@ public class OrdersService {
 	@Autowired
 	private OrdersRepository ordersRepository;
 	
-	//insert Order
 	public Orders insert(Orders orders) {
 		Date date = new Date();
 		 SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
@@ -42,14 +37,10 @@ public class OrdersService {
 		return ordersRepository.save(orders);
 	}
 	
-	
-	//find all orders
 	public List<Orders> findAllOrders(){
 		return ordersRepository.findAll();
 	}
 	
-	
-	//find by Id
 	public Orders findBId(Long Id) {
 		Optional<Orders> optional = ordersRepository.findById(Id);
 		if(optional.isPresent()) {
@@ -59,37 +50,13 @@ public class OrdersService {
 		return null;
 	}
 	
-	//find top order
 	public Orders findTopOrder(){
 		return ordersRepository.findTopOrder();
 	}
 	
-	//find by Member
+	
 	public Orders findOrderByMember(Member member){
 		return ordersRepository.findByMember(member);
 	}
-	
-	
-	//find by orderState
-	public List<Orders> findByOrderState(String orderState) {
-		return ordersRepository.findByOrderState(orderState);
-	}
-	
-	//find by page
-		public Page<Orders> findByPage(Integer pageNumber) { 
-			Pageable pageable = PageRequest.of(pageNumber-1, 10, Sort.Direction.DESC, "orderId");
-			 return ordersRepository.findAll(pageable);	
-		}
-	
-	//確認Order是否存在
-//	public Boolean existsById(Long orderId) {
-//		boolean exists = ordersRepository.existsById(orderId);
-//		if(exists == true) {
-//			return true;
-//		}
-//		return false;
-//	}
-	
-	
 	
 }

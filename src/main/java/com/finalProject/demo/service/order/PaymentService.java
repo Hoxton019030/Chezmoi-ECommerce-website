@@ -32,4 +32,12 @@ public class PaymentService {
 		}
 		return null;
 	}
+	
+	public void deleteById(Integer paymentId) {
+		paymentRepository.deleteById(paymentId);
+	}
+	
+	public void update(Payment payment) {
+		paymentRepository.save(payment);
+	}
 }
