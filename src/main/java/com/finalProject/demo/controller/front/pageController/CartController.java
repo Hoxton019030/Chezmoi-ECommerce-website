@@ -17,10 +17,13 @@ import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.entity.order.Coupon;
 import com.finalProject.demo.model.entity.order.Payment;
 import com.finalProject.demo.model.entity.order.Shipping;
+import com.finalProject.demo.model.entity.product.Photo;
+import com.finalProject.demo.model.entity.product.Products;
 import com.finalProject.demo.service.cart.CartService;
 import com.finalProject.demo.service.order.CouponService;
 import com.finalProject.demo.service.order.PaymentService;
 import com.finalProject.demo.service.order.ShippingService;
+import com.finalProject.demo.service.product.ProductService;
 
 @Controller
 @SessionAttributes("Member")

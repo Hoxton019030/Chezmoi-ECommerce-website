@@ -80,7 +80,7 @@
                                     <tr>
                                         <td class="align-middle">${c.productId}</td>
                                         <td class="align-middle">${c.productName}</td>
-                                        <td class="align-middle"><img src="${contextRoot}/img/product/0812/" alt=""
+                                        <td class="align-middle"><img src="http://localhost:8080/Chezmoi/getMainPic/${c.photoId}"
                                                 style="width: 5em;">
                                         <td class="align-middle">${c.productColor}</td>
                                         <td class="align-middle">${c.productSize}</td>
@@ -234,36 +234,74 @@
                 <script type="text/javascript">
                 
                 //價錢計算,數量減少
-                $(".numberMinus").click(function () {
-                	 var num = $(this).siblings(".textNum").val();
-                	 var productPrice = parseInt($(this).parent().parent().next().text());
-                	 var productTotal = parseInt($(this).parent().parent().next().next().text());
-                	 var cartTotal = parseInt($('#cartTotal').text());
-                	 var subTotal = parseInt($('#subTotal').text());
-                	 num--;
-                	 var newTotal = num*productPrice;
-                	 
-                	 if(num <0){
-                		 num=0;
-                	 }
-                	 var newNum = $(this).siblings(".textNum").val(num);
-                	 $(this).parent().parent().next().next().text(num*productPrice);
-                	 $('#cartTotal').text(cartTotal-productPrice);
-                	 $('#subTotal').text(subTotal-productPrice);
-                })
+                $(document).ready(function () {
+	                $(".numberMinus").click(function () {
+	                	 var num = parseInt($(this).siblings(".textNum").val());
+	                	 var productId = $(this).parent().parent().prev().prev().prev().prev().prev().text();
+	                	 var productPrice = parseInt($(this).parent().parent().next().text());
+	                	 var productTotal = parseInt($(this).parent().parent().next().next().text());
+	                	 var cartTotal = parseInt($('#cartTotal').text());
+	                	 var subTotal = parseInt($('#subTotal').text());
+	                	 num--;
+	                	 if(num <=0){
+	                		 num=1;
+	                	 }
+	                	 var newTotal = parseInt(num*productPrice);
+	                	 $(this).siblings(".textNum").val(num);
+	                	 $(this).parent().parent().next().next().text(num*productPrice);
+	                	 parseInt($('#cartTotal').text(cartTotal-productPrice));
+	                	 $('#subTotal').text(subTotal-productPrice);
+	                	 if(num ==1){
+	                		 parseInt($('#cartTotal').text(productPrice));
+		                	 $('#subTotal').text(subTotal);
+	                	 }
+	                	 
+	                	 var dtoObject = {
+	                                'quantity': num,
+	                                'total': newTotal,
+	                                'productId': productId,
+	                     };
+	                     var dtoJson = JSON.stringify(dtoObject);
+
+	                     $.ajax({
+	                                url: 'http://localhost:8080/Chezmoi/api/updateCart',
+	                                contentType: 'application/json; charset=UTF-8',
+	                                dataType: 'json',
+	                                method: 'post',
+	                                data: dtoJson,
+	                     })
+	                })
                 
-                //價錢計算,數量增加
-                $(".numberPlus").click(function () {
-                	 var num = $(this).siblings(".textNum").val();
-                	 var productPrice = parseInt($(this).parent().parent().next().text());
-                	 var productTotal = parseInt($(this).parent().parent().next().next().text());
-                	 var cartTotal = parseInt($('#cartTotal').text());
-                	 var subTotal = parseInt($('#subTotal').text());
-                	 num++;
-                	 $(this).siblings(".textNum").val(num);
-                	 $(this).parent().parent().next().next().text(num*productPrice);
-                	 $('#cartTotal').text(cartTotal+productPrice);
-                	 $('#subTotal').text(subTotal+productPrice);
+	                //價錢計算,數量增加
+	                $(".numberPlus").click(function () {
+	                	 var num = parseInt($(this).siblings(".textNum").val());
+	                	 var productId = ($(this).parent().parent().prev().prev().prev().prev().prev().text());
+	                	 var productPrice = parseInt($(this).parent().parent().next().text());
+	                	 var productTotal = parseInt($(this).parent().parent().next().next().text());
+	                	 var cartTotal = parseInt($('#cartTotal').text());
+	                	 var subTotal = parseInt($('#subTotal').text());
+	                	 num++;
+	                	 var newTotal =  parseInt(num*productPrice);
+	                	 $(this).siblings(".textNum").val(num);
+	                	 $(this).parent().parent().next().next().text(num*productPrice);
+	                	 $('#cartTotal').text(cartTotal+productPrice);
+	                	 $('#subTotal').text(subTotal+productPrice);
+	                	 
+	                	 var dtoObject = {
+	                                'quantity': num,
+	                                'total': newTotal,
+	                                'productId': productId,
+	                       };
+	                      var dtoJson = JSON.stringify(dtoObject);
+
+	                            $.ajax({
+	                                url: 'http://localhost:8080/Chezmoi/api/updateCart',
+	                                contentType: 'application/json; charset=UTF-8',
+	                                dataType: 'json',
+	                                method: 'post',
+	                                data: dtoJson,
+	                      })
+	                })
                 })
                 
                 
