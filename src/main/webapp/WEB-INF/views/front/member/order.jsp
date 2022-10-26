@@ -115,7 +115,7 @@
                         <td class="align-middle">${o.orderState}</td>
                         <td class="align-middle">${o.shipping}</td>
                         <td class="align-middle">${o.payment}</td>
-                        <td class="align-middle">${o.shipping}</td>
+                        <td class="align-middle">${o.shippingDate}</td>
                         <td class="align-middle">${o.shippingCode}</td>
                         <td class="align-middle">${o.notes}</td>
                     </tr>

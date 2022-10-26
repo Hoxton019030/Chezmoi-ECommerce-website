@@ -26,7 +26,7 @@ public class DeleteFromCartController {
 	private CartService cartService;
 	
 
-	//刪除購物車商品(要確認留在購物車頁面?還是跳回shop)
+	//刪除購物車商品
 	@GetMapping("/cart/deleteFromCart")
 	public String deleteFromCart(Model model,
 			@RequestParam("id") String productId

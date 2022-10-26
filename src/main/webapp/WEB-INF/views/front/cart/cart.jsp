@@ -240,7 +240,6 @@
                 <!-- Ajax -->
                 <script src="${contextRoot}/js/cartAjax.js"></script>
 
-
             </body>
 
             </html>

@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="d-flex pt-1 mb-2">
                                             <h6 class="font-weight-medium">電話號碼:</h6>
-                                            <h6 class="font-weight-medium ml-1" id="memberPhone">0${Member.phone}</h6>
+                                            <h6 class="font-weight-medium ml-1" id="memberPhone">${Member.phone}</h6>
                                         </div>
                                         <div class="d-flex pt-1 ">
                                             <h6 class="font-weight-medium">電子信箱:</h6>

@@ -103,7 +103,7 @@
 
                                     <tr>
                                         <th>id</th>
-                                        <th>方法</th>
+                                        <th>方式</th>
                                     </tr>
                                 </thead>
                                 <tbody class="align-middle">
@@ -120,7 +120,7 @@
                             <thead class="bg-secondary text-dark">
                                 <tr>
                                     <th>id</th>
-                                    <th>方法</th>
+                                    <th>方式</th>
                                     <th>啟用</th>
                                     <th>修改</th>
                                     <th>刪除</th>
