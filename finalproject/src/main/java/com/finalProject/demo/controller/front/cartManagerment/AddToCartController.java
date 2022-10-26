@@ -15,14 +15,14 @@ import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.entity.product.Photo;
 import com.finalProject.demo.model.entity.product.Products;
 import com.finalProject.demo.service.cart.CartService;
-import com.finalProject.demo.service.product.ProductsService;
+import com.finalProject.demo.service.product.ProductService;
 
 @Controller
 @SessionAttributes("Member")
 public class AddToCartController {
 	
 	@Autowired
-	private ProductsService productsService;
+	private ProductService productService;
 	
 	@Autowired
 	private CartService cartService;
@@ -33,7 +33,7 @@ public class AddToCartController {
 	public String addToCart(Model model,
 			@RequestParam("id") String productId
 			) {
-		Products product = productsService.findById(productId);
+		Products product = productService.findById(productId);
 		Member member = (Member) model.getAttribute("Member");
 		Long memberId = member.getMemberId();
 		Integer price = product.getPrice();
@@ -85,9 +85,8 @@ public class AddToCartController {
 	//取得所有Products
 	@ModelAttribute("Products")
 	public List<Products> viewProducts() {
-		return productsService.findAllProducts();
+		return productService.findAll();
 	}
-	
 	
 	
 }

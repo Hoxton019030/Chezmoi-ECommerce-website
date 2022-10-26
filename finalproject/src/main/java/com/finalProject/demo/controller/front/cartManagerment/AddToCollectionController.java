@@ -14,14 +14,14 @@ import com.finalProject.demo.model.entity.cart.Collection;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.entity.product.Products;
 import com.finalProject.demo.service.cart.CollectionService;
-import com.finalProject.demo.service.product.ProductsService;
+import com.finalProject.demo.service.product.ProductService;
 
 @Controller
 @SessionAttributes("Member")
 public class AddToCollectionController {
 
 	@Autowired
-	private ProductsService productsService;
+	private ProductService productService;
 	
 	@Autowired
 	private CollectionService collectionService;
@@ -60,7 +60,7 @@ public class AddToCollectionController {
 	//取得所有Products
 	@ModelAttribute("Products")
 	public List<Products> viewProducts() {
-		return productsService.findAllProducts();
+		return productService.findAll();
 	}
 	
 	//現在的會員是誰

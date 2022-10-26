@@ -10,18 +10,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.entity.product.Products;
 import com.finalProject.demo.service.cart.CartService;
-import com.finalProject.demo.service.product.ProductsService;
+import com.finalProject.demo.service.product.ProductService;
 
 @Controller
 @SessionAttributes("Member")
 public class DeleteFromCartController {
 
 	@Autowired
-	private ProductsService productsService;
+	private ProductService productService;
 	
 	@Autowired
 	private CartService cartService;
@@ -49,7 +48,7 @@ public class DeleteFromCartController {
 	//取得所有Products
 	@ModelAttribute("Products")
 	public List<Products> viewProducts() {
-		return productsService.findAllProducts();
+		return productService.findAll();
 	}
 		
 		

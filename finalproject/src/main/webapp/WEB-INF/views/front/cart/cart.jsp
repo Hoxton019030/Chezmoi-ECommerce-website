@@ -86,23 +86,15 @@
                                         <td class="align-middle">${c.productSize}</td>
                                         <td class="align-middle">
                                             <div class="input-group quantity mx-auto" style="width: 100px;">
-                                                <div class="input-group-btn">
-                                                    <button class="btn btn-sm btn-primary btn-minus">
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
-                                                </div>
+                                               	<input type="button" name="minus" value="-"class="numberMinus btn btn-sm btn-primary btn-minus" />
                                                 <input type="text"
-                                                    class="form-control form-control-sm bg-secondary text-center"
-                                                    id="quantity" value="${c.quantity}">
-                                                <div class="input-group-btn">
-                                                    <button class="btn btn-sm btn-primary btn-plus">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
+                                                    class="textNum form-control form-control-sm bg-secondary text-center"
+                                                    id="quantity" name="${carListId}" value="${c.quantity}">
+                                                <input type="button" name="add" value="+" class="numberPlus btn btn-sm btn-primary btn-plus" />
                                             </div>
                                         </td>
-                                        <td class="align-middle">${c.price}</td>
-                                        <td class="align-middle">${c.total}</td>
+                                        <td class="align-middle" id="price">${c.price}</td>
+                                        <td class="align-middle" id="total">${c.total}</td>
                                         <td class="align-middle"><a
                                                 href="${contextRoot}/cart/addToCollection?id=${c.productId}"><img
                                                     class="wish" src="${contextRoot}/img/wish.png" alt=""
@@ -177,8 +169,9 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between mb-3 pt-1">
-                                        <h6 class="font-weight-medium subtotal">小計: ${total}</h6>
+                                    <div class="d-flex mb-3 pt-1">
+                                        <h6 class="font-weight-medium subtotal">小計:</h6>
+                                        <h6 class="font-weight-medium subtotal" id="cartTotal">${total}</h6>
                                     </div>
                                     <div class="d-flex mb-3 pt-1">
                                         <h6 class="font-weight-medium">運費:</h6>
@@ -193,7 +186,7 @@
                                 <div class="card-footer border-secondary bg-transparent">
                                     <div class="d-flex justify-content-between  mt-2">
                                         <h5 class="font-weight-bold">總金額NT$ </h5>
-                                        <h5 class="font-weight-bold" id="total">${subtotal}</h5>
+                                        <h5 class="font-weight-bold" id="subTotal">${subtotal}</h5>
                                     </div>
                                     <a href="<c:url value='/shop' />"><button
                                             class="btn btn-block btn-primary my-3 py-3">繼續購物</button>
@@ -240,6 +233,41 @@
 
                 <script type="text/javascript">
                 
+                //價錢計算,數量減少
+                $(".numberMinus").click(function () {
+                	 var num = $(this).siblings(".textNum").val();
+                	 var productPrice = parseInt($(this).parent().parent().next().text());
+                	 var productTotal = parseInt($(this).parent().parent().next().next().text());
+                	 var cartTotal = parseInt($('#cartTotal').text());
+                	 var subTotal = parseInt($('#subTotal').text());
+                	 num--;
+                	 var newTotal = num*productPrice;
+                	 
+                	 if(num <0){
+                		 num=0;
+                	 }
+                	 var newNum = $(this).siblings(".textNum").val(num);
+                	 $(this).parent().parent().next().next().text(num*productPrice);
+                	 $('#cartTotal').text(cartTotal-productPrice);
+                	 $('#subTotal').text(subTotal-productPrice);
+                })
+                
+                //價錢計算,數量增加
+                $(".numberPlus").click(function () {
+                	 var num = $(this).siblings(".textNum").val();
+                	 var productPrice = parseInt($(this).parent().parent().next().text());
+                	 var productTotal = parseInt($(this).parent().parent().next().next().text());
+                	 var cartTotal = parseInt($('#cartTotal').text());
+                	 var subTotal = parseInt($('#subTotal').text());
+                	 num++;
+                	 $(this).siblings(".textNum").val(num);
+                	 $(this).parent().parent().next().next().text(num*productPrice);
+                	 $('#cartTotal').text(cartTotal+productPrice);
+                	 $('#subTotal').text(subTotal+productPrice);
+                })
+                
+                
+                	//傳送shippingWay,paymentWay,couponCode,subtotal到後端
                     $(document).ready(function () {
                         $('#nextStep').click(function () {
                             //選shippingWay的id
@@ -249,11 +277,11 @@
                             var paymentId = parseInt($("#paymentWay").val());
 
                             //選總金額
-                            var total = ${ subtotal };
+                            var total = parseInt($('#subTotal').text());
+                            alert(total)
                             
                             //選折扣碼
                             var couponCode = $('.couponCode').text();
-                            console.log(typeof couponCode);
 
                             var dtoObject = {
                                 'shippingId': shippingId,
