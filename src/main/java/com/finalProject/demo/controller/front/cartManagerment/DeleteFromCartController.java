@@ -20,7 +20,7 @@ import com.finalProject.demo.service.product.ProductService;
 public class DeleteFromCartController {
 
 	@Autowired
-	private ProductService productsService;
+	private ProductService productService;
 	
 	@Autowired
 	private CartService cartService;
@@ -48,7 +48,7 @@ public class DeleteFromCartController {
 	//取得所有Products
 	@ModelAttribute("Products")
 	public List<Products> viewProducts() {
-		return productsService.findAll();
+		return productService.findAll();
 	}
 		
 		

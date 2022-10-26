@@ -32,4 +32,12 @@ public class ShippingService {
 		}
 		return null;
 	}
+	
+	public void deleteById(Integer shippingId) {
+		shippingRepository.deleteById(shippingId);
+	}
+	
+	public Shipping update(Shipping shipping) {
+		return shippingRepository.save(shipping);
+	}
 }

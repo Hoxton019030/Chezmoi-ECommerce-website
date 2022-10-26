@@ -30,7 +30,8 @@ public class ProductService {
 	public Products addProduct(Products product) {
 		return productRepository.save(product);
 	}
-	
+
+
 	//delete product
 	public void deleteById(String id) {
 		productRepository.deleteById(id);
@@ -44,16 +45,13 @@ public class ProductService {
 	//find a product by id
 	public Products findById(String id) {
 		 Optional<Products> optional = productRepository.findById(id);
-		if(optional.isPresent()) {
-			return optional.get();
-		}
-		return null;
+		return optional.orElse(null);
 	}
 	
 	//find by page
 	public Page<Products> findByPage(Integer pageNumber) {
 		//Pageable 
-		Pageable pageable = PageRequest.of(pageNumber-1, 10, Sort.Direction.DESC, "id");
+		Pageable pageable = PageRequest.of(pageNumber-1, 10, Sort.Direction.DESC, "createTime");
 		//父層:Page<T> findAll(Pageable pageable);
 		 return productRepository.findAll(pageable);	
 	}
@@ -69,14 +67,14 @@ public class ProductService {
 	}
 	
 	//newPorductId
-	public String newProductId(String category) {
+	public String newSeriesId(String category) {
 		String newId = null;
 		char shortName = category.charAt(0);
 		List<Products> productList = productRepository.findByCategoryOrderByProductIdDesc(category);
 		//如果分類中沒有product就直接從1開始
 		newId=shortName+"001";
 		
-		if(!productList.isEmpty() && productList.size()>0){
+		if(!productList.isEmpty()){
 			String productId = productList.get(0).getProductId();
 			String regEx = "[^0-9]";
 			Matcher matcher = Pattern.compile(regEx).matcher(productId);
@@ -106,7 +104,10 @@ public class ProductService {
 		return productRepository.findByName(name);
 	}
 	
-	
+	//updateById
+	public void updateById(String newId,String size, String color,Integer price,String oldId){
+		productRepository.updateById(newId,size,color,price,oldId);
+	}
 	
 	
 }
