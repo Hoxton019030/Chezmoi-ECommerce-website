@@ -181,7 +181,7 @@
                                         <div class="card-footer border-secondary bg-transparent">
                                             <a href="<c:url value='/cartAll' />"><button
                                                     class="btn btn-block btn-primary my-3 py-3"
-                                                    type="text">上一步重新選擇</button></a>
+                                                    type="button">上一步重新選擇</button></a>
                                             <button class="btn btn-block btn-primary my-3 py-3" type="submit">
                                                 下一步完成訂單</button>
                                         </div>
