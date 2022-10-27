@@ -15,10 +15,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.entity.order.Coupon;
+import com.finalProject.demo.model.entity.order.Orders;
 import com.finalProject.demo.model.entity.order.Payment;
 import com.finalProject.demo.model.entity.order.Shipping;
 import com.finalProject.demo.service.cart.CartService;
 import com.finalProject.demo.service.order.CouponService;
+import com.finalProject.demo.service.order.OrdersService;
 import com.finalProject.demo.service.order.PaymentService;
 import com.finalProject.demo.service.order.ShippingService;
 
@@ -37,6 +39,9 @@ public class CartController {
 	
 	@Autowired
 	private ShippingService shippingService;
+	
+	@Autowired
+	private OrdersService ordersService;
 	
 	
 	//顯示所有購物車商品
@@ -131,5 +136,6 @@ public class CartController {
 	public String viewCartFinish() {
 		return "front/cart/cart_finish";
 	}
+	
 	
 }

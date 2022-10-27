@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ import com.finalProject.demo.service.member.MemberService;
 import com.finalProject.demo.service.order.OrderDetailService;
 import com.finalProject.demo.service.order.OrdersService;
 
+@Lazy
 @Controller
 @SessionAttributes("Member")
 public class AddOrderController {
@@ -41,12 +43,45 @@ public class AddOrderController {
 	
 	//送出空白訂單表單
 	@GetMapping("/cartOrderDetail")
-	public String viewInputOrderDetail(Model model){
-		Member member = (Member) model.getAttribute("Member");
-		Orders order = oService.findTopOrder();
-		model.addAttribute("Orders",order);
+	public String viewInputOrderDetail(Model model1,Model model2,Model model3,Model model4,Model model5){
+		Member member = (Member) model1.getAttribute("Member");
+		model2.addAttribute("Member",member);
+		List<Cart> findCart = cService.findByMemberId(member);
+		if(findCart.size()==0) {
+			return "front/cart/cartNotFound";
+		}
+		Orders topOrder = oService.findTopOrder();
+		if(topOrder == null) {
+			return "redirect:/cartOrderDetail";
+		}
+		model3.addAttribute("Orders",topOrder);
+		Payment payment = topOrder.getPayment();
+		model4.addAttribute("Payment",payment);
+		Shipping shipping = topOrder.getShipping();
+		model5.addAttribute("Shipping",shipping);
 		return "front/cart/cart_orderDetail_1";
 	}
+	
+	//送出空白訂單表單
+		@GetMapping("/cartOrderDetail#loaded")
+		public String viewInputOrderDetailLoad(Model model1,Model model2,Model model3,Model model4,Model model5){
+			Member member = (Member) model1.getAttribute("Member");
+			model2.addAttribute("Member",member);
+			List<Cart> findCart = cService.findByMemberId(member);
+			if(findCart.size()==0) {
+				return "front/cart/cartNotFound";
+			}
+			Orders order = oService.findTopOrder();
+			model3.addAttribute("Orders",order);
+			Orders topOrder = oService.findTopOrder();
+			Payment payment = topOrder.getPayment();
+			model4.addAttribute("Payment",payment);
+			Shipping shipping = topOrder.getShipping();
+			model5.addAttribute("Shipping",shipping);
+			
+			return "front/cart/cart_orderDetail_1";
+		}
+	
 	
 	//傳遞前端訂單資料並insert到資料庫(Orders & OrderDetail)
 	//以及刪除購物車商品
@@ -55,8 +90,9 @@ public class AddOrderController {
 			Model model) {
 		
 		//find member
-		Member member = (Member) model.getAttribute("Member");
-		Long memberId = member.getMemberId();
+		Member findmember = (Member) model.getAttribute("Member");
+		Long memberId = findmember.getMemberId();
+		Member member = memberService.findById(memberId);
 		
 		//add new order
 		Orders topOrder = oService.findTopOrder();
@@ -82,7 +118,7 @@ public class AddOrderController {
 			orderDetail.setOrderId(newOrder.getOrderId());
 			orderDetail.setProductId(cart.getProductId());
 			orderDetail.setProductName(cart.getProductName());
-//			orderDetail.setPhotoId(cart.getPhotoId());
+			orderDetail.setPhotoId(cart.getPhotoId());
 			orderDetail.setProductColor(cart.getProductColor());
 			orderDetail.setProductSize(cart.getProductSize());
 			orderDetail.setQuantity(cart.getQuantity());
@@ -108,27 +144,6 @@ public class AddOrderController {
 		return memberLogin;
 	}
 	
-	//將選好的付款方式顯示在orderDetail
-		@ModelAttribute("Payment")
-		public Payment findPayment(Model model) {
-			Orders topOrder = oService.findTopOrder();
-			Payment payment = topOrder.getPayment();
-			return payment;
-		}
 		
-		//將選好的運送方式顯示在orderDetail
-		@ModelAttribute("Shipping")
-		public Shipping findShipping() {
-			Orders topOrder = oService.findTopOrder();
-			Shipping shipping = topOrder.getShipping();
-			return shipping;
-		}
-		
-		//將總金額顯示在orderDetail
-		@ModelAttribute("Order")
-		public Orders findTotal() {
-			Orders topOrder = oService.findTopOrder();
-			return topOrder;
-		}
 	
 }

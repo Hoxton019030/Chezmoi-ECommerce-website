@@ -12,6 +12,7 @@
                 <meta content="width=device-width, initial-scale=1.0" name="viewport">
                 <meta content="Free HTML Templates" name="keywords">
                 <meta content="Free HTML Templates" name="description">
+<!--                 <meta http-equiv="refresh" content="1"> -->
 
                 <!-- Favicon -->
                 <link href="${contextRoot}/img/logo.jpg" rel="icon">
@@ -72,16 +73,16 @@
                                     <div class="card-body">
                                         <div class="d-flex pt-1 mb-2">
                                             <h6 class="font-weight-medium">客戶名稱: </h6>
-                                            <h6 class="font-weight-medium ml-1" id="memberName">${Member.memberName}
+                                            <h6 class="font-weight-medium ml-1" id="memberName">${Orders.member.memberName}
                                             </h6>
                                         </div>
                                         <div class="d-flex pt-1 mb-2">
                                             <h6 class="font-weight-medium">電話號碼:</h6>
-                                            <h6 class="font-weight-medium ml-1" id="memberPhone">0${Member.phone}</h6>
+                                            <h6 class="font-weight-medium ml-1" id="memberPhone">${Orders.member.phone}</h6>
                                         </div>
                                         <div class="d-flex pt-1 ">
                                             <h6 class="font-weight-medium">電子信箱:</h6>
-                                            <h6 class="font-weight-medium ml-1">${Member.email}</h6>
+                                            <h6 class="font-weight-medium ml-1">${Orders.member.email}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -175,7 +176,7 @@
 
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between pt-3">
-                                                <h5 class=" font-weight-semi-bold m-0">合計: NT$ ${Order.total}</h5>
+                                                <h5 class=" font-weight-semi-bold m-0">合計: NT$ ${Orders.total}</h5>
                                             </div>
                                         </div>
                                         <div class="card-footer border-secondary bg-transparent">
@@ -230,7 +231,13 @@
                         var memberPhone = $('#memberPhone').text();
                         $('#inputMemberPhone').attr("value", memberPhone);
                     })
-
+					window.onload = function() {
+					    if(!window.location.hash) {
+					        window.location = window.location + '#loaded';
+					        window.location.reload();
+					    }
+					}
+								
                 </script>
 
             </body>

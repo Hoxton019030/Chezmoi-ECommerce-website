@@ -69,7 +69,6 @@
                         </div>
                         <div class="row px-xl-5">
 
-
                             <div class="col-lg-8 border-secondary  border mb-2"
                                 style="padding-left: 0; padding-right:0;">
                                 <div class="card-header bg-secondary border-0">

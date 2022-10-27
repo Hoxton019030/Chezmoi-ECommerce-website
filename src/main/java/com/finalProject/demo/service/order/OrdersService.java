@@ -25,7 +25,7 @@ public class OrdersService {
 	
 	public Orders insert(Orders orders) {
 		Date date = new Date();
-		 SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+		 SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		 String orderDate = dateFormat.format(date);
 		 Date orderDateTime = null;
 		try {
@@ -55,7 +55,7 @@ public class OrdersService {
 	}
 	
 	
-	public Orders findOrderByMember(Member member){
+	public List<Orders> findOrderByMember(Member member){
 		return ordersRepository.findByMember(member);
 	}
 	
