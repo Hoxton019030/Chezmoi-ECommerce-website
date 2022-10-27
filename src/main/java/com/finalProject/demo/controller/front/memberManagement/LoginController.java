@@ -66,8 +66,9 @@ public class LoginController {
 					return "/front/index";
 				
 				} else {
-					re.addAttribute("Msg", "登入失敗!"); 		    // 畫面顯示：登入失敗!
-					return "front/member/login"; 				   // 返回登入畫面
+					re.addAttribute("Msg", "登入失敗!"); 	// 畫面顯示：登入失敗!
+					System.out.println("登入失敗");
+					return "redirect:/member/login"; 				   // 返回登入畫面
 				}
 		}
 		// ---- 顯示修改會員資料 ----
