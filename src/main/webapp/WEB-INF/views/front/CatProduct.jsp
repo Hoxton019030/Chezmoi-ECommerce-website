@@ -43,8 +43,8 @@
 				<!-- accounce start -->
 				<jsp:include page="layout/announce.jsp"></jsp:include>
 				<br>
-				
-			
+
+
 				<!-- Shop Start -->
 
 				<div class="container-products align-items-center">
@@ -52,25 +52,26 @@
 						<!-- Shop Product Start -->
 
 						<div class="row px-xl-5 pb-3">
-							<c:forEach var="products" items="${page.content}">
+						<!-- Controller傳來的model -->
+							<c:forEach var="product" items="${category}">
 								<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
 									<div class="card product-item border-0 mb-4">
 										<div
 											class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
 
-											
-											<img class="img-fluid w-300" src="http://localhost:8080/Chezmoi/getMainPic/${products.photo.photoId}" style="height:278; weight:226" alt="">
+
+											<img class="img-fluid w-300" src="http://localhost:8080/Chezmoi/getMainPic/${product.photo.photoId}" alt="">
 										</div>
 										<div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
 											<a
-												href="${contextRoot}/shop/productDetail?productId=${products.productId}">
-												<h6 class="text-truncate mb-3">${products.name}</h6>
+												href="${contextRoot}/shop/productDetail?productId=${product.productId}">
+												<h6 class="text-truncate mb-3">${product.name}</h6>
 											</a>
 											<div class="d-flex justify-content-center">
-												<h6 id="saleprice">${products.price}</h6>
-<!-- 												<h6 class="text-muted ml-2"> -->
-<!-- 													<del>$1150</del> -->
-<!-- 												</h6> -->
+												<h6 id="saleprice">${product.price}</h6>
+												<h6 class="text-muted ml-2">
+													<del>$1150</del>
+												</h6>
 
 											</div>
 										</div>
@@ -86,7 +87,7 @@
 						</div>
 					</ul>
 				</div>
-
+				<!-- 分頁功能 -->
 				<div class="pageNumberhover">
 					<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 						<c:choose>

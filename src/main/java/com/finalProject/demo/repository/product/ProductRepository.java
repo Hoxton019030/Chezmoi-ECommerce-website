@@ -1,6 +1,7 @@
 package com.finalProject.demo.repository.product;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -31,5 +32,19 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 			@Param("price1")Integer price,
 			@Param("id1")String oldId
 	);
+	
+	Optional<List<Products>> findBySeries(String series);
+
+	Optional<List<Products>> findProductByCategory(String category);
+
+	// public List<Products> findFirstByOrderByCreatTimesDesc();
+
+	// 按照productName同樣商品名也只取一筆
+	@Query(value = "SELECT DISTINCT series,productName,price  FROM products", nativeQuery = true)
+	public List<Products> findDistinctBySeries();
+
+//	@Query(value = "TOP 1 * FROM Products WHERE productId=:productId3", nativeQuery = true)
+//	public Products findTopByProductId(@Param("productId3")String productId);
+
 
 }
