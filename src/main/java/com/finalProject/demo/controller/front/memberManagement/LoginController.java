@@ -66,7 +66,7 @@ public class LoginController {
 					return "/front/index";
 				
 				} else {
-					re.addFlashAttribute("Msg", "登入失敗!"); 			   // 畫面顯示：登入失敗!
+					re.addAttribute("Msg", "登入失敗!"); 		    // 畫面顯示：登入失敗!
 					return "front/member/login"; 				   // 返回登入畫面
 				}
 		}
