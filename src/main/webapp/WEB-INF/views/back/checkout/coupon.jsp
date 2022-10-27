@@ -29,11 +29,8 @@
     <!-- Libraries Stylesheet -->
     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-
-	<link href="${contextRoot}/css/style.css" rel="stylesheet">
-    <link href="${contextRoot}/css/admin_style.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
+     <!-- Customized Bootstrap Stylesheet -->
+    <link href="${contextRoot}/css/back_style.css" rel="stylesheet">
 
     <style>
         li,
@@ -45,15 +42,17 @@
 </head>
 
 <body>
+<!-- Topbar Start -->
 <jsp:include page="../layout/topbar.jsp"></jsp:include>
 
-    <!-- Navbar Start -->
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-3">
-             <jsp:include page="../layout/navbar.jsp"></jsp:include>
-            <div class="row col-lg-9 justify-content-center pl-0">
-            
-                <div class="col-lg-3 border-secondary border mb-5 mt-3 mr-3" style="padding-left: 0; padding-right:0;">
+    <!-- Navbar Start -->
+   <jsp:include page="../layout/navbar.jsp"></jsp:include>
+   			
+            <div class="col-lg-9 pt-3">
+            <div class="row ">
+                <div class="col-lg-3 border-secondary border mb-5 mr-4" style="padding-left: 0; padding-right:0;">
 				<form:form action="${contextRoot}/Back/addCoupon" method="post" modelAttribute="couponadd">
                     <div class="card-header border bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">折扣碼設定</h4>
@@ -96,10 +95,10 @@
                             <button class="btn btn-primary" >新增折扣碼</button>
                         </div>
                     </div>
-                </div>
               </form:form>
+                </div>
           
-                <div class="col-lg-8 border-secondary  border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
+                <div class="col-lg-8 border-secondary  border mb-5" style="padding-left: 0; padding-right:0;">
                     <div class="card-header border bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">折扣碼管理</h4>
                     </div>
@@ -158,6 +157,8 @@
                     </div>
            
                 </div>
+            </div>
+            </div>
             </div>
 
             <!-- Navbar End -->

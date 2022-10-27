@@ -51,6 +51,9 @@ public class AddOrderController {
 			return "front/cart/cartNotFound";
 		}
 		Orders topOrder = oService.findTopOrder();
+		if(topOrder == null) {
+			return "redirect:/cartOrderDetail";
+		}
 		model3.addAttribute("Orders",topOrder);
 		Payment payment = topOrder.getPayment();
 		model4.addAttribute("Payment",payment);
@@ -115,7 +118,7 @@ public class AddOrderController {
 			orderDetail.setOrderId(newOrder.getOrderId());
 			orderDetail.setProductId(cart.getProductId());
 			orderDetail.setProductName(cart.getProductName());
-//			orderDetail.setPhotoId(cart.getPhotoId());
+			orderDetail.setPhotoId(cart.getPhotoId());
 			orderDetail.setProductColor(cart.getProductColor());
 			orderDetail.setProductSize(cart.getProductSize());
 			orderDetail.setQuantity(cart.getQuantity());
