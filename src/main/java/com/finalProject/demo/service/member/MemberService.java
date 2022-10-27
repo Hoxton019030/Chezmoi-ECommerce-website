@@ -35,8 +35,7 @@ public class MemberService {
 	public String leftPadding(String phone) {
 		return String.format("%010d",phone);
 	}
-	
-	
+		
 	//後台全部會員資料
 	public Page<Member> findByPage(Integer pageNumber){
 		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.ASC, "memberId");
@@ -47,6 +46,23 @@ public class MemberService {
 	//登入
 	public List<Member> findLogin(Member member) {
 		return mDao.findLogin(member.getEmail(), member.getPassword());
+	}
+	
+	//顯示會員資料
+	public List<Member> viewUser(String email, String password){
+		return mDao.viewUser(email, password);
+	}
+	
+	//修改會員資料
+	public int updateUser(Member member) {
+		String email = member.getEmail();
+		String memberName = member.getMemberName();
+		String birthday = member.getBirthday();
+		String phone = member.getPhone();
+		int result = mDao.updateUser(email, memberName, birthday, phone);
+		
+		return result;
+		
 	}
 	
 //	public List<Member> findAll() {

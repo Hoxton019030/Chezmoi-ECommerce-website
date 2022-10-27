@@ -21,5 +21,13 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 	//忘記密碼
 	@Query(value = "from Member where email = :email and phone = :phone")
 	public Optional<Member> findPassword(String email, String phone);
+
+	//顯示會員資料
+	@Query(value = "from Member where email = :email and password = :password")
+	public List<Member> viewUser(String email, String password);
+
+	//修改會員資料
+	@Query(value = "from Member where memberName = :memberName and birthday = :birthday  and phone = :phone and email = :email")
+	public int updateUser(String memberName, String birthday, String phone, String email);
 	
 }

@@ -29,18 +29,19 @@ public class RegisterController {
 	}
 	
 	// ----- 註冊成功畫面 -----
-	@PostMapping("/member/register")
-	public String postRegister(@ModelAttribute(name="registersubmit") Member member,RedirectAttributes re) {
-		List<Member> resultList = mService.findEmail(member);
-		if (resultList.size() > 0) {
-			re.addAttribute("Msg", "帳號重複!");
-			System.out.println("帳號重複!");
-			return "redirect:/member/register";
-		} else {
-			mService.insert(member);
-			re.addAttribute("Msg", "註冊成功!");
-			System.out.println("註冊成功!");
-			return "redirect:/member/loginsubmit";
+		@PostMapping("/member/register")
+		public String postRegister(@ModelAttribute(name="registersubmit") Member member,RedirectAttributes re) {
+			List<Member> resultList = mService.findEmail(member);
+			if (resultList.size() > 0) {
+				re.addAttribute("Msg", "帳號重複!");
+				System.out.println("帳號重複!");
+				return "redirect:/member/register";
+			} else {
+				mService.insert(member);
+				re.addAttribute("Msg", "註冊成功!");
+				System.out.println("註冊成功!");
+				return "redirect:/member/loginsubmit";
+			}
 		}
-	}
+	
 }
