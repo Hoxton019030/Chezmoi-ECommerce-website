@@ -1,9 +1,9 @@
 package com.finalProject.demo.controller.front.pageController;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
-import javax.persistence.criteria.Order;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,10 +27,18 @@ public class OrderController {
 	
 	//顯示所有訂單
 	@GetMapping("/member/order")
-	public String viewAllOrder(Model model1,Model model2,Model model3,Model model4) {
+	public String viewAllOrder(Model model1,Model model2,Model model3,Model model4,Model model5) {
 		Member member=(Member) model1.getAttribute("Member");
 		List<Orders> orders = ordersService.findOrderByMember(member);
+		List<String> dates = new ArrayList<>();
 		model2.addAttribute("Orders",orders);
+		for(Orders order: orders) {
+			Date orderDate = order.getOrderDate();
+			 SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			 String date = dateFormat.format(orderDate);
+			 dates.add(date);
+		}
+		model5.addAttribute("Date",dates);
 		List<Shipping> shippings = new ArrayList<>();
 		List<Payment> payments = new ArrayList<>();
 		for(Orders order:orders) {

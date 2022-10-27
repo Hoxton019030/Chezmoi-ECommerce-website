@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="d-flex justify-content-between pt-1 mb-2">
                                         <h6 class=" font-weight-medium">下單時間:
-                                            <c:out value="${Orders.orderDate}" />
+                                            <c:out value="${Date}" />
                                         </h6>
                                     </div>
                                 </div>

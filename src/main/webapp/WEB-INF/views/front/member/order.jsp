@@ -98,6 +98,7 @@
                     <tr>
                         <th>訂單編號</th>
                         <th>訂單日期</th>
+                        <th>總金額</th>
                         <th>訂單狀態</th>
                         <th>付款方式</th>
                         <th>運送方式</th>
@@ -108,16 +109,19 @@
                     </tr>
                 </thead>
                 <tbody class="align-middle">
+                <c:set var="count" value="0"></c:set>
                 	<c:forEach items="${Orders}" var="o">
                     <tr>
                         <td class="align-middle"><a class="text-primary font-weight-medium" href="orderDetail.html">${o.orderId}</a></td>
-                        <td class="align-middle">${o.orderDate}</td>
+                        <td class="align-middle">${Date[count]}</td>
                         <td class="align-middle">${o.orderState}</td>
-                        <td class="align-middle">${o.shipping.shippingWay}</td>
+                        <td class="align-middle">${o.total}</td>
                         <td class="align-middle">${o.payment.paymentWay}</td>
+                        <td class="align-middle">${o.shipping.shippingWay}</td>
                         <td class="align-middle">${o.shippingDate}</td>
                         <td class="align-middle">${o.shippingCode}</td>
                         <td class="align-middle">${o.notes}</td>
+                	<c:set var="count" value="${count+1}" />
                     </tr>
                     </c:forEach>
                 </tbody>
