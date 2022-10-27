@@ -18,7 +18,7 @@
 <meta content="Free HTML Templates" name="description">
 
 <!-- Favicon -->
-<link href="${contextRoot}/img/logo.jpg" rel="icon">
+<link href="https://img.onl/fUrHvw" rel="icon">
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -48,7 +48,7 @@
         <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" style="height: 410px;">
-                    <img class="img-fluid" src="${contextRoot}/img/carousel-1.jpg" alt="Image">
+                    <img class="img-fluid" src="https://img.onl/0kF9dJ" alt="Image" >
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 800px;">
                             <h4 class="text-light text-uppercase font-weight-medium mb-3">Look Book
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="carousel-item" style="height: 410px;">
-                    <img class="img-fluid" src="${contextRoot}/img/carousel-2.jpg" alt="Image">
+                    <img class="img-fluid" src="https://img.onl/huL3Xa" alt="Image" >
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 300px;">
                             <h4 class="text-light text-uppercase font-weight-medium mb-3">Look Book
@@ -97,7 +97,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="${contextRoot}/img/product/A12 (10).jpeg" alt="">
+                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">Lyon blouse</h6>
@@ -119,7 +119,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="${contextRoot}/img/product/0812/A02 (5).jpeg" alt="">
+                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">Jasmine blouse</h6>
@@ -140,7 +140,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="${contextRoot}/img/product/0812/A03 (3).jpeg" alt="">
+                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">Bowknot ops</h6>
@@ -161,7 +161,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="${contextRoot}/img/product/0812/A04 (8).jpeg" alt="">
+                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">pinky blouse</h6>
@@ -197,7 +197,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="${contextRoot}/img/product/0828/A01 (1).jpeg" alt="">
+                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">最熱賣！女孩金色愛心針織</h6>
@@ -217,7 +217,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="${contextRoot}/img/product/0828/A02 (15).jpeg" alt="">
+                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">約會必備！小姊姊約會必備洋裝</h6>
@@ -237,7 +237,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="${contextRoot}/img/product/0828/A03 (4).jpeg" alt="">
+                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">浪漫小姊姊抽鬚小香外套</h6>
@@ -257,7 +257,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="${contextRoot}/img/product/0828/A04 (1).jpeg" alt="">
+                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">可鹽可甜經典小香背心</h6>
