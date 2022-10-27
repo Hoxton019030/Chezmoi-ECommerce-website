@@ -64,7 +64,6 @@ public class LoginController {
 					// 完成了用戶名和密碼保存到session的操作
 					System.out.println("登入成功");
 					return "/front/index";
-				
 				} else {
 					re.addAttribute("Msg", "登入失敗!"); 	// 畫面顯示：登入失敗!
 					System.out.println("登入失敗");
