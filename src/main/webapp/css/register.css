@@ -93,3 +93,8 @@
 div.ui-datepicker {
     font-size: 62.5%;
 }
+
+.Msg{
+	color:  red;
+	text-align: center;
+}

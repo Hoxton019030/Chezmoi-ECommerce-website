@@ -12,6 +12,7 @@
                 <meta content="width=device-width, initial-scale=1.0" name="viewport">
                 <meta content="Free HTML Templates" name="keywords">
                 <meta content="Free HTML Templates" name="description">
+<!--                 <meta http-equiv="refresh" content="1"> -->
 
                 <!-- Favicon -->
                 <link href="${contextRoot}/img/logo.jpg" rel="icon">
@@ -77,7 +78,7 @@
                                         </div>
                                         <div class="d-flex pt-1 mb-2">
                                             <h6 class="font-weight-medium">電話號碼:</h6>
-                                            <h6 class="font-weight-medium ml-1" id="memberPhone">0${Member.phone}</h6>
+                                            <h6 class="font-weight-medium ml-1" id="memberPhone">${Member.phone}</h6>
                                         </div>
                                         <div class="d-flex pt-1 ">
                                             <h6 class="font-weight-medium">電子信箱:</h6>
@@ -175,13 +176,13 @@
 
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between pt-3">
-                                                <h5 class=" font-weight-semi-bold m-0">合計: NT$ ${Order.total}</h5>
+                                                <h5 class=" font-weight-semi-bold m-0">合計: NT$ ${Orders.total}</h5>
                                             </div>
                                         </div>
                                         <div class="card-footer border-secondary bg-transparent">
                                             <a href="<c:url value='/cartAll' />"><button
                                                     class="btn btn-block btn-primary my-3 py-3"
-                                                    type="text">上一步重新選擇</button></a>
+                                                    type="button">上一步重新選擇</button></a>
                                             <button class="btn btn-block btn-primary my-3 py-3" type="submit">
                                                 下一步完成訂單</button>
                                         </div>
@@ -230,7 +231,13 @@
                         var memberPhone = $('#memberPhone').text();
                         $('#inputMemberPhone').attr("value", memberPhone);
                     })
-
+					window.onload = function() {
+					    if(!window.location.hash) {
+					        window.location = window.location + '#loaded';
+					        window.location.reload();
+					    }
+					}
+								
                 </script>
 
             </body>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.finalProject.demo.model.entity.cart.Cart;
+import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.mutiKeys.CartTableMultiKeysClass;
 import com.finalProject.demo.repository.cart.CartRepository;
 
@@ -46,6 +47,12 @@ public class CartService {
 	
 	public Cart save(Cart cart) {
 		return cartRepository.save(cart);
+	}
+	
+	public List<Cart> findByMemberId(Member member) {
+		Long memberId = member.getMemberId();
+		List<Cart> cart = cartRepository.findByMemberId(memberId);
+		return cart;
 	}
 	
 	

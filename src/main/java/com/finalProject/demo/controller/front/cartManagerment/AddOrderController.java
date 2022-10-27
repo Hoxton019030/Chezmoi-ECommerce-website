@@ -41,11 +41,29 @@ public class AddOrderController {
 	
 	//送出空白訂單表單
 	@GetMapping("/cartOrderDetail")
-	public String viewInputOrderDetail(Model model){
+	public String viewInputOrderDetail(Model model1,Model model2,Model model3){
+		Member member = (Member) model2.getAttribute("Member");
+		model3.addAttribute("Member",member);
+		Long memberId = member.getMemberId();
+		List<Cart> findCart = cService.findByMemberId(member);
+		if(findCart.size()==0) {
+			return "front/cart/cartNotFound";
+		}
 		Orders order = oService.findTopOrder();
-		model.addAttribute("Orders",order);
+		model1.addAttribute("Orders",order);
 		return "front/cart/cart_orderDetail_1";
 	}
+	
+	//送出空白訂單表單
+		@GetMapping("/cartOrderDetail#loaded")
+		public String viewInputOrderDetailLoad(Model model1,Model model2,Model model3){
+			Member member = (Member) model2.getAttribute("Member");
+			model3.addAttribute("Member",member);
+			Orders order = oService.findTopOrder();
+			model1.addAttribute("Orders",order);
+			return "front/cart/cart_orderDetail_1";
+		}
+	
 	
 	//傳遞前端訂單資料並insert到資料庫(Orders & OrderDetail)
 	//以及刪除購物車商品
@@ -129,5 +147,6 @@ public class AddOrderController {
 			Orders topOrder = oService.findTopOrder();
 			return topOrder;
 		}
+		
 	
 }

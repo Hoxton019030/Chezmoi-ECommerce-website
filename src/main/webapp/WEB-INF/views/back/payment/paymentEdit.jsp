@@ -101,7 +101,7 @@
                                 <thead class="bg-secondary text-dark">
                                     <tr>
                                         <th>id</th>
-                                        <th>方法</th>
+                                        <th>方式</th>
                                         <th>啟用狀態(啟用:ON/未啟用:OFF)</th>
                                     </tr>
                                 </thead>

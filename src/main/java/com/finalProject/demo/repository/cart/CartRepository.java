@@ -12,5 +12,5 @@ public interface CartRepository extends JpaRepository<Cart, CartTableMultiKeysCl
 
 	@Override Optional<com.finalProject.demo.model.entity.cart.Cart> findById(CartTableMultiKeysClass id);
 	
-	
+	List<Cart> findByMemberId(Long memberId);
 }

@@ -105,7 +105,7 @@
 
                                                 <tr>
                                                     <th>id</th>
-                                                    <th>方法</th>
+                                                    <th>方式</th>
                                                     <th>運費</th>
                                                 </tr>
                                             </thead>
@@ -129,7 +129,7 @@
                                     <thead class="bg-secondary text-dark">
                                         <tr>
                                             <th>id</th>
-                                            <th>方法</th>
+                                            <th>方式</th>
                                             <th>運費</th>
                                             <th>啟用</th>
                                             <th>修改</th>
