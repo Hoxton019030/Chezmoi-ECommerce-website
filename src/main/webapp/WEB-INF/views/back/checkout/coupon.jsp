@@ -29,11 +29,8 @@
     <!-- Libraries Stylesheet -->
     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-
-	<link href="${contextRoot}/css/back_style.css" rel="stylesheet">
-    <link href="${contextRoot}/css/admin_style.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
+     <!-- Customized Bootstrap Stylesheet -->
+    <link href="${contextRoot}/css/back_style.css" rel="stylesheet">
 
     <style>
         li,
@@ -45,65 +42,58 @@
 </head>
 
 <body>
-    <!-- Topbar  -->
-      <jsp:include page="../layout/topbar.jsp"></jsp:include>
+<!-- Topbar Start -->
+<jsp:include page="../layout/topbar.jsp"></jsp:include>
 
-    <!-- Navbar Start -->
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-3">
-             <!-- Navbar  -->
-            <jsp:include page="../layout/navbar.jsp"></jsp:include>
-            
-            <div class="row col-lg-9 justify-content-center pl-0">
-            
-                <div class="col-lg-3 border-secondary border mb-5 mt-3 mr-3" style="padding-left: 0; padding-right:0;">
-				<form action="${contextRoot}/Back/addCoupon" method="post" >
+    <!-- Navbar Start -->
+   <jsp:include page="../layout/navbar.jsp"></jsp:include>
+   			
+            <div class="col-lg-9 pt-3">
+            <div class="row ">
+                <div class="col-lg-3 border-secondary border mb-5 mr-4" style="padding-left: 0; padding-right:0;">
+				<form:form action="${contextRoot}/Back/addCoupon" method="post" modelAttribute="couponadd">
                     <div class="card-header border bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">折扣碼設定</h4>
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between pt-1 mb-2" style="clear:both;">
-                            <h6 class=" font-weight-medium" >折扣券名稱</h6>
+                            <h6 class=" font-weight-medium" path="couponName" >折扣券名稱</h6>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" id="couponName" name="couponName"  placeholder="歡慶中秋節">
+                            <input type="text" class="form-control p-4 mb-2"  name="couponName"  placeholder="歡慶中秋節" required />
                         </div>
                         <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
                             <h6 class=" font-weight-medium">折扣券代碼</h6>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" placeholder="Chezmoi152" id="couponCode" name="couponCode">
+                            <input type="text" class="form-control p-4 mb-2" placeholder="Chezmoi152" name="couponCode" required />
                         </div>
                         <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
                             <h6 class=" font-weight-medium">折扣金額</h6>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" placeholder="100" id="discountPrice" name="discountPrice">
+                            <input type="text" class="form-control p-4 mb-2" placeholder="100" name="discountPrice" required />
                         </div>
-                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
-                            <h6 class=" font-weight-medium">最低消費金額</h6>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" placeholder="2000" id="minimum" name="minimum">
-                        </div>
+                      
                         <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
                             <h6 class=" font-weight-medium">折扣期限</h6>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" placeholder="2022/9/26 00:00" id="dateStart" name="dateStart">
+                            <input type="text" class="form-control p-4 mb-2" placeholder="2022/9/26 00:00" name="dateStart" required />
                         </div> 
                         <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" placeholder="2022/11/20 23:59" id="dateEnd" name="dateEnd">
+                            <input type="text" class="form-control p-4 mb-2" placeholder="2022/11/20 23:59" name="dateEnd" required />
                         </div>
                         <div class="input-group-append pt-4">
-                        	<input type="submit" class="btn btn-primary" value="新增折扣碼">
-<!--                             <button class="btn btn-primary" >新增折扣碼</button> -->
+                            <button class="btn btn-primary" >新增折扣碼</button>
                         </div>
                     </div>
-              </form>
-             </div>
+              </form:form>
+                </div>
           
-                <div class="col-lg-8 border-secondary  border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
+                <div class="col-lg-8 border-secondary  border mb-5" style="padding-left: 0; padding-right:0;">
                     <div class="card-header border bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">折扣碼管理</h4>
                     </div>
@@ -118,10 +108,9 @@
                                         <th>名稱</th>
                                         <th>代碼</th>
                                         <th>折扣金額</th>
-                                        <th>最低消費</th>
                                         <th>折扣開始</th>
                                         <th>折扣結束</th>
-                                        <th>結束</th>
+                                      <th>編輯</th>
                                     </tr>
                                 </thead>
 					<c:forEach var="workCoupon" items="${page.content}">
@@ -130,24 +119,36 @@
                                           <td class="align-middle">${workCoupon.couponName}</td>
                                         <td class="align-middle">${workCoupon.couponCode}</td>
                                         <td class="align-middle">${workCoupon.discountPrice}</td>
-                                        <td class="align-middle">${workCoupon.minimum}</td>
                                         <td class="align-middle">${workCoupon.dateStart}</td>
                                         <td class="align-middle">${workCoupon.dateEnd}</td>
-                                        <td class="align-middle"><button class="btn btn-sm btn-primary"><i
-                                                    class="fa fa-times"></i></button>
-                                        </td>
+                                        <td class="align-middle"><a href="${contextRoot}/Back/editCoupon?couponId=${workCoupon.couponId}"><button class="btn btn-sm btn-primary"><i
+                                                    class="fa fa-times"></i></button></a>
+                                            </td>
                                     </tr>
 
                                 </tbody>
                         </c:forEach>
                             </table>
+                        <c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+                        
+                        <c:choose>
+                        	<c:when test="${page.number != pageNumber-1}">
+                        		<a href="${contextRoot}/view?p=${pageNumber}">${pageNumber}</a>
+                        	</c:when>
+                        	
+                        	<c:otherwise>
+                        		${pageNumber}
+                        	</c:otherwise>
+                        </c:choose>
+                        	
+                        </c:forEach>
                         </div>
                     </div>
            
                 </div>
             </div>
-          </div>
-       </div>
+            </div>
+            </div>
 
             <!-- Navbar End -->
 

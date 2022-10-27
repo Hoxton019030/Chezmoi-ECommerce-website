@@ -14,14 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.finalProject.demo.model.entity.order.Coupon;
 import com.finalProject.demo.repository.order.CouponRepository;
 
-
-@Service
 @Transactional
+@Service
 public class CouponService {
 
 	@Autowired
 	private CouponRepository couponRepository;
-	
 	
 	public Coupon insert(Coupon cou) {
 		return couponRepository.save(cou);
@@ -67,6 +65,4 @@ public class CouponService {
 	public void deleteById(Integer couponId) {
 		couponRepository.deleteById(couponId);
 	}
-	
-	
 }

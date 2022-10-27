@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.finalProject.demo.model.entity.cart.Cart;
+import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.mutiKeys.CartTableMultiKeysClass;
 import com.finalProject.demo.repository.cart.CartRepository;
 
@@ -33,6 +34,10 @@ public class CartService {
 		return null;
 	}
 	
+	public List<Cart> findAllCart(){
+		return cartRepository.findAll();
+	}
+	
 	public void deleteById(Long memberId,String productId) {
 		CartTableMultiKeysClass cartTableMultiKeysClass = new CartTableMultiKeysClass();
 		cartTableMultiKeysClass.setMemberId(memberId);
@@ -40,12 +45,14 @@ public class CartService {
 		cartRepository.deleteById(cartTableMultiKeysClass);
 	}
 	
-	public List<Cart> findAllCart(){
-		return cartRepository.findAll();
-	}
-	
 	public Cart save(Cart cart) {
 		return cartRepository.save(cart);
+	}
+	
+	public List<Cart> findByMemberId(Member member) {
+		Long memberId = member.getMemberId();
+		List<Cart> cart = cartRepository.findByMemberId(memberId);
+		return cart;
 	}
 	
 	

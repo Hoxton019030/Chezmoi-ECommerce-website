@@ -27,10 +27,10 @@
 
     <!-- Libraries Stylesheet -->
     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
+	<link href="${contextRoot}/css/jquery-ui.css" rel="stylesheet">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="${contextRoot}/css/style.css" rel="stylesheet">
-
+	
     <style>
         li,
         ul {
@@ -46,17 +46,14 @@
 </head>
 
 <body>
-    <!-- Topbar  -->
+     <!-- Topbar  -->
       <jsp:include page="../layout/topbar.jsp"></jsp:include>
 
-
+    <!-- Navbar Start -->
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-3">
-        
-            <!-- Navbar  -->
-            <jsp:include page="../layout/navbar.jsp"></jsp:include>
-            
-            
+        <jsp:include page="../layout/navbar.jsp"></jsp:include>
+           
             <div class="col-lg-9">
                 <div class="col-lg-8 border-secondary  border mb-5" style="padding-left: 0; padding-right:0;">
                     <div class="card-header bg-secondary border-0">
@@ -94,94 +91,10 @@
                                                                 <th class="border-top-0">合計</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="m-r-10">
-                                                                            <div class="">
-                                                                                <a href="http://127.0.0.1:5500/finalproject/%E8%A8%82%E5%96%AE%E7%B4%B0%E9%A0%85.html">202209260001</a>
-                                                                            </div>
-                                                                        </div>   
-                                                                    </div>
-                                                                </td>
-                                                                <td>2022/9/26</td>
-                                                                <td>訂單處理中</td>
-                                                                <td>
-                                                                    <body>
-                                                                        <form action="#">
-                                                                            <input placeholder="送件單號" maxlength="12" minlength="12">
-                                                                            <button id="send" onclick="123">出貨</button>
-                                                                            <script>
-                                                                            // 抓取send的屬性值
-                                                                            let x = document.getElementById('send').getAttribute('onclick')
-                                                                            console.log(x);
-                                                                            //並設置屬性名稱(onclick)的屬性值(window.alert("您確定要送出？"))
-                                                                            document.getElementById("send").setAttribute('onclick', 'window.alert("您確定要送出？")')
-                                                                            </script>
-                                                                        </form>
-                                                                    </body>
-                                                                </td>
-                                                                <td>
-                                                                王心凌(ab1234@gmail.com)</td>
-                                                                <td>
-                                                                    <h5 class="m-b-0">$2850.06</h5>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="m-r-10">
-                                                                        </div>
-                                                                        <div class="">
-                                                                            <a href="http://127.0.0.1:5500/finalproject">202209260002</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>2022/9/26</td>
-                                                                <td>出貨中</td>
-                                                                <td>已出貨</td>
-                                                                <td>蔡依林(cd5678@gmail.com)</td>
-                                                                <td>
-                                                                    <h5 class="m-b-0">$3000.00</h5>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="m-r-10">
-                                                                        </div>
-                                                                        <div class="">
-                                                                            <a href="http://127.0.0.1:5500/finalproject">202209250010</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>2022/9/25</td>
-                                                                <td>已出貨</td>
-                                                                <td>已出貨</td>
-                                                                <td>孫燕姿(ef1234@yahoo.com.tw)</td>
-                                                                <td>
-                                                                    <h5 class="m-b-0">$4000.00</h5>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="m-r-10">
-                                                                        </div>
-                                                                        <div class="">
-                                                                            <a href="http://127.0.0.1:5500/finalproject">202209250009</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>2022/9/25</td>
-                                                                <td>已出貨</td>
-                                                                <td>已出貨</td>
-                                                                <td>張紹涵(gh5678@yahoo.com.tw)</td>
-                                                                <td>
-                                                                    <h5 class="m-b-0">$1548.25</h5>
-                                                                </td>
-                                                            </tr>
+                                                        
+                                                        <tbody id="orders">
+                                                        	
+                                                        	    
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -208,7 +121,7 @@
         <!-- Footer Start -->
 
         <!-- Footer End -->
-
+        <div id="dialog" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"></div>
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
@@ -217,15 +130,15 @@
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="${contextRoot}/lib/easing/easing.min.js"></script>
+        <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
+        <script src="${contextRoot}/mail/jqBootstrapValidation.min.js"></script>
+        <script src="${contextRoot}/mail/contact.js"></script>
 
         <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+        <script src="${contextRoot}/js/main.js"></script>
         <script>
             $(document).ready(function () {
                 $('.menu>li>a').click(function (e) {
@@ -235,53 +148,155 @@
                     //點選到的.menu>li>a 顯示動態active
                     $(this).addClass('active').parent().siblings().find('a').removeClass('active');
                 });
-            });
+                
+            });    
         </script>
         <script>
-            (function(document) {
-            'use strict';
+            function add(orderId){
+            		$.ajax({
+                    	url: 'http://localhost:8080/Chezmoi/order',
+                    	method: 'put',
+                        dataType:'text',
+                        headers: { 
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json' 
+                        },
+                    	data: JSON.stringify({
+                    		shippingCode: $('#add'+ orderId + ' > input').val(), orderId: orderId
+                    	}),
+                    }).done(function(res){
+                        alert(res);
+                        if(res==="建立成功"){
+                            update();
+                        }
+                    })		
+                }
+                function update(){
+                    $.ajax({
+            	        url: 'http://localhost:8080/Chezmoi/order',
+            	        method: 'get',
+            	        dataType: 'json',
+            	        data: {}
+                    }).done(function(res){
+            	        $('#orders').empty();
+            	        for(order of res){
+            		        let shippingInput = '<div id="add' + order.orderId + '"><input type="text" placeholder="請填寫單號"><button onclick="add(\''+order.orderId+'\')">送出</button></div>'
+            		        $('#orders').append('<tr><td>' + '<a href="#" onclick="openDetail('+order.orderId+')">' + order.orderId + '</a>' + '</td><td>' + order.orderDate + '</td><td>' + order.orderState + '</td><td>' + (!order.shippingCode?shippingInput:order.shippingCode) + '</td><td>' + (order?.member?.memberName?order?.member?.memberName:'') + '</td><td>' + order.total + '</td></tr>')
+            	        }
 
-            // 建立 LightTableFilter
-             var LightTableFilter = (function(Arr) {
+                    }).fail(function(err){
+            	        });
+            
+                }
 
-             var _input;
+                function openDetail(id){
+                    $.ajax({
+                        url: 'http://localhost:8080/Chezmoi/order/'+ id,
+                        method: 'get',
+            	        dataType: 'json',
+            	        data: {}
+                    }).done(function(orderDetail){
+                        $('#dialog').empty();
 
-             // 資料輸入事件處理函數
-             function _onInputEvent(e) {
-                _input = e.target;
-                var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-                Arr.forEach.call(tables, function(table) {
-                Arr.forEach.call(table.tBodies, function(tbody) {
-                Arr.forEach.call(tbody.rows, _filter);
+
+
+                        $('#dialog').append(
+                            '<div class="modal-dialog">' +
+                                '<div class="modal-content">' +
+                                '<div class="modal-header">' +
+                                    '<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>' +
+                                    '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
+                                    '</div>' +
+                                '<div class="modal-body">' +
+                                    '<table class="table v-middle">' + 
+                                        '<thead>' +
+                                            '<tr>' +
+                                                '<th>訂單號碼</th>'+
+                                                '<th>商品名稱</th>'+
+                                                '<th>數量</th>'+
+                                                '<th>價格</th>'+
+                                            '</tr>' +
+                                        '</thead>' +
+                                        '<tbody>'+ 
+                                            generateDetailTable(orderDetail) +
+                                        '</tbody>' +
+                                    '</table>' +
+                                '</div>' +
+                                '<div class="modal-footer">' +
+                                    '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
+                                '</div>' +
+                                '</div>' +
+                            '</div>'
+                            )
+                        $('#dialog').modal('show');
+
+                    }).fail(function(err){
+                        alert('查無資料')
+            	        });
+                    
+                }
+
+                function generateDetailTable(detailList) {
+                    let table = ''
+                    for (orderDetail of detailList) {
+                        table += 
+                            '<tr>'+
+                                '<td>'+ orderDetail.orderId + '</td>' +
+                                '<td>'+ orderDetail.productName + '</td>' +
+                                '<td>'+ orderDetail.quantity + '</td>' +
+                                '<td>'+ orderDetail.price + '</td>' +
+                            '</tr>';
+                    }
+
+                    return table;
+                }
+
+            $(function() {
+			    update(); 
+			    
+            
+                
+            
+                // 建立 LightTableFilter
+                var LightTableFilter = (function(Arr) {
+
+                    var _input;
+
+                    // 資料輸入事件處理函數
+                    function _onInputEvent(e) {
+                        _input = e.target;
+                        var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                        Arr.forEach.call(tables, function(table) {
+                            Arr.forEach.call(table.tBodies, function(tbody) {
+                                Arr.forEach.call(tbody.rows, _filter);
+                            });
+                        });
+                    }
+
+                    // 資料篩選函數，顯示包含關鍵字的列，其餘隱藏
+                    function _filter(row) {
+                        var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                        row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                    }
+                    return {
+                        // 初始化函數
+                        init: function() {
+                            var inputs = document.getElementsByClassName('light-table-filter');
+                            Arr.forEach.call(inputs, function(input) {
+                                input.oninput = _onInputEvent;
+                            });
+                        }
+                    };
+                })(Array.prototype);
+
+                // 網頁載入完成後，啟動 LightTableFilter
+                document.addEventListener('readystatechange', function() {
+                    if (document.readyState === 'complete') {
+                        LightTableFilter.init();
+                    }
                 });
-                });
-            }
 
-            // 資料篩選函數，顯示包含關鍵字的列，其餘隱藏
-            function _filter(row) {
-            var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
-            row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-            }
-
-            return {
-            // 初始化函數
-            init: function() {
-            var inputs = document.getElementsByClassName('light-table-filter');
-            Arr.forEach.call(inputs, function(input) {
-            input.oninput = _onInputEvent;
             });
-            }
-            };
-            })(Array.prototype);
-
-            // 網頁載入完成後，啟動 LightTableFilter
-            document.addEventListener('readystatechange', function() {
-            if (document.readyState === 'complete') {
-            LightTableFilter.init();
-            }
-            });
-
-            })(document);
         </script>
 </body>
 

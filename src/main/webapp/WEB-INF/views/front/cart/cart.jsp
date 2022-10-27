@@ -37,39 +37,7 @@
             <body>
 
                 <!-- Topbar Start -->
-                <div class="px-xl-5">
-                    <nav class=" fixed-top navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 border">
-                        <div class="collapse navbar-collapse  justify-content-between" id="navbarCollapse">
-                            <div class="navbar-nav mr-auto align-items-center py-0">
-                                <a href="index.html" class="nav-item nav-link active"><img
-                                        src="${contextRoot}/img/logo.jpg" width="50" height="50">
-                                </a>
-                                <a href="<c:url value='/shop' />" class="nav-item nav-link">Shop</a>
-                                <a href="detail.html" class="nav-item nav-link">Notice</a>
-                                <a href="https://www.instagram.com/chezmoiiiiiii/?hl=en" class="nav-item nav-link"
-                                    target="_blank">Instagram</a>
-                                <a href="contact.html" class="nav-item nav-link">Contact</a>
-                            </div>
-                            <div class="navbar-nav ml-auto py-0">
-                                <a href="Product_set.html" class="nav-item nav-link"><img
-                                        src="${contextRoot}/img/set.png" width="20" height="20"></a>
-                                <a href="wish.html" class="nav-item nav-link"><img src="${contextRoot}/img/wish.png"
-                                        width="20" height="20"></a>
-                                <a href="<c:url value='/cartAll' />" class="nav-item nav-link"><img
-                                        src="${contextRoot}/img/cart.png" width="20" height="20"></a>
-                                <a href="member.html" class="nav-item nav-link"><img src="${contextRoot}/img/user.png"
-                                        width="20" height="20"></a>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-                <!-- Topbar End -->
-
-
-                <!-- Navbar Start -->
-
-                <!-- Navbar End -->
-
+                <jsp:include page="../layout/navbar.jsp"></jsp:include>
 
                 <!-- Page Header Start -->
                 <div class="container-fluid  mb-0 mt-5">
@@ -112,29 +80,24 @@
                                     <tr>
                                         <td class="align-middle">${c.productId}</td>
                                         <td class="align-middle">${c.productName}</td>
-                                        <td class="align-middle"><img src="${contextRoot}/img/product/0812/" alt=""
+                                        <td class="align-middle"><img
+                                                src="http://localhost:8080/Chezmoi/getMainPic/${c.photoId}"
                                                 style="width: 5em;">
                                         <td class="align-middle">${c.productColor}</td>
                                         <td class="align-middle">${c.productSize}</td>
                                         <td class="align-middle">
                                             <div class="input-group quantity mx-auto" style="width: 100px;">
-                                                <div class="input-group-btn">
-                                                    <button class="btn btn-sm btn-primary btn-minus">
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
-                                                </div>
+                                                <input type="button" name="minus" value="-"
+                                                    class="numberMinus btn btn-sm btn-primary btn-minus" />
                                                 <input type="text"
-                                                    class="form-control form-control-sm bg-secondary text-center"
-                                                    value="${c.quantity}">
-                                                <div class="input-group-btn">
-                                                    <button class="btn btn-sm btn-primary btn-plus">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
+                                                    class="textNum form-control form-control-sm bg-secondary text-center"
+                                                    id="quantity" name="${carListId}" value="${c.quantity}">
+                                                <input type="button" name="add" value="+"
+                                                    class="numberPlus btn btn-sm btn-primary btn-plus" />
                                             </div>
                                         </td>
-                                        <td class="align-middle">${c.price}</td>
-                                        <td class="align-middle">${c.total}</td>
+                                        <td class="align-middle" id="price">${c.price}</td>
+                                        <td class="align-middle" id="total">${c.total}</td>
                                         <td class="align-middle"><a
                                                 href="${contextRoot}/cart/addToCollection?id=${c.productId}"><img
                                                     class="wish" src="${contextRoot}/img/wish.png" alt=""
@@ -173,9 +136,10 @@
                                     <h6 class=" font-weight-medium">運送方式</h6>
                                 </div>
                                 <div class="d-flex justify-content-between mb-2 pt-1">
-                                    <select name="shoppingWay" id="shippingWay" style="width: 100em;height:3em ;">
+                                    <select name="shoppingWay" id="shippingWay" style="width: 100em;height:3em ;"
+                                        onchange="changeDeliveryFee()">
                                         <c:forEach items="${Shipping}" var="s">
-                                            <option id="shippingId" value="${s.shippingId}">${s.shippingWay}
+                                            <option id="${s.shippingFee}" value="${s.shippingId}">${s.shippingWay}
                                             </option>
                                         </c:forEach>
                                     </select>
@@ -191,41 +155,51 @@
                                 <div class="card-header bg-secondary border-0">
                                     <h4 class="font-weight-semi-bold m-0">購物車明細</h4>
                                 </div>
-
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between mb-3 pt-1">
-                                        <h6 class="font-weight-medium subtotal">小計: ${total}</h6>
-                                    </div>
-                                    <c:set var="deliveryFee" value="70" />
-                                    <div class="d-flex justify-content-between mb-3 pt-1">
-                                        <h6 class="font-weight-medium">運費:</h6>
-                                        <h6 class="font-weight-medium">運費:</h6>
-                                    </div>
-                                    <c:set var="discount" value="200" />
-                                    <div class="d-flex justify-content-between mb-3 pt-1">
-                                        <h6 class="font-weight-medium">折扣金額: ${discount}</h6>
-                                    </div>
-                                </div>
-                                <form class="mb-5 btn btn-block" action="http://localhost:8081/finalProject/cart"
-                                    method="get" target="_self">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control p-4" placeholder="請輸入折扣碼">
-                                        <div class="input-group-append">
-                                            <input type="submit" class="btn btn-primary" value="使用折扣碼">
+                                <form:form action="${contextRoot}/cartAll" class="mt-4  btn-block" method="post"
+                                    modelAttribute="Coupon">
+                                    <div class="card-body">
+                                        <div class="input-group">
+                                            <form:input type="text" path="couponCode" class="form-control p-4"
+                                                placeholder="請輸入折扣碼" />
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="submit">使用折扣碼</button>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex pt-1">
+                                            <h6 class="font-weight-medium subtotal mt-3 mr-2">折扣碼: </h6>
+                                            <h6 class="font-weight-medium subtotal mt-3 text-primary mr-2 couponCode"
+                                                id="couponCode">${param.couponCode}</h6>
+                                            <c:set var="couponCode" value="${param.couponCode}" />
+                                            <h6 class="font-weight-medium subtotal mt-3 text-primary"> ${param.msg}</h6>
                                         </div>
                                     </div>
-                                </form>
-                                <c:set var="subtotal" value="${deliveryFee+total-discount}" />
+                                    <div class="card-body">
+                                        <div class="d-flex mb-3 pt-1">
+                                            <h6 class="font-weight-medium subtotal">小計:</h6>
+                                            <h6 class="font-weight-medium subtotal" id="cartTotal">${total}</h6>
+                                        </div>
+                                        <div class="d-flex mb-3 pt-1">
+                                            <c:set var="deliveryFee" value="0" />
+                                            <h6 class="font-weight-medium">運費:</h6>
+                                            <h6 class="font-weight-medium" id="deliveryFee"></h6>
+                                        </div>
+                                        <div class="d-flex mb-3 pt-1">
+                                            <h6 class="font-weight-medium">折扣金額:</h6>
+                                            <h6 class="font-weight-medium" id="discount">${param.discount}</h6>
+                                        </div>
+                                    </div>
+                                    <c:set var="subtotal" value="${total-param.discount}" />
+                                </form:form>
                                 <div class="card-footer border-secondary bg-transparent">
                                     <div class="d-flex justify-content-between  mt-2">
                                         <h5 class="font-weight-bold">總金額NT$ </h5>
-                                        <h5 class="font-weight-bold" id="total">${subtotal}</h5>
+                                        <h5 class="font-weight-bold" id="subTotal">${subtotal}</h5>
                                     </div>
                                     <a href="<c:url value='/shop' />"><button
                                             class="btn btn-block btn-primary my-3 py-3">繼續購物</button>
                                     </a>
                                     <a href="<c:url value='/cartOrderDetail' />" id="nextStep"><button
-                                            class="btn btn-block btn-primary my-3 py-3">下一步結帳</button></a>
+                                            class="btn btn-block btn-primary my-3 py-3" >下一步結帳</button></a>
                                 </div>
                             </div>
                         </div>
@@ -236,13 +210,7 @@
 
 
                 <!-- Footer Start -->
-                <div class="container-fluid  text-dark mt-5 pt-5 border-top-1">
-                    <p class="text-center"><span
-                            style="color: rgb(86, 84, 84); font-size: 12px;">Email：chezmoiiiiiii@gmail.com</span></p>
-
-                    <p class="text-center"><span style="color: rgb(86, 84, 84); font-size: 12px;">Service time：Mon - Sun
-                            10:00-22:00</span></p>
-                </div>
+                <jsp:include page="../layout/footer.jsp"></jsp:include>
                 <!-- Footer End -->
 
 
@@ -251,8 +219,7 @@
                 <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
                 <!--JavaScript & Jquery-->
-                <script src="https://code.jquery.com/jquery-3.6.1.js"
-                    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+                <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
                 <!-- JavaScript Libraries -->
                 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -270,44 +237,8 @@
                 <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
                 <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
 
-                <script type="text/javascript">
-
-                    $("#shippingWay").change(function () {
-                        var shippingId = $("#shippingWay").val();
-                        console.log(shippingId)
-                        alert(shippingId)
-                    });
-
-                    var total = ${ subtotal };
-                    console.log(total)
-                    var shippingId = document.getElementById('shippingWay').value;
-                    console.log(shippingId)
-                    var paymentId = document.getElementsByClassName('paymentId').value;
-                    console.log(shippingId)
-
-
-                    $(document).ready(function () {
-                        $('#nextStep').click(function () {
-
-                            var shippingId = document.getElementById('shippingId').value;
-                            alert(shippingId)
-                            var paymentId = document.getElementById('paymentId').value;
-                            var total = document.getElementById('total').text;
-                            console.log(paymentId)
-                            console.log(shippingId)
-                            console.log(total)
-                            $("#shippingWay").change(function () {
-                                var shippingId = $("#shippingWay").val();
-                                console.log(shippingId)
-
-                            });
-                        })
-
-
-                    })
-
-
-                </script>
+                <!-- Ajax -->
+                <script src="${contextRoot}/js/cartAjax.js"></script>
 
             </body>
 

@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.finalProject.demo.model.entity.member.Member;
@@ -87,7 +88,7 @@ public class Orders {
 	
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="orderDate")
+	@Column(name="orderDate",nullable = false)
 	private Date orderDate;
 		
 	public Orders() {

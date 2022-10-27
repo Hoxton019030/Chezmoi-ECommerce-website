@@ -1,9 +1,9 @@
 package com.finalProject.demo.repository.order;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.finalProject.demo.model.entity.member.Member;
@@ -14,20 +14,10 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
 	@Query(value = " select top 1 *from Orders order by orderId desc",nativeQuery = true)
 	Orders findTopOrder();
 	
-	Orders findByMember(Member member);
+	List<Orders> findByMember(Member member);
 	
-	Optional<Orders> findByOrderId(Long orderId);
-	
-//	List<Orders> findByOrderDate(Date orderDate);
-	
-	List<Orders> findByOrderState(String orderState);
-	
-//	List<Orders> findByShippingCode(Long shippingCode);
-	
-//	List<Orders> findByCustomerId(Long customerId);
-	
-	List<Orders> findByTotal(Long total);
-	
-
+	@Modifying 
+	@Query(value="update orders set shippingCode = ?2 where orderId = ?1", nativeQuery = true)
+	int updateShippingCodeById(Long orderId, String shippingCode);
 	
 }
