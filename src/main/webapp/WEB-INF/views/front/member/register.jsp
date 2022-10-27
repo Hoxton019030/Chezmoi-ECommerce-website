@@ -18,10 +18,11 @@
 <body>
 	<div id="login-box" class="bg-secondary">
 	
-	<form:form action="${pageContext.request.contextPath}/member/register" method="post" modelAttribute="register">
+	<form:form action="${pageContext.request.contextPath}/member/register" method="post" modelAttribute="registersubmit">
 	
         <div>
             <h1 class="text-dark">Register</h1>
+            <h5 class="Msg">${param.Msg}</h5>
             <form method="post" action="login.js">
                 <div>
                     <input type="text" class="text-field-Register" name="memberName" path="memberName" id="name" placeholder="中文姓名"
@@ -56,17 +57,10 @@
                 </div>
                 <p>
                 <div>
-                    <input type="submit" id="btn_create_acc" class="btn-primary text-dark" value="註冊" onclick="registerFunction()">
-                	<script>
-                    function registerFunction() {
-
-                        alert("註冊成功!");
-                        location.href = "login.html"
-                    }
-                </script>
+                    <input type="submit" id="btn_create_acc" class="btn-primary text-dark" value="註冊">
                 </div>
                 <p class="text-center">
-                    <a href="login.html" id="customer_register_link" class="text-primary">登入帳號</a>
+                    <a href="${pageContext.request.contextPath}/member/login" id="customer_register_link" class="text-primary">登入帳號</a>
                 </p>
                 <p>
                     <a href="${pageContext.request.contextPath}/" class="text-primary">返回首頁</a>
