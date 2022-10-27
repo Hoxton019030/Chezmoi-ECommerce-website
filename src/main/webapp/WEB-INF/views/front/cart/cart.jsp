@@ -199,7 +199,7 @@
                                             class="btn btn-block btn-primary my-3 py-3">繼續購物</button>
                                     </a>
                                     <a href="<c:url value='/cartOrderDetail' />" id="nextStep"><button
-                                            class="btn btn-block btn-primary my-3 py-3">下一步結帳</button></a>
+                                            class="btn btn-block btn-primary my-3 py-3" >下一步結帳</button></a>
                                 </div>
                             </div>
                         </div>

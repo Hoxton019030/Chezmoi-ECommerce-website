@@ -73,16 +73,16 @@
                                     <div class="card-body">
                                         <div class="d-flex pt-1 mb-2">
                                             <h6 class="font-weight-medium">客戶名稱: </h6>
-                                            <h6 class="font-weight-medium ml-1" id="memberName">${Member.memberName}
+                                            <h6 class="font-weight-medium ml-1" id="memberName">${Orders.member.memberName}
                                             </h6>
                                         </div>
                                         <div class="d-flex pt-1 mb-2">
                                             <h6 class="font-weight-medium">電話號碼:</h6>
-                                            <h6 class="font-weight-medium ml-1" id="memberPhone">${Member.phone}</h6>
+                                            <h6 class="font-weight-medium ml-1" id="memberPhone">${Orders.member.phone}</h6>
                                         </div>
                                         <div class="d-flex pt-1 ">
                                             <h6 class="font-weight-medium">電子信箱:</h6>
-                                            <h6 class="font-weight-medium ml-1">${Member.email}</h6>
+                                            <h6 class="font-weight-medium ml-1">${Orders.member.email}</h6>
                                         </div>
                                     </div>
                                 </div>

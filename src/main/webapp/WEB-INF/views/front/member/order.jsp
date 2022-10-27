@@ -113,8 +113,8 @@
                         <td class="align-middle"><a class="text-primary font-weight-medium" href="orderDetail.html">${o.orderId}</a></td>
                         <td class="align-middle">${o.orderDate}</td>
                         <td class="align-middle">${o.orderState}</td>
-                        <td class="align-middle">${o.shipping}</td>
-                        <td class="align-middle">${o.payment}</td>
+                        <td class="align-middle">${o.shipping.shippingWay}</td>
+                        <td class="align-middle">${o.payment.paymentWay}</td>
                         <td class="align-middle">${o.shippingDate}</td>
                         <td class="align-middle">${o.shippingCode}</td>
                         <td class="align-middle">${o.notes}</td>
