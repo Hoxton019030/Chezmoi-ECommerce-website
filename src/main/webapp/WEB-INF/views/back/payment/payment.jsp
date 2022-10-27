@@ -123,7 +123,6 @@
                                     <th>方式</th>
                                     <th>啟用</th>
                                     <th>修改</th>
-                                    <th>刪除</th>
                                 </tr>
                             </thead>
                             <tbody class="align-middle">
@@ -133,7 +132,6 @@
                                     <td class="align-middle">${p.paymentWay}</td>
                                     <td class="align-middle">${p.paymentState}</td>	
                                    <td><a href="${contextRoot}/back/updatePayment?id=${p.paymentId}" class="btn btn-primary">修改</a></td>
-                                    <td><a href="${contextRoot}/back/deletePayment?id=${p.paymentId}" class="btn btn-primary">刪除</a></td>
                                 </tr>
                                 </c:forEach>
                             </tbody>

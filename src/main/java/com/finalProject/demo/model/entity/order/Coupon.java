@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="coupon")
+@Table(name="Coupon")
 public class Coupon {
 
 	private String couponName;
@@ -29,8 +29,12 @@ public class Coupon {
 	@Column(name="discountPrice")
 	private Integer discountPrice;
 	
-	@Column(name="minimum")
-	private Integer minimum;
+//	@Column(name="minimum")
+//	private Integer minimum;
+	
+	//state
+	@Column(name = "couponState")
+	private String couponState;
 	
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -77,13 +81,13 @@ public class Coupon {
 		this.discountPrice = discountPrice;
 	}
 
-	public Integer getMinimum() {
-		return minimum;
-	}
-
-	public void setMinimum(Integer minimum) {
-		this.minimum = minimum;
-	}
+//	public Integer getMinimum() {
+//		return minimum;
+//	}
+//
+//	public void setMinimum(Integer minimum) {
+//		this.minimum = minimum;
+//	}
 
 	public Date getDateStart() {
 		return dateStart;
@@ -100,6 +104,16 @@ public class Coupon {
 	public void setDateEnd(Date dateEnd) {
 		this.dateEnd = dateEnd;
 	}
+
+	public String getCouponState() {
+		return couponState;
+	}
+
+	public void setCouponState(String couponState) {
+		this.couponState = couponState;
+	}
+	
+	
 	
 
 }

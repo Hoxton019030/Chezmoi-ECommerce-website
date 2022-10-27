@@ -46,101 +46,14 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid align-items-center justify-content-center">
-        <div class="row">
-            <div class="col-lg-1 d-none d-lg-block pt-1">
-                <div class="container-fluid">
-                    <a href="admin.html" class="nav-item nav-link active"><img src="img/logo.png" width="50"
-                            height="50"></a>
-
-                </div>
-            </div>
-            <div class="col-lg-5 d-none d-lg-block pt-3" style="padding-left:1em;">
-
-                <a href="admin.html" class="text-decoration-none">
-                    <h1 class="display-5 font-weight-semi-bold">後台管理中心</h1>
-                </a>
-            </div>
-        </div>
-
-    </div>
-    <!-- Topbar End -->
+     <!-- Topbar  -->
+      <jsp:include page="../layout/topbar.jsp"></jsp:include>
 
     <!-- Navbar Start -->
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-3">
-            <div class="col-lg-3 d-none d-lg-block pt-3">
-                <div class="container-fluid">
-                    <ul class="p-0 menu border">
-                        <li class="p-0">
-                            <a
-                                class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">會員管理</a>
-                            <ul class="inmenu">
-                                <li><a href="Product/add"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">會員資料表</a>
-                                </li>
-                            </ul>
-                            <ul class="inmenu">
-                                <li><a href="留言板查看回覆.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">留言板查看/回覆</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li>
-                            <a
-                                class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">產品管理</a>
-                            <ul class="inmenu">
-                                <li><a href="我的產品.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">我的產品</a>
-                                </li>
-                            </ul>
-                            <ul class="inmenu">
-                                <li><a href="產品上架.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">產品上架</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a
-                                class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">結帳管理</a>
-                            <ul class="inmenu">
-                                <li><a href="物流管理.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">物流管理</a>
-                                </li>
-                                <li><a href="金流管理.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">金流管理</a>
-                                </li>
-                                <li><a href="折扣碼設定.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">折扣碼設定</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a
-                                class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">訂單管理</a>
-                            <ul class="inmenu">
-                                <li><a href="OrderDetail"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">訂單出貨</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a
-                                class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">營運表現</a>
-                            <ul class="inmenu">
-                                <li><a href="商品銷售狀況.html"
-                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">商品銷售狀況</a>
-                                </li>
-                                <li><a href="業績報表.html"
-                                        class="btn d-flex align-items-center justify-content-between text-black w-100">業績報表</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <jsp:include page="../layout/navbar.jsp"></jsp:include>
+           
             <div class="col-lg-9">
                 <div class="col-lg-8 border-secondary  border mb-5" style="padding-left: 0; padding-right:0;">
                     <div class="card-header bg-secondary border-0">
@@ -216,17 +129,16 @@
 
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="js/jquery-ui.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="${contextRoot}/lib/easing/easing.min.js"></script>
+        <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
+        <script src="${contextRoot}/mail/jqBootstrapValidation.min.js"></script>
+        <script src="${contextRoot}/mail/contact.js"></script>
 
         <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+        <script src="${contextRoot}/js/main.js"></script>
         <script>
             $(document).ready(function () {
                 $('.menu>li>a').click(function (e) {
@@ -242,7 +154,7 @@
         <script>
             function add(orderId){
             		$.ajax({
-                    	url: 'http://localhost:8081/Chezmoi/order',
+                    	url: 'http://localhost:8080/Chezmoi/order',
                     	method: 'put',
                         dataType:'text',
                         headers: { 
@@ -261,7 +173,7 @@
                 }
                 function update(){
                     $.ajax({
-            	        url: 'http://localhost:8081/Chezmoi/order',
+            	        url: 'http://localhost:8080/Chezmoi/order',
             	        method: 'get',
             	        dataType: 'json',
             	        data: {}
@@ -279,7 +191,7 @@
 
                 function openDetail(id){
                     $.ajax({
-                        url: 'http://localhost:8081/Chezmoi/order/'+ id,
+                        url: 'http://localhost:8080/Chezmoi/order/'+ id,
                         method: 'get',
             	        dataType: 'json',
             	        data: {}

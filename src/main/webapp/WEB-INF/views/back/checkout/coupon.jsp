@@ -76,12 +76,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control p-4 mb-2" placeholder="100" name="discountPrice" required />
                         </div>
-                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
-                            <h6 class=" font-weight-medium">最低消費金額</h6>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" placeholder="2000" name="minimum" required />
-                        </div>
+                      
                         <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
                             <h6 class=" font-weight-medium">折扣期限</h6>
                         </div>
@@ -113,10 +108,8 @@
                                         <th>名稱</th>
                                         <th>代碼</th>
                                         <th>折扣金額</th>
-                                        <th>最低消費</th>
                                         <th>折扣開始</th>
                                         <th>折扣結束</th>
-                                        <th>結束</th>
                                       <th>編輯</th>
                                     </tr>
                                 </thead>
@@ -126,12 +119,8 @@
                                           <td class="align-middle">${workCoupon.couponName}</td>
                                         <td class="align-middle">${workCoupon.couponCode}</td>
                                         <td class="align-middle">${workCoupon.discountPrice}</td>
-                                        <td class="align-middle">${workCoupon.minimum}</td>
                                         <td class="align-middle">${workCoupon.dateStart}</td>
                                         <td class="align-middle">${workCoupon.dateEnd}</td>
-                                        <td class="align-middle"><a onclick="return confirm('確定刪除?')" href="${contextRoot}/Back/deleteCoupon?couponId=${workCoupon.couponId}"><button class="btn btn-sm btn-primary"><i
-                                                    class="fa fa-times"></i></button></a>
-                                        </td>
                                         <td class="align-middle"><a href="${contextRoot}/Back/editCoupon?couponId=${workCoupon.couponId}"><button class="btn btn-sm btn-primary"><i
                                                     class="fa fa-times"></i></button></a>
                                             </td>
