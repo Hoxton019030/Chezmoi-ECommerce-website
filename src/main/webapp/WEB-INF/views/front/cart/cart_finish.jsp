@@ -105,10 +105,10 @@
                                 <h5 class="font-weight-medium pt-1 mb-2">我們已發送訂單明細至您的電子信箱:</h5>
                                 <div class="d-flex justify-content-between pt-1 mb-2">
                                     <h6 class=" font-weight-medium">將於確認您的款項後出貨,出貨進度可至<a
-                                            class="text-primary font-weight-medium" href="orderDetail.html"
-                                            target="_blank">訂單明細</a></h6>
+                                            class="text-primary font-weight-medium" href="${contextRoot}/member/order"
+                                            target="_blank">訂單查詢</a></h6>
 
-                                    <h6 class="font-weight-medium">查詢</h6>
+                                    <h6 class="font-weight-medium">查看</h6>
                                 </div>
 
                             </div>
@@ -119,35 +119,27 @@
                 <!-- Footer Start -->
                  <jsp:include page="../layout/footer.jsp"></jsp:include>
                 <!-- Back to Top -->
-                <a href="#" class="btn btn-primary back-to-top" style="margin-right: 0px"><i
-                        class="fa fa-angle-double-up"></i></a>
-
-                <!-- Footer End -->
-
-
-                <!-- Back to Top -->
                 <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
+                <!--JavaScript & Jquery-->
+                <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
                 <!-- JavaScript Libraries -->
                 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-                <script src="lib/easing/easing.min.js"></script>
-                <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-                <!-- Contact Javascript File -->
-                <script src="mail/jqBootstrapValidation.min.js"></script>
-                <script src="mail/contact.js"></script>
+                <script src="${contextRoot}/lib/easing/easing.min.js"></script>
+                <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
 
                 <!-- Template Javascript -->
-                <script src="js/main.js"></script>
+                <script src="${contextRoot}/js/main.js" type="text/javascript"></script>
 
-                <script type="text/javascript">
-                    window.addEventListener('popstate', function (event) {
-                        history.pushState(null, document.title, location.href);
-                    });
+                <!-- Contact Jquery File -->
+                <script src="${contextRoot}/js/jquery-3.6.1.min.js" type="text/javascript"></script>
 
-                </script>
+                <!-- Contact Javascript File -->
+                <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
+                <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
+
             </body>
 
             </html>
