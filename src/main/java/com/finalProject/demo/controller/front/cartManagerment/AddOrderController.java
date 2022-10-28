@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.finalProject.demo.mail.EmailSenderSerivce;
 import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.entity.order.Coupon;
@@ -42,6 +43,9 @@ public class AddOrderController {
 	
 	@Autowired
 	private OrderDetailService odService;
+	
+	@Autowired
+	private EmailSenderSerivce emailSenderSerivce;
 	
 	//送出空白訂單表單
 	@GetMapping("/cartOrderDetail")
@@ -98,18 +102,13 @@ public class AddOrderController {
 		
 		//add new order
 		Orders topOrder = oService.findTopOrder();
-		Long orderId = topOrder.getOrderId();
-		Payment payment = topOrder.getPayment();
-		Shipping shipping = topOrder.getShipping();
-		Integer total = topOrder.getTotal();
-		Coupon coupon = topOrder.getCoupon();
-		orders.setOrderId(orderId);
+		orders.setOrderId(topOrder.getOrderId());
 		orders.setMember(member);
 		orders.setOrderState("未付款");
-		orders.setPayment(payment);
-		orders.setShipping(shipping);
-		orders.setTotal(total);
-		orders.setCoupon(coupon);
+		orders.setPayment(topOrder.getPayment());
+		orders.setShipping(topOrder.getShipping());
+		orders.setTotal(topOrder.getTotal());
+		orders.setCoupon(topOrder.getCoupon());
 		Orders newOrder = oService.insert(orders);
 	
 		//add new orderDetail
@@ -136,11 +135,17 @@ public class AddOrderController {
 			cService.deleteById(memberId, productId);
 		}
 		
+		//訂單完成頁面日期格式調整
 		Date orderDate = orders.getOrderDate();
 		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String date = dateFormat.format(orderDate);
 		model2.addAttribute("Date",date);
 		
+		//發送訂單完成信
+		String email = member.getEmail();
+		Long newOrderId=newOrder.getOrderId();
+		emailSenderSerivce.sendEmail(email, "您的新訂單，訂單編號:"+newOrderId+"已成立",
+				"請盡速付款");
 		return "front/cart/cart_finish";
 	}
 	
