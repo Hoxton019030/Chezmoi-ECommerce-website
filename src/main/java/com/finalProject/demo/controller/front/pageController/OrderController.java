@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.finalProject.demo.model.entity.member.Member;
+import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.order.Orders;
 import com.finalProject.demo.model.entity.order.Payment;
 import com.finalProject.demo.model.entity.order.Shipping;
@@ -51,7 +53,14 @@ public class OrderController {
 		model4.addAttribute("Payment",payments);
 		return "front/member/order";
 	}
-	
+	//點一下訂單後,查看orderDetail
+	@GetMapping("/member/orderDetail")
+	public String viewOrderDetail(Model model,
+			@RequestParam("id") Long id) {
+		List<OrderDetail> findOrderDetail = ordersService.findOrderDetail(id);
+		model.addAttribute("OrderDetail",findOrderDetail);
+		return "front/member/orderDetail";
+	}
 	
 	
 	//現在的會員是誰
