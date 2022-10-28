@@ -1,21 +1,27 @@
 package com.finalProject.demo.controller.back.productManagement;
 
-import com.finalProject.demo.model.entity.product.Photo;
-import com.finalProject.demo.service.product.DescriptTextService;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import com.finalProject.demo.model.entity.product.Products;
-import com.finalProject.demo.service.product.PhotoService;
-import com.finalProject.demo.service.product.ProductService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.Map;
+import com.finalProject.demo.model.entity.product.Products;
+import com.finalProject.demo.service.product.DescriptTextService;
+import com.finalProject.demo.service.product.PhotoService;
+import com.finalProject.demo.service.product.ProductService;
 
 
 /**
@@ -66,7 +72,9 @@ public class productUpdateDeleteController {
 			@RequestParam(value = "descriptText",required = false) String text,
 			@RequestParam(value = "color",required = false)String color,
 			@RequestParam(value = "size",required = false)String size,
-			@RequestParam("price")Integer price,
+			@RequestParam(value = "name",required=false)String name,
+			@RequestParam(value = "state",required=false)String state,
+			@RequestParam(value = "price",required=false)Integer price,
 			HttpServletRequest request,
 			Map<String,String> msgMap,
 			Model model,
@@ -92,16 +100,30 @@ public class productUpdateDeleteController {
 		String newProductId;
 		String category = request.getParameter("category");
 		String productId = request.getParameter("productId");
-		String changeId = productId.substring(0,4);
+		String series = productId.substring(0,4);
 		char prefix = category.charAt(0);
 		//判斷分類(將acc分類與其他分類分開)
-		List<Products> all = productService.findAll();
 		if (!(prefix=='A')){
-			newProductId=changeId+"-"+size+"-"+color;
+			newProductId=series+"-"+size+"-"+color;
 			if (!productService.existsById(newProductId)) {
-				productService.updateById(newProductId, size, color, price, productId);
-				descriptTextService.updateById(dId,text);
+
+				productService.updateById(newProductId, size, color,state, productId);
+				if(price!=null && !Objects.equals(productService.findById(newProductId).getPrice(), price)) {
+					productService.updateSeriesPrice(price,series);}
+				if(name!=null && !Objects.equals(productService.findById(newProductId).getName(), name)) {
+					productService.updateSeriesName(name,series);}			
+				if(!productService.findById(newProductId).getDescript().getText().equals(text)) {descriptTextService.updateById(dId,text);}
 				msgMap.put("msg","修改商品成功!新的商品ID為:"+newProductId);
+				//當新的id == 舊的 id，代表size color相同，所以檢查其他的有沒有不同
+			}else if (newProductId.equals(productId)) {
+				Integer price2 = productService.findById(productId).getPrice();
+				if(!Objects.equals(price2, price)) {
+					productService.updateSeriesPrice(price,series);}
+				if(!Objects.equals(productService.findById(productId).getName(), name)) {
+					productService.updateSeriesName(name,series);}			
+				if(!productService.findById(productId).getDescript().getText().equals(text)) {descriptTextService.updateById(dId,text);}
+				if (state!=null){productService.updateStateById(state,productId);}
+				msgMap.put("msg","修改商品成功!");
 			}else {
 				ra.addAttribute("msg","商品重複!請重新選擇顏色及尺寸!");
 				return"redirect:/Back/MyProduct/edit/"+productId;
@@ -111,21 +133,48 @@ public class productUpdateDeleteController {
 				size = product.getSize();
 				if (product.getColor()!=null && !(product.getColor().isEmpty())){
 					color = product.getColor();
-					newProductId=changeId+"-"+size+"-"+color;
+					newProductId=series+"-"+size+"-"+color;
 					if (!productService.existsById(newProductId)) {
-						productService.updateById(newProductId, size, color, price, productId);
-						descriptTextService.updateById(dId,text);
+						productService.updateById(newProductId, size, color,state, productId);
+						//如果有更改price name text
+						if(price!=null && !Objects.equals(productService.findById(newProductId).getPrice(), price)) {
+							productService.updateSeriesPrice(price,series);}
+						if(name!=null && !Objects.equals(productService.findById(newProductId).getName(), name)) {
+							productService.updateSeriesName(name,series);}
+						if(!productService.findById(newProductId).getDescript().getText().equals(text)) {descriptTextService.updateById(dId,text);}
 						msgMap.put("msg","修改商品成功!新的商品ID為:"+newProductId);
+					}else if (newProductId.equals(productId)) {
+						Integer price2 = productService.findById(productId).getPrice();
+						if(!Objects.equals(price2, price)) {
+							productService.updateSeriesPrice(price,series);}
+						if(!Objects.equals(productService.findById(productId).getName(), name)) {
+							productService.updateSeriesName(name,series);}
+						if(!productService.findById(productId).getDescript().getText().equals(text)) {descriptTextService.updateById(dId,text);}
+						if (state!=null){productService.updateStateById(state,productId);}
+						msgMap.put("msg","修改商品成功!");
 					}else {
 						ra.addAttribute("msg","商品重複!請重新選擇顏色及尺寸!");
 						return"redirect:/Back/MyProduct/edit/"+productId;
 					}
 				}else{
-					newProductId = changeId+"-"+size;
+					newProductId = series+"-"+size;
 					if (!productService.existsById(newProductId)) {
-						productService.updateById(newProductId, size, color, price, productId);
-						descriptTextService.updateById(dId,text);
+						productService.updateById(newProductId, size, color,state, productId);
+						if(price!=null && !Objects.equals(productService.findById(newProductId).getPrice(), price)) {
+							productService.updateSeriesPrice(price,series);}
+						if(name!=null && !Objects.equals(productService.findById(newProductId).getName(), name)) {
+							productService.updateSeriesName(name,series);}
+						if(!productService.findById(newProductId).getDescript().getText().equals(text)) {descriptTextService.updateById(dId,text);}
 						msgMap.put("msg","修改商品成功!新的商品ID為:"+newProductId);
+					}else if (newProductId.equals(productId)) {
+						Integer price2 = productService.findById(productId).getPrice();
+						if(!Objects.equals(price2, price)) {
+							productService.updateSeriesPrice(price,series);}
+						if(!Objects.equals(productService.findById(productId).getName(), name)) {
+							productService.updateSeriesName(name,series);}
+						if(!productService.findById(productId).getDescript().getText().equals(text)) {descriptTextService.updateById(dId,text);}
+						if (state!=null){productService.updateStateById(state,productId);}
+						msgMap.put("msg","修改商品成功!");
 					}else {
 						ra.addAttribute("msg","商品重複!請重新選擇顏色及尺寸!");
 						return"redirect:/Back/MyProduct/edit/"+productId;
@@ -133,11 +182,24 @@ public class productUpdateDeleteController {
 				}
 			}else {
 				if (product.getColor()!=null && !(product.getColor().isEmpty())){
-					newProductId = changeId+"-"+color;
+					newProductId = series+"-"+color;
 					if (!productService.existsById(newProductId)) {
-						productService.updateById(newProductId, size, color, price, productId);
-						descriptTextService.updateById(dId,text);
+						productService.updateById(newProductId, size, color,state, productId);
+						if(price!=null && !Objects.equals(productService.findById(newProductId).getPrice(), price)) {
+							productService.updateSeriesPrice(price,series);}
+						if(name!=null && !Objects.equals(productService.findById(newProductId).getName(), name)) {
+							productService.updateSeriesName(name,series);}
+						if(!productService.findById(newProductId).getDescript().getText().equals(text)) {descriptTextService.updateById(dId,text);}
 						msgMap.put("msg","修改商品成功!新的商品ID為:"+newProductId);
+					}else if (newProductId.equals(productId)) {
+						Integer price2 = productService.findById(productId).getPrice();
+						if(!Objects.equals(price2, price)) {
+							productService.updateSeriesPrice(price,series);}
+						if(!Objects.equals(productService.findById(productId).getName(), name)) {
+							productService.updateSeriesName(name,series);}
+						if(!productService.findById(productId).getDescript().getText().equals(text)) {descriptTextService.updateById(dId,text);}
+						if (state!=null){productService.updateStateById(state,productId);}
+						msgMap.put("msg","修改商品成功!");
 					}else {
 						ra.addAttribute("msg","商品重複!請重新選擇顏色及尺寸!");
 						return"redirect:/Back/MyProduct/edit/"+productId;
@@ -146,6 +208,7 @@ public class productUpdateDeleteController {
 				}
 			}
 		}
+		
 		return"redirect:/Back/MyProduct";
 	}
 }

@@ -94,7 +94,7 @@
                             <h6 class=" font-weight-medium">商品名稱</h6>
                         </div>
                         <div class="input-group">
-                            <input  type="text" class="form-control p-4 mb-2" value="${product.name}" />
+                            <input  type="text" class="form-control p-4 mb-2" name="name" value="${product.name}" />
                         </div>
                         
                         <div class="d-flex justify-content-between pt-1 mb-2" >
@@ -160,6 +160,16 @@
 	                        </div>
 	                    </div>
                 	</div>
+                    <div class="card-body">
+                        <div class="d-flex align-content-center ">
+                            <h5 class=" font-weight-medium">立即上架</h5><br>
+                            <div class="align-content-center ml-1">
+                                <input type="radio" name="state" value="ON" > ON
+                                <input type="radio" name="state" value="OFF"> OFF
+                                <input type="hidden" id="state" value="${product.productState}">
+                            </div>
+                        </div>
+                    </div>
 	                <div class="creat">
 	                    <input type="submit" value="修改商品">
 
@@ -207,6 +217,8 @@
                 $("input:radio[name='color'][value="+color+"]").attr("checked",true);
                 let size = $("#siz").val();
                 $("input:radio[name='size'][value="+size+"]").attr("checked",true);
+                let state = $("#state").val();
+                $("input:radio[name='state'][value="+state+"]").attr("checked",true);
             });
         </script>
 </body>

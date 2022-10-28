@@ -27,8 +27,8 @@ public class ProductService {
 	ProductRepository productRepository;
 	
 	//add product
-	public Products addProduct(Products product) {
-		return productRepository.save(product);
+	public void addProduct(Products product) {
+		productRepository.save(product);
 	}
 
 
@@ -88,7 +88,7 @@ public class ProductService {
 	//確認product是否存在
 	public Boolean existsById(String id) {
 		boolean exists = productRepository.existsById(id);
-		if(exists == true) {
+		if(exists) {
 			return true;
 		}
 		return false;
@@ -105,9 +105,24 @@ public class ProductService {
 	}
 	
 	//updateById
-	public void updateById(String newId,String size, String color,Integer price,String oldId){
-		productRepository.updateById(newId,size,color,price,oldId);
+	public void updateById(String newId,String size, String color,String state,String oldId){
+		productRepository.updateById(newId,size,color,state,oldId);
+	}
+
+	//UPDATE STATE by id
+	public void updateStateById(String state,String id){
+		productRepository.updateStateById(state,id);
 	}
 	
+	//update price By Series
+	public void updateSeriesPrice(Integer price,String series) {
+		productRepository.updateSeriesPrice(price,series);
+	}
 	
+	//update name By Seriess
+	public void updateSeriesName(String name,String series) {
+			productRepository.updateSeriesName(name,series);
+		}
+	
+
 }
