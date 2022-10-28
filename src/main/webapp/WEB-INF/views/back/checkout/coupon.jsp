@@ -78,19 +78,19 @@
                             <input type="text" class="form-control p-4 mb-2" placeholder="100" name="discountPrice" required />
                         </div>
                         <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
-                            <h6 class=" font-weight-medium">最低消費金額</h6>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" placeholder="2000" name="minimum" required />
-                        </div>
-                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
                             <h6 class=" font-weight-medium">折扣期限</h6>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" placeholder="2022/9/26 00:00" name="dateStart" required />
+                            <input type="text" class="form-control p-4 mb-2" placeholder="2022-9-26 00:00" name="dateStart" required />
                         </div> 
                         <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" placeholder="2022/11/20 23:59" name="dateEnd" required />
+                            <input type="text" class="form-control p-4 mb-2" placeholder="2022-11-20 23:59" name="dateEnd" required />
+                        </div>
+                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
+                            <h6 class=" font-weight-medium">啟用狀態(啟用:ON/未啟用:OFF)</h6>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control p-4 mb-2" placeholder="ON/OFF" name="couponState" value="ON" required />
                         </div>
                         <div class="input-group-append pt-4">
                             <button class="btn btn-primary" >新增折扣碼</button>
@@ -114,10 +114,10 @@
                                         <th>名稱</th>
                                         <th>代碼</th>
                                         <th>折扣金額</th>
-                                        <th>最低消費</th>
+<!--                                         <th>最低消費</th> -->
                                         <th>折扣開始</th>
                                         <th>折扣結束</th>
-                                        <th>結束</th>
+                                        <th>啟用狀態(啟用:ON/未啟用:OFF)</th>
                                       <th>編輯</th>
                                     </tr>
                                 </thead>
@@ -127,12 +127,13 @@
                                           <td class="align-middle">${workCoupon.couponName}</td>
                                         <td class="align-middle">${workCoupon.couponCode}</td>
                                         <td class="align-middle">${workCoupon.discountPrice}</td>
-                                        <td class="align-middle">${workCoupon.minimum}</td>
+<%--                                         <td class="align-middle">${workCoupon.minimum}</td> --%>
                                         <td class="align-middle">${workCoupon.dateStart}</td>
                                         <td class="align-middle">${workCoupon.dateEnd}</td>
-                                        <td class="align-middle"><a onclick="return confirm('確定刪除?')" href="${contextRoot}/Back/deleteCoupon?couponId=${workCoupon.couponId}"><button class="btn btn-sm btn-primary"><i
-                                                    class="fa fa-times"></i></button></a>
-                                        </td>
+                                        <td class="align-middle">${workCoupon.couponState}</td>
+<%--                                         <td class="align-middle"><a onclick="return confirm('確定刪除?')" href="${contextRoot}/Back/deleteCoupon?couponId=${workCoupon.couponId}"><button class="btn btn-sm btn-primary"><i --%>
+<!--                                                     class="fa fa-times"></i></button></a> -->
+<!--                                         </td> -->
                                         <td class="align-middle"><a href="${contextRoot}/Back/editCoupon?couponId=${workCoupon.couponId}"><button class="btn btn-sm btn-primary"><i
                                                     class="fa fa-times"></i></button></a>
                                             </td>
