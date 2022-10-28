@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.entity.order.Coupon;
-import com.finalProject.demo.model.entity.order.Orders;
 import com.finalProject.demo.model.entity.order.Payment;
 import com.finalProject.demo.model.entity.order.Shipping;
 import com.finalProject.demo.service.cart.CartService;

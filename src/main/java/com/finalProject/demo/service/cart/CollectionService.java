@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.cart.Collection;
 import com.finalProject.demo.repository.cart.CollectionRepository;
 

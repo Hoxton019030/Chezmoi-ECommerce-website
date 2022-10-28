@@ -1,9 +1,6 @@
 package com.finalProject.demo.controller.back.productManagement;
 
 
-import com.finalProject.demo.model.entity.product.Products;
-import com.finalProject.demo.service.product.PhotoService;
-import com.finalProject.demo.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -12,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
+import com.finalProject.demo.model.entity.product.Products;
+import com.finalProject.demo.service.product.PhotoService;
+import com.finalProject.demo.service.product.ProductService;
 
 @Controller
 @RequestMapping("Back")

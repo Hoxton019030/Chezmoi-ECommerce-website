@@ -197,6 +197,7 @@
                             </div>
                         </div>
                     </div>
+                    <c:if test="${param.msg!='' && !(empty param.msg) }"><script>confirm("${param.get("msg")}");</script></c:if>
                     <!-- Back to Top -->
                     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
                     <!-- JavaScript Libraries -->

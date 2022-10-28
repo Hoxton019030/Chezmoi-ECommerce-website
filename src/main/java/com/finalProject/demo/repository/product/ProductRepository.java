@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.finalProject.demo.model.entity.product.Products;
-
 public interface ProductRepository extends JpaRepository<Products, String> {
 
 
@@ -22,15 +21,23 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	@Query(value = "TOP 1 * FROM Products WHERE productId=:productId3", nativeQuery = true)
 	public Products findTopByProductId(@Param("productId3") String productId);
 
-	//update product
+	//update product(不能改name & price)
 	@Modifying
-	@Query(value = "UPDATE Products SET productId=:productId1, size=:size1,color=:color1,price=:price1 WHERE productId=:id1",nativeQuery = true)
+	@Query(value = "UPDATE Products SET productId=:productId1, size=:size1,color=:color1 ,productState=:state1 WHERE productId=:id1",nativeQuery = true)
 	public void updateById(
 			@Param("productId1")String newId,
 			@Param("size1")String size,
 			@Param("color1")String color,
-			@Param("price1")Integer price,
+			@Param("state1")String state,
 			@Param("id1")String oldId
+	);
+
+	//UPDATE STATE by id
+	@Modifying
+	@Query(value = "UPDATE Products SET productState=:state2 WHERE productId=:id2",nativeQuery = true)
+	public void updateStateById(
+			@Param("state2")String state,
+			@Param("id2")String id
 	);
 	
 	Optional<List<Products>> findBySeries(String series);
@@ -45,6 +52,17 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 
 //	@Query(value = "TOP 1 * FROM Products WHERE productId=:productId3", nativeQuery = true)
 //	public Products findTopByProductId(@Param("productId3")String productId);
+	
+	//update price  by series
+	@Modifying
+	@Query(value="UPDATE Products SET price=:price2 WHERE series=:series2",nativeQuery = true)
+	public void updateSeriesPrice(@Param("price2")Integer price,@Param("series2")String series);
+	
+	
+	//update name by series
+	@Modifying
+	@Query(value="UPDATE Products SET productName=:name3 WHERE series=:series3",nativeQuery = true)
+	public void updateSeriesName(@Param("name3")String name,@Param("series3")String series);
 
 
 }
