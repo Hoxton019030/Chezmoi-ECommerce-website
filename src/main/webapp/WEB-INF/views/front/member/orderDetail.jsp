@@ -74,44 +74,62 @@
             <table class="table table-bordered text-center mb-5">
                 <thead class="bg-secondary text-dark">
                     <tr>
-                        <th>訂單編號</th>
-                        <th>訂單日期</th>
-                        <th>總金額</th>
-                        <th>訂單狀態</th>
-                        <th>付款方式</th>
-                        <th>運送方式</th>
-                        <th>出貨日期</th>
-                        <th>出貨編號</th>
-                        <th>備註</th>
-
+                        <th>商品編號</th>
+                        <th>商品名稱</th>
+                        <th>商品圖片</th>
+                        <th>顏色</th>
+                        <th>尺寸</th>
+                        <th>數量</th>
+                        <th>單價</th>
+                        <th>小計</th>
                     </tr>
                 </thead>
                 <tbody class="align-middle">
-                <c:set var="count" value="0"></c:set>
-                	<c:forEach items="${Orders}" var="o">
+                <c:forEach items="${OrderDetail}" var="o">
                     <tr>
-                        <td class="align-middle"><a class="text-primary font-weight-medium" 
-                        href="${contextRoot}/member/orderDetail?id=${o.orderId}">${o.orderId}</a></td>
-                        <td class="align-middle">${Date[count]}</td>
+                        <td class="align-middle">${o.productId}</td>
+                        <td class="align-middle">${o.productName}</td>
+                        <td class="align-middle">
+                        <img src="http://localhost:8080/Chezmoi/getMainPic/${o.photoId}" style="width: 5em;"></td>
+                        <td class="align-middle">${o.productColor}</td>
+                        <td class="align-middle">${o.productSize}</td>
+                        <td class="align-middle">${o.quantity}</td>
+                        <td class="align-middle">${o.price}</td>
                         <td class="align-middle">${o.total}</td>
-                        <td class="align-middle">${o.orderState}</td>
-                        <td class="align-middle">${o.payment.paymentWay}</td>
-                        <td class="align-middle">${o.shipping.shippingWay}</td>
-                        <td class="align-middle">${o.shippingDate}</td>
-                        <td class="align-middle">${o.shippingCode}</td>
-                        <td class="align-middle">${o.notes}</td>
-                	<c:set var="count" value="${count+1}" />
                     </tr>
-                    </c:forEach>
+                 </c:forEach>
                 </tbody>
             </table>
+<!--             <table class="table table-bordered text-center mb-0"> -->
+<!--                 <thead class="bg-secondary text-dark"> -->
+<!--                     <tr> -->
+<!--                         <th>產品編號</th> -->
+<!--                         <th>產品名稱</th> -->
+<!--                         <th>顏色</th> -->
+<!--                         <th>尺寸</th> -->
+<!--                         <th>數量</th> -->
+<!--                         <th>單價</th> -->
+<!--                         <th>小計</th> -->
+<!--                     </tr> -->
+<!--                 </thead> -->
+<!--                 <tbody class="align-middle"> -->
+<!--                     <tr> -->
+<!--                         <td class="align-middle">100000</td> -->
+<!--                         <td class="align-middle">細肩bra top</td> -->
+<!--                         <td class="align-middle">黑</td> -->
+<!--                         <td class="align-middle">S</td> -->
+<!--                         <td class="align-middle">1</td> -->
+<!--                         <td class="align-middle">$150</td> -->
+<!--                         <td class="align-middle">$150</td> -->
+<!--                     </tr> -->
+<!--                 </tbody> -->
+<!--             </table> -->
         </div>
 
     </div>
     <!-- Member End -->
 
-
-    <!-- Footer Start -->
+      <!-- Footer Start -->
     <div class="container-fluid  text-dark mt-5 pt-5 border-top-1">
         <p class="text-center"><span
                 style="color: rgb(86, 84, 84); font-size: 12px;">Email：chezmoiiiiiii@gmail.com</span></p>

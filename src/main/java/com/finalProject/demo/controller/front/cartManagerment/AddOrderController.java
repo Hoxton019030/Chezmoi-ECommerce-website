@@ -1,6 +1,8 @@
 package com.finalProject.demo.controller.front.cartManagerment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,10 +89,10 @@ public class AddOrderController {
 	//以及刪除購物車商品
 	@PostMapping("/cartFinish")
 	public String newOrder(@ModelAttribute(name="Orders") Orders orders, 
-			Model model) {
+			Model model1,Model model2) {
 		
 		//find member
-		Member findmember = (Member) model.getAttribute("Member");
+		Member findmember = (Member) model1.getAttribute("Member");
 		Long memberId = findmember.getMemberId();
 		Member member = memberService.findById(memberId);
 		
@@ -133,6 +135,11 @@ public class AddOrderController {
 			String productId = cart.getProductId();
 			cService.deleteById(memberId, productId);
 		}
+		
+		Date orderDate = orders.getOrderDate();
+		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String date = dateFormat.format(orderDate);
+		model2.addAttribute("Date",date);
 		
 		return "front/cart/cart_finish";
 	}
