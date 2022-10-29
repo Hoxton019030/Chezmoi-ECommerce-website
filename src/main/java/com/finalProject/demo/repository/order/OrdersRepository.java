@@ -17,7 +17,14 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
 	List<Orders> findByMember(Member member);
 	
 	@Modifying 
-	@Query(value="update orders set shippingCode = ?2 where orderId = ?1", nativeQuery = true)
+	@Query(value="update orders set orderState = '已出貨', shippingCode = ?2 where orderId = ?1", nativeQuery = true)
 	int updateShippingCodeById(Long orderId, String shippingCode);
 	
+	@Modifying
+	@Query(value="update orders set orderState = '已付款' where orderId = ?1", nativeQuery = true)
+	int updateOrderStateToPaid(Long orderId);
+	
+	
 }
+
+	
