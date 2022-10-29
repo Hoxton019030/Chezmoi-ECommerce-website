@@ -150,14 +150,16 @@ public class AddOrderController {
 		Shipping shipping = newOrder.getShipping();
 		String shippingWay = shipping.getShippingWay();
 		
-		emailSenderSerivce.sendEmail(email, "您於Chezmoi韓國女裝訂購的新訂單，訂單編號:"+newOrderId+"已成立",
-				"親愛的買家"+" "+memberName+" "+"您好，"+"\n"+
-				"您於Chezmoi韓國女裝訂購的新訂單已成立，"+"\n"+
-				"訂單編號:"+newOrderId+"\n"+"訂單日期:"+date+"\n"+
-				"訂單總金額:"+total+"\n"+"訂單狀態:"+orderState+"\n"+
-				"運送方式:"+shippingWay+"\n"+
-				"收款銀行:(822)中國信託"+"\n"+ "收款帳號:chezmoiiiii152"+"\n"+
-				"訂單將於收到款項後出貨，請盡速匯款至收款帳號，謝謝您的配合。");
+		String text1 ="親愛的買家"+" "+memberName+" "+"您好，您於Chezmoi韓國女裝訂購的新訂單已成立，";
+		String text2 ="訂單編號:"+newOrderId;
+		String text3 ="訂單日期:"+date;
+		String text4 ="訂單總金額:"+total;
+		String text5 ="訂單狀態:"+orderState;
+		String text6 ="運送方式:"+shippingWay;
+		String text7 ="收款銀行:(822)中國信託，收款帳號:chezmoiiiii152";
+		String text8 ="訂單將於收到款項後出貨，請盡速匯款至收款帳號，謝謝您的配合。";
+		emailSenderSerivce.sendImageMail(email, "您於Chezmoi韓國女裝訂購的新訂單，訂單編號:"+newOrderId+"已成立",text1,
+				text2,text3,text4,text5,text6,text7,text8);
 		
 		return "front/cart/cart_finish";
 	}
