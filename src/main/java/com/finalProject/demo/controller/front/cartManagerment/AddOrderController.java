@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.finalProject.demo.mail.EmailSenderSerivce;
 import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
-import com.finalProject.demo.model.entity.order.Coupon;
 import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.order.Orders;
 import com.finalProject.demo.model.entity.order.Payment;
@@ -93,7 +92,7 @@ public class AddOrderController {
 	//以及刪除購物車商品
 	@PostMapping("/cartFinish")
 	public String newOrder(@ModelAttribute(name="Orders") Orders orders, 
-			Model model1,Model model2) {
+			Model model1,Model model2,Model model3) {
 		
 		//find member
 		Member findmember = (Member) model1.getAttribute("Member");
@@ -140,12 +139,26 @@ public class AddOrderController {
 		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String date = dateFormat.format(orderDate);
 		model2.addAttribute("Date",date);
+		model3.addAttribute("Member",member);
 		
 		//發送訂單完成信
 		String email = member.getEmail();
+		String memberName = member.getMemberName();
 		Long newOrderId=newOrder.getOrderId();
-		emailSenderSerivce.sendEmail(email, "您的新訂單，訂單編號:"+newOrderId+"已成立",
-				"請盡速付款");
+		Integer total = newOrder.getTotal();
+		String orderState = newOrder.getOrderState();
+		Shipping shipping = newOrder.getShipping();
+		String shippingWay = shipping.getShippingWay();
+		
+		emailSenderSerivce.sendEmail(email, "您於Chezmoi韓國女裝訂購的新訂單，訂單編號:"+newOrderId+"已成立",
+				"親愛的買家"+" "+memberName+" "+"您好，"+"\n"+
+				"您於Chezmoi韓國女裝訂購的新訂單已成立，"+"\n"+
+				"訂單編號:"+newOrderId+"\n"+"訂單日期:"+date+"\n"+
+				"訂單總金額:"+total+"\n"+"訂單狀態:"+orderState+"\n"+
+				"運送方式:"+shippingWay+"\n"+
+				"收款銀行:(822)中國信託"+"\n"+ "收款帳號:chezmoiiiii152"+"\n"+
+				"訂單將於收到款項後出貨，請盡速匯款至收款帳號，謝謝您的配合。");
+		
 		return "front/cart/cart_finish";
 	}
 	

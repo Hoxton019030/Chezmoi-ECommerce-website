@@ -14,7 +14,7 @@
                 <meta content="Free HTML Templates" name="description">
 
                 <!-- Favicon -->
-                <link href="${contextRoot}/img/logo.jpg" rel="icon">
+                <link href="https://img.onl/fUrHvw" rel="icon">
 
                 <!-- Google Web Fonts -->
                 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -70,7 +70,6 @@
                                     <th>數量</th>
                                     <th>單價</th>
                                     <th>小計</th>
-                                    <th>收藏</th>
                                     <th>刪除</th>
 
                                 </tr>
@@ -99,13 +98,8 @@
                                         <td class="align-middle" id="price">${c.price}</td>
                                         <td class="align-middle" id="total">${c.total}</td>
                                         <td class="align-middle"><a
-                                                href="${contextRoot}/cart/addToCollection?id=${c.productId}"><img
-                                                    class="wish" src="${contextRoot}/img/wish.png" alt=""
-                                                    style="width: 1em; height:1em;"></a>
-                                        </td>
-                                        <td class="align-middle"><a
                                                 href="${contextRoot}/cart/deleteFromCart?id=${c.productId}"><img
-                                                    class="delete" src="${contextRoot}/img/delete.png" alt=""
+                                                    class="delete" src="https://img.onl/fl2hzD" alt=""
                                                     style="width: 1em; height: 1em;"></a>
                                         </td>
                                         <c:set var="total" value="${total+c.total}" />
@@ -146,6 +140,15 @@
                                 </div>
                                 <div class="d-flex justify-content-between pt-1">
                                     <h6 class=" font-weight-medium">備註:</h6>
+                                </div>
+                                <div class="d-flex justify-content-between pt-1">
+                                    <h6 class=" font-weight-medium">收款銀行: (822)中國信託</h6>
+                                </div>
+                                <div class="d-flex justify-content-between pt-1">
+                                    <h6 class=" font-weight-medium">收款帳號: chezmoiiiii152</h6>
+                                </div>
+                                <div class="d-flex justify-content-between pt-1">
+                                    <h6 class=" font-weight-medium">訂單將於收到款項後出貨，蝦皮出貨請備註蝦皮帳號</h6>
                                 </div>
                             </div>
                         </div>

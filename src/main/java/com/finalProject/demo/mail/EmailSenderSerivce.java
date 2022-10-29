@@ -24,6 +24,21 @@ public class EmailSenderSerivce{
 		
 		System.out.println("Mail sent succseefully...");
 	}
+	
+//	public void sendHtmlMail(String to, String subject, String content) throws MessagingException {
+//
+//        MimeMessage mimeMailMessage = mailSender.createMimeMessage();
+//
+//        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMailMessage,true);
+//        mimeMessageHelper.setTo(to);
+//        mimeMessageHelper.setSubject(subject);
+//        mimeMessageHelper.setText(content,true);
+//
+//        try {
+//            mailSender.send(mimeMailMessage);
+//        } catch (MailException e) {
+//        }
+//    }
 			
 					
 	
