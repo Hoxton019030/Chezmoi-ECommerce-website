@@ -29,7 +29,7 @@
     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 	<link href="${contextRoot}/css/jquery-ui.css" rel="stylesheet">
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="${contextRoot}/css/style.css" rel="stylesheet">
+    <link href="${contextRoot}/css/back_style.css" rel="stylesheet">
 	
     <style>
         li,
@@ -50,16 +50,18 @@
       <jsp:include page="../layout/topbar.jsp"></jsp:include>
 
     <!-- Navbar Start -->
-    <div class="container-fluid mb-5">
-        <div class="row border-top px-xl-3">
-        <jsp:include page="../layout/navbar.jsp"></jsp:include>
-           
-            <div class="col-lg-9">
-                <div class="col-lg-8 border-secondary  border mb-5" style="padding-left: 0; padding-right:0;">
-                    <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">訂單出貨</h4>
-                                </div>
-                                <div>
+     <div class="container-fluid mb-5">
+                        <div class="row border-top px-xl-3">
+                            <!-- Navbar  -->
+            			<jsp:include page="../layout/navbar.jsp"></jsp:include>
+            
+                            <div class="col-lg-9">
+                                <div class="col-lg-12 border-secondary  border mb-5 mt-3"
+                                    style="padding-left: 0; padding-right:0;">
+                                    <div class="card-header bg-secondary border-0">
+                        				<h4 class="font-weight-semi-bold m-0">訂單出貨</h4>
+                                	</div>
+                                	<div class="card-body border-bottom">
                                     <div class="row">
                                         <!-- column -->
                                         <div class="col-12">
