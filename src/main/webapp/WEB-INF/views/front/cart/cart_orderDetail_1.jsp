@@ -122,28 +122,32 @@
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="shipName" type="text" class="form-control p-4 mb-2"
-                                                    id="inputMemberName" value="" placeholder="彭建華" />
+                                                    id="inputMemberName" value="" placeholder="彭建華" 
+                                                    oninput = "value=value.replace(/[^\u4E00-\u9FA5]/g,'')"/>
                                             </div>
                                             <div class="d-flex justify-content-between pt-1 mb-2">
                                                 <h6 class=" font-weight-medium">收件人電話號碼</h6>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="shipPhone" type="text" class="form-control p-4 mb-2"
-                                                    id="inputMemberPhone" value="" placeholder="09XXXXXXX" />
+                                                    id="inputMemberPhone" value="" placeholder="09XXXXXXX" 
+                                                    oninput = "value=value.replace(/[^\d]/g,'')" maxlength="10" />
                                             </div>
                                             <div class="d-flex justify-content-between pt-1 mb-2">
                                                 <h6 class=" font-weight-medium">7-11 店號</h6>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="storeNumber" class="form-control p-4 mb-2"
-                                                    placeholder="211480" />
+                                                    placeholder="211480" 
+                                                    oninput = "value=value.replace(/[^\d]/g,'')" maxlength="6"/>
                                             </div>
                                             <div class="d-flex justify-content-between pt-1 mb-2">
                                                 <h6 class=" font-weight-medium">7-11 門市名稱</h6>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="storeName" class="form-control p-4 mb-2"
-                                                    placeholder="大強" />
+                                                    placeholder="大強" 
+                                                    oninput = "value=value.replace(/[^\u4E00-\u9FA5]/g,'')"/>
                                             </div>
                                             <a class="text-primary" href="https://emap.pcsc.com.tw/#"
                                                 target="_blank">7-11門市查詢 ( ex: 門市店號：136288 ,
