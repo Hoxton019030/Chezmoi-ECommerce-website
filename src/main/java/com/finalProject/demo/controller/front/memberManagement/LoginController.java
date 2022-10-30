@@ -96,7 +96,7 @@ public class LoginController {
 		// ===================================== 送出：修改使用者資料 =======================================
 		@PostMapping("/member/usersubmit")
 		public String UpdateUser(HttpServletRequest request, 
-				@ModelAttribute("usersubmit")Member member, Model model) {
+				@ModelAttribute(name="usersubmit")Member member, Model model) {
 			System.out.println("===============送出修改按鈕=================");
 			
 			HttpSession session = request.getSession();
@@ -107,12 +107,14 @@ public class LoginController {
 			
 			int isUpdate = mService.updateUser(member);              // 把資料放進去(插入)
 			if(isUpdate > 0) {
+				System.out.println("123");
 //				model = getViewUser(request, model);		// 如果要顯示更新成功這三段就要開啟getViewUser方法
 //				model.addAttribute("Msg", "*更新成功!!");
 //				return "user/user";
 				return "redirect:member/user";						// 使用此return是不會顯示更新成功
 			}
 			else {
+				System.out.println("456");
 				model.addAttribute("Msg", "更新失敗!"); // 畫面顯示：更新失敗!
 				return "front/member/login"; 		   // 返回登入畫面
 			}

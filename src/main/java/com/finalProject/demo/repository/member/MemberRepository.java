@@ -27,7 +27,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 	public List<Member> viewUser(String email, String password);
 
 	//修改會員資料
-	@Query(value = "from Member where memberName = :memberName and birthday = :birthday  and phone = :phone and email = :email")
-	public int updateUser(String memberName, String birthday, String phone, String email);
+	@Query(value = "from Member where memberName= ?1 and birthday =?2 and phone =?3 and email =?4")
+	public Integer updateUser(String memberName, String birthday, String phone, String email);
 	
 }
