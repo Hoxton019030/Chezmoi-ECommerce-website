@@ -59,7 +59,7 @@ public class LoginController {
 					HttpSession session = request.getSession();
 					// 第二步：將想要保存到數據存入session中
 					session.setAttribute("email", resultList.get(0).getEmail()); // 取得那欄位的帳號,從0(陣列)開始,放入session
-					session.setAttribute("password", resultList.get(0).getPassword());
+					session.setAttribute("memberName", resultList.get(0).getMemberName());
 					
 					// 完成了用戶名和密碼保存到session的操作
 					System.out.println("登入成功");
