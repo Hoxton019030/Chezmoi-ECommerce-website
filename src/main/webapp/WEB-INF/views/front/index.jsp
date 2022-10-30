@@ -43,29 +43,34 @@
 
 <body>
 
-    <div class="col-lg-9">
-        <jsp:include page="layout/navbar.jsp"></jsp:include>
+    
+<%--         <jsp:include page="layout/navbar.jsp"></jsp:include> --%>
+<%--          <jsp:include page="layout/navbar2.jsp"></jsp:include> --%>
+  <jsp:include page="layout/navbar3.jsp"></jsp:include>
+  <div class="col-lg-9 " style="padding-right:0px; padding-left:0px; position: relative ;max-width:auto"  >
         <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active" style="height: 410px;">
-                    <img class="img-fluid" src="https://img.onl/0kF9dJ" alt="Image" >
+                <div class="carousel-item active" >
+                    <img class="img-fluid" src=" https://img.onl/RYAXsY " alt="Image" >
+<!--                     https://img.onl/RYAXsY -->
+                    
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 800px;">
-                            <h4 class="text-light text-uppercase font-weight-medium mb-3">Look Book
+                        <div class="p-3 rwdtxt" style="max-width: 100%;">
+                            <h4 class="text-light text-uppercase font-weight-medium mb-3" style="font-size:4em; font-family:Georgia, serif">Look Book
                             </h4>
-                            <h3 class="display-4 text-white font-weight-semi-bold mb-4">All from
+                            <h3 class="display-4 text-white font-weight-semi-bold mb-4" style="font-size:2em; font-family:Georgia, serif;font-style:italic">All from
                                 Korea</h3>
                             <a href="${contextRoot}/shop" class="btn btn-light py-2 px-3">Shop Now</a>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item" style="height: 410px;">
-                    <img class="img-fluid" src="https://img.onl/huL3Xa" alt="Image" >
+                <div class="carousel-item" >
+                    <img class="img-fluid" src="https://img.onl/Gpfinm" alt="Image" >
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 300px;">
-                            <h4 class="text-light text-uppercase font-weight-medium mb-3">Look Book
+                         <div class="p-3" style="max-width: 100%;">
+                            <h4 class="text-light text-uppercase font-weight-medium mb-3" style="font-size:4em; font-family:Georgia, serif">Look Book
                             </h4>
-                            <h3 class="display-4 text-white font-weight-semi-bold mb-4">All from
+                            <h3 class="display-4 text-white font-weight-semi-bold mb-4" style="font-size:2em; font-family:Georgia, serif;font-style:italic">All from
                                 Korea</h3>
                             <a href="${contextRoot}/shop" class="btn btn-light py-2 px-3">Shop Now</a>
                         </div>
@@ -90,97 +95,48 @@
 
     <!-- Products Start -->
     <div class="container-fluid pt-5">
-        <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Weekly Best</span></h2>
+        <div class="text-center" style="padding-top:40px;margin-bottom:20px">
+            <h2 class="section-title px-5"><span class="px-2" style="font-family:Georgia, serif;font-style:italic">Weekly Best</span></h2>
         </div>
-        <div class="row px-xl-5 pb-3">
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Lyon blouse</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6 id="saleprice">$1090</h6>
-                            <h6 class="text-muted ml-2"><del>$1150</del></h6>
+        <div class="container-products align-items-center">
+					<ul class="pros-ul justify-content-around align-items-center">
+						<!-- Shop Product Start -->
 
+						<div class="row px-xl-5 pb-3">
+							<c:forEach var="products" items="${page.content}">
+								<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+									<div class="card product-item border-0 mb-4">
+										<div
+											class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
 
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary
-                                mr-1"></i>Wishlist</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Jasmine blouse</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6 id="saleprice">$1050</h6>
-                            <h6 class="text-muted ml-2"><del>$1080</del></h6>
+											
+											<img class="img-fluid w-300" src="http://localhost:8080/Chezmoi/getMainPic/${products.photo.photoId}" style="height:278; weight:226" alt="">
+										</div>
+										<div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+											<a
+												href="${contextRoot}/shop/productDetail?productId=${products.productId}">
+												<h6 class="text-truncate mb-3">${products.name}</h6>
+											</a>
+											<div class="d-flex justify-content-center">
+												<h6 id="saleprice">${products.price}</h6>
+<!-- 												<h6 class="text-muted ml-2"> -->
+<!-- 													<del>$1150</del> -->
+<!-- 												</h6> -->
 
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary
-                            mr-1"></i>Wishlist</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Bowknot ops</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6 id="saleprice">$1470</h6>
-                            <h6 class="text-muted ml-2"><del>$1510</del></h6>
-
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary
-                            mr-1"></i>Wishlist</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">pinky blouse</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6 id="saleprice">$1230</h6>
-                            <h6 class="text-muted ml-2"><del>$1290</del></h6>
-
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary
-                            mr-1"></i>Wishlist</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-           
-        </div>
+											</div>
+										</div>
+<!-- 										<div class="card-footer d-flex justify-content-between bg-light border"> -->
+<!-- 											<a href="" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary -->
+<!--                                 mr-1"></i>Wishlist</a> -->
+<!-- 											<a href="" class="btn btn-sm text-dark p-0"><i -->
+<!-- 													class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a> -->
+<!-- 										</div> -->
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+					</ul>
+				</div>
     </div>
     <!-- Products End -->
 
@@ -190,8 +146,8 @@
 
     <!-- Products Start -->
     <div class="container-fluid pt-5">
-        <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Just Arrived</span></h2>
+        <div class="text-center "style="padding-top:0px;margin-bottom:20px">
+            <h2 class="section-title px-5"><span class="px-2" style="font-family:Georgia, serif;font-style:italic">Just Arrived</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -206,13 +162,7 @@
                             <!-- <h6 class="text-muted ml-2"><del>$1380</del></h6> -->
                         </div>
                     </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary
-                            mr-1"></i>Wishlist</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
+                   </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
@@ -226,12 +176,7 @@
                             <!-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> -->
                         </div>
                     </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary
-                            mr-1"></i>Wishlist</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -246,12 +191,7 @@
                             <!-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> -->
                         </div>
                     </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary
-                            mr-1"></i>Wishlist</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
+                   
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -266,12 +206,7 @@
                             <!-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> -->
                         </div>
                     </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary
-                            mr-1"></i>Wishlist</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
+                 
                 </div>
             </div>
           

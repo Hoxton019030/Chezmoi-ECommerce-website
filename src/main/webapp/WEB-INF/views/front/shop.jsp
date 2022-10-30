@@ -35,11 +35,11 @@
 
 			<body>
 				<!-- Topbar Start -->
-				<jsp:include page="layout/navbar.jsp"></jsp:include>
+				<jsp:include page="layout/navbar3.jsp"></jsp:include>
 				<br>
 				<!-- category start -->
-				<jsp:include page="layout/category.jsp"></jsp:include>
-				<br>
+<%-- 				<jsp:include page="layout/category.jsp"></jsp:include> --%>
+<!-- 				<br> -->
 				<!-- accounce start -->
 				<jsp:include page="layout/announce.jsp"></jsp:include>
 				<br>

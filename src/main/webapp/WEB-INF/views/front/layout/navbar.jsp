@@ -53,10 +53,11 @@
 						href="${contextRoot}/contact" class="nav-item nav-link">Contact</a>
 				</div>
 				<div class="navbar-nav ml-auto py-0">
-					<a href="Product_set.html" class="nav-item nav-link"><img
-						src="https://img.onl/QpBCS" width="20" height="20"></a> <a
-						href="wish.html" class="nav-item nav-link"><img
-						src="https://img.onl/n7YQO0" width="20" height="20"></a> <a
+<!-- 					<a href="Product_set.html" class="nav-item nav-link"><img -->
+<!-- 						src="https://img.onl/QpBCS" width="20" height="20"></a> <a -->
+<!-- 						href="wish.html" class="nav-item nav-link"><img -->
+<!-- 						src="https://img.onl/n7YQO0" width="20" height="20"></a>  -->
+						<a
 						href="${contextRoot}/cartAll" class="nav-item nav-link"><img
 						src="https://img.onl/Vzb1us" width="20" height="20"></a> <a
 						href="member.html" class="nav-item nav-link"><img

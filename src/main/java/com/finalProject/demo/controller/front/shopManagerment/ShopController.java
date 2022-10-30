@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.finalProject.demo.model.entity.cart.Cart;
+import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.product.Products;
+import com.finalProject.demo.service.cart.CartService;
 import com.finalProject.demo.service.product.PhotoService;
 import com.finalProject.demo.service.product.ProductService;
 import com.finalProject.demo.service.product.ShopService;
@@ -24,6 +27,8 @@ public class ShopController {
 	private ShopService shopService;
 	 ProductService productService;
     PhotoService photoService;
+    @Autowired
+    CartService cartservice;
 	
 	
 	/*
@@ -40,6 +45,14 @@ public class ShopController {
 		return "front/shop";
 		
 	}
+	
+	@GetMapping("/")
+	public String viewIndexProducts(@RequestParam(name="p", defaultValue="1") Integer pageNumber,Model model) {
+		Page<OrderDetail>page=shopService.findByPageIndex(pageNumber);
+		model.addAttribute("page", page);
+		return "front/index";
+	}
+	
 	
 	/*
 	 * 設定按下商品分類可跳出相對應的商品
@@ -64,6 +77,8 @@ public class ShopController {
 		model.addAttribute("productSeries",productSeries);
 		return "front/productDetail";
 	}
+	
+	
 	
 	
 
