@@ -76,4 +76,9 @@ public class OrdersService {
 		return result > 0 ?"建立成功":"建立失敗";
 	}
 	
+	public String editOrderStateToPaid(Long orderId) {
+		int result = ordersRepository.updateOrderStateToPaid(orderId);
+		return result > 0 ?"建立成功":"建立失敗";
+	}
+	
 }

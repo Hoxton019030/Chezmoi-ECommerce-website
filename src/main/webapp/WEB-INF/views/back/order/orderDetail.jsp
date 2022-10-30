@@ -29,7 +29,7 @@
     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 	<link href="${contextRoot}/css/jquery-ui.css" rel="stylesheet">
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="${contextRoot}/css/style.css" rel="stylesheet">
+    <link href="${contextRoot}/css/back_style.css" rel="stylesheet">
 	
     <style>
         li,
@@ -50,16 +50,18 @@
       <jsp:include page="../layout/topbar.jsp"></jsp:include>
 
     <!-- Navbar Start -->
-    <div class="container-fluid mb-5">
-        <div class="row border-top px-xl-3">
-        <jsp:include page="../layout/navbar.jsp"></jsp:include>
-           
-            <div class="col-lg-9">
-                <div class="col-lg-8 border-secondary  border mb-5" style="padding-left: 0; padding-right:0;">
-                    <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">訂單出貨</h4>
-                                </div>
-                                <div>
+     <div class="container-fluid mb-5">
+                        <div class="row border-top px-xl-3">
+                            <!-- Navbar  -->
+            			<jsp:include page="../layout/navbar.jsp"></jsp:include>
+            
+                            <div class="col-lg-9">
+                                <div class="col-lg-12 border-secondary  border mb-5 mt-3"
+                                    style="padding-left: 0; padding-right:0;">
+                                    <div class="card-header bg-secondary border-0">
+                        				<h4 class="font-weight-semi-bold m-0">訂單出貨</h4>
+                                	</div>
+                                	<div class="card-body border-bottom">
                                     <div class="row">
                                         <!-- column -->
                                         <div class="col-12">
@@ -169,24 +171,95 @@
                         if(res==="建立成功"){
                             update();
                         }
-                    })		
+                    })	
+                    
+        
+            			
+                    
                 }
                 function update(){
                     $.ajax({
             	        url: 'http://localhost:8080/Chezmoi/order',
             	        method: 'get',
             	        dataType: 'json',
-            	        data: {}
+            	        data: {}               
                     }).done(function(res){
             	        $('#orders').empty();
             	        for(order of res){
-            		        let shippingInput = '<div id="add' + order.orderId + '"><input type="text" placeholder="請填寫單號"><button onclick="add(\''+order.orderId+'\')">送出</button></div>'
-            		        $('#orders').append('<tr><td>' + '<a href="#" onclick="openDetail('+order.orderId+')">' + order.orderId + '</a>' + '</td><td>' + order.orderDate + '</td><td>' + order.orderState + '</td><td>' + (!order.shippingCode?shippingInput:order.shippingCode) + '</td><td>' + (order?.member?.memberName?order?.member?.memberName:'') + '</td><td>' + order.total + '</td></tr>')
-            	        }
-
+                               
+                            $('#orders').append('<tr><td>' + '<a href="#" onclick="openDetail('+order.orderId+')">' + order.orderId + '</a>' + '</td><td>' + order.orderDate + '</td><td>' + getOrderStateUi(order) + '</td><td>' + getShippingCodeColumeValue(order) + '</td><td>' + (order?.member?.memberName?order?.member?.memberName:'') + '</td><td>' + order.total + '</td></tr>')
+            		            
+                        }
                     }).fail(function(err){
             	        });
-            
+                        
+                }
+
+                function getOrderStateUi(order) {
+                    // 未付款->顯示 "確認付款" 按鈕
+                    // 其他皆顯示DB內容
+
+                    let orderState = order.orderState;
+
+                    if(orderState === '未付款'){
+                        return '<button onclick="payConfirmed(' + order.orderId + ')">確認付款</button>'
+                    }
+                    return orderState 
+
+                }
+
+                function payConfirmed(id){
+                    if (confirm("是否確定已付款?") == true) {
+                        changeToPaid(id);
+                    }
+                }
+
+                function getShippingCodeColumeValue(order) {
+
+                    // 未付款->空
+                    // 已付款->輸入框
+                    // 已出貨->shipping code
+
+                    let orderState = order.orderState;
+
+                    switch(orderState){
+                        case '未付款':
+                            return '';
+                        case '已付款':
+                            return '<div id="add' + order.orderId + '"><input type="text" placeholder="請填寫單號"><button onclick="add(\''+order.orderId+'\')">送出</button></div>';
+                        case '已出貨':
+                            return order.shippingCode;
+                    }
+                    
+                    // let shippingInput = '<div id="add' + order.orderId + '"><input type="text" placeholder="請填寫單號"><button onclick="add(\''+order.orderId+'\')">送出</button></div>'
+                    // if(order.orderState == '未付款') {
+                    //         shippingInput = ''
+                    // } else if(order.orderState == '已付款') {
+                    //         shippingInput = '<div id="add' + order.orderId + '"><input type="text" placeholder="請填寫單號"><button onclick="add(\''+order.orderId+'\')">送出</button></div>'
+                    // }  
+                    // return !order.shippingCode?shippingInput:order.shippingCode
+
+                    
+                }
+
+                function changeToPaid(orderId){
+                    $.ajax({
+                    	url: 'http://localhost:8080/Chezmoi/order/editOrderStateToPaid',
+                    	method: 'put',
+                        dataType:'text',
+                        headers: { 
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json' 
+                        },
+                    	data: JSON.stringify({
+                    		orderId: orderId
+                    	}),// "{orderId:7}""
+                    }).done(function(res){
+                        alert(res);
+                        if(res==="建立成功"){
+                            update();
+                        }
+                    })
                 }
 
                 function openDetail(id){
@@ -204,8 +277,7 @@
                             '<div class="modal-dialog">' +
                                 '<div class="modal-content">' +
                                 '<div class="modal-header">' +
-                                    '<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>' +
-                                    '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
+                                    '<h5 class="modal-title" id="exampleModalLabel">訂單明細</h5>' +
                                     '</div>' +
                                 '<div class="modal-body">' +
                                     '<table class="table v-middle">' + 
@@ -221,9 +293,6 @@
                                             generateDetailTable(orderDetail) +
                                         '</tbody>' +
                                     '</table>' +
-                                '</div>' +
-                                '<div class="modal-footer">' +
-                                    '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
                                 '</div>' +
                                 '</div>' +
                             '</div>'
