@@ -249,8 +249,14 @@
                 <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
                 <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
 
-                <!-- Ajax -->
+                <!-- Ajax & other function -->
                 <script src="${contextRoot}/js/cartAjax.js"></script>
+                
+                <script type="text/javascript">
+                	var cartQuantity = '${cartQuantity}';
+                	console.log(cartQuantity)
+                	 $('.cartQuantity').text(${cartQuantity})
+                </script>
 
             </body>
 

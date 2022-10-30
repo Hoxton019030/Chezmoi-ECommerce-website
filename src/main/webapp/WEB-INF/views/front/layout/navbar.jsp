@@ -57,7 +57,7 @@
 
 		<body>
 			<!-- Topbar Start -->
-			<div class="px-xl-5">
+			<div class="px-xl-5 border-secondary border-bottom">
 				<nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
 
 					<div class="collapse navbar-collapse  justify-content-between" id="navbarCollapse">
