@@ -3,8 +3,10 @@ package com.finalProject.demo.controller.front.memberManagement;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.finalProject.demo.jwt.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.service.member.MemberService;
 
+import static org.hibernate.loader.internal.AliasConstantsHelper.get;
+
 @Controller
 public class LoginController {
 
@@ -27,8 +31,8 @@ public class LoginController {
 	// ================================== 登入頁面 ==================================
 	@GetMapping("/member/login") 								
 	public String login(HttpServletRequest request) {   
-		HttpSession session = request.getSession();
-		Object email = session.getAttribute("email");
+//		HttpSession session = request.getSession();
+//		Object email = session.getAttribute("email");
 //		if (email != null) { 						// 如果已有登入未登入
 //			 return "redirect:index";
 //		} else {
@@ -40,15 +44,15 @@ public class LoginController {
 		@GetMapping("/member/logout")
 		public String logout(HttpServletRequest request) { // 進入方法(login)
 			HttpSession session = request.getSession();    // 使用 session
-			session.removeAttribute("email"); 		       // 刪掉
-			session.removeAttribute("password");
+//			session.removeAttribute("email"); 		       // 刪掉
+//			session.removeAttribute("password");
 			return "redirect:index";
 		}
 		
 	// ================================== 使用者登入：判斷帳密是否正確 ========================
-		@RequestMapping("/member/loginsubmit")
-		public String loginsubmit(HttpServletRequest request, @ModelAttribute(name = "loginsubmit") Member member,
-				RedirectAttributes re) {
+		@PostMapping("/member/loginsubmit")
+		public String loginsubmit(HttpServletRequest request, HttpServletResponse response, @ModelAttribute(name = "loginsubmit") Member member,
+								  RedirectAttributes re) {
 	// ---- 資料傳到SQL ------
 			List<Member> resultList = mService.findLogin(member);
 
@@ -56,15 +60,20 @@ public class LoginController {
 				if (resultList.size() > 0) { 			   // 若資料庫沒有的帳密則登入失敗
 					// 如果登入成功帳密存到Session
 					// 第一步：獲取session
-					HttpSession session = request.getSession();
+//					HttpSession session = request.getSession();
 					// 第二步：將想要保存到數據存入session中
-					session.setAttribute("email", resultList.get(0).getEmail()); // 取得那欄位的帳號,從0(陣列)開始,放入session
-					session.setAttribute("memberName", resultList.get(0).getMemberName());
-					
+//					session.setAttribute("email", resultList.get(0).getEmail()); // 取得那欄位的帳號,從0(陣列)開始,放入session
+//					session.setAttribute("memberName", resultList.get(0).getMemberName());
+
+//					==================================jwt token============================================
+					Member memberLogin = resultList.get(0);
+					String jwtToken = JwtUtil.getJwtToken(memberLogin.getEmail(), memberLogin.getMemberName());
+					response.setHeader("Authorization",jwtToken);
+
 					// 完成了用戶名和密碼保存到session的操作
 					System.out.println("登入成功");
-					return "/front/index";
-				
+					return "redirect:/";
+
 				} else {
 					re.addFlashAttribute("Msg", "登入失敗!"); 			   // 畫面顯示：登入失敗!
 					return "front/member/login"; 				   // 返回登入畫面

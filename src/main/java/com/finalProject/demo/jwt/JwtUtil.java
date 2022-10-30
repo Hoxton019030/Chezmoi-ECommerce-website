@@ -1,35 +1,67 @@
 package com.finalProject.demo.jwt;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import javax.crypto.SecretKey;
-import java.security.Key;
 import java.util.Date;
+import java.util.Objects;
+
 
 @Service
 public class JwtUtil {
 
     public   static final long EXPIRE = 1000*60*60;//有效期限1hr
-    public static final String TOKEN_SECRET = "chezmoi";
+    public static final String TOKEN_SECRET = "####HEYTHEREWELCOMETOCHEZMOIWebtheBestallfromkorea####";//私鑰保存在Server
 
+    /**
+     *
+     * @param email
+     * @param name
+     * @return
+     */
     public static String getJwtToken(String email,String name){
+
 
         byte[] key = Decoders.BASE64.decode((TOKEN_SECRET));
         SecretKey secretKey = Keys.hmacShaKeyFor(key);
         return Jwts.builder()
                 .setHeaderParam("typ","JWT")//標頭
                 .setHeaderParam("alg","HS256")
-                .setSubject("token")
+                .setSubject(name)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+EXPIRE))
                 .claim("email",email)
-                .claim("name",name).signWith(secretKey,SignatureAlgorithm.HS256)
+                .claim("name",name)
+                .signWith(secretKey,SignatureAlgorithm.HS256)
                 .compact();
     }
+
+    public static Claims verify(String token){
+        try {
+            Jws<Claims> claimsJws = Jwts
+                    .parserBuilder()
+                    .setSigningKey(TOKEN_SECRET)
+                    .build()
+                    .parseClaimsJws(token);
+
+            return claimsJws.getBody();
+
+        }catch (JwtException jwtException){
+            jwtException.printStackTrace();
+            //這裡會判斷jwt是否過期，如果過期拋出異常
+            return null;
+        }
+
+
+    }
+    public static String getMemberName(String token){
+        return Objects.requireNonNull(verify(token)).getSubject();
+    }
+
+
+
 
 }
