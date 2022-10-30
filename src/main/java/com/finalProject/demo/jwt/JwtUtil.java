@@ -22,7 +22,7 @@ public class JwtUtil {
      * @param name
      * @return
      */
-    public static String getJwtToken(String email,String name){
+    public static String getJwtToken(String email,String name,Long id){
 
 
         byte[] key = Decoders.BASE64.decode((TOKEN_SECRET));
@@ -35,6 +35,7 @@ public class JwtUtil {
                 .setExpiration(new Date(System.currentTimeMillis()+EXPIRE))
                 .claim("email",email)
                 .claim("name",name)
+                .claim("id",id)
                 .signWith(secretKey,SignatureAlgorithm.HS256)
                 .compact();
     }

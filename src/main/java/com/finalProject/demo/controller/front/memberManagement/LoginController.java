@@ -2,6 +2,7 @@ package com.finalProject.demo.controller.front.memberManagement;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.finalProject.demo.model.entity.member.Member;
@@ -67,10 +67,14 @@ public class LoginController {
 
 //					==================================jwt token============================================
 					Member memberLogin = resultList.get(0);
-					String jwtToken = JwtUtil.getJwtToken(memberLogin.getEmail(), memberLogin.getMemberName());
-					response.setHeader("Authorization",jwtToken);
-
+					String jwtToken = JwtUtil.getJwtToken(memberLogin.getEmail(), memberLogin.getMemberName(),memberLogin.getMemberId());
+					response.setHeader("Authorization", jwtToken);
+					Cookie cookie = new Cookie("token", jwtToken);
+					cookie.setMaxAge(3600*12);
+					cookie.setPath("/Chezmoi"); //設置Domain
+					response.addCookie(cookie);
 					// 完成了用戶名和密碼保存到session的操作
+					System.out.println(jwtToken);
 					System.out.println("登入成功");
 					return "redirect:/";
 
@@ -96,8 +100,8 @@ public class LoginController {
 				return "front/member/user";
 			}else {
 				//表示帳密錯誤 或者Session有問題
-				session.removeAttribute("email"); 	// 刪掉
-				session.removeAttribute("password");
+//				session.removeAttribute("email"); 	// 刪掉
+//				session.removeAttribute("password");
 				return "redirect:index";
 				
 			}

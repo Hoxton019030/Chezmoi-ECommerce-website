@@ -4,6 +4,8 @@ import com.finalProject.demo.jwt.JwtUtil;
 import io.jsonwebtoken.Claims;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
@@ -14,24 +16,41 @@ public class jwtInterceptor implements HandlerInterceptor {
     //請求在進入controller前執行
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        HashMap<String,String> map = new HashMap<>();
         //從http請求頭獲取token
-        String header = request.getHeader("Authorization");
-        if(!header.isEmpty()){
-            if (header.startsWith("Bearer")){
-                String token = header.substring(7);
-                Claims claims = JwtUtil.verify(token);
-                assert claims != null;
-                String name =(String) claims.get("name");
-                System.out.println("username==="+name);
-                if (name!=null){
-                    request.setAttribute("token",token);
+        String token;
+        Cookie[] cookies = request.getCookies();
+        if (cookies.length>0){
+            for (Cookie cookie: cookies){
+                if (cookie.getName().equals("token")){
+                     token = cookie.getValue();
+                    System.out.println(token);
+                    Claims claims = JwtUtil.verify(token);
+                    assert claims != null;
+                    Long memberId =(Long) claims.get("id");
+                    System.out.println("memberId===="+memberId);
+                    if (memberId!=null){
+                        request.setAttribute("id",memberId);
+                    }
                 }
-            } return true;
-        }else {
-            System.out.println("header is empty!!");
-            return  false;
-        }
+            }return  true;
+        }return false;
+
+
+//        if(cookies.length>0 && cookies.){
+////            if (header.startsWith("Bearer")){
+////                String token = header.substring(7);
+////                Claims claims = JwtUtil.verify(token);
+////                assert claims != null;
+////                String name =(String) claims.get("name");
+////                System.out.println("username==="+name);
+////                if (name!=null){
+////                    request.setAttribute("token",token);
+////                }
+////            } return true;
+//        }else {
+//            return  false;
+//        }
+
     }
     //controller之後執行
     @Override
