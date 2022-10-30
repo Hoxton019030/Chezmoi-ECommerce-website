@@ -1,9 +1,12 @@
 package com.finalProject.demo.controller.front.cartManagerment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.finalProject.demo.mail.EmailSenderSerivce;
 import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
-import com.finalProject.demo.model.entity.order.Coupon;
 import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.order.Orders;
 import com.finalProject.demo.model.entity.order.Payment;
@@ -23,6 +26,7 @@ import com.finalProject.demo.service.member.MemberService;
 import com.finalProject.demo.service.order.OrderDetailService;
 import com.finalProject.demo.service.order.OrdersService;
 
+@Lazy
 @Controller
 @SessionAttributes("Member")
 public class AddOrderController {
@@ -39,28 +43,47 @@ public class AddOrderController {
 	@Autowired
 	private OrderDetailService odService;
 	
+	@Autowired
+	private EmailSenderSerivce emailSenderSerivce;
+	
 	//送出空白訂單表單
 	@GetMapping("/cartOrderDetail")
-	public String viewInputOrderDetail(Model model1,Model model2,Model model3){
-		Member member = (Member) model2.getAttribute("Member");
-		model3.addAttribute("Member",member);
-		Long memberId = member.getMemberId();
+	public String viewInputOrderDetail(Model model1,Model model2,Model model3,Model model4,Model model5){
+		Member member = (Member) model1.getAttribute("Member");
+		model2.addAttribute("Member",member);
 		List<Cart> findCart = cService.findByMemberId(member);
 		if(findCart.size()==0) {
 			return "front/cart/cartNotFound";
 		}
-		Orders order = oService.findTopOrder();
-		model1.addAttribute("Orders",order);
+		Orders topOrder = oService.findTopOrder();
+		if(topOrder == null) {
+			return "redirect:/cartOrderDetail";
+		}
+		model3.addAttribute("Orders",topOrder);
+		Payment payment = topOrder.getPayment();
+		model4.addAttribute("Payment",payment);
+		Shipping shipping = topOrder.getShipping();
+		model5.addAttribute("Shipping",shipping);
 		return "front/cart/cart_orderDetail_1";
 	}
 	
 	//送出空白訂單表單
 		@GetMapping("/cartOrderDetail#loaded")
-		public String viewInputOrderDetailLoad(Model model1,Model model2,Model model3){
-			Member member = (Member) model2.getAttribute("Member");
-			model3.addAttribute("Member",member);
+		public String viewInputOrderDetailLoad(Model model1,Model model2,Model model3,Model model4,Model model5){
+			Member member = (Member) model1.getAttribute("Member");
+			model2.addAttribute("Member",member);
+			List<Cart> findCart = cService.findByMemberId(member);
+			if(findCart.size()==0) {
+				return "front/cart/cartNotFound";
+			}
 			Orders order = oService.findTopOrder();
-			model1.addAttribute("Orders",order);
+			model3.addAttribute("Orders",order);
+			Orders topOrder = oService.findTopOrder();
+			Payment payment = topOrder.getPayment();
+			model4.addAttribute("Payment",payment);
+			Shipping shipping = topOrder.getShipping();
+			model5.addAttribute("Shipping",shipping);
+			
 			return "front/cart/cart_orderDetail_1";
 		}
 	
@@ -69,26 +92,22 @@ public class AddOrderController {
 	//以及刪除購物車商品
 	@PostMapping("/cartFinish")
 	public String newOrder(@ModelAttribute(name="Orders") Orders orders, 
-			Model model) {
+			Model model1,Model model2,Model model3) {
 		
 		//find member
-		Member member = (Member) model.getAttribute("Member");
-		Long memberId = member.getMemberId();
+		Member findmember = (Member) model1.getAttribute("Member");
+		Long memberId = findmember.getMemberId();
+		Member member = memberService.findById(memberId);
 		
 		//add new order
 		Orders topOrder = oService.findTopOrder();
-		Long orderId = topOrder.getOrderId();
-		Payment payment = topOrder.getPayment();
-		Shipping shipping = topOrder.getShipping();
-		Integer total = topOrder.getTotal();
-		Coupon coupon = topOrder.getCoupon();
-		orders.setOrderId(orderId);
+		orders.setOrderId(topOrder.getOrderId());
 		orders.setMember(member);
 		orders.setOrderState("未付款");
-		orders.setPayment(payment);
-		orders.setShipping(shipping);
-		orders.setTotal(total);
-		orders.setCoupon(coupon);
+		orders.setPayment(topOrder.getPayment());
+		orders.setShipping(topOrder.getShipping());
+		orders.setTotal(topOrder.getTotal());
+		orders.setCoupon(topOrder.getCoupon());
 		Orders newOrder = oService.insert(orders);
 	
 		//add new orderDetail
@@ -99,7 +118,7 @@ public class AddOrderController {
 			orderDetail.setOrderId(newOrder.getOrderId());
 			orderDetail.setProductId(cart.getProductId());
 			orderDetail.setProductName(cart.getProductName());
-//			orderDetail.setPhotoId(cart.getPhotoId());
+			orderDetail.setPhotoId(cart.getPhotoId());
 			orderDetail.setProductColor(cart.getProductColor());
 			orderDetail.setProductSize(cart.getProductSize());
 			orderDetail.setQuantity(cart.getQuantity());
@@ -115,6 +134,33 @@ public class AddOrderController {
 			cService.deleteById(memberId, productId);
 		}
 		
+		//訂單完成頁面日期格式調整
+		Date orderDate = orders.getOrderDate();
+		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String date = dateFormat.format(orderDate);
+		model2.addAttribute("Date",date);
+		model3.addAttribute("Member",member);
+		
+		//發送訂單完成信
+		String email = member.getEmail();
+		String memberName = member.getMemberName();
+		Long newOrderId=newOrder.getOrderId();
+		Integer total = newOrder.getTotal();
+		String orderState = newOrder.getOrderState();
+		Shipping shipping = newOrder.getShipping();
+		String shippingWay = shipping.getShippingWay();
+		
+		String text1 ="親愛的買家"+" "+memberName+" "+"您好，您於Chezmoi韓國女裝訂購的新訂單已成立，";
+		String text2 ="訂單編號:"+newOrderId;
+		String text3 ="訂單日期:"+date;
+		String text4 ="訂單總金額:"+total;
+		String text5 ="訂單狀態:"+orderState;
+		String text6 ="運送方式:"+shippingWay;
+		String text7 ="收款銀行:(822)中國信託，收款帳號:chezmoiiiii152";
+		String text8 ="訂單將於收到款項後出貨，請盡速匯款至收款帳號，謝謝您的配合。";
+		emailSenderSerivce.sendImageMail(email, "您於Chezmoi韓國女裝訂購的新訂單，訂單編號:"+newOrderId+"已成立",text1,
+				text2,text3,text4,text5,text6,text7,text8);
+		
 		return "front/cart/cart_finish";
 	}
 	
@@ -125,28 +171,6 @@ public class AddOrderController {
 		return memberLogin;
 	}
 	
-	//將選好的付款方式顯示在orderDetail
-		@ModelAttribute("Payment")
-		public Payment findPayment(Model model) {
-			Orders topOrder = oService.findTopOrder();
-			Payment payment = topOrder.getPayment();
-			return payment;
-		}
-		
-		//將選好的運送方式顯示在orderDetail
-		@ModelAttribute("Shipping")
-		public Shipping findShipping() {
-			Orders topOrder = oService.findTopOrder();
-			Shipping shipping = topOrder.getShipping();
-			return shipping;
-		}
-		
-		//將總金額顯示在orderDetail
-		@ModelAttribute("Order")
-		public Orders findTotal() {
-			Orders topOrder = oService.findTopOrder();
-			return topOrder;
-		}
 		
 	
 }

@@ -39,7 +39,7 @@ public class AddToCartController {
 		Integer price = product.getPrice();
 		String productName = product.getName();
 		Photo photo = product.getPhoto();
-//		Long photoId = photo.getPhotoId();
+		Long photoId = photo.getPhotoId();
 		String productColor = product.getColor();
 		String productSize = product.getSize();
 		Cart findCart = cartService.findById(memberId, productId);
@@ -48,7 +48,7 @@ public class AddToCartController {
 			cart.setMemberId(memberId);
 			cart.setProductId(productId);
 			cart.setProductName(productName);
-//			cart.setPhotoId(photoId);
+			cart.setPhotoId(photoId);
 			cart.setProductColor(productColor);
 			cart.setProductSize(productSize);
 			cart.setQuantity(1);
@@ -58,7 +58,7 @@ public class AddToCartController {
 			return "redirect:/shop";
 		}else {
 			findCart.setProductName(productName);
-//			findCart.setPhotoId(photoId);
+			findCart.setPhotoId(photoId);
 			findCart.setProductColor(productColor);
 			findCart.setProductSize(productSize);
 			Integer quantity = findCart.getQuantity();

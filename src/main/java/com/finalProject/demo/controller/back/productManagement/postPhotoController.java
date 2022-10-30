@@ -1,25 +1,17 @@
 package com.finalProject.demo.controller.back.productManagement;
 
-import com.finalProject.demo.model.entity.product.Photo;
-import com.finalProject.demo.model.entity.product.Products;
-import com.finalProject.demo.service.product.PhotoService;
-import com.finalProject.demo.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.util.List;
+import com.finalProject.demo.model.entity.product.Photo;
+import com.finalProject.demo.service.product.PhotoService;
+import com.finalProject.demo.service.product.ProductService;
 
 @Controller
 public class postPhotoController {

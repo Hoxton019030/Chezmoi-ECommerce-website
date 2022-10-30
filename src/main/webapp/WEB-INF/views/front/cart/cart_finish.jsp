@@ -14,7 +14,7 @@
                 <meta content="Free HTML Templates" name="description">
 
                 <!-- Favicon -->
-                <link href="${contextRoot}/img/logo.jpg" rel="icon">
+                <link href="https://img.onl/fUrHvw" rel="icon">
 
                 <!-- Google Web Fonts -->
                 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -69,8 +69,7 @@
                         </div>
                         <div class="row px-xl-5">
 
-
-                            <div class="col-lg-8 border-secondary  border mb-2"
+                            <div class="col-lg-8 border-secondary  border"
                                 style="padding-left: 0; padding-right:0;">
                                 <div class="card-header bg-secondary border-0">
                                     <h4 class="font-weight-semi-bold m-0">訂單資料</h4>
@@ -83,7 +82,7 @@
                                     </div>
                                     <div class="d-flex justify-content-between pt-1 mb-2">
                                         <h6 class=" font-weight-medium">下單時間:
-                                            <c:out value="${Orders.orderDate}" />
+                                            <c:out value="${Date}" />
                                         </h6>
                                     </div>
                                 </div>
@@ -103,15 +102,22 @@
                                 </div>
                             </div>
                             <div class=" border-0">
-                                <h5 class="font-weight-medium pt-1 mb-2">我們已發送訂單明細至您的電子信箱:</h5>
-                                <div class="d-flex justify-content-between pt-1 mb-2">
+                            <div class="d-flex pt-1">
+                                <h6 class="font-weight-medium pt-1 mb-2">我們已發送訂單明細至您的電子信箱: </h6>
+                                <h6 class="font-weight-medium pt-1 mb-2 text-primary"><c:out value="${Member.email}" /></h6>
+                              </div>
+                                <div class="d-flex pt-1">
                                     <h6 class=" font-weight-medium">將於確認您的款項後出貨,出貨進度可至<a
-                                            class="text-primary font-weight-medium" href="orderDetail.html"
-                                            target="_blank">訂單明細</a></h6>
+                                            class="text-primary font-weight-medium" href="${contextRoot}/member/order"
+                                            >訂單查詢</a></h6>
 
-                                    <h6 class="font-weight-medium">查詢</h6>
+                                    <h6 class="font-weight-medium">查看,</h6>
+                                    <h6 class=" font-weight-medium">蝦皮出貨請至<a
+                                            class="text-primary font-weight-medium" href="https://shopee.tw/product/7915556/4083302459/"
+                                            >chezmoi蝦皮賣場</a></h6>
+
+                                    <h6 class="font-weight-medium">下單</h6>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -120,35 +126,45 @@
                 <!-- Footer Start -->
                  <jsp:include page="../layout/footer.jsp"></jsp:include>
                 <!-- Back to Top -->
-                <a href="#" class="btn btn-primary back-to-top" style="margin-right: 0px"><i
-                        class="fa fa-angle-double-up"></i></a>
-
-                <!-- Footer End -->
-
-
-                <!-- Back to Top -->
                 <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
+                <!--JavaScript & Jquery-->
+                <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
                 <!-- JavaScript Libraries -->
                 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-                <script src="lib/easing/easing.min.js"></script>
-                <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-                <!-- Contact Javascript File -->
-                <script src="mail/jqBootstrapValidation.min.js"></script>
-                <script src="mail/contact.js"></script>
+                <script src="${contextRoot}/lib/easing/easing.min.js"></script>
+                <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
 
                 <!-- Template Javascript -->
-                <script src="js/main.js"></script>
+                <script src="${contextRoot}/js/main.js" type="text/javascript"></script>
 
+                <!-- Contact Jquery File -->
+                <script src="${contextRoot}/js/jquery-3.6.1.min.js" type="text/javascript"></script>
+
+                <!-- Contact Javascript File -->
+                <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
+                <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
+                
                 <script type="text/javascript">
-                    window.addEventListener('popstate', function (event) {
-                        history.pushState(null, document.title, location.href);
-                    });
-
+                //防止使用者重新整理頁面
+                document.onkeydown = function(e) {
+                	e = window.event || e;
+                    var k = e.keyCode;
+                    if ((e.ctrlKey == true && k == 82) || (k == 116)
+                            || (e.ctrlKey == true && k == 116)||k==114) {
+                        e.keyCode = 0;
+                        e.returnValue = false;
+                        e.cancelBubble = true;
+                        return false;
+                    }
+                };
+                
+                window.history.forward(1);
+                
                 </script>
+
             </body>
 
             </html>

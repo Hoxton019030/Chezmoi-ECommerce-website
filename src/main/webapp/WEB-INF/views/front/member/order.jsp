@@ -15,7 +15,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="${contextRoot}/img/logo.jpg" rel="icon">
+    <link href="https://img.onl/fUrHvw" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -35,31 +35,9 @@
 
 <body>
 
-    <!-- Topbar Start -->
-    <div class="px-xl-5 border">
-        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-            <div class="collapse navbar-collapse  justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav mr-auto align-items-center py-0">
-                    <a href="index.html" class="nav-item nav-link active"><img src="${contextRoot}/img/logo.jpg" width="50"
-                            height="50">
-                    </a>
-                    <a href="shop.html" class="nav-item nav-link">Shop</a>
-                    <a href="detail.html" class="nav-item nav-link">Notice</a>
-                    <a href="https://www.instagram.com/chezmoiiiiiii/?hl=en" class="nav-item nav-link"
-                        target="_blank">Instagram</a>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
-                </div>
-                <div class="navbar-nav ml-auto py-0">
-                    <a href="Product_set.html" class="nav-item nav-link"><img src="${contextRoot}/img/set.png" width="20"
-                            height="20"></a>
-                    <a href="wish.html" class="nav-item nav-link"><img src="${contextRoot}/img/wish.png" width="20" height="20"></a>
-                    <a href="cart.html" class="nav-item nav-link"><img src="${contextRoot}/img/cart.png" width="20" height="20"></a>
-                    <a href="member.html" class="nav-item nav-link"><img src="${contextRoot}/img/user.png" width="20" height="20"></a>
-                </div>
-               </div>
-        </nav>
-    </div>
-    <!-- Topbar End -->
+       <!-- Topbar Start -->
+       <jsp:include page="../layout/navbar.jsp"></jsp:include>
+       <!-- Topbar End -->
 
 
 
@@ -78,7 +56,7 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="member.html" class="nav-item nav-link">會員資料查詢</a>
-                            <a href="order.html" class="nav-item nav-link">訂單查詢</a>
+                            <a href="${contextRoot}/member/order" class="nav-item nav-link">訂單查詢</a>
                             <a href="messages.html" class="nav-item nav-link">留言板</a>
                         </div>
                     </div>
@@ -98,6 +76,7 @@
                     <tr>
                         <th>訂單編號</th>
                         <th>訂單日期</th>
+                        <th>總金額</th>
                         <th>訂單狀態</th>
                         <th>付款方式</th>
                         <th>運送方式</th>
@@ -108,16 +87,20 @@
                     </tr>
                 </thead>
                 <tbody class="align-middle">
+                <c:set var="count" value="0"></c:set>
                 	<c:forEach items="${Orders}" var="o">
                     <tr>
-                        <td class="align-middle"><a class="text-primary font-weight-medium" href="orderDetail.html">${o.orderId}</a></td>
-                        <td class="align-middle">${o.orderDate}</td>
+                        <td class="align-middle"><a class="text-primary font-weight-medium" 
+                        href="${contextRoot}/member/orderDetail?id=${o.orderId}">${o.orderId}</a></td>
+                        <td class="align-middle">${Date[count]}</td>
+                        <td class="align-middle">${o.total}</td>
                         <td class="align-middle">${o.orderState}</td>
-                        <td class="align-middle">${o.shipping}</td>
-                        <td class="align-middle">${o.payment}</td>
+                        <td class="align-middle">${o.payment.paymentWay}</td>
+                        <td class="align-middle">${o.shipping.shippingWay}</td>
                         <td class="align-middle">${o.shippingDate}</td>
                         <td class="align-middle">${o.shippingCode}</td>
                         <td class="align-middle">${o.notes}</td>
+                	<c:set var="count" value="${count+1}" />
                     </tr>
                     </c:forEach>
                 </tbody>

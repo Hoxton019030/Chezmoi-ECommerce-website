@@ -14,7 +14,7 @@
                 <meta content="Free HTML Templates" name="description">
 
                 <!-- Favicon -->
-                <link href="${contextRoot}/img/logo.jpg" rel="icon">
+                <link href="https://img.onl/fUrHvw" rel="icon">
 
                 <!-- Google Web Fonts -->
                 <link rel="preconnect" href="https://fonts.gstatic.com">

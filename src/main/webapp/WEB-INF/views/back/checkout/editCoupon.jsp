@@ -30,10 +30,8 @@
     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
 
-    <link href="${contextRoot}/css/style.css" rel="stylesheet">
-    <link href="${contextRoot}/css/admin_style.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
+     <!-- Customized Bootstrap Stylesheet -->
+    <link href="${contextRoot}/css/back_style.css" rel="stylesheet">
 
     <style>
         li,
@@ -51,9 +49,10 @@
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-3">
         <jsp:include page="../layout/navbar.jsp"></jsp:include>
-            <div class="row col-lg-9 justify-content-center pl-0">
+        
+            <div class="col-lg-8 justify-content-center pl-0">
 
-                <div class="col-lg-8 border-secondary border mb-5 mt-3 mr-3" style="padding-left: 0; padding-right:0;">
+                <div class="col-lg-10 border-secondary border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
                     <div class="card-header border bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">折扣碼設定</h4>
                     </div>
@@ -102,6 +101,8 @@
                     </div>
               </form:form>
                 </div>
+            </div>
+            </div>
             </div>
             <!-- Back to Top -->
             <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

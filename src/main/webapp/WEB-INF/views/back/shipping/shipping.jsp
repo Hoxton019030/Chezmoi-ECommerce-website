@@ -133,7 +133,6 @@
                                             <th>運費</th>
                                             <th>啟用</th>
                                             <th>修改</th>
-                                            <th>刪除</th>
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
@@ -146,8 +145,6 @@
 <!--                                                 <input type="checkbox" id="switch1" /><label for="switch1" class="mt-2">Toggle</label>  -->
                                                 <td><a href="${contextRoot}/back/updateShipping?id=${s.shippingId}"
                                                         class="btn btn-primary">修改</a></td>
-                                                <td><a href="${contextRoot}/back/deleteShipping?id=${s.shippingId}"
-                                                        class="btn btn-primary">刪除</a></td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>

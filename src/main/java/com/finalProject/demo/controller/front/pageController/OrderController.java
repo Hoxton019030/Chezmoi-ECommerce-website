@@ -1,18 +1,20 @@
 package com.finalProject.demo.controller.front.pageController;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
-import javax.persistence.criteria.Order;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.finalProject.demo.model.entity.member.Member;
+import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.order.Orders;
 import com.finalProject.demo.model.entity.order.Payment;
 import com.finalProject.demo.model.entity.order.Shipping;
@@ -27,10 +29,18 @@ public class OrderController {
 	
 	//顯示所有訂單
 	@GetMapping("/member/order")
-	public String viewAllOrder(Model model1,Model model2,Model model3,Model model4) {
+	public String viewAllOrder(Model model1,Model model2,Model model3,Model model4,Model model5) {
 		Member member=(Member) model1.getAttribute("Member");
 		List<Orders> orders = ordersService.findOrderByMember(member);
+		List<String> dates = new ArrayList<>();
 		model2.addAttribute("Orders",orders);
+		for(Orders order: orders) {
+			Date orderDate = order.getOrderDate();
+			 SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			 String date = dateFormat.format(orderDate);
+			 dates.add(date);
+		}
+		model5.addAttribute("Date",dates);
 		List<Shipping> shippings = new ArrayList<>();
 		List<Payment> payments = new ArrayList<>();
 		for(Orders order:orders) {
@@ -43,7 +53,14 @@ public class OrderController {
 		model4.addAttribute("Payment",payments);
 		return "front/member/order";
 	}
-	
+	//點一下訂單後,查看orderDetail
+	@GetMapping("/member/orderDetail")
+	public String viewOrderDetail(Model model,
+			@RequestParam("id") Long id) {
+		List<OrderDetail> findOrderDetail = ordersService.findOrderDetail(id);
+		model.addAttribute("OrderDetail",findOrderDetail);
+		return "front/member/orderDetail";
+	}
 	
 	
 	//現在的會員是誰

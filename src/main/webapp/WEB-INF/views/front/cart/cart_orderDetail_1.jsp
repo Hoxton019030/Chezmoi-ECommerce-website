@@ -15,7 +15,7 @@
 <!--                 <meta http-equiv="refresh" content="1"> -->
 
                 <!-- Favicon -->
-                <link href="${contextRoot}/img/logo.jpg" rel="icon">
+                <link href="https://img.onl/fUrHvw" rel="icon">
 
                 <!-- Google Web Fonts -->
                 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -73,16 +73,16 @@
                                     <div class="card-body">
                                         <div class="d-flex pt-1 mb-2">
                                             <h6 class="font-weight-medium">客戶名稱: </h6>
-                                            <h6 class="font-weight-medium ml-1" id="memberName">${Member.memberName}
+                                            <h6 class="font-weight-medium ml-1" id="memberName">${Orders.member.memberName}
                                             </h6>
                                         </div>
                                         <div class="d-flex pt-1 mb-2">
                                             <h6 class="font-weight-medium">電話號碼:</h6>
-                                            <h6 class="font-weight-medium ml-1" id="memberPhone">${Member.phone}</h6>
+                                            <h6 class="font-weight-medium ml-1" id="memberPhone">${Orders.member.phone}</h6>
                                         </div>
                                         <div class="d-flex pt-1 ">
                                             <h6 class="font-weight-medium">電子信箱:</h6>
-                                            <h6 class="font-weight-medium ml-1">${Member.email}</h6>
+                                            <h6 class="font-weight-medium ml-1">${Orders.member.email}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -100,6 +100,12 @@
                                                         placeholder="想通知賣家的話.." />
                                                 </div>
                                             </form>
+                                             <div class="d-flex pt-3">
+                                            <h6 class="font-weight-medium text-primary">蝦皮出貨請備註蝦皮帳號:</h6>
+                                            </div>
+                                             <div class="d-flex pt-1 mb-2">
+                                            <h6 class="font-weight-medium">例如:我的蝦皮帳號是:Chezmoiiiiiii</h6>
+                                            </div>
                                         </div>
 
 
@@ -122,28 +128,32 @@
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="shipName" type="text" class="form-control p-4 mb-2"
-                                                    id="inputMemberName" value="" placeholder="彭建華" />
+                                                    id="inputMemberName" value="" placeholder="彭建華" 
+                                                    oninput = "value=value.replace(/[^\u4E00-\u9FA5]/g,'')"/>
                                             </div>
                                             <div class="d-flex justify-content-between pt-1 mb-2">
                                                 <h6 class=" font-weight-medium">收件人電話號碼</h6>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="shipPhone" type="text" class="form-control p-4 mb-2"
-                                                    id="inputMemberPhone" value="" placeholder="09XXXXXXX" />
+                                                    id="inputMemberPhone" value="" placeholder="09XXXXXXX" 
+                                                    oninput = "value=value.replace(/[^\d]/g,'')" maxlength="10" />
                                             </div>
                                             <div class="d-flex justify-content-between pt-1 mb-2">
-                                                <h6 class=" font-weight-medium">7-11 店號</h6>
+                                                <h6 class=" font-weight-medium">7-11 店號(蝦皮出貨請不用填寫)</h6>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="storeNumber" class="form-control p-4 mb-2"
-                                                    placeholder="211480" />
+                                                    placeholder="211480" 
+                                                    oninput = "value=value.replace(/[^\d]/g,'')" maxlength="6"/>
                                             </div>
                                             <div class="d-flex justify-content-between pt-1 mb-2">
-                                                <h6 class=" font-weight-medium">7-11 門市名稱</h6>
+                                                <h6 class=" font-weight-medium">7-11 門市名稱(蝦皮出貨請不用填寫)</h6>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="storeName" class="form-control p-4 mb-2"
-                                                    placeholder="大強" />
+                                                    placeholder="大強" 
+                                                    oninput = "value=value.replace(/[^\u4E00-\u9FA5]/g,'')"/>
                                             </div>
                                             <a class="text-primary" href="https://emap.pcsc.com.tw/#"
                                                 target="_blank">7-11門市查詢 ( ex: 門市店號：136288 ,
