@@ -67,11 +67,11 @@ public class CouponController {
 		return "redirect:/Back/Coupon";
 	}
 	
-	@RequestMapping("/deleteCoupon")
-	public String deleteCoupon(@RequestParam("couponId")Integer couponId) {
-		cService.deleteById(couponId);
-		return "redirect:/Back/Coupon";
-	}
+//	@RequestMapping("/deleteCoupon")
+//	public String deleteCoupon(@RequestParam("couponId")Integer couponId) {
+//		cService.deleteById(couponId);
+//		return "redirect:/Back/Coupon";
+//	}
 	
 	
 

@@ -36,12 +36,12 @@ public class Coupon {
 	@Column(name = "couponState")
 	private String couponState;
 	
-	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="dateStart", columnDefinition = "datetime")
 	private Date dateStart;
 	
-	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="dateEnd" , columnDefinition = "datetime")
 	private Date dateEnd;

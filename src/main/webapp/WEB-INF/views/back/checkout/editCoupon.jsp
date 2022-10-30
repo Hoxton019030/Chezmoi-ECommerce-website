@@ -80,12 +80,6 @@
                             <input type="text" class="form-control p-4 mb-2" id="discountPrice" name="discountPrice" value="${edit.discountPrice}" required />
                         </div>
                         <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
-                            <h6 class=" font-weight-medium">最低消費金額</h6>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" id="minimum" name="minimum" value="${edit.minimum}" required />
-                        </div>
-                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
                             <h6 class=" font-weight-medium">折扣期限</h6>
                         </div>
                         <div class="input-group">
@@ -93,6 +87,12 @@
                         </div> 
                         <div class="input-group">
                             <input type="text" class="form-control p-4 mb-2" placeholder="2022/11/20 23:59" id="dateEnd" name="dateEnd" value="${edit.dateEnd}" required />
+                        </div>
+                        <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
+                            <h6 class=" font-weight-medium">啟用狀態(啟用:ON/未啟用:OFF)</h6>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control p-4 mb-2" id="couponState" name="couponState" value="${edit.couponState}" required />
                         </div>
                         <div class="input-group-append pt-4">
                         	<input type="submit" class="btn btn-primary" value="新增折扣碼">
