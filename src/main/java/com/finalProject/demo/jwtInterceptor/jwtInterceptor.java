@@ -22,7 +22,7 @@ public class jwtInterceptor implements HandlerInterceptor {
         if (cookies.length>0){
             for (Cookie cookie: cookies){
                 if (!cookie.getName().equals("token")){
-                	response.sendRedirect(request.getContextPath()+"/member/login");
+//                	response.sendRedirect(request.getContextPath()+"/member/login");
                      return false;
                     }
                 if(cookie.getName().equals("token")) {

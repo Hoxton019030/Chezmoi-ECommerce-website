@@ -53,6 +53,10 @@ public class JwtUtil {
         }catch (JwtException jwtException){
             jwtException.printStackTrace();
             //這裡會判斷jwt是否過期，如果過期拋出異常
+            //1.refresh token
+            //2.return 頁面 String
+            
+            
             return null;
         }
 
