@@ -46,7 +46,7 @@ public class LoginController {
 		}
 		
 	// ================================== 使用者登入：判斷帳密是否正確 ========================
-		@RequestMapping("/member/loginsubmit")
+		@PostMapping("/member/loginsubmit")
 		public String loginsubmit(HttpServletRequest request, @ModelAttribute(name = "loginsubmit") Member member,
 				RedirectAttributes re) {
 	// ---- 資料傳到SQL ------
