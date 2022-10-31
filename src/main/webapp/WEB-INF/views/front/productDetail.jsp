@@ -95,7 +95,7 @@
 						<span>color</span>
 													<c:forEach var="Product" items="${productSeries}">
 						<span class="color-select">
-							<button class="sele-btn" type="button">${Product.color}</button>
+							<button class="sele-btn" type="button" id="color">${Product.color}</button>
 							<!-- 							<button class="sele-btn" type="button">sora</button> -->
 							<!-- 							<button class="sele-btn" type="button">navy</button> -->
 						</span>
@@ -121,7 +121,7 @@
 					</div>
 					<div class="addTo">
 						<div class="add-inner">
-							<button class="add-btn1 add-btn-text">Add Cart</button>
+						<a href="${contextRoot}/shop/addToCart?id=${Product.productId}"><button class="add-btn1 add-btn-text">Add Cart</button></a>
 							<button class="add-btn2 add-btn-text">BUY NOW</button>
 						</div>
 					</div>
@@ -179,6 +179,30 @@
 
 	<!-- Footer Start -->
 	<jsp:include page="layout/footer.jsp"></jsp:include>
+	<!--JavaScript & Jquery-->
+     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
+     <!-- JavaScript Libraries -->
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+     <script src="${contextRoot}/lib/easing/easing.min.js"></script>
+     <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
+
+      <!-- Template Javascript -->
+      <script src="${contextRoot}/js/main.js" type="text/javascript"></script>
+
+      <!-- Contact Jquery File -->
+      <script src="${contextRoot}/js/jquery-3.6.1.min.js" type="text/javascript"></script>
+
+      <!-- Contact Javascript File -->
+      <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
+      <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
+       <script type="text/javascript">
+       		$('#color').click(function(){
+       			var color =$(this).text();
+       			console.log(color)
+       		})
+      </script>
 
 </body>
 </html>
