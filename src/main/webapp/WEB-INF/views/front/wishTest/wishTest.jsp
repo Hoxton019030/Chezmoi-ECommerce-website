@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-lg-12 text-center">
                                 <h4 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
-                                    測出最適合妳的搭配風格，並獲得優惠折扣碼</h4>
+                                    測出最適合妳的風格，並獲得優惠折扣碼</h4>
                             </div>
                             <div class="col-lg-12 text-center">
                                 <a style="text-decoration: none;" href="${contextRoot}/wishTest/question">
