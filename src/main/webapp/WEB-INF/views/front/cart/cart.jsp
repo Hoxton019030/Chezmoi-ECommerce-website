@@ -139,7 +139,7 @@
                                     </select>
                                 </div>
                                 <div class="d-flex justify-content-between pt-1">
-                                    <h6 class=" font-weight-medium">備註:</h6>
+                                    <h6 class=" font-weight-medium">備註: 訂單將於收到款項後出貨</h6>
                                 </div>
                                 <div class="d-flex justify-content-between pt-1">
                                     <h6 class=" font-weight-medium">收款銀行: (822)中國信託</h6>
@@ -147,8 +147,17 @@
                                 <div class="d-flex justify-content-between pt-1">
                                     <h6 class=" font-weight-medium">收款帳號: chezmoiiiii152</h6>
                                 </div>
-                                <div class="d-flex justify-content-between pt-1">
-                                    <h6 class=" font-weight-medium">訂單將於收到款項後出貨，蝦皮出貨請備註蝦皮帳號</h6>
+                                <div class="d-flex pt-1">
+                                    <h6 class=" font-weight-medium mr-1">蝦皮賣場連結: </h6>
+                                    <a class="text-primary" href="https://shopee.tw/product/7915556/4083302459/"> Chezmoi</a>
+                                </div>
+                                <div class="d-flex pt-1">
+                                    <h6 class=" font-weight-medium mr-1">選擇7-11取貨的顧客: </h6>
+                                    <h6 class=" font-weight-medium">請匯款訂單總金額至收款帳號</h6>
+                                </div>
+                                <div class="d-flex pt-1">
+                                    <h6 class=" font-weight-medium mr-1">選擇蝦皮出貨的顧客: </h6>
+                                    <h6 class=" font-weight-medium">請匯款訂單總金額至收款帳號,再由蝦皮下單付尾款(300元),於下頁備註您的蝦皮帳號</h6>
                                 </div>
                             </div>
                         </div>

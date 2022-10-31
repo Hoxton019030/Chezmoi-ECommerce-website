@@ -80,16 +80,20 @@ public class CartController {
 		Integer discount1=0;
 		String couponCode = coupon.getCouponCode();
 		Coupon findCouponCode = couponService.findByCouponCode(couponCode);
-		if(findCouponCode==null) {
+		String couponState = findCouponCode.getCouponState();
+		String state = "ON";
+		if((findCouponCode!=null) && (couponState.equals(state))) {
+			Integer discountPrice = findCouponCode.getDiscountPrice();
+			ra.addAttribute("couponCode",couponCode);
+			ra.addAttribute("msg",msg2);
+			ra.addAttribute("discount",discountPrice);
+			return "redirect:/cartAll";
+		}	
+		else{
 			ra.addAttribute("msg",msg1);
 			ra.addAttribute("discount",discount1);
 			return "redirect:/cartAll";
 		}
-		Integer discountPrice = findCouponCode.getDiscountPrice();
-		ra.addAttribute("couponCode",couponCode);
-		ra.addAttribute("msg",msg2);
-		ra.addAttribute("discount",discountPrice);
-		return "redirect:/cartAll";
 	}
 		
 	//現在的會員是誰
