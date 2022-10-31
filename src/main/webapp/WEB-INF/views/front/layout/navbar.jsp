@@ -84,6 +84,33 @@
 					</div>
 				</nav>
 			</div>
+		   <!--JavaScript & Jquery-->
+                <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
+                <!-- JavaScript Libraries -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+                <script src="${contextRoot}/lib/easing/easing.min.js"></script>
+                <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
+
+                <!-- Template Javascript -->
+                <script src="${contextRoot}/js/main.js" type="text/javascript"></script>
+
+                <!-- Contact Jquery File -->
+                <script src="${contextRoot}/js/jquery-3.6.1.min.js" type="text/javascript"></script>
+
+                <!-- Contact Javascript File -->
+                <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
+                <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
+		 		 <script type="text/javascript">
+		 		$(document).ready(function () {
+		 		 fetch("http://localhost:8080/Chezmoi/cartQuantity")
+		 		 .then((response) => response.json())
+		 		  .then((responseJSON) => {
+                	 $('.cartQuantity').text(responseJSON)
+					});
+		 		 });	 
+                </script>
 		</body>
 
 		</html>

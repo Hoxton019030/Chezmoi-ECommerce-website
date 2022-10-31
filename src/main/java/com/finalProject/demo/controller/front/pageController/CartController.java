@@ -39,12 +39,8 @@ public class CartController {
 	@Autowired
 	private ShippingService shippingService;
 	
-	@Autowired
-	private OrdersService ordersService;
-	
-	
 	//顯示所有購物車商品
-	@GetMapping("/cartAll")
+	@GetMapping(value = {"/cartAll"})
 	public String viewAllCart(Model model1,Model model2,Model model3) {
 		Member memberLogin = new Member();
 		memberLogin.setMemberId(2L);
@@ -68,9 +64,10 @@ public class CartController {
 			Coupon coupon = new Coupon();
 			model2.addAttribute("Coupon",coupon);
 			
-			List<Cart> findCart = cartService.findByMemberId(memberLogin);
-			int cartQuantity = findCart.size();
-			model3.addAttribute("cartQuantity",cartQuantity);
+			
+//			List<Cart> findCart = cartService.findByMemberId(memberLogin);
+//			int cartQuantity = findCart.size();
+//			model3.addAttribute("cartQuantity",cartQuantity);
 			return "front/cart/cart";
 		}
 	}
@@ -144,15 +141,15 @@ public class CartController {
 		return "front/cart/cart_finish";
 	}
 	
-	@GetMapping("cartQuantity")
-	public String viewCartQuantity(Model model) {
-		Member memberLogin = new Member();
-		memberLogin.setMemberId(2L);
-		List<Cart> allCart = cartService.findByMemberId(memberLogin);
-		int cartQuantity = allCart.size();
-		model.addAttribute("cartQuantity",cartQuantity);
-		return "front/cart/cart";
-	}
+//	@GetMapping("cartQuantity")
+//	public String viewCartQuantity(Model model) {
+//		Member memberLogin = new Member();
+//		memberLogin.setMemberId(2L);
+//		List<Cart> allCart = cartService.findByMemberId(memberLogin);
+//		int cartQuantity = allCart.size();
+//		model.addAttribute("cartQuantity",cartQuantity);
+//		return "front/cart/cart";
+//	}
 	
 	
 }
