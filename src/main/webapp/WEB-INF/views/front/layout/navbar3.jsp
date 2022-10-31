@@ -44,7 +44,7 @@
 			class="checkbtn"> <i class="fa fa-bars"></i>
 		</label> <label class="logo" style="padding-left: 30px"><a href="${contextRoot}/"><img
 			src="https://img.onl/fUrHvw" width="50" height="50"></a></label>
-		<ul style="margin-bottom: 0px">
+		<ul style="margin-bottom: 0px;z-index:20">
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="" role="button"
 				data-toggle="dropdown" aria-expanded="false"> Shop </a>

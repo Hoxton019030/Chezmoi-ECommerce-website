@@ -26,8 +26,8 @@ public class AddToCartController {
 	
 	@Autowired
 	private CartService cartService;
-	
-	
+
+
 	//加入購物車
 	@GetMapping("/shop/addToCart")
 	public String addToCart(Model model,
@@ -35,7 +35,10 @@ public class AddToCartController {
 			) {
 		Products product = productService.findById(productId);
 		Member member = (Member) model.getAttribute("Member");
-		Long memberId = member.getMemberId();
+		Long memberId = null;
+		if (member != null) {
+			memberId = member.getMemberId();
+		}
 		Integer price = product.getPrice();
 		String productName = product.getName();
 		Photo photo = product.getPhoto();

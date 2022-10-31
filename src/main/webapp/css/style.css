@@ -75,6 +75,7 @@ label.logo {
 nav ul {
     float: right;
     margin-left: 0px;
+    top:10px
     
 
 }
@@ -139,8 +140,8 @@ nav ul li a {
     ul {
         position: fixed;
         width: 50%;
-        height: 35vh;
-        background: #2c3e50;
+        height: 100vh;
+        background: #ffffff;
         top: 80px;
         left: -100%;
         text-align: center;
@@ -154,7 +155,8 @@ nav ul li a {
     }
 
     nav ul li a {
-        font-size: 20px;
+    
+        font-size: 12px;
 
     }
 

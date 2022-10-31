@@ -52,8 +52,8 @@ public class CartService {
 	
 	public List<Cart> findByMemberId(Member member) {
 		Long memberId = member.getMemberId();
-		List<Cart> cart = cartRepository.findByMemberId(memberId);
-		return cart;
+		List<Cart> carts = cartRepository.findByMemberId(memberId);
+		return carts;
 	}
 	
 	

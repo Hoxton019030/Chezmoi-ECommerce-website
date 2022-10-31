@@ -52,9 +52,9 @@ public class ShopService {
 	 * 按分類找商品
 	 */
 	public List<Products> findProductByCategory(String category) {
-		Optional<List<Products>> TopProductList = pDao.findProductByCategory(category);
-		if (TopProductList.isPresent()) {
-			return TopProductList.get();
+		Optional<List<Products>> catProductList = pDao.findProductByCategory(category);
+		if (catProductList.isPresent()) {
+			return catProductList.get();
 		}
 		return null;
 	}
@@ -70,18 +70,17 @@ public class ShopService {
 	 * Products按頁數撈資料-for Shop頁面
 	 */
 	public Page<Products> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 8, Sort.Direction.DESC, "updateTime");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 16, Sort.Direction.DESC, "updateTime");
 		Page<Products> page = pDao.findAll(pgb);
 		return page;
 	}
 
 	/*
-	 * Products按頁數撈資料-for Index頁面
+	 * 找出熱銷商品-for Index頁面
 	 */
-	public Page<OrderDetail> findByPageIndex(Integer pageNumber) {
-		Pageable pgb1 = PageRequest.of(pageNumber - 1, 8, Sort.Direction.DESC, "productId");
-		Page<OrderDetail> page1 =orderDetailRepository.findAll(pgb1);
-		return page1;
+	public List<Object[]> findBestProduct() {
+		List<Object[]> best = orderDetailRepository.findBestProduct();
+		return best;
 	}
 
 //取productId第一筆

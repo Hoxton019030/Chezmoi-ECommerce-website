@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.finalProject.demo.model.dto.ShopDto;
 import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.product.Products;
 public interface ProductRepository extends JpaRepository<Products, String> {
@@ -65,5 +66,8 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	@Query(value="UPDATE Products SET productName=:name3 WHERE series=:series3",nativeQuery = true)
 	public void updateSeriesName(@Param("name3")String name,@Param("series3")String series);
 
+	//老師寫的testSeries
+	@Query(value="select distinct productName, price,photoId, series from products", nativeQuery=true)
+	public List<Object[]> testSeries();
 	
 }

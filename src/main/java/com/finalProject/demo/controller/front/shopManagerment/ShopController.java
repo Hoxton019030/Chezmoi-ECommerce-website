@@ -3,6 +3,7 @@ package com.finalProject.demo.controller.front.shopManagerment;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.finalProject.demo.model.entity.cart.Cart;
+import com.finalProject.demo.model.dto.ShopDto;
 import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.product.Products;
+import com.finalProject.demo.repository.product.ProductRepository;
 import com.finalProject.demo.service.cart.CartService;
 import com.finalProject.demo.service.product.PhotoService;
 import com.finalProject.demo.service.product.ProductService;
@@ -29,6 +35,9 @@ public class ShopController {
     PhotoService photoService;
     @Autowired
     CartService cartservice;
+    
+    @Autowired
+    ProductRepository pDao;
 	
 	
 	/*
@@ -46,12 +55,49 @@ public class ShopController {
 		
 	}
 	
-	@GetMapping("/")
-	public String viewIndexProducts(@RequestParam(name="p", defaultValue="1") Integer pageNumber,Model model) {
-		Page<OrderDetail>page=shopService.findByPageIndex(pageNumber);
-		model.addAttribute("page", page);
-		return "front/index";
-	}
+	@ResponseBody
+	@GetMapping("/test/s")
+	public List<Object[]> testSeries(){
+		List<Object[]> objList = pDao.testSeries();
+		return objList;
+		}
+	
+//		
+//		for(int i =0; i<objList.length; i++) {
+//			Object[] firstObjArray = objList.get(0);
+//			
+//		List<ShopDto> list= new ArrayList<ShopDto>();
+//			
+//			for(int j=0; j<list.length; i++) {
+//				ShopDto dto = new ShopDto();
+//				String name = (String) firstObjArray[0];
+//				Integer price = (Integer) firstObjArray[1];
+//				Integer photoId = (Integer) firstObjArray[2];
+//				String series = (String) firstObjArray[3];
+//			}
+//			}
+	
+
+	/*
+	 * 找出熱銷商品
+	 */
+//	@RestController
+	
+//	@GetMapping("/")
+//	public String viewBestProducts(@RequestParam("productId")String productId,Model model) {
+//		List<OrderDetail> findBestProduct = shopService.findBestProduct(productId);
+//		model.addAttribute("bestProduct",findBestProduct);
+//		return "front/index";
+//	}
+		
+//		String best = dto.getBest();
+//		OrderDetail newOrderDetail=new OrderDetail();
+//		newOrderDetail.setProductId(best);
+//		productService.findAll(newOrderDetail);
+////		Page<OrderDetail>page=shopService.findByPageIndex(pageNumber);
+////		model.addAttribute("page", page);
+////		return "front/index";
+	
 	
 	
 	/*
@@ -72,7 +118,7 @@ public class ShopController {
 	public String productdetail(@RequestParam("productId")String productId,Model model) {
 		Products product=shopService.findById(productId);
 		model.addAttribute("Product", product);
-		
+//		商品明細內頁秀出color跟size
 		List<Products> productSeries=shopService.findBySeries(product.getSeries());
 		model.addAttribute("productSeries",productSeries);
 		return "front/productDetail";
