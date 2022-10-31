@@ -89,13 +89,13 @@ public class LoginController {
 			HttpSession session = request.getSession();
 			String email = session.getAttribute("email").toString(); // 使用Session是因為要用抓這人的帳密來判斷這人的資料
 			String password = session.getAttribute("password").toString();
-			List<Member> userList = mService.viewUser(email, password);
-			if (userList.size() > 0){
+			Member userList = mService.viewUser(email, password);
+			if (userList!=null){
 				// 表示有資料
-				model.addAttribute("email", userList.get(0).getEmail());
-				model.addAttribute("memberName", userList.get(0).getMemberName());
-				model.addAttribute("birthday", userList.get(0).getBirthday());
-				model.addAttribute("phone", userList.get(0).getPhone());
+				model.addAttribute("email", userList.getEmail());
+				model.addAttribute("memberName", userList.getMemberName());
+				model.addAttribute("birthday", userList.getBirthday());
+				model.addAttribute("phone", userList.getPhone());
 //				System.out.println( userList.get(0).getMach());
 				return "front/member/user";
 			}else {
