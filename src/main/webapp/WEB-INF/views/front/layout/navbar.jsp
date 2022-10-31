@@ -77,7 +77,7 @@
 								href="${contextRoot}/cartAll" class="nav-item nav-link relative1"><img
 									src="https://img.onl/Vzb1us" width="20" height="20"></a>
 							<span class="cartQuantity text-white relative2">0</span>
-							<a href="member.html" class="nav-item nav-link"><img src="https://img.onl/NzNslP" width="20"
+							<a href="${contextRoot}/member/login" class="nav-item nav-link"><img src="https://img.onl/NzNslP" width="20"
 									height="20"></a>
 						</div>
 					</div>

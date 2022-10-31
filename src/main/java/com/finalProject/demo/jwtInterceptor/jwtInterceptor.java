@@ -21,19 +21,25 @@ public class jwtInterceptor implements HandlerInterceptor {
         Cookie[] cookies = request.getCookies();
         if (cookies.length>0){
             for (Cookie cookie: cookies){
-                if (cookie.getName().equals("token")){
-                     token = cookie.getValue();
+                if (!cookie.getName().equals("token")){
+                	response.sendRedirect(request.getContextPath()+"/member/login");
+                     return false;
+                    }
+                if(cookie.getName().equals("token")) {
+                	token = cookie.getValue();
                     System.out.println(token);
                     Claims claims = JwtUtil.verify(token);
                     assert claims != null;
-                    Long memberId =(Long) claims.get("id");
+                    Integer memberId = (Integer) claims.get("id");
+//                    Long memberId =(Long) claims.get("id");
                     System.out.println("memberId===="+memberId);
                     if (memberId!=null){
                         request.setAttribute("id",memberId);
-                    }
+                    }	
                 }
-            }return  true;
-        }return false;
+                
+            }
+        }return  true;
 
 
 //        if(cookies.length>0 && cookies.){
