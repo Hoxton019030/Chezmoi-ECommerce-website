@@ -15,7 +15,7 @@
 	<form:form action="loginsubmit" method="post" modelAttribute="loginsubmit">
         <h1 class="text-dark">Login</h1>
         
-        <h5 class="Msg">123${param.Msg}</h5>
+        <h5 class="Msg">${param.Msg}</h5>
         <form method="post" action="login.js">
             <div>
                 <input type="text" name="email" class="text-field" placeholder="e-mail" />
