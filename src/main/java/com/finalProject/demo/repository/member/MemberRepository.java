@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.finalProject.demo.model.entity.member.Member;
@@ -24,10 +25,11 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
 	//顯示會員資料
 	@Query(value = "from Member where email = :email and password = :password")
-	public List<Member> viewUser(String email, String password);
+	public Member viewUser(String email, String password);
 
-	//修改會員資料
-	@Query(value = "from Member where memberName= ?1 and birthday =?2 and phone =?3 and email =?4")
-	public Integer updateUser(String memberName, String birthday, String phone, String email);
+//	//修改會員資料
+//	@Modifying
+//	@Query(value = "update Member set memberName= ?1 where birthday =?2 and phone =?3 and email =?4",nativeQuery=true)
+//	public Integer updateUser(String memberName, String birthday, String phone, String email);
 	
 }

@@ -76,14 +76,14 @@ public class LoginController {
 			HttpSession session = request.getSession();
 			String email = session.getAttribute("email").toString(); // 使用Session是因為要用抓這人的帳密來判斷這人的資料
 			String password = session.getAttribute("password").toString();
-			List<Member> userList = mService.viewUser(email, password);
-			if (userList.size() > 0){
+			Member user = mService.viewUser(email, password);
+			if (user != null){
 				// 表示有資料
-				model.addAttribute("email", userList.get(0).getEmail());
-				model.addAttribute("memberName", userList.get(0).getMemberName());
-				model.addAttribute("birthday", userList.get(0).getBirthday());
-				model.addAttribute("phone", userList.get(0).getPhone());
-//				System.out.println( userList.get(0).getMach());
+//				model.addAttribute("email", userList.get(0).getEmail());
+//				model.addAttribute("memberName", userList.get(0).getMemberName());
+//				model.addAttribute("birthday", userList.get(0).getBirthday());
+//				model.addAttribute("phone", userList.get(0).getPhone());
+				model.addAttribute("usersubmit", user);
 				return "front/member/user";
 			}else {
 				//表示帳密錯誤 或者Session有問題
@@ -100,21 +100,20 @@ public class LoginController {
 			System.out.println("===============送出修改按鈕=================");
 			
 			HttpSession session = request.getSession();
-			String email = session.getAttribute("email").toString(); // 使用Session是因為要用抓這人的帳密來判斷這人的資料
-			String password = session.getAttribute("password").toString();
-			member.setEmail(email);
-			member.setPassword(password);
-			
-			int isUpdate = mService.updateUser(member);              // 把資料放進去(插入)
-			if(isUpdate > 0) {
-				System.out.println("123");
+//			String email = session.getAttribute("email").toString(); // 使用Session是因為要用抓這人的帳密來判斷這人的資料
+//			String password = session.getAttribute("password").toString();
+			System.out.println("id: " + member.getMemberId());
+			              
+			Member mmm = mService.insert(member);			// 把資料放進去(insert)
+			if(mmm != null) {
+				System.out.println("更新成功!");
 //				model = getViewUser(request, model);		// 如果要顯示更新成功這三段就要開啟getViewUser方法
-//				model.addAttribute("Msg", "*更新成功!!");
+//				model.addAttribute("Msg", "更新成功!");
 //				return "user/user";
-				return "redirect:member/user";						// 使用此return是不會顯示更新成功
+				return "front/member/user";						// 使用此return是不會顯示更新成功
 			}
 			else {
-				System.out.println("456");
+				System.out.println("更新失敗!");
 				model.addAttribute("Msg", "更新失敗!"); // 畫面顯示：更新失敗!
 				return "front/member/login"; 		   // 返回登入畫面
 			}
