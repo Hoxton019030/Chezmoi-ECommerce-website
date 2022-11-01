@@ -38,8 +38,11 @@ public class CouponService {
 	
 
 	public Coupon findByCouponCode(String couponCode) {
-		return couponRepository.findByCouponCode(couponCode);
-		
+		 Coupon coupon = couponRepository.findByCouponCode(couponCode);
+		 if(coupon != null) {
+			 return coupon;
+		 }
+		 return null;
 	}
 
 	/**找到最新的那一筆

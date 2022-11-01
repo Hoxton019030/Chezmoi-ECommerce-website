@@ -63,11 +63,6 @@ public class CartController {
 			model1.addAttribute("Carts",newCart);
 			Coupon coupon = new Coupon();
 			model2.addAttribute("Coupon",coupon);
-			
-			
-//			List<Cart> findCart = cartService.findByMemberId(memberLogin);
-//			int cartQuantity = findCart.size();
-//			model3.addAttribute("cartQuantity",cartQuantity);
 			return "front/cart/cart";
 		}
 	}
@@ -76,25 +71,33 @@ public class CartController {
 	@PostMapping("/cartAll")
 	public String verifyCouponCode(@ModelAttribute(name="Coupon") Coupon coupon,
 			RedirectAttributes ra)  {
+		String msg="";
 		String msg1="無此折扣碼";
 		String msg2="使用成功";
 		Integer discount1=0;
 		String couponCode = coupon.getCouponCode();
+		ra.addAttribute("msg",msg);
 		Coupon findCouponCode = couponService.findByCouponCode(couponCode);
+		if(findCouponCode == null) {
+			ra.addAttribute("msg",msg1);
+			ra.addAttribute("discount",discount1);
+			return "redirect:/cartAll";
+		}
 		String couponState = findCouponCode.getCouponState();
 		String state = "ON";
+		if(!(couponState.equals(state))){
+			ra.addAttribute("msg",msg1);
+			ra.addAttribute("discount",discount1);
+			return "redirect:/cartAll";
+		}
 		if((findCouponCode!=null) && (couponState.equals(state))) {
 			Integer discountPrice = findCouponCode.getDiscountPrice();
 			ra.addAttribute("couponCode",couponCode);
 			ra.addAttribute("msg",msg2);
 			ra.addAttribute("discount",discountPrice);
 			return "redirect:/cartAll";
-		}	
-		else{
-			ra.addAttribute("msg",msg1);
-			ra.addAttribute("discount",discount1);
-			return "redirect:/cartAll";
 		}
+		return "redirect:/cartAll";
 	}
 		
 	//現在的會員是誰
