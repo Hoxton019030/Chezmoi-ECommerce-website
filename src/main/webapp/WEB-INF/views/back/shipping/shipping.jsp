@@ -167,23 +167,30 @@
                         }
                     })
 
-                    //判斷方式輸入
+                     //判斷方式輸入
                     document.getElementById("way").addEventListener("blur", checkWay);
                     function checkWay() {
                         let way = document.getElementById("way");
                         let wayValue = way.value;
                         let sp = document.getElementById("waySpan");
                         let len = wayValue.length;
+                        let a, b
                         if (wayValue == "") {
                             sp.innerHTML = "方式不可輸入空白";
                         } else {
                             for (let i = 0; i < len; i++) {
                                 ch = wayValue.charCodeAt(i);
-                                if (ch >= 0x4e00 && ch <= 0x9fa5 || "-") {
-                                    sp.innerHTML = "輸入正確";
-                                } else {
+                                if (((ch >= 0x4e00 && ch <= 0x9fa5) && (ch = 47 || 40 || 41))) {
+                                    a = true;
+                                } else if (ch >= 65 && ch <= 90 || ch >= 97 && ch >= 122) {
+                                    b = true;
+                                }
+                                else {
                                     sp.innerHTML = "輸入錯誤";
                                 }
+                            }
+                            if (a || b) {
+                                sp.innerHTML = "輸入正確";
                             }
                         }
                     }
