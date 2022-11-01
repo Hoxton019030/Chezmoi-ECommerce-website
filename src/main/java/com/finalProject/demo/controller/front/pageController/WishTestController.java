@@ -17,11 +17,13 @@ public class WishTestController {
 	@Autowired
 	private ProductService productService;
 
+	//查看心理測驗頁面
 	@GetMapping("/wishTest")
 	public String viewWishTest() {
 		return "front/wishTest/wishTest";
 	}
 	
+	//查看心理測驗問題頁面
 	@GetMapping("/wishTest/question")
 	public String viewWishTestQuestion(Model model) {
 		List<Products> productsList = new ArrayList<>();

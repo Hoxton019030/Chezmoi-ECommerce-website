@@ -42,8 +42,8 @@
 
                 <!-- Page Header Start -->
                 <div class="container-fluid">
-                    <div class="align-items-center justify-content-center" style="min-height: 500px; display: flex;">
-                        <div class="row question1" style="display:none;">
+                    <div class="align-items-center justify-content-center" style="min-height: 500px;">
+                        <div class="row question1 mt-5">
                             <div class="col-lg-12 text-center">
                                 <h2 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
                                     Q1:偶然路過一間香水店，妳會選擇買哪一種香味?</h2>
@@ -79,7 +79,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="row question2" style="display: none;">
+                        <div class="row question2 mt-5" style="display: none;">
                             <div class="col-lg-12 text-center">
                                 <h2 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
                                     Q2:早上剛起床，來一杯?</h2>
@@ -115,7 +115,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="row question3" style="display: none;">
+                        <div class="row question3 mt-5" style="display: none;">
                             <div class="col-lg-12 text-center">
                                 <h2 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
                                     Q3:愉快地跟朋友出門逛街，沒想到卻遇到前男友，妳會?</h2>
@@ -151,7 +151,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="row question4" style="display: none;">
+                        <div class="row question4 mt-5" style="display: none;">
                             <div class="col-lg-12 text-center">
                                 <h2 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
                                     Q4:妳最喜歡的民宿風格是?</h2>
@@ -187,7 +187,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="row question5" style="display: none;">
+                        <div class="row question5 mt-5" style="display: none;">
                             <div class="col-lg-12 text-center">
                                 <h2 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
                                     Q5:妳認為別人對妳的第一印象是?</h2>
@@ -201,7 +201,7 @@
                             <div class="col-lg-12 text-center mb-3">
                                 <button class="btn btn-sm btn-primary q5" value="4">
                                     <h4 class="font-weight-semi-bold" style="margin-bottom: 0;">
-                                        沉著的冰山美人</h4>
+                                        居家賢慧的美女</h4>
                                 </button>
                             </div>
                             <div class="col-lg-12 text-center mb-3">
@@ -223,34 +223,98 @@
                                 </button>
                             </div>
                         </div>
-                        <c:set var="count" value="0" />
-                         <c:forEach items="${Products}" var="p">
-                       		 <div class="row result mt-3" id="${count}">
+                         <c:forEach items="${Products}" var="p" begin="0" end="0">
+                       		 <div class="row result mt-4" id="1" style="display: none;">
 	                            <div class="col-lg-12 text-center">
-	                                <h2 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
-	                                    妳是「溫柔小姊姊」風格的韓系美女</h2>
-	                                <h3 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
-	                                    妳的魅力在於氣質出眾，且自帶女人味!</h3>
-	                                <h3 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
+	                                <h3 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                                妳是「溫柔小姊姊」風格的韓系美女</h3>
+	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                                妳的魅力在於氣質出眾、待人溫和，談吐優雅又通情達理!</h4>
+	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
 	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?productId=${p.productId}">
-	                                    	推薦妳這件溫柔小姊姊金釦西外</a></h3>
+	                                    	推薦妳這件${p.name}</a></h4>
 	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
-	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 25em;">
+	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
 	                                </a>
 	                            </div>
-	                            <div class="col-lg-12 text-center mt-4">
-	                                  <button class="btn btn-sm btn-primary"  id="copyCoupon">
-                                    <h4 class="font-weight-semi-bold" id="coupon" style="margin-bottom: 0;">Chezmoiiiiiwish</h4>
-                                	</button>
-                                </div>	
-	                       	 <c:set var="count" value="${count+1}" />
                     		</div>
                         </c:forEach>   
+                         <c:forEach items="${Products}" var="p" begin="1" end="1">
+                       		 <div class="row result mt-4" id="2" style="display: none;">
+	                            <div class="col-lg-12 text-center">
+	                                <h3 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                                妳是「浪漫復古」風格的韓系美女</h3>
+	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                                妳的魅力在於氣質出眾，且自帶女人味!</h4>
+	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                    	推薦妳這件${p.name}</a></h4>
+	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
+	                                </a>
+	                            </div>
+                    		</div>
+                        </c:forEach>   
+                         <c:forEach items="${Products}" var="p" begin="2" end="2">
+                       		 <div class="row result mt-4" id="3" style="display: none;">
+	                            <div class="col-lg-12 text-center">
+	                                <h3 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                                妳是「白雪公主」風格的韓系美女</h3>
+	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                                妳的魅力在於活潑可愛，讓人想好好疼愛妳!</h4>
+	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                    	推薦妳這件${p.name}</a></h4>
+	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
+	                                </a>
+	                            </div>
+                    		</div>
+                        </c:forEach>   
+                         <c:forEach items="${Products}" var="p" begin="3" end="3">
+                       		 <div class="row result mt-4" id="4" style="display: none;">
+	                            <div class="col-lg-12 text-center">
+	                                <h3 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                                妳是「慵懶美人」風格的韓系美女</h3>
+	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                                妳的魅力在於專情堅定，讓另一半很有安全感喔!</h4>
+	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                    	推薦妳這件${p.name}</a></h4>
+	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
+	                                </a>
+	                            </div>
+                    		</div>
+                        </c:forEach>   
+                         <c:forEach items="${Products}" var="p" begin="4" end="4">
+                       		 <div class="row result mt-4" id="5" style="display: none;">
+	                            <div class="col-lg-12 text-center">
+	                                <h3 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                                妳是「戀愛中」的韓系美女</h3>
+	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                                妳的魅力在於自信且充滿熱情，戀愛中的女人最美麗!</h4>
+	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
+	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                    	推薦妳這件${p.name}</a></h4>
+	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
+	                                </a>
+	                            </div>
+                    		</div>
+                        </c:forEach>   
+                       		 <div class="col-lg-12 text-center" id="showCoupon">
+	                       		  <h5 class="font-weight-semi-bold mt-2 mb-1 text-primary" id="coupon" style="margin-bottom: 0;">Chezmoiiiiiwish</h5>
+		                          <button class="btn btn-sm btn-primary"  id="copyCoupon">
+	                              <h6 class="font-weight-semi-bold" id="coupon" style="margin-bottom: 0;">按一下複製折扣碼</h6>
+	                              </button>
+                       		 </div>
+                </div>
                 </div>
                 <!-- Page Header End -->
 
                 <!-- Footer Start -->
-                <jsp:include page="../layout/footer.jsp"></jsp:include>
+                 <jsp:include page="../layout/footer.jsp"></jsp:include>
                 <!-- Footer End -->
 
 
@@ -278,61 +342,72 @@
                 <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
                 <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
                 <script type="text/javascript">
-                    var choose1;
+                $(document).ready(function () {
+                	$('#showCoupon').css("display", "none");
+                })
                     $('.q1').click(function () {
-                        choose1 = $(this).val();
+                    	$('#showCoupon').css("display", "none");
                         $('.question1').css("display", "none");
                         $('.question2').css("display", "block");
-                        console.log(choose1)
                     })
-                     var choose2;
                     $('.q2').click(function () {
-                    	choose2 = $(this).val();
+                    	$('#showCoupon').css("display", "none");
                         $('.question2').css("display", "none");
                         $('.question3').css("display", "block");
-                        console.log(choose2)
                     })
-                     var choose3;
                     $('.q3').click(function () {
-                    	choose3 = $(this).val();
+                    	$('#showCoupon').css("display", "none");
                         $('.question3').css("display", "none");
                         $('.question4').css("display", "block");
-                        console.log(choose3)
                     })
-                     var choose4;
                     $('.q4').click(function () {
-                    	choose4 = $(this).val();
+                    	$('#showCoupon').css("display", "none");
                         $('.question4').css("display", "none");
                         $('.question5').css("display", "block");
-                        console.log(choose4)
                     })
-                     var choose5;
                     $('.q5').click(function () {
                     	choose5 = $(this).val();
+                    	$('#showCoupon').css("display", "none");
                         $('.question4').css("display", "none");
                         $('.question5').css("display", "block");
-                        console.log(choose5)
+                        
+	                    if(choose5 == 1){
+	                    	$('.question5').css("display", "none");
+	                    	$('#1').css("display","block");
+	                    	$('#showCoupon').css("display", "block");
+	                    	
+	                    }else if(choose5 == 2){
+	                    	$('.question5').css("display", "none");
+	                    	$('#2').css("display","block");
+	                    	$('#showCoupon').css("display", "block");
+	                    	
+	                    }else if(choose5 == 3){
+	                    	$('.question5').css("display", "none");
+	                    	$('#3').css("display","block");
+	                    	$('#showCoupon').css("display", "block");
+	                    	
+	                    }else if(choose5 == 4){
+	                    	$('.question5').css("display", "none");
+	                    	$('#4').css("display","block");
+	                    	$('#showCoupon').css("display", "block");
+	                    	
+	                    }else if(choose5 == 5){
+	                    	$('.question5').css("display", "none");
+	                    	$('#5').css("display","block");
+	                    	$('#showCoupon').css("display", "block");
+	                    }
                     })
-                    
-                    var button = document.getElementById('copyCoupon')
-			        var text = document.getElementById('coupon')
-			        button.addEventListener('click', function(){
-			            text.focus()
-			            document.execCommand('copy')
-			        })
-                    
-                    
-//                     $('#copyCoupon').click(function(){
-//                     	var coupon = $('#coupon').text();
-//   				        console.log(coupon)
-//   				      document.execCommand("Copy")
-
-//                     })
-                    
-					$('#1').css("display","none");
-					$('#2').css("display","none");
-					$('#3').css("display","none");
-					$('#4').css("display","none");
+	                     //複製文字
+	    			     const select = (DOM) => document.querySelector(DOM);
+	    			     select('#copyCoupon').addEventListener('click', (e) => {
+	    				     const range = document.createRange();
+	    	                 const texts = select('#coupon');
+	    	                 range.selectNode(texts);
+	    	                 const selection = window.getSelection();
+	    	                 selection.addRange(range);
+	  	                     document.execCommand("copy");
+	   	                     alert("copy");
+	    			     })
                 </script>
 
             </body>

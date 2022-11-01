@@ -19,6 +19,7 @@ public class NavBarController {
 	@Autowired
 	private CartService cartService;
 	
+	//找購物車有幾項商品,回傳數字顯示在navbar上
 	@GetMapping(value = {"/cartQuantity"})
 	public Integer viewCartQuantity(Model model) {
 		Member memberLogin = new Member();
