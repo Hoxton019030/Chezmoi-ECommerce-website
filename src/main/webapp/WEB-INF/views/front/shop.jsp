@@ -50,7 +50,7 @@
         <!-- Shop Product Start -->
 
         <div class="row px-xl-5 pb-3" id="tbody">
-            <c:forEach var="products" items="${page.content}">
+<%--            <c:forEach var="products" items="${page.content}">--%>
                 <tr class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="card product-item border-0 mb-4">
                         <td
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 </tr>
-            </c:forEach>
+<%--            </c:forEach>--%>
         </div>
     </ul>
 </div>
