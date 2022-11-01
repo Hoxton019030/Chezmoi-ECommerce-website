@@ -346,28 +346,23 @@
                 	$('#showCoupon').css("display", "none");
                 })
                     $('.q1').click(function () {
-                    	$('#showCoupon').css("display", "none");
                         $('.question1').css("display", "none");
                         $('.question2').css("display", "block");
                     })
                     $('.q2').click(function () {
-                    	$('#showCoupon').css("display", "none");
                         $('.question2').css("display", "none");
                         $('.question3').css("display", "block");
                     })
                     $('.q3').click(function () {
-                    	$('#showCoupon').css("display", "none");
                         $('.question3').css("display", "none");
                         $('.question4').css("display", "block");
                     })
                     $('.q4').click(function () {
-                    	$('#showCoupon').css("display", "none");
                         $('.question4').css("display", "none");
                         $('.question5').css("display", "block");
                     })
                     $('.q5').click(function () {
                     	choose5 = $(this).val();
-                    	$('#showCoupon').css("display", "none");
                         $('.question4').css("display", "none");
                         $('.question5').css("display", "block");
                         
@@ -397,17 +392,18 @@
 	                    	$('#showCoupon').css("display", "block");
 	                    }
                     })
-	                     //複製文字
-	    			     const select = (DOM) => document.querySelector(DOM);
-	    			     select('#copyCoupon').addEventListener('click', (e) => {
-	    				     const range = document.createRange();
-	    	                 const texts = select('#coupon');
-	    	                 range.selectNode(texts);
-	    	                 const selection = window.getSelection();
-	    	                 selection.addRange(range);
-	  	                     document.execCommand("copy");
-	   	                     alert("copy");
-	    			     })
+                  //複製文字
+   			     const select = (DOM) => document.querySelector(DOM);
+   			     select('#copyCoupon').addEventListener('click', (e) => {
+   				     const range = document.createRange();
+   	                 const texts = select('#coupon');
+   	                 range.selectNode(texts);
+   	                 const selection = window.getSelection();
+   	                 selection.addRange(range);
+ 	                     document.execCommand("copy");
+  	                     alert("copy");
+   			     })
+	                     
                 </script>
 
             </body>
