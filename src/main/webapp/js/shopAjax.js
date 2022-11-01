@@ -14,7 +14,7 @@ $(document).ready(function(){
                 $('#tbody').append('<tr class="col-lg-3 col-md-6 col-sm-12 pb-1">')
                     .append(' <div class="card product-item border-0 mb-4">')
                     .append('<td class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">')
-                    .append('<img class="img-fluid w-300" src="http://localhost:8080/Chezmoi/getMainPic/'+value.photoId+'" style="height:278; weight:226" alt=""/>')
+                    .append('<img class="img-fluid w-300" src="http://localhost:8080/Chezmoi/getMainPic/'+value.photoId+'"  alt=""/>')
                     .append('</td>')
                     .append('<div class="card-body border-left border-right text-center p-0 pt-4 pb-3">')
                     .append(' <td><a href="${contextRoot}/shop/productDetail?productId='+value.series+'">')
