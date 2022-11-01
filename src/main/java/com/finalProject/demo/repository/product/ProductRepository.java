@@ -1,6 +1,7 @@
 package com.finalProject.demo.repository.product;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -68,6 +69,6 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 
 	//老師寫的testSeries
 	@Query(value="select distinct productName, price,photoId, series from products", nativeQuery=true)
-	public List<Object[]> testSeries();
+	public List<Map<String,Object>> testSeries();
 	
 }

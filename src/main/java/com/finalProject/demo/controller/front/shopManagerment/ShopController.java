@@ -5,6 +5,7 @@ package com.finalProject.demo.controller.front.shopManagerment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -57,8 +58,8 @@ public class ShopController {
 	
 	@ResponseBody
 	@GetMapping("/test/s")
-	public List<Object[]> testSeries(){
-		List<Object[]> objList = pDao.testSeries();
+	public List<Map<String,Object>> testSeries(){
+		List<Map<String,Object>> objList = pDao.testSeries();
 		return objList;
 		}
 	
