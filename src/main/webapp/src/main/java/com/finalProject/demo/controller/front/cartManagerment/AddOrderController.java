@@ -24,6 +24,8 @@ import com.finalProject.demo.service.order.OrdersService;
 import com.finalProject.demo.service.order.PaymentService;
 import com.finalProject.demo.service.order.ShippingService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class AddOrderController {
 	
@@ -119,9 +121,12 @@ public class AddOrderController {
 	
 	//現在的會員是誰
 	@ModelAttribute("Member")
-	public Member viewMember(Model model) {
+	public Member viewMember(Model model, HttpServletRequest request) {
+		//取得memberId
+		String stringId = String.valueOf(request.getAttribute("memberId"));
+		Long memberId = Long.valueOf(stringId);
 		Member memberLogin = new Member();
-		memberLogin.setMemberId(2L);
+		memberLogin.setMemberId(memberId);
 		return memberLogin;
 	}
 	

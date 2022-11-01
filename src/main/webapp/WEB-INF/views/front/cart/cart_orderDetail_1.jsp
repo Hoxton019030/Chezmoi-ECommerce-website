@@ -128,7 +128,7 @@
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="shipName" type="text" class="form-control p-4 mb-2"
-                                                    id="inputMemberName" value="" placeholder="彭建華" 
+                                                    id="inputMemberName" value="" placeholder="收件人名稱"
                                                     oninput = "value=value.replace(/[^\u4E00-\u9FA5]/g,'')"/>
                                             </div>
                                             <div class="d-flex justify-content-between pt-1 mb-2">

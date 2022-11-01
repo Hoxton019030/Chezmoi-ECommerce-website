@@ -57,7 +57,6 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="member.html" class="nav-item nav-link">會員資料查詢</a>
                             <a href="${contextRoot}/member/order" class="nav-item nav-link">訂單查詢</a>
-                            <a href="messages.html" class="nav-item nav-link">留言板</a>
                         </div>
                     </div>
                 </nav>

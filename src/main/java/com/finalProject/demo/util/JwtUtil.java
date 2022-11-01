@@ -1,4 +1,4 @@
-package com.finalProject.demo.jwt;
+package com.finalProject.demo.util;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -40,8 +40,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    public static Claims verify(String token){
-        try {
+    public static Claims verify(String token) throws JwtException{
             Jws<Claims> claimsJws = Jwts
                     .parserBuilder()
                     .setSigningKey(TOKEN_SECRET)
@@ -49,17 +48,6 @@ public class JwtUtil {
                     .parseClaimsJws(token);
 
             return claimsJws.getBody();
-
-        }catch (JwtException jwtException){
-            jwtException.printStackTrace();
-            //這裡會判斷jwt是否過期，如果過期拋出異常
-            //1.refresh token
-            //2.return 頁面 String
-            
-            
-            return null;
-        }
-
 
     }
     public static String getMemberName(String token){

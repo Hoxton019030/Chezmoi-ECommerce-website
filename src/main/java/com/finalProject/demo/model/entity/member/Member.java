@@ -31,9 +31,8 @@ public class Member {
 	
 	@Column(name = "email", nullable = false,columnDefinition = "nvarchar(50)")
 	private String email;
-	
-	//日後需調整為不顯示真正密碼(並改成加鹽密碼)2022.10.12
-	@Column(name ="password", nullable = false,columnDefinition = "nvarchar(50)")
+
+	@Column(name ="password", nullable = false,columnDefinition = "nvarchar(Max)")
 	private String password;
 
 	public Member() {
