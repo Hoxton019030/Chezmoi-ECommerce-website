@@ -44,32 +44,29 @@
 <jsp:include page="layout/announce.jsp"></jsp:include>
 <br>
 
-
+<!-- Shop Product Start -->
 <div class="container-products align-items-center">
     <ul class="pros-ul justify-content-around align-items-center">
-        <!-- Shop Product Start -->
+
 
         <div class="row px-xl-5 pb-3" id="tbody">
-            <c:forEach var="products" items="${page.content}">
-                <tr class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item border-0 mb-4">
-                        <td
-                                class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-300"
-                                 src="http://localhost:8080/Chezmoi/getMainPic/${products.photo.photoId}"
-                                 style="height:278; weight:226" alt="">
-                        </td>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <td><a href="${contextRoot}/shop/productDetail?productId=${products.productId}">
-                                <h6 class="text-truncate mb-3">${products.name}</h6></a>
-                            </td>
-                            <td class="d-flex justify-content-center">
-                                <h6 id="saleprice">${products.price}</h6>
-                            </td>
+<%--                        <c:forEach var="products" items="${page.content}">--%>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1" >
+                <div class="card product-item border-0 mb-4" >
+                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                        <img class="img-fluid w-300" src="http://localhost:8080/Chezmoi/getMainPic/${products.photo.photoId}" style="height:278; weight:226" alt="">
+                    </div>
+                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                        <a href="${contextRoot}/shop/productDetail?productId=${products.productId}">
+                            <h6 class="text-truncate mb-3">${products.name}</h6>
+                        </a>
+                        <div class="d-flex justify-content-center">
+                            <h6 id="saleprice">${products.price}</h6>
                         </div>
                     </div>
-                </tr>
-            </c:forEach>
+                </div>
+            </div>
+<%--                        </c:forEach>--%>
         </div>
     </ul>
 </div>
