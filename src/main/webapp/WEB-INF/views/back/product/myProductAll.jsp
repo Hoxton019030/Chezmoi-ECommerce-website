@@ -64,22 +64,17 @@
                                     </div>
                                     <div class="card-body border-bottom">
 
-                                        <form class="btn-block" action="">
+                                        <form:form class="btn-block" action="${contextRoot}/Back/MyProduct/findByProductIdLike" method="post" >
                                             <div class="input-group justify-content-between ">
-                                                <div class="d-flex pt-1 mb-2 ">
-                                                    <select class="rounded-sm p-0 " name="commodity">
-                                                        <option value="productName">商品名稱</option>
-                                                        <option value="ProductId">商品編號</option>
-                                                    </select>
-                                                </div>
-                                                <input type="text" class="form-control p-4 m-1" placeholder="search">
+                                                
+                                                <input type="text" class="form-control p-4 m-1" placeholder="search" name="search">
                                                 <div class="submit">
                                                     <input class="btn-primary m-1 rounded-sm border-1" type="submit"
                                                         value="search">
                                                 </div>
                                             </div>
 
-                                        </form>
+                                        </form:form>
                                     </div>
 
                                     <div class="container-fluid row px-xl-4 ">
@@ -174,6 +169,7 @@
                                                 </c:forEach>
 
                                                 </tbody>
+                                
                                             </table>
                                             <div id="pageNumber" class="align-content-center">
                                                 <c:forEach var="proPage" begin="1" end="${page.totalPages}">
