@@ -1,6 +1,7 @@
 package com.finalProject.demo.repository.product;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -40,7 +41,12 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 			@Param("state2")String state,
 			@Param("id2")String id
 	);
-	
+//	@Query()
+//	Optional<Products> findBySeriesOne(String series);
+
+	/*
+	for productdetail取尺寸、顏色用
+	 */
 	Optional<List<Products>> findBySeries(String series);
 
 	Optional<List<Products>> findProductByCategory(String category);
@@ -48,8 +54,8 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	// public List<Products> findFirstByOrderByCreatTimesDesc();
 
 	// 按照productName同樣商品名也只取一筆
-	@Query(value = "SELECT DISTINCT series,productName,price  FROM products", nativeQuery = true)
-	public List<Products> findDistinctBySeries();
+//	@Query(value = "SELECT DISTINCT series,productName,price  FROM products", nativeQuery = true)
+//	public List<Products> findDistinctBySeries();
 
 //	@Query(value = "TOP 1 * FROM Products WHERE productId=:productId3", nativeQuery = true)
 //	public Products findTopByProductId(@Param("productId3")String productId);
@@ -65,5 +71,8 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	@Query(value="UPDATE Products SET productName=:name3 WHERE series=:series3",nativeQuery = true)
 	public void updateSeriesName(@Param("name3")String name,@Param("series3")String series);
 
-
+	//老師寫的testSeries
+	@Query(value="select distinct productName, price,photoId, series from products", nativeQuery=true)
+	public List<Map<String,Object>> testSeries();
+	
 }
