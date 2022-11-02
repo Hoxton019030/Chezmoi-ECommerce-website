@@ -15,7 +15,7 @@ public class webConfig  implements WebMvcConfigurer {
 
 
         registry.addInterceptor(new jwtInterceptor())//"/**"為攔截全部
-                .excludePathPatterns("/member/login","/member/register")
+                .excludePathPatterns("/member/login","/member/register","")
                 .addPathPatterns("/cartAll/**","/cart","/api/updateCart","/cart/deleteFromCart","/cartOrderDetail","/cartOrderDetail#loaded","/cartFinish","/api/postOrders")
                 .addPathPatterns("/member/**")
                 .addPathPatterns("/shop/addToCart","/cartQuantity");

@@ -45,7 +45,7 @@
 
 <%--         <jsp:include page="layout/navbar.jsp"></jsp:include> --%>
 <%--          <jsp:include page="layout/navbar2.jsp"></jsp:include> --%>
-<jsp:include page="layout/navbar3.jsp"></jsp:include>
+<jsp:include page="layout/navbar.jsp"></jsp:include>
 <div class="col-lg-9 " style="padding-right:0px; padding-left:0px; position: relative ;max-width:auto">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">

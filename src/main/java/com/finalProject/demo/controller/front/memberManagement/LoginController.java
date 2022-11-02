@@ -83,59 +83,6 @@ public class LoginController {
 				}
 			return "front/member/login";// 返回登入畫面
 		}
-//	            =============================================  顯示修改會員資料 ===========================================
 
-				@GetMapping("/member")
-				public String viewUser(HttpServletRequest request , Member member, Model model) {
-//					HttpSession session = request.getSession();
-//					String email = session.getAttribute("email").toString(); // 使用Session是因為要用抓這人的帳密來判斷這人的資料
-//					String password = session.getAttribute("password").toString();
-//					Member user = mService.viewUser(email, password);
-//					if (user != null){
-//						// 表示有資料
-////						model.addAttribute("email", userList.get(0).getEmail());
-////						model.addAttribute("memberName", userList.get(0).getMemberName());
-////						model.addAttribute("birthday", userList.get(0).getBirthday());
-////						model.addAttribute("phone", userList.get(0).getPhone());
-////						model.addAttribute("usersubmit", user);
-//						return "front/member/user";
-//					}else {
-//						//表示帳密錯誤 或者Session有問題
-////						session.removeAttribute("email"); 	// 刪掉
-////						session.removeAttribute("password");
-//						return "redirect:index";
-//
-//					}
-//				======================================= JWT TOKEN 方式 ========================================
-					//object -> String ->Long
-					String stringId = String.valueOf(request.getAttribute("memberId"));
-					Long memberId = Long.valueOf(stringId);
-					Member memberData = mService.findById(memberId);
-					model.addAttribute("usersubmit",memberData);
-					return "front/member/user";
-				}
-				// ===================================== 送出：修改使用者資料 =======================================
-				@PostMapping("/member")
-				public String UpdateUser(HttpServletRequest request,
-						@ModelAttribute(name="usersubmit")Member member, Model model) {
-					System.out.println("===============送出修改按鈕=================");
-//					HttpSession session = request.getSession();
-//					String email = session.getAttribute("email").toString(); // 使用Session是因為要用抓這人的帳密來判斷這人的資料
-//					String password = session.getAttribute("password").toString();
-//					System.out.println("id: " + member.getMemberId());
 
-					Member mmm = mService.insert(member);			// 把資料放進去(insert)
-					if(mmm != null) {
-						System.out.println("更新成功!");
-//						model = getViewUser(request, model);		// 如果要顯示更新成功這三段就要開啟getViewUser方法
-						model.addAttribute("Msg", "更新成功!");
-//						return "user/user";
-						return "front/member/user";						// 使用此return是不會顯示更新成功
-					}
-					else {
-						System.out.println("更新失敗!");
-						model.addAttribute("Msg", "更新失敗!"); // 畫面顯示：更新失敗!
-						return "front/member/login"; 		   // 返回登入畫面
-					}
-				}
 }

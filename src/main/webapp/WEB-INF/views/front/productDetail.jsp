@@ -38,7 +38,7 @@
 </head>
 <body>
 <!-- Topbar Start -->
-<jsp:include page="layout/navbar3.jsp"></jsp:include>
+<jsp:include page="layout/navbar.jsp"></jsp:include>
 <br>
 <%-- category start --%>
 <%-- 	<jsp:include page="layout/category.jsp"></jsp:include> --%>

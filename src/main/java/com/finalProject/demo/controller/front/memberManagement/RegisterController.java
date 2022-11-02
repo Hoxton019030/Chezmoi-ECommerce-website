@@ -54,31 +54,6 @@ public class RegisterController {
 		}
 		
 		
-		// ===================================== 送出：修改使用者資料 =======================================
-				@PostMapping("/member/usersubmit")
-				public String UpdateUser(HttpServletRequest request, 
-						@ModelAttribute(name="usersubmit")Member member, Model model) {
-					System.out.println("===============送出修改按鈕=================");
-					
-					
-					
-//					String email = session.getAttribute("email").toString(); // 使用Session是因為要用抓這人的帳密來判斷這人的資料
-//					String password = session.getAttribute("password").toString();
-					System.out.println("id: " + member.getMemberId());
-					              
-					Member mmm = mService.insert(member);			// 把資料放進去(insert)
-					if(mmm != null) {
-						System.out.println("更新成功!");
-//						model = getViewUser(request, model);		// 如果要顯示更新成功這三段就要開啟getViewUser方法
-//						model.addAttribute("Msg", "更新成功!");
-//						return "user/user";
-						return "front/member/user";						// 使用此return是不會顯示更新成功
-					}
-					else {
-						System.out.println("更新失敗!");
-						model.addAttribute("Msg", "更新失敗!"); // 畫面顯示：更新失敗!
-						return "front/member/login"; 		   // 返回登入畫面
-					}
-				}
+
 	
 }

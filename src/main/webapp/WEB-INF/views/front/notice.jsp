@@ -39,7 +39,7 @@
 <link href="${contextRoot}/css/style.css" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="layout/navbar3.jsp"></jsp:include>
+<jsp:include page="layout/navbar.jsp"></jsp:include>
 
  <!-- Page Header Start -->
     <div class="container-fluid mb-0 mt-0 text-center">
