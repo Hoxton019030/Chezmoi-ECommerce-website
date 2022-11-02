@@ -26,7 +26,7 @@ public class MemberService {
 		return mDao.findEmail(member.getEmail());
 	}
 	
-	//註冊新增至資料庫
+	//註冊新增至資料庫 修改資料至資料庫
 	public Member insert(Member member) {
 		return mDao.save(member);
 	}
@@ -49,21 +49,21 @@ public class MemberService {
 	}
 	
 	//顯示會員資料
-	public List<Member> viewUser(String email, String password){
+	public Member viewUser(String email, String password){
 		return mDao.viewUser(email, password);
 	}
 	
 	//修改會員資料
-	public int updateUser(Member member) {
-		String email = member.getEmail();
-		String memberName = member.getMemberName();
-		String birthday = member.getBirthday();
-		String phone = member.getPhone();
-		int result = mDao.updateUser(email, memberName, birthday, phone);
-		
-		return result;
-		
-	}
+//	public int updateUser(Member member) {
+//		String email = member.getEmail();
+//		String memberName = member.getMemberName();
+//		String birthday = member.getBirthday();
+//		String phone = member.getPhone();
+//		int result = mDao.updateUser(email, memberName, birthday, phone);
+//		
+//		return result;
+//				mDao.update(member);	
+//	}
 	
 //	public List<Member> findAll() {
 //		return mDao.findAll();

@@ -12,10 +12,9 @@
                 <meta content="width=device-width, initial-scale=1.0" name="viewport">
                 <meta content="Free HTML Templates" name="keywords">
                 <meta content="Free HTML Templates" name="description">
-<!--                 <meta http-equiv="refresh" content="1"> -->
 
                 <!-- Favicon -->
-                <link href="${contextRoot}/img/logo.jpg" rel="icon">
+                <link href="https://img.onl/fUrHvw" rel="icon">
 
                 <!-- Google Web Fonts -->
                 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -38,9 +37,9 @@
             <body>
 
                 <!-- Topbar Start -->
-              <jsp:include page="../layout/navbar.jsp"></jsp:include>
+                <jsp:include page="../layout/navbar.jsp"></jsp:include>
                 <!-- Topbar End -->
-                
+
                 <!-- Page Header Start -->
                 <div class="container-fluid  mb-0 mt-5">
                     <div class="align-items-center justify-content-center" style="min-height: 200px; display: flex;">
@@ -73,12 +72,14 @@
                                     <div class="card-body">
                                         <div class="d-flex pt-1 mb-2">
                                             <h6 class="font-weight-medium">客戶名稱: </h6>
-                                            <h6 class="font-weight-medium ml-1" id="memberName">${Orders.member.memberName}
+                                            <h6 class="font-weight-medium ml-1" id="memberName">
+                                                ${Orders.member.memberName}
                                             </h6>
                                         </div>
                                         <div class="d-flex pt-1 mb-2">
                                             <h6 class="font-weight-medium">電話號碼:</h6>
-                                            <h6 class="font-weight-medium ml-1" id="memberPhone">${Orders.member.phone}</h6>
+                                            <h6 class="font-weight-medium ml-1" id="memberPhone">${Orders.member.phone}
+                                            </h6>
                                         </div>
                                         <div class="d-flex pt-1 ">
                                             <h6 class="font-weight-medium">電子信箱:</h6>
@@ -100,6 +101,12 @@
                                                         placeholder="想通知賣家的話.." />
                                                 </div>
                                             </form>
+                                            <div class="d-flex pt-3">
+                                                <h6 class="font-weight-medium text-primary">蝦皮出貨請備註蝦皮帳號:</h6>
+                                            </div>
+                                            <div class="d-flex pt-1 mb-2">
+                                                <h6 class="font-weight-medium">例如:我的蝦皮帳號是:Chezmoiiiiiii</h6>
+                                            </div>
                                         </div>
 
 
@@ -117,33 +124,39 @@
                                             <input class="mb-2" type="checkbox" name="checkbox1" value="same_detail"
                                                 id="checkbox">
                                             <label for="checkbox1">收件人資料與客戶資料相同</label>
-                                            <div class="d-flex justify-content-between pt-1 mb-2">
-                                                <h6 class=" font-weight-medium">收件人名稱</h6>
+                                            <div class="d-flex pt-1 mb-2">
+                                                <h6 class=" font-weight-medium mr-3">收件人名稱</h6>
+                                                <h6 class=" font-weight-medium text-primary" id="name"></h6>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="shipName" type="text" class="form-control p-4 mb-2"
-                                                    id="inputMemberName" value="" placeholder="彭建華" />
+                                                    id="inputMemberName" value="" placeholder="彭建華"
+                                                    oninput="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" />
                                             </div>
-                                            <div class="d-flex justify-content-between pt-1 mb-2">
-                                                <h6 class=" font-weight-medium">收件人電話號碼</h6>
+                                            <div class="d-flex pt-1 mb-2">
+                                                <h6 class=" font-weight-medium mr-3">收件人電話號碼</h6>
+                                                <h6 class=" font-weight-medium text-primary" id="phone"></h6>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="shipPhone" type="text" class="form-control p-4 mb-2"
-                                                    id="inputMemberPhone" value="" placeholder="09XXXXXXX" />
+                                                    id="inputMemberPhone" value="" placeholder="09XXXXXXX"
+                                                    oninput="value=value.replace(/[^\d]/g,'')" maxlength="10" />
                                             </div>
                                             <div class="d-flex justify-content-between pt-1 mb-2">
-                                                <h6 class=" font-weight-medium">7-11 店號</h6>
+                                                <h6 class=" font-weight-medium">7-11 店號(蝦皮出貨請不用填寫)</h6>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="storeNumber" class="form-control p-4 mb-2"
-                                                    placeholder="211480" />
+                                                    placeholder="211480" oninput="value=value.replace(/[^\d]/g,'')"
+                                                    maxlength="6" />
                                             </div>
                                             <div class="d-flex justify-content-between pt-1 mb-2">
-                                                <h6 class=" font-weight-medium">7-11 門市名稱</h6>
+                                                <h6 class=" font-weight-medium">7-11 門市名稱(蝦皮出貨請不用填寫)</h6>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="storeName" class="form-control p-4 mb-2"
-                                                    placeholder="大強" />
+                                                    placeholder="大強"
+                                                    oninput="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" />
                                             </div>
                                             <a class="text-primary" href="https://emap.pcsc.com.tw/#"
                                                 target="_blank">7-11門市查詢 ( ex: 門市店號：136288 ,
@@ -183,7 +196,8 @@
                                             <a href="<c:url value='/cartAll' />"><button
                                                     class="btn btn-block btn-primary my-3 py-3"
                                                     type="button">上一步重新選擇</button></a>
-                                            <button class="btn btn-block btn-primary my-3 py-3" type="submit">
+                                            <button class="btn btn-block btn-primary my-3 py-3" id="finish"
+                                                type="submit">
                                                 下一步完成訂單</button>
                                         </div>
                                     </div>
@@ -195,7 +209,7 @@
                 </form:form>
                 <!-- Cart End -->
                 <!-- Footer Start -->
-            <jsp:include page="../layout/footer.jsp"></jsp:include>
+                <jsp:include page="../layout/footer.jsp"></jsp:include>
                 <!-- Back to Top -->
                 <a href="#" class="btn btn-primary back-to-top" style="margin-right: 0px"><i
                         class="fa fa-angle-double-up"></i></a>
@@ -224,20 +238,63 @@
                 <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
 
                 <script type="text/javascript">
+                    //按一下代入會員資料到收件欄位
                     $('#checkbox').click(function () {
                         var memberName = $('#memberName').text();
-                        $('#inputMemberName').attr("value", memberName);
+                        nameStr = memberName.replace(/\s*/g, "");
+                        $('#inputMemberName').attr("value", nameStr);
 
                         var memberPhone = $('#memberPhone').text();
-                        $('#inputMemberPhone').attr("value", memberPhone);
+                        phoneStr = memberPhone.replace(/\s*/g, "");
+                        $('#inputMemberPhone').attr("value", phoneStr);
                     })
-					window.onload = function() {
-					    if(!window.location.hash) {
-					        window.location = window.location + '#loaded';
-					        window.location.reload();
-					    }
-					}
-								
+                    //頁面自動重整一次
+                    window.onload = function () {
+                        if (!window.location.hash) {
+                            window.location = window.location + '#loaded';
+                            window.location.reload();
+                        }
+                    }
+                    //判斷是否送出訂單
+                    $('#finish').click(function () {
+                        var yes = confirm('即將送出訂單');
+                        let name = document.getElementById("inputMemberName");
+                        let nameValue = name.value;
+                        let phone = document.getElementById("inputMemberPhone");
+                        let phoneValue = phone.value;
+                        if (yes) {
+                            if (nameValue == "" || phoneValue == "") {
+                                window.event.returnValue = false;
+                                alert("收件電話或名稱不可輸入空白");
+                            } else {
+                                alert("輸入正確,新增一筆資料")
+                            }
+
+                        } else {
+                            window.event.returnValue = false;
+                        }
+                    })
+                    //判斷名稱輸入
+                    document.getElementById("inputMemberName").addEventListener("blur", checkName);
+                    function checkName() {
+                        let name = document.getElementById("inputMemberName");
+                        let nameValue = name.value;
+                        let sp = document.getElementById("name");
+                        if (nameValue == "") {
+                            sp.innerHTML = "收件名稱不可輸入空白";
+                        }
+                    }
+                    //判斷電話輸入
+                    document.getElementById("inputMemberPhone").addEventListener("blur", checkPhone);
+                    function checkPhone() {
+                        let phone = document.getElementById("inputMemberPhone");
+                        let phoneValue = phone.value;
+                        let sp = document.getElementById("phone");
+                        if (phoneValue == "") {
+                            sp.innerHTML = "收件電話不可輸入空白";
+                        }
+                    }
+
                 </script>
 
             </body>

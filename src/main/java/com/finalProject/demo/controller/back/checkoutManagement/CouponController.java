@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,8 +32,12 @@ public class CouponController {
 //	}
 	
 	//送出的controller
-	@RequestMapping("/addCoupon")
+	@PostMapping("/addCoupon")
 	public String postCoupon(@ModelAttribute(name="couponadd") Coupon add,Model model) {
+		String couponCode = add.getCouponCode();
+		if(cService.findByCouponCode(couponCode)!=null) {
+			return "redirect:/Back/Coupon";
+		}
 		cService.insert(add);
 		
 		//空的
@@ -67,11 +72,12 @@ public class CouponController {
 		return "redirect:/Back/Coupon";
 	}
 	
-	@RequestMapping("/deleteCoupon")
-	public String deleteCoupon(@RequestParam("couponId")Integer couponId) {
-		cService.deleteById(couponId);
-		return "redirect:/Back/Coupon";
-	}
+//	@RequestMapping("/deleteCoupon")
+//	public String deleteCoupon(@RequestParam("couponId")Integer couponId) {
+//		cService.deleteById(couponId);
+//		return "redirect:/Back/Coupon";
+//	}
+	
 	
 	
 

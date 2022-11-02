@@ -1,15 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+ <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>修改密碼</title>
+
+<link href="${contextRoot}/css/register.css" rel="stylesheet">
 </head>
 <body>
 <div id="login-box" class="bg-secondary">
-        <form:form action="${pageContext.request.contextPath}/member/changePassword" method="post"
+        <form:form action="${contextRoot}/member/changePassword" method="post"
             modelAttribute="changePassword">
 
             <h1 class="text-dark">修改密碼</h1>
@@ -23,7 +27,7 @@
                 </div>
 
                 <div>
-                    <a href="${pageContext.request.contextPath}/member/editPassword?email=${editPassword.email}&phone=${editPassword.phone}"
+                    <a href="${contextRoot}/member/editPassword?email=${editPassword.email}&phone=${editPassword.phone}"
                         id="btn-login" class="btn-primary text-dark" value="提交" onclick="myFunction()">提交</a>
                 </div>
                 <p>

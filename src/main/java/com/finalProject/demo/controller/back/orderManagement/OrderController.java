@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.finalProject.demo.controller.request.EditOrderStateToPaidRequest;
+import com.finalProject.demo.controller.request.EditShippingCodeRequest;
 import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.order.Orders;
 import com.finalProject.demo.service.order.OrdersService;
@@ -34,8 +36,15 @@ public class OrderController {
 	}
 	
 	@PutMapping("")
-	public String editShippingCode(@RequestBody Orders code) {
-		return ordersService.editShippingCode(code.getOrderId(), code.getShippingCode());
+	public String editShippingCode(@RequestBody EditShippingCodeRequest request) {
+		return ordersService.editShippingCode(request.getOrderId(), request.getShippingCode());
 	}
-
+	
+	@PutMapping("/editOrderStateToPaid")
+	public String editOrderStateToPaid(@RequestBody EditOrderStateToPaidRequest request) {
+		return ordersService.editOrderStateToPaid(request.getOrderId());
+	}
+	
+	  
 }
+
