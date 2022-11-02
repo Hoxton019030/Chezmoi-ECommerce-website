@@ -112,7 +112,6 @@ public class LoginController {
 					Long memberId = Long.valueOf(stringId);
 					Member memberData = mService.findById(memberId);
 					model.addAttribute("usersubmit",memberData);
-
 					return "front/member/user";
 				}
 				// ===================================== 送出：修改使用者資料 =======================================
@@ -120,7 +119,6 @@ public class LoginController {
 				public String UpdateUser(HttpServletRequest request,
 						@ModelAttribute(name="usersubmit")Member member, Model model) {
 					System.out.println("===============送出修改按鈕=================");
-
 //					HttpSession session = request.getSession();
 //					String email = session.getAttribute("email").toString(); // 使用Session是因為要用抓這人的帳密來判斷這人的資料
 //					String password = session.getAttribute("password").toString();
