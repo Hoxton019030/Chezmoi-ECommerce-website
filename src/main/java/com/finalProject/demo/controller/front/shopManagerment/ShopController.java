@@ -113,13 +113,11 @@ public class ShopController {
 	 */
 	@GetMapping("/shop/productDetail")
 	public String productdetail(@RequestParam("series")String series,Model model) {
-//		List<Products> bySeries = shopService.findBySeries(series);
-//		model.addAttribute("Product", bySeries);
-//		商品明細內頁秀出color跟size
-//		List<Products> productSeries=shopService.findBySeries(bySeries.get(0).getSeries());
+		//商品明細內頁秀出color跟size
 		List<Products> productSeries=shopService.findBySeries(series);
-		Products productsId= shopService.findById(productSeries.get(0).getProductId());
 		model.addAttribute("productSeries",productSeries);
+		//series陣列取出productId
+		Products productsId= shopService.findById(productSeries.get(0).getProductId());
 		model.addAttribute("productsId",productsId);
 		return "front/productDetail";
 	}

@@ -59,108 +59,107 @@
     <div class="detailArea border-b1" style="width:900px; padding-bottom:70px; margin:auto">
         <div class="detail-img-box ">
             <div class="detail-img">
-            <img src="http://localhost:8080/Chezmoi/getMainPic/${productsId.photo.photoId}" alt=""
-                 style="margin:auto;style=" height: 350px; weight:auto">
+                <img src="http://localhost:8080/Chezmoi/getMainPic/${productsId.photo.photoId}" alt=""
+                     style="margin:auto;style=" height: 350px; weight:auto">
+            </div>
         </div>
-    </div>
-    <div class="detail-info">
-        <div class="info-inner">
-            <div class="page-index align-items-center justify-content-center">
-                <a href="${contextRoot}/index"
-                   class="align-items-center justify-content-center">Home</a><span>
+        <div class="detail-info">
+            <div class="info-inner">
+                <div class="page-index align-items-center justify-content-center">
+                    <a href="${contextRoot}/index"
+                       class="align-items-center justify-content-center">Home</a><span>
 							></span> <a href="${contextRoot}/shop"
                                         class="align-items-center justify-content-center">All</a> <span>>
 <%--                      <c:forEach var="Product" items="${productSeries}">--%>
 						</span><a href="${contextRoot}/shop/${productsId.category}">${productsId.category}</a>
 
-            </div>
-            <h4 class="detail-name" name="product_name">${productsId.name}</h4>
-            <!-- price -->
-            <div class="detail-price border-b1">
-                <span class="salePrice" name="salePrice">$${productsId.price}</span>
-<%--                </c:forEach>--%>
-                <!-- dis price -->
-                <!-- 						<span class="dis-price" name="discountPrice" login_status="T" -->
-                <!-- 							discount="F"> 1610 </span> -->
-                <!-- addfavorite  -->
-                <!-- 						<span class="add-wish"><img -->
-                <!-- 							src="img/icon/addFav_detailpage.png" alt=""></span> -->
-            </div>
+                </div>
+                <h4 class="detail-name" name="product_name">${productsId.name}</h4>
+                <!-- price -->
+                <div class="detail-price border-b1">
+                    <span class="salePrice" name="salePrice">$${productsId.price}</span>
+                    <%--                </c:forEach>--%>
+                    <!-- dis price -->
+                    <!-- 						<span class="dis-price" name="discountPrice" login_status="T" -->
+                    <!-- 							discount="F"> 1610 </span> -->
+                    <!-- addfavorite  -->
+                    <!-- 						<span class="add-wish"><img -->
+                    <!-- 							src="img/icon/addFav_detailpage.png" alt=""></span> -->
+                </div>
 
-            <!-- payment & deliver -->
-             <ul class="info-ul border-b1">
-            <li class="info-li" style="padding-bottom: 5px"><img src="img/icon/creditcard-icon-.png" alt="">付款方式:匯款轉帳</li>
-            <li class="info-li" style="padding-bottom: 5px"><img src="img/icon/deliver.png" alt="">運送方式:711店到店</li>
-            <li class="info-li" style="color:darkred">11/18~11/20輸入【Happy2022】即可享$100折扣</li>
-            </ul>
-            <div class="color border-b1">
+                <!-- payment & deliver -->
+                <ul class="info-ul border-b1">
+                    <li class="info-li" style="padding-bottom: 5px"><img src="img/icon/creditcard-icon-.png" alt="">付款方式:匯款轉帳
+                    </li>
+                    <li class="info-li" style="padding-bottom: 5px"><img src="img/icon/deliver.png" alt="">運送方式:711店到店
+                    </li>
+                    <li class="info-li" style="color:darkred">11/18~11/20輸入【Happy2022】即可享$100折扣</li>
+                </ul>
+                <div class="color border-b1" style="padding:12px">
 
-                <span>color</span>
-                <c:forEach var="Product" items="${productSeries}">
+                    <span>color</span>
+                    <c:forEach var="Product" items="${productSeries}">
 						<span class="color-select">
 							<button class="sele-btn" type="button">${Product.color}</button>
-                            <!-- 							<button class="sele-btn" type="button">sora</button> -->
-                            <!-- 							<button class="sele-btn" type="button">navy</button> -->
-						</span>
-                </c:forEach>
-            </div>
-            <div class="size border-b1">
-
-                <span>size</span>
-                <c:forEach var="Product" items="${productSeries}">
+                        </span>
+                    </c:forEach>
+                </div>
+                <div class="size border-b1" style="padding:12px">
+                    <span>size</span>
+                    <c:forEach var="Product" items="${productSeries}">
 							<span class="size-select">
-								<button class="sale-btn" type="button">${Product.size}</button>
+								<button class="sele-btn" type="button">${Product.size}</button>
                                 <!-- 														</span> <span>肩49/胸53/長46</span> -->
 							</span>
-                </c:forEach>
-            </div>
+                    </c:forEach>
+                </div>
 
-            <div class="addTo">
-                <div class="add-inner">
-                    <button class="add-btn1 add-btn-text">Add Cart</button>
+                <div class="addTo">
+                    <div class="add-inner" style="padding-top: 10px">
+                        <button class="add-btn1 add-btn-text">Add Cart</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="pro-detail justify-content-center">
-    <div class="pro-deta-title">
-        <span>Product Details</span>
-    </div>
-    <div style="width:650px; text-align; margin:auto">
+    <div class="pro-detail justify-content-center">
+        <div class="pro-deta-title">
+            <span>Product Details</span>
+        </div>
+        <div style="width:650px; text-align; margin:auto">
 				<span class="detail-desc " id="descript">
                     ${Product.descript.text} </span>
+        </div>
+        <div>
+            <p>
+                <img class="img-fluid w-300" style="width:60%; text-align; margin:auto"
+                     src="http://localhost:8080/Chezmoi/getPic1/${productsId.photo.photoId}"></p>
+            <br>
+            <p>
+
+                <img class="img-fluid w-300" style="width:60%; text-align; margin:auto"
+                     src="http://localhost:8080/Chezmoi/getPic2/${productsId.photo.photoId}"></p>
+            <br>
+            <p>
+                <img class="img-fluid w-300"
+                     src="http://localhost:8080/Chezmoi/getPic3/${productsId.photo.photoId}"></p>
+            <br>
+            <p>
+                <img class="img-fluid w-300"
+                     src="http://localhost:8080/Chezmoi/getPic4/${productsId.photo.photoId}"></p>
+            <br>
+        </div>
+
+
     </div>
-    <div>
-        <p>
-            <img class="img-fluid w-300" style="width:60%; text-align; margin:auto"
-                 src="http://localhost:8080/Chezmoi/getPic1/${productsId.photo.photoId}"></p>
-        <br>
-        <p>
-
-            <img class="img-fluid w-300" style="width:60%; text-align; margin:auto"
-                 src="http://localhost:8080/Chezmoi/getPic2/${productsId.photo.photoId}"></p>
-        <br>
-        <p>
-            <img class="img-fluid w-300"
-                 src="http://localhost:8080/Chezmoi/getPic3/${productsId.photo.photoId}"></p>
-        <br>
-        <p>
-            <img class="img-fluid w-300"
-                 src="http://localhost:8080/Chezmoi/getPic4/${productsId.photo.photoId}"></p>
-        <br>
-    </div>
 
 
-</div>
+    <!-- product descript end-->
 
 
-<!-- product descript end-->
+    <!-- product picture and more strat -->
 
-
-<!-- product picture and more strat -->
-
-<!-- product picture and more end -->
+    <!-- product picture and more end -->
 
 
 </div>
