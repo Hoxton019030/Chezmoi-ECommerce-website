@@ -18,6 +18,6 @@ public class webConfig  implements WebMvcConfigurer {
                 .excludePathPatterns("/member/login","/member/register")
                 .addPathPatterns("/cartAll/**","/cart","/api/updateCart","/cart/deleteFromCart","/cartOrderDetail","/cartOrderDetail#loaded","/cartFinish","/api/postOrders")
                 .addPathPatterns("/member/**")
-                .addPathPatterns("/shop/addToCart");
+                .addPathPatterns("/shop/addToCart","/cartQuantity");
     }
 }

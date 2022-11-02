@@ -72,45 +72,46 @@
 						</div>
 						<div class="navbar-nav ml-auto py-0">
 							<a href="Product_set.html" class="nav-item nav-link"><img src="https://img.onl/QpBCS"
-									width="20" height="20"></a> 
+									width="20" height="20"></a>
 							<a href="${contextRoot}/wishTest" class="nav-item nav-link"><img
 									src="https://img.onl/n7YQO0" width="20" height="20"></a>
 							<a href="${contextRoot}/cartAll" class="nav-item nav-link relative1"><img
 									src="https://img.onl/Vzb1us" width="20" height="20"></a>
 							<span class="cartQuantity text-white relative2">0</span>
-							<a href="${contextRoot}/member" class="nav-item nav-link"><img src="https://img.onl/NzNslP" width="20"
-									height="20"></a>
+							<a href="${contextRoot}/member" class="nav-item nav-link"><img src="https://img.onl/NzNslP"
+									width="20" height="20"></a>
 						</div>
 					</div>
 				</nav>
 			</div>
-		   <!--JavaScript & Jquery-->
-                <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+			<!--JavaScript & Jquery-->
+			<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
-                <!-- JavaScript Libraries -->
-                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-                <script src="${contextRoot}/lib/easing/easing.min.js"></script>
-                <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
+			<!-- JavaScript Libraries -->
+			<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+			<script src="${contextRoot}/lib/easing/easing.min.js"></script>
+			<script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
 
-                <!-- Template Javascript -->
-                <script src="${contextRoot}/js/main.js" type="text/javascript"></script>
+			<!-- Template Javascript -->
+			<script src="${contextRoot}/js/main.js" type="text/javascript"></script>
 
-                <!-- Contact Jquery File -->
-                <script src="${contextRoot}/js/jquery-3.6.1.min.js" type="text/javascript"></script>
+			<!-- Contact Jquery File -->
+			<script src="${contextRoot}/js/jquery-3.6.1.min.js" type="text/javascript"></script>
 
-                <!-- Contact Javascript File -->
-                <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
-                <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
-		 		 <script type="text/javascript">
-		 		$(document).ready(function () {
-		 		 fetch("http://localhost:8080/Chezmoi/cartQuantity")
-		 		 .then((response) => response.json())
-		 		  .then((responseJSON) => {
-                	 $('.cartQuantity').text(responseJSON)
-					});
-		 		 });	 
-                </script>
+			<!-- Contact Javascript File -->
+			<script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
+			<script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
+			<script type="text/javascript">
+				$(document).ready(function () {
+					fetch("http://localhost:8080/Chezmoi/cartQuantity")
+						.then((response) => response.json())
+						.then((responseJSON) => {
+							var response = responseJSON.toString();
+							$('.cartQuantity').text(response)
+						});
+				});	 
+			</script>
 		</body>
 
 		</html>
