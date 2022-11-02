@@ -14,7 +14,7 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetail, OrderD
 	
 	List<OrderDetail> findByOrderId(Long id);
 	
-	@Query(value = "SELECT TOP 8 productId, SUM(quantity) FROM OrderDetail GROUP BY productId ORDER BY SUM(quantity) DESC", nativeQuery = true)
-	public List<Object[]> findBestProduct();
+//	@Query(value = "SELECT TOP 8 productId, SUM(quantity) FROM OrderDetail GROUP BY productId ORDER BY SUM(quantity) DESC", nativeQuery = true)
+//	public List<Object[]> findBestProduct();
 
 }

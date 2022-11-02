@@ -15,12 +15,13 @@ public class frontPageController {
 //	public String shopall() {
 //		return "front/shop";
 //	}
-	@Autowired
-	private ShopService shopService;
+
+//	@Autowired
+//	private ShopService shopService;
 	@GetMapping("/")
-	public String index(Model model) {
-		List<Object[]> findBestProduct = shopService.findBestProduct();
-		model.addAttribute("bestProduct",findBestProduct);
+	public String index() {
+//		List<Object[]> findBestProduct = shopService.findBestProduct();
+//		model.addAttribute("bestProduct",findBestProduct);
 		return "front/index";
 	}
 	

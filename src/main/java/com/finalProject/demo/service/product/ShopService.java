@@ -11,8 +11,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.finalProject.demo.model.entity.cart.Cart;
-import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.product.Products;
 import com.finalProject.demo.repository.order.OrderDetailRepository;
 import com.finalProject.demo.repository.product.ProductRepository;
@@ -38,7 +36,15 @@ public class ShopService {
 	}
 
 	/*
-	 * ProductsDetail按照Series找相對應的顏色、尺寸
+	 * Products找series
+	 */
+//	public List<Products> findBySeries(String series) {
+//		Optional<List<Products>> optional = pDao.findBySeries(series);
+//		return optional.orElse(null);
+//	}
+
+	/*
+	 * ProductsDetail按照Series List找相對應的顏色、尺寸
 	 */
 	public List<Products> findBySeries(String series) {
 		Optional<List<Products>> productList = pDao.findBySeries(series);
@@ -78,10 +84,10 @@ public class ShopService {
 	/*
 	 * 找出熱銷商品-for Index頁面
 	 */
-	public List<Object[]> findBestProduct() {
-		List<Object[]> best = orderDetailRepository.findBestProduct();
-		return best;
-	}
+//	public List<Object[]> findBestProduct() {
+//		List<Object[]> best = orderDetailRepository.findBestProduct();
+//		return best;
+//	}
 
 //取productId第一筆
 

@@ -9,8 +9,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.finalProject.demo.model.dto.ShopDto;
-import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.product.Products;
 public interface ProductRepository extends JpaRepository<Products, String> {
 
@@ -42,7 +40,12 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 			@Param("state2")String state,
 			@Param("id2")String id
 	);
-	
+//	@Query()
+//	Optional<Products> findBySeriesOne(String series);
+
+	/*
+	for productdetail取尺寸、顏色用
+	 */
 	Optional<List<Products>> findBySeries(String series);
 
 	Optional<List<Products>> findProductByCategory(String category);
@@ -50,8 +53,8 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	// public List<Products> findFirstByOrderByCreatTimesDesc();
 
 	// 按照productName同樣商品名也只取一筆
-	@Query(value = "SELECT DISTINCT series,productName,price  FROM products", nativeQuery = true)
-	public List<Products> findDistinctBySeries();
+//	@Query(value = "SELECT DISTINCT series,productName,price  FROM products", nativeQuery = true)
+//	public List<Products> findDistinctBySeries();
 
 //	@Query(value = "TOP 1 * FROM Products WHERE productId=:productId3", nativeQuery = true)
 //	public Products findTopByProductId(@Param("productId3")String productId);

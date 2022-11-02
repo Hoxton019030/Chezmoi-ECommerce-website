@@ -3,7 +3,6 @@ package com.finalProject.demo.controller.front.shopManagerment;
 
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,14 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.finalProject.demo.model.dto.ShopDto;
-import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.product.Products;
 import com.finalProject.demo.repository.product.ProductRepository;
 import com.finalProject.demo.service.cart.CartService;
@@ -55,7 +49,9 @@ public class ShopController {
 		return "front/shop";
 		
 	}
-	
+	/*
+	for Shop頁面的Ajax
+	 */
 	@ResponseBody
 	@GetMapping("/test/s")
 	public List<Map<String,Object>> testSeries(){
@@ -116,12 +112,15 @@ public class ShopController {
 	 * 製作點擊商品名字可以進入"商品明細"
 	 */
 	@GetMapping("/shop/productDetail")
-	public String productdetail(@RequestParam("productId")String productId,Model model) {
-		Products product=shopService.findById(productId);
-		model.addAttribute("Product", product);
+	public String productdetail(@RequestParam("series")String series,Model model) {
+//		List<Products> bySeries = shopService.findBySeries(series);
+//		model.addAttribute("Product", bySeries);
 //		商品明細內頁秀出color跟size
-		List<Products> productSeries=shopService.findBySeries(product.getSeries());
+//		List<Products> productSeries=shopService.findBySeries(bySeries.get(0).getSeries());
+		List<Products> productSeries=shopService.findBySeries(series);
+		Products productsId= shopService.findById(productSeries.get(0).getProductId());
 		model.addAttribute("productSeries",productSeries);
+		model.addAttribute("productsId",productsId);
 		return "front/productDetail";
 	}
 	
