@@ -26,7 +26,7 @@ public class MemberService {
 		return mDao.findEmail(email);
 	}
 	
-	//註冊新增至資料庫
+	//註冊新增至資料庫 修改資料至資料庫
 	public Member insert(Member member) {
 		return mDao.save(member);
 	}

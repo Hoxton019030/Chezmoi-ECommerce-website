@@ -68,10 +68,10 @@
                             <input type="text" class="form-control p-4 mb-2" id="couponName" name="couponName" value="${edit.couponName}" required />
                         </div>
                         <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
-                            <h6 class=" font-weight-medium">折扣券代碼</h6>
+                            <h6 class=" font-weight-medium">折扣券代碼</h6><span>此欄不可編輯</span>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="form-control p-4 mb-2" id="couponCode" name="couponCode" value="${edit.couponCode}" required />
+                            <input type="text" class="form-control p-4 mb-2" id="couponCode" name="couponCode" value="${edit.couponCode}" readonly />
                         </div>
                         <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
                             <h6 class=" font-weight-medium">折扣金額</h6>
@@ -95,7 +95,7 @@
                             <input type="text" class="form-control p-4 mb-2" id="couponState" name="couponState" value="${edit.couponState}" required />
                         </div>
                         <div class="input-group-append pt-4">
-                        	<input type="submit" class="btn btn-primary" value="新增折扣碼">
+                        	<input type="submit" class="btn btn-primary" value="更新折扣碼">
 <!--                             <button class="btn btn-primary" >新增折扣碼</button> -->
                         </div>
                     </div>
