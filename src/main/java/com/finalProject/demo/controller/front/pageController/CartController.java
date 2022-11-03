@@ -23,8 +23,10 @@ import com.finalProject.demo.service.order.OrdersService;
 import com.finalProject.demo.service.order.PaymentService;
 import com.finalProject.demo.service.order.ShippingService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
-@SessionAttributes("Member")
+//@SessionAttributes("Member")
 public class CartController {
 
 	@Autowired
@@ -40,11 +42,17 @@ public class CartController {
 	private ShippingService shippingService;
 	
 	//顯示所有購物車商品
-	@GetMapping(value = {"/cartAll"})
-	public String viewAllCart(Model model1,Model model2,Model model3) {
-		Member memberLogin = new Member();
-		memberLogin.setMemberId(2L);
-		Long memberId = memberLogin.getMemberId();
+
+	@GetMapping("/cartAll")
+	public String viewAllCart(Model model1, Model model2, HttpServletRequest request) {
+//		Member memberLogin = new Member();
+//		memberLogin.setMemberId(2L);
+//		Long memberId = memberLogin.getMemberId();
+
+		//取得memberId
+		String stringId = String.valueOf(request.getAttribute("memberId"));
+		Long memberId = Long.valueOf(stringId);
+
 		List<Cart> allCart = cartService.findAllCart();
 		
 		if(allCart.isEmpty()) {

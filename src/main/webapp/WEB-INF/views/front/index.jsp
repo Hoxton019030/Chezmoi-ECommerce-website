@@ -36,6 +36,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="${contextRoot}/css/style.css" rel="stylesheet">
+    
+    <!-- jQ -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
 </head>
@@ -45,7 +48,7 @@
 
 <%--         <jsp:include page="layout/navbar.jsp"></jsp:include> --%>
 <%--          <jsp:include page="layout/navbar2.jsp"></jsp:include> --%>
-<jsp:include page="layout/navbar3.jsp"></jsp:include>
+<jsp:include page="layout/navbar.jsp"></jsp:include>
 <div class="col-lg-9 " style="padding-right:0px; padding-left:0px; position: relative ;max-width:auto">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">

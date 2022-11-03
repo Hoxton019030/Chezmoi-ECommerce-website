@@ -31,11 +31,13 @@
 
 				<!-- Customized Bootstrap Stylesheet -->
 				<link href="${contextRoot}/css/style.css" rel="stylesheet">
+				<!-- jQ -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 			</head>
 
 			<body>
 				<!-- Topbar Start -->
-				<jsp:include page="layout/navbar3.jsp"></jsp:include>
+				<jsp:include page="layout/navbar.jsp"></jsp:include>
 				<br>
 				<!-- category start -->
 <%-- 				<jsp:include page="layout/category.jsp"></jsp:include> --%>
