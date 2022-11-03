@@ -78,7 +78,7 @@ public class ForgotPwdController {
 				else {
 					System.out.println("更新失敗!");
 					model.addAttribute("Msg", "更新失敗!"); // 畫面顯示：更新失敗!
-					return "redirect:/member/forgotpassword"; 		   // 返回登入畫面
+					return "front/member/forgotpassword"; 		   // 返回登入畫面
 				}
 			}
 }

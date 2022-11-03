@@ -44,8 +44,8 @@ public class MemberService {
 	}
 	
 	//登入
-	public List<Member> findLogin(Member member) {
-		return mDao.findLogin(member.getEmail(), member.getPassword());
+	public List<Member> findLogin(String email,String password) {
+		return mDao.findLogin(email,password);
 	}
 	
 	//顯示會員資料

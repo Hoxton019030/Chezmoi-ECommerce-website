@@ -27,7 +27,13 @@
                 </div>
 
                 <div>
-                    <input type="submit" id="btn-login" class="btn-primary text-dark" value="提交">
+                    <input type="submit" id="btn-login" class="btn-primary text-dark" value="提交" onclick="myFunction()">
+                    <script>
+						function myFunction(){
+								alert("更新成功!");						
+						}
+					</script>
+                    
                 </div>
                 <p>
                     <a href="${contextRoot}/member/login" class="text-primary">取消</a>

@@ -26,7 +26,7 @@ public class LoginController {
 	
 	// ================================== 登入頁面 ==================================
 	@GetMapping("/member/login") 								
-	public String login(HttpServletRequest request) {   
+	public String login(HttpServletRequest request,@ModelAttribute(name = "loginsubmit") Member member) {   
 		HttpSession session = request.getSession();
 		Object email = session.getAttribute("email");
 //		if (email != null) { 						// 如果已有登入未登入
@@ -50,7 +50,7 @@ public class LoginController {
 		public String loginsubmit(HttpServletRequest request, @ModelAttribute(name = "loginsubmit") Member member,
 				RedirectAttributes re) {
 	// ---- 資料傳到SQL ------
-			List<Member> resultList = mService.findLogin(member);
+			List<Member> resultList = mService.findLogin(member.getEmail(),member.getPassword());
 
 				System.out.println("==================== .登入. =========================");
 				if (resultList.size() > 0) { 			   // 若資料庫沒有的帳密則登入失敗
@@ -68,16 +68,15 @@ public class LoginController {
 				} else {
 					re.addAttribute("Msg", "登入失敗!"); 	// 畫面顯示：登入失敗!
 					System.out.println("登入失敗");
-					return "redirect:/member/login"; 				   // 返回登入畫面
+					return "redirect:/member/login"; 		 // 返回登入畫面，這是找方法，例 此為@GetMapping("/member/login")
 				}
 		}
 		// ---- 顯示修改會員資料 ----
 		@GetMapping("/member/user")
 		public String viewUser(HttpServletRequest request, Member member, Model model) {
 			HttpSession session = request.getSession();
-			String email = session.getAttribute("email").toString(); // 使用Session是因為要用抓這人的帳密來判斷這人的資料
-			String password = session.getAttribute("password").toString();
-			Member user = mService.viewUser(email, password);
+			Member user = (Member) session.getAttribute("login"); // 使用Session是因為要用抓這人的帳密來判斷這人的資料
+			
 			if (user != null){
 				// 表示有資料
 //				model.addAttribute("email", userList.get(0).getEmail());
