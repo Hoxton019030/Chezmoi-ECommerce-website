@@ -1,15 +1,14 @@
 package com.finalProject.demo.repository.product;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
+import com.finalProject.demo.model.entity.product.Products;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.finalProject.demo.model.entity.product.Products;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Products, String> {
 
 	//模糊查詢
@@ -71,8 +70,22 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	@Query(value="UPDATE Products SET productName=:name3 WHERE series=:series3",nativeQuery = true)
 	public void updateSeriesName(@Param("name3")String name,@Param("series3")String series);
 
-	//老師寫的testSeries
-	@Query(value="select distinct productName, price,photoId, series from products", nativeQuery=true)
-	public List<Map<String,Object>> testSeries();
+	///shop-All 頁面 單一商品不會重複
+	@Query(value="  select distinct productName, Max(UpdateTime) ,price,photoId, series from products Group by productName, price,photoId, series ORDER BY MAX(UpdateTime) DESC, productName  ", nativeQuery=true)
+	public List<Map<String,Object>> distinctProduct();
+
+	//shop-Detail 頁面 單一size不會重複
+	@Query(value="select distinct size, Max(UpdateTime) ,productName,price,photoId, series from products where series=:series1 Group by size,productName, price,photoId, series ORDER BY MAX(UpdateTime) DESC, size", nativeQuery=true)
+	public List<Map<String,Object>> distinctSize(@Param("series1")String series);
+
+	//shop-Detail 頁面 單一color不會重複
+	@Query(value="select distinct color, Max(UpdateTime) ,productName,price,photoId, series from products Group by color,productName, price,photoId, series ORDER BY MAX(UpdateTime) DESC, color", nativeQuery=true)
+	public List<Map<String,Object>> distinctColor();
+
+	//Category 頁面  單一商品不會重複
+	@Query(value="select distinct productName, Max(UpdateTime) ,price,photoId, series from products where category=:category1 Group by productName, price,photoId, series ORDER BY MAX(UpdateTime) DESC, productName", nativeQuery=true)
+	public List<Map<String,Object>> distinctCatProduct(@Param("category1")String category);
+
+
 	
 }

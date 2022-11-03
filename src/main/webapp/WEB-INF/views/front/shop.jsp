@@ -38,37 +38,37 @@
 
             <body>
                 <!-- Topbar Start -->
-                <<<<<<< HEAD <nav>
-                    <input type="checkbox" id="check"> <label for="check" class="checkbtn"> <i class="fa fa-bars"></i>
-                    </label> <label class="logo" style="padding-left: 30px"><a href="${contextRoot}/"><img
-                                src="https://img.onl/fUrHvw" width="50" height="50"></a></label>
-                    <ul style="margin-bottom: 0px;z-index:20">
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" role="button"
-                                data-toggle="dropdown" aria-expanded="false"> Shop </a>
-                            <ul class="dropdown-menu"
-                                style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 96px, 0px); margin-top: 0px; border-top-width: 0px; padding-top: 0px;">
-                                <li><a class="dropdown-item" id="loadAllProduct" href="${contextRoot}/shop">All</a></li>
-                                <li><a class="dropdown-item" id="loadTopProduct" href="${contextRoot}/shop/top">Top</a>
-                                </li>
-                                <li><a class="dropdown-item" href="${contextRoot}/shop/bottom">Bottom</a></li>
-                                <li><a class="dropdown-item" href="${contextRoot}/shop/outer">Outer</a></li>
-                                <li><a class="dropdown-item" href="${contextRoot}/shop/dress">Dress</a></li>
-                                <li><a class="dropdown-item" href="${contextRoot}/shop/acc">Accessories</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="${contextRoot}/notice">Notice</a></li>
-                        <li><a href="${contextRoot}/contact">Contact</a></li>
-                        <li><a href="https://www.instagram.com/chezmoiiiiiii/?hl=en">Instagram</a></li>
-                        <li><a class="position-relative" href="${contextRoot}/cartAll"> <i
-                                    class="fas fa-shopping-cart fa-1x" style="font-size:20px"></i> <span
-                                    class="cartQuantity text-white bg-warning"></span>
-                            </a></li>
-                        <li><a href="#" class="nav-item nav-link fas fa-user fa-1x" style="font-size:20px"></a></li>
-                    </ul>
+<%--                <nav>--%>
+<%--                    <input type="checkbox" id="check"> <label for="check" class="checkbtn"> <i class="fa fa-bars"></i>--%>
+<%--                    </label> <label class="logo" style="padding-left: 30px"><a href="${contextRoot}/"><img--%>
+<%--                                src="https://img.onl/fUrHvw" width="50" height="50"></a></label>--%>
+<%--                    <ul style="margin-bottom: 0px;z-index:20">--%>
+<%--                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" role="button"--%>
+<%--                                data-toggle="dropdown" aria-expanded="false"> Shop </a>--%>
+<%--                            <ul class="dropdown-menu"--%>
+<%--                                style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 96px, 0px); margin-top: 0px; border-top-width: 0px; padding-top: 0px;">--%>
+<%--                                <li><a class="dropdown-item" id="loadAllProduct" href="${contextRoot}/shop">All</a></li>--%>
+<%--                                <li><a class="dropdown-item" id="loadTopProduct" href="${contextRoot}/shop/top">Top</a>--%>
+<%--                                </li>--%>
+<%--                                <li><a class="dropdown-item" href="${contextRoot}/shop/bottom">Bottom</a></li>--%>
+<%--                                <li><a class="dropdown-item" href="${contextRoot}/shop/outer">Outer</a></li>--%>
+<%--                                <li><a class="dropdown-item" href="${contextRoot}/shop/dress">Dress</a></li>--%>
+<%--                                <li><a class="dropdown-item" href="${contextRoot}/shop/acc">Accessories</a></li>--%>
+<%--                            </ul>--%>
+<%--                        </li>--%>
+<%--                        <li><a href="${contextRoot}/notice">Notice</a></li>--%>
+<%--                        <li><a href="${contextRoot}/contact">Contact</a></li>--%>
+<%--                        <li><a href="https://www.instagram.com/chezmoiiiiiii/?hl=en">Instagram</a></li>--%>
+<%--                        <li><a class="position-relative" href="${contextRoot}/cartAll"> <i--%>
+<%--                                    class="fas fa-shopping-cart fa-1x" style="font-size:20px"></i> <span--%>
+<%--                                    class="cartQuantity text-white bg-warning"></span>--%>
+<%--                            </a></li>--%>
+<%--                        <li><a href="#" class="nav-item nav-link fas fa-user fa-1x" style="font-size:20px"></a></li>--%>
+<%--                    </ul>--%>
 
-                    </nav>
-                    <section></section>
-
+<%--                    </nav>--%>
+<%--                    <section></section>--%>
+                <jsp:include page="layout/navbar.jsp"></jsp:include>
 
                     <br>
                     <!-- category start -->

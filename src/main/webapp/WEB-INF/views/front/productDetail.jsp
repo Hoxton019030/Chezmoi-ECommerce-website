@@ -74,9 +74,9 @@
                        class="align-items-center justify-content-center">Home</a><span>
 							></span> <a href="${contextRoot}/shop"
                                         class="align-items-center justify-content-center">All</a> <span>>
-                      <c:forEach var="Product" items="${productSeries}">
+<%--                      <c:forEach var="Product" items="${productSeries}">--%>
 						</span><a href="${contextRoot}/shop/${productsId.category}">${productsId.category}</a>
-                    </c:forEach>
+<%--                    </c:forEach>--%>
 
                 </div>
                 <h4 class="detail-name" name="product_name">${productsId.name}</h4>
@@ -94,12 +94,12 @@
                     <li class="info-li" style="color:darkred">11/18~11/20輸入【Happy2022】即可享$100折扣</li>
                 </ul>
 
-                <div class="color border-b1" style="padding-bottom:12px" id="sizeId">
+                <div class="color border-b1" style="padding-bottom:12px" id="sizeBody">
                     <span style="padding-right:15px ; font-weight:bold">size</span>
-                    <c:forEach var="Product" items="${productSeries}">
-                        <label id="SizeURL" style="padding-right:15px"><input type="radio" name="size" value="${Product.size}"/><span
-                                class="round button">${Product.size}</span></label>
-                    </c:forEach>
+<%--                    <c:forEach var="Product" items="${productSeries}">--%>
+<%--                        <label id="SizeURL" style="padding-right:15px"><input type="radio" name="size" value="${Product.size}"/><span--%>
+<%--                                class="round button">${Product.size}</span></label>--%>
+<%--                    </c:forEach>--%>
                 </div>
                 <div class="color border-b1" style="padding-bottom:12px" id="colorId">
 
@@ -140,7 +140,7 @@
             <img class="img-fluid w-300" style="width:60%; text-align; margin:auto"
                  src="http://localhost:8080/Chezmoi/getPic2/${productsId.photo.photoId}"></p>
         <br>
-        <p>
+        <p>s
             <img class="img-fluid w-300"
                  src="http://localhost:8080/Chezmoi/getPic3/${productsId.photo.photoId}"></p>
         <br>
@@ -198,6 +198,11 @@
     })
 
 </script>
+
+<!-- Template Javascript -->
+<script src="${contextRoot}/js/sizeAjax.js"></script>
+<script src="${contextRoot}/js/colorAjax.js"></script>
+
 </body>
 
 </html>

@@ -2,10 +2,10 @@
 // Shop Cat頁面由Ajax產生
 //  */
 $(document).ready(function () {
-    $('#loadTopProduct').click(function () {
+    // $('#loadTopProduct').click(function () {
         $('#tbody').empty();
         $('#pageNumber').empty();
-        fetch("http://localhost:8080/Chezmoi/objListCat").then(function (response) {
+        fetch("http://localhost:8080/Chezmoi/test/s").then(function (response) {
             return response.json();
         }).then(function (array) {
 
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
         })
     })
-})
+// })
 // // $(document).ready(function () {
 // //     //$('#loadAllProduct').click(function(){
 // //     $('#tbody').empty();
