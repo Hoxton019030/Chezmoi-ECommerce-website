@@ -12,7 +12,8 @@ import org.springframework.data.repository.query.Param;
 import com.finalProject.demo.model.entity.product.Products;
 public interface ProductRepository extends JpaRepository<Products, String> {
 
-
+	//模糊查詢
+	List<Products> findByProductIdContaining(String productId);
 
 	List<Products> findByName(String name);
 	List<Products> findByCategory(String category);

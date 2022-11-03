@@ -29,6 +29,7 @@
     <!-- Libraries Stylesheet -->
     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
+<<<<<<< HEAD
     <!-- Customized Bootstrap Stylesheet -->
     <link href="${contextRoot}/css/style.css" rel="stylesheet">
 </head>
@@ -108,6 +109,24 @@
 
     </c:forEach>
 </div>
+=======
+				<!-- Customized Bootstrap Stylesheet -->
+				<link href="${contextRoot}/css/style.css" rel="stylesheet">
+				<!-- jQ -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+			</head>
+
+			<body>
+				<!-- Topbar Start -->
+				<jsp:include page="layout/navbar.jsp"></jsp:include>
+				<br>
+				<!-- category start -->
+<%-- 				<jsp:include page="layout/category.jsp"></jsp:include> --%>
+<!-- 				<br> -->
+				<!-- accounce start -->
+				<jsp:include page="layout/announce.jsp"></jsp:include>
+				<br>
+>>>>>>> 7d49475180256c85907a184ed8fcac49b9757b6c
 
 
 <!-- footer頁面 -->

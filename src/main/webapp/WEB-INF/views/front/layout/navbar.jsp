@@ -1,19 +1,20 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="utf-8">
-
+<title>Chezmoi</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="Free HTML Templates" name="keywords">
 <meta content="Free HTML Templates" name="description">
-
 <!-- Favicon -->
 <link href="${contextRoot}/img/logo.jpg" rel="icon">
 
@@ -31,67 +32,57 @@
 <!-- Libraries Stylesheet -->
 <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css"
 	rel="stylesheet">
-
-<!-- Customized Bootstrap Stylesheet -->
+<!-- <navbar> -->
+<script src='https://kit.fontawesome.com/a076d05399.js'
+	crossorigin='anonymous'></script>
 <link href="${contextRoot}/css/style.css" rel="stylesheet">
 </head>
+
 <body>
-	<!-- Topbar Start -->
-	<div class="px-xl-5">
-		<nav
-			class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+	<nav>
+		<input type="checkbox" id="check"> <label for="check"
+			class="checkbtn"> <i class="fa fa-bars"></i>
+		</label> <label class="logo" style="padding-left: 30px"><a href="${contextRoot}/"><img
+			src="https://img.onl/fUrHvw" width="50" height="50"></a></label>
+		<ul style="margin-bottom: 0px;z-index:20">
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="" role="button"
+				data-toggle="dropdown" aria-expanded="false"> Shop </a>
+				<ul class="dropdown-menu"
+					style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 96px, 0px); margin-top: 0px; border-top-width: 0px; padding-top: 0px;">
+					<li><a class="dropdown-item" href="${contextRoot}/shop">All</a></li>
+					<li><a class="dropdown-item" href="${contextRoot}/shop/top">Top</a></li>
+					<li><a class="dropdown-item" href="${contextRoot}/shop/bottom">Bottom</a></li>
+					<li><a class="dropdown-item" href="${contextRoot}/shop/outer">Outer</a></li>
+					<li><a class="dropdown-item" href="${contextRoot}/shop/dress">Dress</a></li>
+					<li><a class="dropdown-item" href="${contextRoot}/shop/acc">Accessories</a></li>
+				</ul></li>
+			<li><a href="${contextRoot}/notice">Notice</a></li>
+			<li><a href="${contextRoot}/contact">Contact</a></li>
+			<li><a href="https://www.instagram.com/chezmoiiiiiii/?hl=en">Instagram</a></li>
+			<li><a href="${contextRoot}/wishTest" class="nav-item nav-link">
+				<img src="https://img.onl/n7YQO0" width="20" height="20">
+			</a></li>
+			<li><a class="position-relative" href="${contextRoot}/cartAll"> <i
+					class="fas fa-shopping-cart fa-1x" style="font-size:20px"></i> <span
+					class="cartQuantity text-white bg-primary">0</span>
+			</a></li>
+			<li><a href="${contextRoot}/member" class="nav-item nav-link fas fa-user fa-1x" style="font-size:20px"></a></li>
+		</ul>
 
-					<div class="collapse navbar-collapse  justify-content-between" id="navbarCollapse">
-						<div class="navbar-nav mr-auto align-items-center py-0" style="padding-top: 5px">
-							<a href="${contextRoot}/" class="nav-item nav-link active"><img src="https://img.onl/fUrHvw"
-									width="50" height="50"> </a> <a href="${contextRoot}/shop"
-								class="nav-item nav-link">Shop</a> <a href="${contextRoot}/notice"
-								class="nav-item nav-link">Notice</a> <a
-								href="https://www.instagram.com/chezmoiiiiiii/?hl=en" class="nav-item nav-link"
-								target="_blank">Instagram</a> <a href="${contextRoot}/contact"
-								class="nav-item nav-link">Contact</a>
-						</div>
-						<div class="navbar-nav ml-auto py-0">
-							<a href="Product_set.html" class="nav-item nav-link"><img src="https://img.onl/QpBCS"
-									width="20" height="20"></a>
-							<a href="${contextRoot}/wishTest" class="nav-item nav-link"><img
-									src="https://img.onl/n7YQO0" width="20" height="20"></a>
-							<a href="${contextRoot}/cartAll" class="nav-item nav-link relative1"><img
-									src="https://img.onl/Vzb1us" width="20" height="20"></a>
-							<span class="cartQuantity text-white relative2">0</span>
-							<a href="member.html" class="nav-item nav-link"><img src="https://img.onl/NzNslP" width="20"
-									height="20"></a>
-						</div>
-					</div>
-				</nav>
-			</div>
-		   <!--JavaScript & Jquery-->
-                <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-
-                <!-- JavaScript Libraries -->
-                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-                <script src="${contextRoot}/lib/easing/easing.min.js"></script>
-                <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
-
-                <!-- Template Javascript -->
-                <script src="${contextRoot}/js/main.js" type="text/javascript"></script>
-
-                <!-- Contact Jquery File -->
-                <script src="${contextRoot}/js/jquery-3.6.1.min.js" type="text/javascript"></script>
-
-                <!-- Contact Javascript File -->
-                <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
-                <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
-		 		 <script type="text/javascript">
-		 		$(document).ready(function () {
-		 		 fetch("http://localhost:8080/Chezmoi/cartQuantity")
-		 		 .then((response) => response.json())
-		 		  .then((responseJSON) => {
-                	 $('.cartQuantity').text(responseJSON)
+	</nav>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			fetch("http://localhost:8080/Chezmoi/cartQuantity")
+					.then((response) => response.json())
+					.then((responseJSON) => {
+						$('.cartQuantity').text(responseJSON)
 					});
-		 		 });
-                </script>
-		</body>
+		});
+	</script>
 
-		</html>
+
+
+</body>
+
+</html>

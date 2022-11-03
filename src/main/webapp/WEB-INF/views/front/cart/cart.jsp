@@ -31,6 +31,9 @@
 
                 <!-- Customized Bootstrap Stylesheet -->
                 <link href="${contextRoot}/css/style.css" rel="stylesheet">
+                
+                <!-- jQ -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
             </head>
 
@@ -139,9 +142,6 @@
                                     </select>
                                 </div>
                                 <div class="d-flex justify-content-between pt-1">
-                                    <h6 class=" font-weight-medium">備註: 訂單將於收到款項後出貨</h6>
-                                </div>
-                                <div class="d-flex justify-content-between pt-1">
                                     <h6 class=" font-weight-medium">收款銀行: (822)中國信託</h6>
                                 </div>
                                 <div class="d-flex justify-content-between pt-1">
@@ -151,9 +151,12 @@
                                     <h6 class=" font-weight-medium mr-1">蝦皮賣場連結: </h6>
                                     <a class="text-primary" href="https://shopee.tw/product/7915556/4083302459/"> Chezmoi</a>
                                 </div>
+                                <div class="d-flex justify-content-between pt-1">
+                                    <h6 class=" font-weight-medium">備註: 訂單將於收到款項後出貨</h6>
+                                </div>
                                 <div class="d-flex pt-1">
                                     <h6 class=" font-weight-medium mr-1">選擇7-11取貨的顧客: </h6>
-                                    <h6 class=" font-weight-medium">請匯款訂單總金額至收款帳號</h6>
+                                    <h6 class=" font-weight-medium">請匯款訂單總金額至收款帳號,或於訂單完成頁面點選連結至paypal網站付款</h6>
                                 </div>
                                 <div class="d-flex pt-1">
                                     <h6 class=" font-weight-medium mr-1">選擇蝦皮出貨的顧客: </h6>
@@ -207,11 +210,13 @@
                                         <h5 class="font-weight-bold">總金額NT$ </h5>
                                         <h5 class="font-weight-bold" id="subTotal">${subtotal}</h5>
                                     </div>
-                                    <a href="<c:url value='/shop' />"><button
+                                     <div class="d-flex justify-content-center mt-2">
+                                    <a href="<c:url value='/shop' />" class="mr-3"><button
                                             class="btn btn-block btn-primary my-3 py-3">繼續購物</button>
                                     </a>
-                                    <a href="<c:url value='/cartOrderDetail' />" id="nextStep"><button
-                                            class="btn btn-block btn-primary my-3 py-3" >下一步結帳</button></a>
+                                    <a href="<c:url value='/cartOrderDetail' />" class="ml-3" id="nextStep"><button
+                                            class="btn btn-block btn-primary my-3 py-3" >下一步填寫資料</button></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -234,7 +239,7 @@
                 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
                 <!-- JavaScript Libraries -->
-                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+               
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
                 <script src="${contextRoot}/lib/easing/easing.min.js"></script>
                 <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
@@ -252,11 +257,7 @@
                 <!-- Ajax & other function -->
                 <script src="${contextRoot}/js/cartAjax.js"></script>
                 
-                <script type="text/javascript">
-                	var cartQuantity = '${cartQuantity}';
-                	console.log(cartQuantity)
-                	 $('.cartQuantity').text(${cartQuantity})
-                </script>
+               
 
             </body>
 

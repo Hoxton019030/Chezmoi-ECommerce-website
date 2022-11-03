@@ -22,8 +22,8 @@ public class MemberService {
 	private MemberRepository mDao;
 	
 	//找Email是否註冊過
-	public List<Member> findEmail(Member member) {
-		return mDao.findEmail(member.getEmail());
+	public Member findEmail(String email) {
+		return mDao.findEmail(email);
 	}
 	
 	//註冊新增至資料庫 修改資料至資料庫

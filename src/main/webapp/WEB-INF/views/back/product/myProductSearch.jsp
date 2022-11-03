@@ -36,7 +36,7 @@
                         li,
                         ul {
                             list-style: none;
-                            padding: 0%;
+                            padding: 0;
                         }
 
                         li,
@@ -63,23 +63,21 @@
                                         <h4 class="font-weight-semi-bold m-0">我的商品</h4>
                                     </div>
                                     <div class="card-body border-bottom">
-
+				
                                         <form:form class="btn-block" action="${contextRoot}/Back/MyProduct/findByProductIdLike"  method="post">
                                             <div class="input-group justify-content-between ">
-                                                <div class="d-flex pt-1 mb-2 ">
-                                                    <select class="rounded-sm p-0 " name="commodity">
-                                                        <option value="productName">商品名稱</option>
-                                                        <option value="ProductId">商品編號</option>
-                                                    </select>
-                                                </div>
+                                                
                                                 <input type="text" class="form-control p-4 m-1" placeholder="search" name="search">
                                                 <div class="submit">
                                                     <input class="btn-primary m-1 rounded-sm border-1" type="submit"
-                                                        value="search" >
+                                                        value="search">
                                                 </div>
                                             </div>
 
                                         </form:form>
+                                        
+ 
+                                        
                                     </div>
 
                                     <div class="container-fluid row px-xl-4 ">
@@ -93,8 +91,8 @@
                                                         <div class="mr-auto py-0">
                                                             <ul class="nav navbar-nav">
                                                                 <li class="active mr-3">
-                                                                    <button class="btn btn-sm btn-primary"
-                                                                        id="getAllProduct">全部商品</button>
+                                                                    <a href="${contextRoot}/Back/MyProduct">
+                                                                        <button class="btn btn-sm btn-primary">全部商品</button></a>
                                                                 </li>
                                                                 <li class="dropdown mr-3">
                                                                     <a href="" class="dropdown-toggle"
@@ -156,10 +154,26 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="align-middle" id="tbody">
-                                                <!-- getProductAjax.js -->
-                                                                                   
+                                                <c:forEach var="product" items="${list}">
+                                                    <tr class="text-center">
+                                                        <td><input type="checkbox" style="zoom:150%"></td>
+                                                        <td class="align-middle">
+                                                        <img src="http://localhost:8080/Chezmoi/getMainPic/${product.photo.photoId}" style="width: 80px;height:auto">
+                                                        </td>
+                                                        <td class="align-middle">${product.productId}</td>
+                                                        <td class="align-middle" >${product.name}</td>
+                                                        <td class="align-middle" >${product.color}</td>
+                                                        <td class="align-middle" >${product.size}</td>
+                                                        <td class="align-middle" >${product.price}</td>
+                                                        <td class="align-middle" >${product.productState}</td>
+                                                        <td class="align-middle"><a href="MyProduct/edit/${product.productId}"><button class="btn btn-sm btn-primary">修改</button></a></td>
+                                                        <td class="align-middle"><a id="remove" href="MyProduct/delete/${product.productId}"  onClick="return confirm(`確定要刪除此商品嗎?`);" ><button class="btn btn-sm btn-primary">刪除</button></a></td>
+                                                    </tr>
+                                                </c:forEach>
+
                                                 </tbody>
                                             </table>
+                                            
 
                                         </div>
                                     </div>
@@ -167,6 +181,7 @@
                             </div>
                         </div>
                     </div>
+                    <c:if test="${param.msg!='' && !(empty param.msg) }"><script>confirm("${param.get("msg")}");</script></c:if>
                     <!-- Back to Top -->
                     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
                     <!-- JavaScript Libraries -->
@@ -194,6 +209,7 @@
                            
                         });
                     </script>
+                    
 
                 </body>
 
