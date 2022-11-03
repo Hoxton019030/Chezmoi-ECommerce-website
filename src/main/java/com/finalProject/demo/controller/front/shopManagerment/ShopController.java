@@ -49,6 +49,19 @@ public class ShopController {
 		return "front/shop";
 		
 	}
+
+	/*
+	 * 設定按下商品分類可跳出相對應的商品
+	 */
+	@GetMapping("/shop/{category}")
+	public String viewTopProducts(@PathVariable("category")String category,Model model) {
+		List<Products> productcategory=shopService.findProductByCategory(category);
+		model.addAttribute("category", productcategory);
+		return "front/CatProduct";
+	}
+
+
+
 	/*
 	for Shop頁面的Ajax
 	 */
@@ -94,19 +107,7 @@ public class ShopController {
 ////		Page<OrderDetail>page=shopService.findByPageIndex(pageNumber);
 ////		model.addAttribute("page", page);
 ////		return "front/index";
-	
-	
-	
-	/*
-	 * 設定按下商品分類可跳出相對應的商品
-	 */
-	@GetMapping("/shop/{category}")
-	public String viewTopProducts(@PathVariable("category")String category,Model model) {
-		List<Products> productcategory=shopService.findProductByCategory(category);
-		model.addAttribute("category", productcategory);
-		return "front/CatProduct";
-		
-	}
+
 
 	/*
 	 * 製作點擊商品名字可以進入"商品明細"

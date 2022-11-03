@@ -60,7 +60,7 @@
         <div class="detail-img-box ">
             <div class="detail-img">
                 <img src="http://localhost:8080/Chezmoi/getMainPic/${productsId.photo.photoId}" alt=""
-                     style="margin:auto;height: 350px; width:auto">
+                     style="margin:auto;height: 450px; width:auto">
             </div>
         </div>
         <div class="detail-info">
@@ -70,8 +70,9 @@
                        class="align-items-center justify-content-center">Home</a><span>
 							></span> <a href="${contextRoot}/shop"
                                         class="align-items-center justify-content-center">All</a> <span>>
-<%--                      <c:forEach var="Product" items="${productSeries}">--%>
+                      <c:forEach var="Product" items="${productSeries}">
 						</span><a href="${contextRoot}/shop/${productsId.category}">${productsId.category}</a>
+                    </c:forEach>
 
                 </div>
                 <h4 class="detail-name" name="product_name">${productsId.name}</h4>
@@ -88,29 +89,27 @@
                     </li>
                     <li class="info-li" style="color:darkred">11/18~11/20輸入【Happy2022】即可享$100折扣</li>
                 </ul>
-                <div class="color border-b1" style="padding:12px">
-                    <span>color</span>
+
+                <div class="color border-b1" style="padding-bottom:12px" id="sizeId">
+                    <span style="padding-right:15px ; font-weight:bold">size</span>
                     <c:forEach var="Product" items="${productSeries}">
-						<span class="color-select">
-							<button class="sele-btn" type="button">${Product.color}</button>
-                        </span>
+                        <label id="SizeURL" style="padding-right:15px"><input type="radio" name="size" value="${Product.size}"/><span
+                                class="round button">${Product.size}</span></label>
                     </c:forEach>
                 </div>
+                <div class="color border-b1" style="padding-bottom:12px" id="colorId">
 
-                <div class="size border-b1" style="padding:12px">
-                    <span>size</span>
+                    <span style="padding-right:15px ; font-weight:bold" >color</span>
                     <c:forEach var="Product" items="${productSeries}">
-							<span class="size-select">
-								<button class="sele-btn" type="button">${Product.size}</button>
-                            </span>
+                        <label id="ColorUrl" style="padding-right:15px">
+                            <input type="radio" name="color" value="${Product.color}"/><span
+                                class="round button">${Product.color}</span></label>
                     </c:forEach>
                 </div>
-
-
                 <div class="addTo">
                     <div class="add-inner" style="padding-top: 10px">
-                        <a href="${contextRoot}/shop/addToCart?id=${Product.productId}">
-                        <button class="add-btn1 add-btn-text">Add Cart</button>
+                        <a id="addCart" >
+                            <button class="add-btn1 add-btn-text"  >Add Cart</button>
                         </a>
                     </div>
                 </div>
@@ -118,7 +117,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <div class="pro-detail justify-content-center">
     <div class="pro-deta-title">
         <span>Product Details</span>
@@ -151,19 +150,6 @@
 </div>
 
 
-<!-- product descript end-->
-
-
-<!-- product picture and more strat -->
-
-<!-- product picture and more end -->
-
-
-</div>
-
-<!-- productDetail end -->
-
-
 
 <!-- Footer Start -->
 <jsp:include page="layout/footer.jsp"></jsp:include>
@@ -191,7 +177,23 @@
         console.log(color)
     })
 </script>
+<%--尺寸/顏色選取並加入購物車，利用字串拼接--%>
+<script>
+    let size=$("input[name=size]:checked").val();
+    let color=$("input[name=color]:checked").val();
 
+    $("input[name=size]").change(function(){
+        size=$("input[name=size]:checked").val()
+    })
+    $("input[name=color]").change(function(){
+        color=$("input[name=color]:checked").val()
+    })
 
+    $("#addCart").click(function(){
+        window.location='${contextRoot}/shop/addToCart?id='+"${productsId.series}"+"-"+size+"-"+color;
+    })
+
+</script>
 </body>
+
 </html>
