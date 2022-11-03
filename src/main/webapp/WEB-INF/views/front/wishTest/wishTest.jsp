@@ -38,9 +38,9 @@
 
             <body>
 
-                <!-- Topbar Start -->
-                <jsp:include page="../layout/navbar.jsp"></jsp:include>
-                <!-- Topbar End -->
+            <!-- Topbar Start -->
+            <jsp:include page="../layout/navbar.jsp"></jsp:include>
+            <!-- Topbar End -->
 
                 <!-- Page Header Start -->
                 <div class="container-fluid  mb-0 mt-3">

@@ -37,15 +37,15 @@
 
 			<nav>
 				<div class="text-right" style="background-color: #F1EDE6;">
-					<span class=" mr-3" style="color:#393833;">${memberName}陳怡靜 您好 </span>
-					<a href="#" class=" mr-3">Logout</a>
+					<span class=" mr-3" style="color:#393833;" id="memberName"></span>
+
 				</div>
 
 				<input type="checkbox" id="check"> <label for="check" class="checkbtn"> <i class="fa fa-bars"></i>
 				</label> <label class="logo" style="padding-left: 30px"><a href="${contextRoot}/"><img
 							src="https://img.onl/fUrHvw" width="50" height="50"></a></label>
 				<ul style="margin-bottom: 0px;z-index:20">
-					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" role="button"
+					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" role="button"
 							data-toggle="dropdown" aria-expanded="false"> Shop </a>
 						<ul class="dropdown-menu"
 							style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 96px, 0px); margin-top: 0px; border-top-width: 0px; padding-top: 0px;">
@@ -77,10 +77,31 @@
 					fetch("http://localhost:8080/Chezmoi/cartQuantity")
 						.then((response) => response.json())
 						.then((responseJSON) => {
-							$('.cartQuantity').text(responseJSON)
+							if (responseJSON!=null){
+								$('.cartQuantity').text(responseJSON)
+							}else{}
+
 						});
+
 				});
 			</script>
+<%--		<script>--%>
+<%--			$(document).ready(function () {--%>
+<%--			fetch("http://localhost:8080/Chezmoi/member/showName")--%>
+<%--					.then((response)=>response.json())--%>
+<%--					.then((responseJSON)=>{--%>
+<%--						const link = 'member/login';--%>
+<%--						if (responseJSON!=null && responseJSON!==""){--%>
+<%--							$('#memberName').text(responseJSON+' 您好')--%>
+<%--							alert(responseJSON)--%>
+<%--						}else {--%>
+
+<%--						}--%>
+
+<%--					});--%>
+<%--			});--%>
+
+<%--		</script>--%>
 
 
 
