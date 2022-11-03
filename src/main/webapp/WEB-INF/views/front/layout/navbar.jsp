@@ -65,7 +65,7 @@
 			</a></li>
 			<li><a class="position-relative" href="${contextRoot}/cartAll"> <i
 					class="fas fa-shopping-cart fa-1x" style="font-size:20px"></i> <span
-					class="cartQuantity text-white bg-warning">0</span>
+					class="cartQuantity text-white bg-primary">0</span>
 			</a></li>
 			<li><a href="${contextRoot}/member" class="nav-item nav-link fas fa-user fa-1x" style="font-size:20px"></a></li>
 		</ul>

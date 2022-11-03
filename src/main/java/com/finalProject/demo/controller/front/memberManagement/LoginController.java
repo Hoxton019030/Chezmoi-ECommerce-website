@@ -72,7 +72,7 @@ public class LoginController {
 						String jwtToken = JwtUtil.getJwtToken(hasMember.getEmail(), hasMember.getMemberName(),hasMember.getMemberId());
 						response.setHeader("Authorization", jwtToken);
 						Cookie cookie = new Cookie("token", jwtToken);
-						cookie.setMaxAge(20*60);//有效期限12小時:3600*12
+						cookie.setMaxAge(3600*12);//有效期限12小時:3600*12
 						cookie.setPath("/Chezmoi"); //設置Domain(重要!!!!)
 						response.addCookie(cookie);
 						return "redirect:/";
