@@ -77,7 +77,6 @@
 					.then((response) => response.json())
 					.then((responseJSON) => {
 						$('.cartQuantity').text(responseJSON)
-						alert(responseJSON);
 					});
 		});
 	</script>

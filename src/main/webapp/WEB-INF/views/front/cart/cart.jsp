@@ -31,6 +31,9 @@
 
                 <!-- Customized Bootstrap Stylesheet -->
                 <link href="${contextRoot}/css/style.css" rel="stylesheet">
+                
+                <!-- jQ -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
             </head>
 
@@ -234,7 +237,7 @@
                 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
                 <!-- JavaScript Libraries -->
-                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+               
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
                 <script src="${contextRoot}/lib/easing/easing.min.js"></script>
                 <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
@@ -252,11 +255,7 @@
                 <!-- Ajax & other function -->
                 <script src="${contextRoot}/js/cartAjax.js"></script>
                 
-                <script type="text/javascript">
-                	var cartQuantity = '${cartQuantity}';
-                	console.log(cartQuantity)
-                	 $('.cartQuantity').text(${cartQuantity})
-                </script>
+               
 
             </body>
 

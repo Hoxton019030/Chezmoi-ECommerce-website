@@ -32,6 +32,9 @@
 
                 <!-- Customized Bootstrap Stylesheet -->
                 <link href="${contextRoot}/css/style.css" rel="stylesheet">
+                
+                <!-- jQ -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
             </head>
 
