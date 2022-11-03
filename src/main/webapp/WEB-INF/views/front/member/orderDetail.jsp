@@ -30,14 +30,16 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="${contextRoot}/css/style.css" rel="stylesheet">
+    <!-- jQ -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 </head>
 
 <body>
 
-       <!-- Topbar Start -->
-       <jsp:include page="../layout/navbar.jsp"></jsp:include>
-       <!-- Topbar End -->
+                    <!-- Topbar Start -->
+                    <jsp:include page="../layout/navbar.jsp"></jsp:include>
+                    <!-- Topbar End -->
 
 
 
@@ -46,18 +48,17 @@
         <div class="row  px-xl-5">
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                    <a href="" class="text-decoration-none d-block d-lg-none">
-                        <h1 class="m-0 display-5 font-weight-semi-bold"><span
-                                class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
-                    </a>
+<%--                    <a href="" class="text-decoration-none d-block d-lg-none">--%>
+<%--                        <h1 class="m-0 display-5 font-weight-semi-bold"><span--%>
+<%--                                class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>--%>
+<%--                    </a>--%>
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="member.html" class="nav-item nav-link">會員資料查詢</a>
+                            <a href="${contextRoot}/member" class="nav-item nav-link">會員資料查詢</a>
                             <a href="${contextRoot}/member/order" class="nav-item nav-link">訂單查詢</a>
-                            <a href="messages.html" class="nav-item nav-link">留言板</a>
                         </div>
                     </div>
                 </nav>

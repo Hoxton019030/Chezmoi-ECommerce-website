@@ -93,6 +93,7 @@ public class ProductService {
 		}
 		return false;
 	}
+
 	
 	//find all
 	public List<Products> findAll() {
@@ -124,5 +125,9 @@ public class ProductService {
 			productRepository.updateSeriesName(name,series);
 		}
 	
+	//模糊查詢
+	public List<Products> findByProductIdContaining(String productId) {
+		return productRepository.findByProductIdContaining(productId);
+	}
 
 }

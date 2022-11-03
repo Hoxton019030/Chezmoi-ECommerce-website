@@ -5,10 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
@@ -17,8 +14,11 @@ import com.finalProject.demo.model.entity.product.Products;
 import com.finalProject.demo.service.cart.CartService;
 import com.finalProject.demo.service.product.ProductService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
-@SessionAttributes("Member")
+//@SessionAttributes("Member")
+
 public class AddToCartController {
 	
 	@Autowired
@@ -31,11 +31,14 @@ public class AddToCartController {
 	//加入購物車
 	@GetMapping("/shop/addToCart")
 	public String addToCart(Model model,
-			@RequestParam("id") String productId
+			@RequestParam("id") String productId,
+							HttpServletRequest request
 			) {
 		Products product = productService.findById(productId);
-		Member member = (Member) model.getAttribute("Member");
-		Long memberId = member.getMemberId();
+		String stringId = String.valueOf(request.getAttribute("memberId"));
+		Long memberId = Long.valueOf(stringId);
+//		Member member = (Member) model.getAttribute("Member");
+//		Long memberId = member.getMemberId();
 		Integer price = product.getPrice();
 		String productName = product.getName();
 		Photo photo = product.getPhoto();
@@ -75,12 +78,12 @@ public class AddToCartController {
 	}
 	
 	//現在的會員是誰
-	@ModelAttribute("Member")
-	public Member viewMember(Model model) {
-		Member memberLogin = new Member();
-		memberLogin.setMemberId(2L);
-		return memberLogin;
-	}
+//	@ModelAttribute("Member")
+//	public Member viewMember(Model model) {
+//		Member memberLogin = new Member();
+//		memberLogin.setMemberId(2L);
+//		return memberLogin;
+//	}
 	
 	//取得所有Products
 	@ModelAttribute("Products")

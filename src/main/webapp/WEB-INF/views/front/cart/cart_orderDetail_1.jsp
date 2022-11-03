@@ -32,6 +32,9 @@
 
                 <!-- Customized Bootstrap Stylesheet -->
                 <link href="${contextRoot}/css/style.css" rel="stylesheet">
+                
+                <!-- jQ -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
             </head>
 
@@ -128,7 +131,7 @@
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="shipName" type="text" class="form-control p-4 mb-2"
-                                                    id="inputMemberName" value="" placeholder="彭建華" 
+                                                    id="inputMemberName" value="" placeholder="收件人名稱"
                                                     oninput = "value=value.replace(/[^\u4E00-\u9FA5]/g,'')"/>
                                             </div>
                                             <div class="d-flex justify-content-between pt-1 mb-2">
@@ -169,10 +172,16 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between pt-1">
-                                                <h6 class=" font-weight-medium">已選擇的付款方式:${Payment.paymentWay} </h6>
+                                                <h6 class=" font-weight-medium">已選擇的付款方式:</h6>
                                             </div>
                                             <div class="d-flex justify-content-between pt-1">
-                                                <h6 class=" font-weight-medium">運送方式為: ${Shipping.shippingWay}</h6>
+                                                <h6 class=" font-weight-medium">${Payment.paymentWay} </h6>
+                                            </div>
+                                            <div class="d-flex justify-content-between pt-1">
+                                                <h6 class=" font-weight-medium">運送方式為:</h6>
+                                            </div>
+                                            <div class="d-flex justify-content-between pt-1">
+                                                <h6 class=" font-weight-medium">${Shipping.shippingWay}</h6>
                                             </div>
                                         </div>
 
@@ -189,11 +198,11 @@
                                                 <h5 class=" font-weight-semi-bold m-0">合計: NT$ ${Orders.total}</h5>
                                             </div>
                                         </div>
-                                        <div class="card-footer border-secondary bg-transparent">
-                                            <a href="<c:url value='/cartAll' />"><button
+                                          <div class="d-flex justify-content-center mt-2 ml-2 mr-2">
+                                            <a href="<c:url value='/cartAll' />" class="mr-3"><button
                                                     class="btn btn-block btn-primary my-3 py-3"
                                                     type="button">上一步重新選擇</button></a>
-                                            <button class="btn btn-block btn-primary my-3 py-3" type="submit">
+                                            <button class="btn btn-block btn-primary my-3 py-3" style="width:12em;" type="submit">
                                                 下一步完成訂單</button>
                                         </div>
                                     </div>
