@@ -1,7 +1,5 @@
 package com.finalProject.demo.controller.front.memberManagement;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,8 +29,9 @@ public class RegisterController {
 	// ----- 註冊成功畫面 -----
 		@PostMapping("/member/register")
 		public String postRegister(@ModelAttribute(name="registersubmit") Member member,RedirectAttributes re) {
-			List<Member> resultList = mService.findEmail(member);
-			if (resultList.size() > 0) {
+
+			Member mmm = mService.findEmail(member.getEmail());
+			if (mmm != null) {
 				re.addAttribute("Msg", "帳號重複!");
 				System.out.println("帳號重複!");
 				return "redirect:/member/register";
@@ -40,7 +39,7 @@ public class RegisterController {
 				mService.insert(member);
 				re.addAttribute("Msg", "註冊成功!");
 				System.out.println("註冊成功!");
-				return "redirect:/member/loginsubmit";
+				return "redirect:/member/login";
 			}
 		}
 	

@@ -13,19 +13,19 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 	
 	//註冊
 	@Query(value = "from Member where email = :email")
-	public List<Member> findEmail(String email);
+	public Member findEmail(String email);
 	
 	//登入
 	@Query(value = "from Member where email = :email and password = :password")
 	public List<Member> findLogin(String email, String password);
 	
-	//忘記密碼
-	@Query(value = "from Member where email = :email and phone = :phone")
-	public Optional<Member> findPassword(String email, String phone);
-
 	//顯示會員資料
 	@Query(value = "from Member where email = :email and password = :password")
 	public Member viewUser(String email, String password);
+
+	//忘記密碼
+	@Query(value = "from Member where email = :email and phone = :phone")
+	public Member findPassword(String email, String phone);
 
 //	//修改會員資料
 //	@Modifying

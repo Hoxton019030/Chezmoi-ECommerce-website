@@ -40,8 +40,8 @@ public class LoginController {
 		@GetMapping("/member/logout")
 		public String logout(HttpServletRequest request) { // 進入方法(login)
 			HttpSession session = request.getSession();    // 使用 session
-			session.removeAttribute("email"); 		       // 刪掉
-			session.removeAttribute("password");
+			session.removeAttribute("login"); 		       // 刪掉
+//			session.removeAttribute("password");r
 			return "redirect:index";
 		}
 		
@@ -58,8 +58,9 @@ public class LoginController {
 					// 第一步：獲取session
 					HttpSession session = request.getSession();
 					// 第二步：將想要保存到數據存入session中
-					session.setAttribute("email", resultList.get(0).getEmail()); // 取得那欄位的帳號,從0(陣列)開始,放入session
-					session.setAttribute("password", resultList.get(0).getPassword());
+					Member mb = resultList.get(0);
+					session.setAttribute("login", mb); // 取得那欄位的帳號,從0(陣列)開始,放入session
+//					session.setAttribute("password", resultList.get(0).getPassword());
 					
 					// 完成了用戶名和密碼保存到session的操作
 					System.out.println("登入成功");

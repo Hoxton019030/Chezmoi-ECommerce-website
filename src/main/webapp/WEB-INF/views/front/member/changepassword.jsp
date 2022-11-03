@@ -13,11 +13,11 @@
 </head>
 <body>
 <div id="login-box" class="bg-secondary">
-        <form:form action="${contextRoot}/member/changePassword" method="post"
-            modelAttribute="changePassword">
+        <form:form action="${contextRoot}/member/updatepassword" method="post" modelAttribute="updatepassword">
 
             <h1 class="text-dark">修改密碼</h1>
             <form method="post" action="login.js">
+            	<input type="hidden" name="memberId" path="memberId" value="${mb.memberId}">
                 <p>請輸入新密碼。</p>
                 <div>
                     <input type="password" class="text-field-Register" name="password" path="password" id="password"
@@ -27,11 +27,10 @@
                 </div>
 
                 <div>
-                    <a href="${contextRoot}/member/editPassword?email=${editPassword.email}&phone=${editPassword.phone}"
-                        id="btn-login" class="btn-primary text-dark" value="提交" onclick="myFunction()">提交</a>
+                    <input type="submit" id="btn-login" class="btn-primary text-dark" value="提交">
                 </div>
                 <p>
-                    <a href="login.html" class="text-primary">取消</a>
+                    <a href="${contextRoot}/member/login" class="text-primary">取消</a>
                 </p>
 
             </form>

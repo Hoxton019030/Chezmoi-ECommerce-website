@@ -14,11 +14,12 @@
 
             <body>
                 <div id="login-box" class="bg-secondary">
-                    <form:form action="${contextRoot}/member/editPassword" method="get" modelAttribute="editPassword">
+                    <form:form action="${contextRoot}/member/editpassword" method="post" modelAttribute="editpassword">
 
                         <h1 class="text-dark">忘記密碼</h1>
                         <form method="post" action="login.js">
                             <p>請輸入email及手機號碼，以重置密碼。</p>
+                            <h5 class="Msg">${param.Msg}</h5>
                             <div>
                                 <input type="email" class="text-field-Register" name="email" id="email"
                                     placeholder="電子郵件" inputmode="email" autocorrect="off"
