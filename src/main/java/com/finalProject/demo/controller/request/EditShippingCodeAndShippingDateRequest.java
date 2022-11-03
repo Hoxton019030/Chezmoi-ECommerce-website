@@ -1,6 +1,6 @@
 package com.finalProject.demo.controller.request;
 
-public class EditShippingCodeRequest {
+public class EditShippingCodeAndShippingDateRequest {
 	
 	private Long orderId;
 	
