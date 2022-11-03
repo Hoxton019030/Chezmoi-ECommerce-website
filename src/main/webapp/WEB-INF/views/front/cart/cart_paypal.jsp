@@ -146,15 +146,39 @@ span.price {
 <body>
  <!-- Topbar Start -->
 <jsp:include page="../layout/navbar.jsp"></jsp:include>
- <div class="container-fluid pt-0">
+ <div class="container-fluid mt-5">
+  <div class=" px-xl-5 border-0">
+    <h3 class="font-weight-semi-bold mb-2">訂購資料</h3>
+  </div>
+   <div class="row px-xl-5 table-responsive">
+            <table class="table table-bordered text-center mb-5">
+                <thead class="bg-secondary text-dark">
+                    <tr>
+                        <th>訂單編號</th>
+                        <th>訂單日期</th>
+                        <th>總金額</th>
+                        <th>訂單狀態</th>
+                        <th>付款方式</th>
+                        <th>運送方式</th>
+                        <th>備註</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    <tr>
+                        <td class="align-middle">${Order.orderId}</td>
+                        <td class="align-middle">${Order.orderDate}</td>
+                        <td class="align-middle">${Order.total}</td>
+                        <td class="align-middle">${Order.orderState}</td>
+                        <td class="align-middle">${Order.payment.paymentWay}</td>
+                        <td class="align-middle">${Order.shipping.shippingWay}</td>
+                        <td class="align-middle">${Order.notes}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
  <div class="row px-xl-5">
   <div class="col-lg-8">
-
-                            <div class="card border-secondary mb-5">
-                                <div class="card-header bg-secondary border-0">
-                                    <h4 class="font-weight-semi-bold m-0">訂購明細</h4>
-                                </div>
-           <div class="row px-xl-4 table-responsive mb-5">
+           <div class="row table-responsive mb-5">
             <table class="table table-bordered text-center mb-5">
                 <thead class="bg-secondary text-dark">
                     <tr>
@@ -186,30 +210,49 @@ span.price {
             </table>
         </div>
         </div>
-    </div>
- <div class="col-lg-4 border-secondary  border mb-5" style="padding-left: 0; padding-right:0;">
+ <div class="col-lg-4 border-secondary  border" style="padding-left: 0; padding-right:0;">
  <div class="card-header bg-secondary border-0">
-                                <h4 class="font-weight-semi-bold m-0">詳細付款資訊</h4>
+                                <h4 class="font-weight-semi-bold m-0">付款資訊</h4>
                             </div>
                             <div class="card-body">
              <form:form action="${contextRoot}/cart/paypal" method="post" modelAttribute="order">
-                <div class="col-50">
-                    <label>Accepted Cards</label>
-                    <label>Total</label>
-                    <form:input path="price" type="text" />
-                    <label>Currency</label>
-                    <form:input path="currency" type="text" id="currency" name="currency" placeholder="Enter Currency" />
-                    <label>Payment Method</label>
-                    <form:input path="method" type="text" id="method" name="method" placeholder="Payment Method" />
-                    <label>Intent</label>
-                    <form:input path="intent" type="text" id="intent" name="intent" value="sale" />
-                    <label>Payment Description</label>
-                    <form:input path="description" type="text" id="description" name="description" placeholder="Payment Description" />
+                    <div class="d-flex justify-content-between pt-1 mb-2">
+                     <h6 class=" font-weight-medium">訂單總金額</h6>
+                    </div>
+                    <div class="input-group">
+                    <form:input class="form-control p-4 mb-2" path="price" type="text"  value="${Order.total}" onfocus="this.blur();"/>
+                    </div>
+                    <div class="d-flex justify-content-between pt-1 mb-2">
+                     <h6 class=" font-weight-medium">使用貨幣</h6>
+                    </div>
+                    <div class="input-group">
+                    <form:input class="form-control p-4 mb-2" path="currency" type="text" id="currency" name="currency" value="USD" onfocus="this.blur();"/>
+                    </div>
+                    <div class="d-flex justify-content-between pt-1 mb-2">
+                     <h6 class=" font-weight-medium">付款方式</h6>
+                    </div>
+                    <div class="input-group">
+                    <form:input class="form-control p-4 mb-2" path="method" type="text" id="method" name="method" value="paypal" onfocus="this.blur();" />
+                    </div>
+                    <div class="d-flex justify-content-between pt-1 mb-2">
+                     <h6 class=" font-weight-medium">本次交易目的</h6>
+                    </div>
+                    <div class="input-group">
+                    <form:input class="form-control p-4 mb-2" path="intent" type="text" id="intent" name="intent" value="sale" onfocus="this.blur();" />
+                    </div>
+                    <div class="d-flex justify-content-between pt-1 mb-2">
+                     <h6 class=" font-weight-medium">付款描述</h6>
+                    </div>
+                    <div class="input-group">
+                    <form:input class="form-control p-4 mb-2" path="description" type="text" id="description" name="description" value="chezmoi訂單編號:${Order.orderId}" onfocus="this.blur();"/>
+                    </div>
                 </div>
-
-                <input type="submit" value="Continue to checkout" class="btn">
+ 				<div class="d-flex justify-content-center mt-2">
+                <button type="submit" class="btn btn-block btn-primary my-4 py-4" style="width:15em;">確認資料無誤前往付款</button>
+                </div>
             </form:form>
         </div>
+    </div>
     </div>
     </div>
  				<!-- Footer Start -->

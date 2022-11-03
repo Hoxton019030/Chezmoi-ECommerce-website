@@ -1,6 +1,7 @@
 package com.finalProject.demo.paypal;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,19 +34,23 @@ public class PaypalController {
 	@Autowired
 	private OrdersService ordersService;
 	
-	@Autowired
-	private OrderDetailService orderDetailService;
-	
 	public static final String SUCCESS_URL = "cart/paypal/success";
 	public static final String CANCEL_URL = "cart/paypal/cancel";
 
 	//顯示paypal頁面
 	@GetMapping("/cart/paypal")
 	public String view(Model model) {
+		//送出空白表單
 		model.addAttribute("order",new Order());
+		//找orderDetail
 		Member member = memberService.findById(1L);
 		List<Orders> findOrders = ordersService.findOrderByMember(member);
-		
+		int last = findOrders.size()-1;
+		Orders order = findOrders.get(last);
+		model.addAttribute("Order",order);
+		Long orderId = order.getOrderId();
+		List<OrderDetail> findOrderDetail = ordersService.findOrderDetail(orderId);
+		model.addAttribute("OrderDetail",findOrderDetail);
 		return "front/cart/cart_paypal";
 	}
 	
