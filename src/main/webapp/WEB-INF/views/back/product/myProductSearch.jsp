@@ -67,7 +67,7 @@
                                         <form:form class="btn-block" action="${contextRoot}/Back/MyProduct/findByProductIdLike"  method="post">
                                             <div class="input-group justify-content-between ">
                                                 
-                                                <input type="text" class="form-control p-4 m-1" placeholder="search" name="search">
+                                                <input type="text" class="form-control p-4 m-1" placeholder="search ProductId" name="search">
                                                 <div class="submit">
                                                     <input class="btn-primary m-1 rounded-sm border-1" type="submit"
                                                         value="search">
