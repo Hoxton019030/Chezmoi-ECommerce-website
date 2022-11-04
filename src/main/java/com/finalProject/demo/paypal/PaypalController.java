@@ -1,7 +1,6 @@
 package com.finalProject.demo.paypal;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +17,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.order.Orders;
+import com.finalProject.demo.model.entity.order.Payment;
 import com.finalProject.demo.service.member.MemberService;
-import com.finalProject.demo.service.order.OrderDetailService;
 import com.finalProject.demo.service.order.OrdersService;
 import com.paypal.api.payments.Links;
 import com.paypal.base.rest.PayPalRESTException;
@@ -53,8 +52,11 @@ public class PaypalController {
 		int last = findOrders.size()-1;
 		Orders order = findOrders.get(last);
 		String orderState = order.getOrderState();
+		Payment payment = order.getPayment();
+		String paymentWay = payment.getPaymentWay();
 		String state = "已付款";
-		if(orderState.equals(state)) {
+		String way="paypal線上付款(全額付清)-搭配7-11取貨";
+		if(orderState.equals(state) || !(paymentWay.equals(way))) {
 			return "front/cart/cancel";
 		}
 		model.addAttribute("Order",order);
