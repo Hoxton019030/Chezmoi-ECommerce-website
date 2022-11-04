@@ -1,20 +1,16 @@
 package com.finalProject.demo.controller.front.pageController;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
 import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.service.cart.CartService;
 import com.finalProject.demo.service.member.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import java.util.List;
 
 @RestController
 @SessionAttributes("Member")
@@ -38,21 +34,21 @@ public class NavBarController {
 		return findCart.size();
 	}
 	
-	@GetMapping(value = "/showName")
-	public String showName(Model model){
-		Member member = (Member) model.getAttribute("Member");
-		assert member!=null;
-		System.out.println("Member========"+member.getMemberName());
-		return (member.getMemberName());
-	}
-	
-	//現在的會員是誰
-	@ModelAttribute("Member")
-	public Member viewMember(HttpServletRequest request) {
-		//取得memberId
-		String stringId = String.valueOf(request.getAttribute("memberId"));
-		Long memberId = Long.valueOf(stringId);
-		return memberService.findById(memberId);
-	}
+//	@GetMapping(value = "/showName")
+//	public String showName(Model model){
+//		Member member = (Member) model.getAttribute("Member");
+//		assert member!=null;
+//		System.out.println("Member========"+member.getMemberName());
+//		return (member.getMemberName());
+//	}
+//
+//	//現在的會員是誰
+//	@ModelAttribute("Member")
+//	public Member viewMember(HttpServletRequest request) {
+//		//取得memberId
+//		String stringId = String.valueOf(request.getAttribute("memberId"));
+//		Long memberId = Long.valueOf(stringId);
+//		return memberService.findById(memberId);
+//	}
 	
 }

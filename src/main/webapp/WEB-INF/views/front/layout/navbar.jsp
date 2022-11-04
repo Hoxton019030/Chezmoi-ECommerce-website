@@ -84,21 +84,20 @@
 						});
 
 				});
-
 			</script>
 
 
-			<script type="text/javascript">
-				$(document).ready(function () {
-					fetch("http://localhost:8080/Chezmoi/showName")
-						.then((response) => {
-							return response.text();
-						}).then((responseJSON) => {
-							$('#showName').text(responseJSON + " 您好  ").append('<a href="#">Logout </a>')
+<%--			<script type="text/javascript">--%>
+<%--				$(document).ready(function () {--%>
+<%--					fetch("http://localhost:8080/Chezmoi/showName")--%>
+<%--						.then((response) => {--%>
+<%--							return response.text();--%>
+<%--						}).then((responseJSON) => {--%>
+<%--							$('#showName').text(responseJSON + " 您好  ").append('<a href="#">Logout </a>')--%>
 
-						});
-				});
-			</script>
+<%--						});--%>
+<%--				});--%>
+<%--			</script>--%>
 
 			</body>
 
