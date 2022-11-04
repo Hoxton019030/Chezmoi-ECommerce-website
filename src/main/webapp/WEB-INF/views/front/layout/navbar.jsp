@@ -85,23 +85,23 @@
 
 				});
 			</script>
-<%--		<script>--%>
-<%--			$(document).ready(function () {--%>
-<%--			fetch("http://localhost:8080/Chezmoi/member/showName")--%>
-<%--					.then((response)=>response.json())--%>
-<%--					.then((responseJSON)=>{--%>
-<%--						const link = 'member/login';--%>
-<%--						if (responseJSON!=null && responseJSON!==""){--%>
-<%--							$('#memberName').text(responseJSON+' 您好')--%>
-<%--							alert(responseJSON)--%>
-<%--						}else {--%>
+		<script>
+			$(document).ready(function () {
+			fetch("http://localhost:8080/Chezmoi/member/showName")
+					.then((response)=>response.json())
+					.then((responseJSON)=>{
+						const link = 'member/login';
+						if (responseJSON!=null && responseJSON!==""){
+							$('#memberName').text(responseJSON+' 您好')
+							alert(responseJSON)
+						}else {
 
-<%--						}--%>
+						}
 
-<%--					});--%>
-<%--			});--%>
+					});
+			});
 
-<%--		</script>--%>
+		</script>
 
 
 
