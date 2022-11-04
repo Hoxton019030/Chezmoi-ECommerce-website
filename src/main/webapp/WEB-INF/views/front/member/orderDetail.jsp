@@ -101,32 +101,7 @@
                  </c:forEach>
                 </tbody>
             </table>
-<!--             <table class="table table-bordered text-center mb-0"> -->
-<!--                 <thead class="bg-secondary text-dark"> -->
-<!--                     <tr> -->
-<!--                         <th>產品編號</th> -->
-<!--                         <th>產品名稱</th> -->
-<!--                         <th>顏色</th> -->
-<!--                         <th>尺寸</th> -->
-<!--                         <th>數量</th> -->
-<!--                         <th>單價</th> -->
-<!--                         <th>小計</th> -->
-<!--                     </tr> -->
-<!--                 </thead> -->
-<!--                 <tbody class="align-middle"> -->
-<!--                     <tr> -->
-<!--                         <td class="align-middle">100000</td> -->
-<!--                         <td class="align-middle">細肩bra top</td> -->
-<!--                         <td class="align-middle">黑</td> -->
-<!--                         <td class="align-middle">S</td> -->
-<!--                         <td class="align-middle">1</td> -->
-<!--                         <td class="align-middle">$150</td> -->
-<!--                         <td class="align-middle">$150</td> -->
-<!--                     </tr> -->
-<!--                 </tbody> -->
-<!--             </table> -->
         </div>
-
     </div>
     <!-- Member End -->
 

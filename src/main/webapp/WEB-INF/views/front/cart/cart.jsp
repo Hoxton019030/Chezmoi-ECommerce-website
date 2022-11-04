@@ -211,7 +211,7 @@
                                     </div>
                                      <div class="d-flex justify-content-center mt-2">
                                     <a href="<c:url value='/shop' />" class="mr-3"><button
-                                            class="btn btn-block btn-primary my-3 py-3">繼續購物</button>
+                                            class="btn btn-block btn-primary my-3 py-3">上一步繼續購物</button>
                                     </a>
                                     <a href="<c:url value='/cartOrderDetail' />" class="ml-3" id="nextStep"><button
                                             class="btn btn-block btn-primary my-3 py-3" >下一步填寫資料</button></a>

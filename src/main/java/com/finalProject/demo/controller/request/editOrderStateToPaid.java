@@ -1,6 +1,6 @@
 package com.finalProject.demo.controller.request;
 
-public class EditOrderStateToPaidRequest {
+public class editOrderStateToPaid {
 	
 	private Long orderId;
 
