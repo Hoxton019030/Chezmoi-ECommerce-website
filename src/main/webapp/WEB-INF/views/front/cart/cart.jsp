@@ -8,7 +8,7 @@
 
             <head>
                 <meta charset="utf-8">
-                <title>Chezmoi 韓國女裝</title>
+                <title>Chezmoi 購物車</title>
                 <meta content="width=device-width, initial-scale=1.0" name="viewport">
                 <meta content="Free HTML Templates" name="keywords">
                 <meta content="Free HTML Templates" name="description">
@@ -31,16 +31,19 @@
 
                 <!-- Customized Bootstrap Stylesheet -->
                 <link href="${contextRoot}/css/style.css" rel="stylesheet">
-                
+
                 <!-- jQ -->
                 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
             </head>
 
             <body>
+            
+            <!-- Topbar Start -->
+			<jsp:include page="../layout/navbar.jsp"></jsp:include>
+			<!-- Topbar End -->
 
-                <!-- Topbar Start -->
-                <jsp:include page="../layout/navbar.jsp"></jsp:include>
+
 
                 <!-- Page Header Start -->
                 <div class="container-fluid  mb-0 mt-5">
@@ -212,7 +215,7 @@
                                     </div>
                                      <div class="d-flex justify-content-center mt-2">
                                     <a href="<c:url value='/shop' />" class="mr-3"><button
-                                            class="btn btn-block btn-primary my-3 py-3">繼續購物</button>
+                                            class="btn btn-block btn-primary my-3 py-3">上一步繼續購物</button>
                                     </a>
                                     <a href="<c:url value='/cartOrderDetail' />" class="ml-3" id="nextStep"><button
                                             class="btn btn-block btn-primary my-3 py-3" >下一步填寫資料</button></a>
@@ -226,33 +229,14 @@
                 <!-- Cart End -->
 
 
-                <!-- Footer Start -->
+                <!-- Footer -->
                 <jsp:include page="../layout/footer.jsp"></jsp:include>
-                <!-- Footer End -->
-
-
-                <!-- Back to Top -->
-
-                <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
                 <!--JavaScript & Jquery-->
                 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
-                <!-- JavaScript Libraries -->
-               
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-                <script src="${contextRoot}/lib/easing/easing.min.js"></script>
-                <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
-
-                <!-- Template Javascript -->
-                <script src="${contextRoot}/js/main.js" type="text/javascript"></script>
-
                 <!-- Contact Jquery File -->
                 <script src="${contextRoot}/js/jquery-3.6.1.min.js" type="text/javascript"></script>
-
-                <!-- Contact Javascript File -->
-                <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
-                <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
 
                 <!-- Ajax & other function -->
                 <script src="${contextRoot}/js/cartAjax.js"></script>

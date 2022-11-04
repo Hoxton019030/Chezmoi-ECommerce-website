@@ -44,7 +44,7 @@ public class CartController {
 	//顯示所有購物車商品
 
 	@GetMapping("/cartAll")
-	public String viewAllCart(Model model1, Model model2, HttpServletRequest request) {
+	public String viewAllCart(Model model, HttpServletRequest request) {
 //		Member memberLogin = new Member();
 //		memberLogin.setMemberId(2L);
 //		Long memberId = memberLogin.getMemberId();
@@ -68,9 +68,9 @@ public class CartController {
 			}
 			newCart.add(findCart);
 		}
-			model1.addAttribute("Carts",newCart);
+			model.addAttribute("Carts",newCart);
 			Coupon coupon = new Coupon();
-			model2.addAttribute("Coupon",coupon);
+			model.addAttribute("Coupon",coupon);
 			return "front/cart/cart";
 		}
 	}

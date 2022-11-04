@@ -35,7 +35,7 @@ public class OrderController {
 	
 	//顯示所有訂單
 	@GetMapping("/member/order")
-	public String viewAllOrder(HttpServletRequest request, Model model1, Model model2, Model model3, Model model4, Model model5) {
+	public String viewAllOrder(HttpServletRequest request, Model model) {
 //		Member member=(Member) model1.getAttribute("Member");
 		//取得memberId
 		String stringId = String.valueOf(request.getAttribute("memberId"));
@@ -45,14 +45,14 @@ public class OrderController {
 		//findOrderByMember
 		List<Orders> orders = ordersService.findOrderByMember(member);
 		List<String> dates = new ArrayList<>();
-		model2.addAttribute("Orders",orders);
+		model.addAttribute("Orders",orders);
 		for(Orders order: orders) {
 			Date orderDate = order.getOrderDate();
 			 SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			 String date = dateFormat.format(orderDate);
 			 dates.add(date);
 		}
-		model5.addAttribute("Date",dates);
+		model.addAttribute("Date",dates);
 		List<Shipping> shippings = new ArrayList<>();
 		List<Payment> payments = new ArrayList<>();
 		for(Orders order:orders) {
@@ -61,8 +61,8 @@ public class OrderController {
 			Payment payment = order.getPayment();
 			payments.add(payment);
 		}
-		model3.addAttribute("Shipping",shippings);
-		model4.addAttribute("Payment",payments);
+		model.addAttribute("Shipping",shippings);
+		model.addAttribute("Payment",payments);
 		return "front/member/order";
 	}
 	//點一下訂單後,查看orderDetail

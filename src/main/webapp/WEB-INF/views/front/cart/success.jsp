@@ -37,44 +37,34 @@
             </head>
 
             <body>
-              <!-- Topbar Start -->
-			<jsp:include page="../layout/navbar.jsp"></jsp:include>
-			<!-- Topbar End -->
 
-            
-                <!-- Page Header Start -->
-                <div class="container-fluid  mb-0 mt-5">
-       			 <div class="align-items-center justify-content-center" style="min-height: 500px; display: flex;">
-                        <div class="row">
-                         <div class="col-lg-12 text-center">
-                                <h1 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
-                                    Chezmoi心理測驗小遊戲</h1>
-                            </div>
-                            <div class="col-lg-12 text-center">
-                                <h2 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
-                                    妳是哪一種風格的韓系美女?</h2>
-                            </div>
-                            <div class="col-lg-12 text-center">
-                                <h4 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
-                                    測出最適合妳的風格，並獲得優惠折扣碼</h4>
-                            </div>
-                            <div class="col-lg-12 text-center">
-                                <a style="text-decoration: none;" href="${contextRoot}/wishTest/question">
-                                    <h2 class="text-primary font-weight-semi-bold text-uppercase mb-3"
-                                        style="margin-right: 1em;">
-                                        按此開始測驗</h2>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Topbar Start -->
+                <jsp:include page="../layout/navbar.jsp"></jsp:include>
+                <!-- Topbar End -->
+
+               <!-- Page Header Start -->
+    <div class="container-fluid  mb-0 mt-5">
+        <div class="align-items-center justify-content-center" style="min-height: 500px; display: flex;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">您的付款已成功,將於確認款項後出貨</h1>
                 </div>
-                <!-- Page Header End -->
+                <div class="col-lg-12 text-center">
+                    <a style="text-decoration: none;" href="${contextRoot}/member/order">
+                        <h2 class="text-primary font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
+                            按此查詢訂單處理進度</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
 
 
 
 
                 <!-- Footer Start -->
-                <jsp:include page="../layout/footer.jsp"></jsp:include>
+               <jsp:include page="../layout/footer.jsp"></jsp:include>
                 <!-- Footer End -->
 
 
