@@ -265,17 +265,18 @@
                     //判斷是否建立新訂單
                     $('#add').click(function () {
                         var yes = confirm('確定要送出訂單嗎?');
-                        let nemeSp = $("#nameSpan").text();
-                        let phoneSp = $("#phoneSpan").text();
+                        var nemeSp = $("#nameSpan").text();
+                        var phoneSp = $("#phoneSpan").text();
+                        var text = "不可輸入空白";
                         if (yes) {
-                            if (nameSp == "" || phoneSp =="") {
+                            if (nameSp == text) {
                                 window.event.returnValue = false;
-                                alert("收件資訊不可輸入空白")
-                            } else if(nameSp == "不可輸入空白" || phoneSp == "不可輸入空白") {
+                                alert("收件資訊不可輸入空白");
+                            } else if(nameSp == "" || phoneSp == "") {
                             	window.event.returnValue = false;
-                                alert("收件資訊不可輸入空白")
+                                alert("收件資訊不可輸入空白");
                             }else{
-                            	alert("輸入正確,送出訂單")
+                            	alert("輸入正確,送出訂單");
                             }
                         } else {
                             window.event.returnValue = false;
@@ -303,6 +304,7 @@
                        if(len == 0){
                     	   sp.innerHTML = "不可輸入空白";
                        }
+                       
                     }
                     
                     
