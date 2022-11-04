@@ -37,8 +37,9 @@ public class CookieUtil {
             String value = cookieByName.getValue();
             Claims claims = JwtUtil.verify(value);
             assert claims != null;
-            String id = (String) claims.get("id");
-            return Long.valueOf(id);
+            Integer stringId = (Integer) claims.get("id");
+            return stringId.longValue();
+
         }
         return null;
     }
