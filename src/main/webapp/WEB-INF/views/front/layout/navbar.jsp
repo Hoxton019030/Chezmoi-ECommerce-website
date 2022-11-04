@@ -50,11 +50,11 @@
 						<ul class="dropdown-menu"
 							style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 96px, 0px); margin-top: 0px; border-top-width: 0px; padding-top: 0px;">
 							<li><a class="dropdown-item" href="${contextRoot}/shop">All</a></li>
-							<li><a class="dropdown-item" href="${contextRoot}/shop/top">Top</a></li>
-							<li><a class="dropdown-item" href="${contextRoot}/shop/bottom">Bottom</a></li>
-							<li><a class="dropdown-item" href="${contextRoot}/shop/outer">Outer</a></li>
-							<li><a class="dropdown-item" href="${contextRoot}/shop/dress">Dress</a></li>
-							<li><a class="dropdown-item" href="${contextRoot}/shop/acc">Accessories</a></li>
+							<li><a class="dropdown-item" href="${contextRoot}/shop/Top">Top</a></li>
+							<li><a class="dropdown-item" href="${contextRoot}/shop/Bottom">Bottom</a></li>
+							<li><a class="dropdown-item" href="${contextRoot}/shop/Outer">Outer</a></li>
+							<li><a class="dropdown-item" href="${contextRoot}/shop/Dress">Dress</a></li>
+							<li><a class="dropdown-item" href="${contextRoot}/shop/Acc">Accessories</a></li>
 						</ul>
 					</li>
 					<li><a href="${contextRoot}/notice">Notice</a></li>
