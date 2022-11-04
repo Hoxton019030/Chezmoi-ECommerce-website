@@ -37,7 +37,7 @@
 
 			<nav>
 				<div class="text-right" style="background-color: #F1EDE6;">
-					<span class=" mr-3" style="color:#393833;" id="memberName">00</span>
+					<span class=" mr-3" style="color:#393833;" id="showName">000</span>
 
 				</div>
 
@@ -84,25 +84,20 @@
 						});
 
 				});
+
 			</script>
-			<script>
+
+			<script type="text/javascript">
 				$(document).ready(function () {
-					fetch("http://localhost:8080/Chezmoi/member/showName")
-						.then((response) => response.json())
-						.then((responseJSON) => {
-							alert(responseJSON)
-							const link = 'member/login';
-							if (responseJSON != null && responseJSON !== "") {
-								$('#memberName').text(responseJSON + ' 您好')
-							} else {
-								$('#memberName').append('<a>logout</a>')
-							}
+					fetch("http://localhost:8080/Chezmoi/showName")
+						.then((response) => {
+							return response.text();
+						}).then((responseJSON) => {
+							$('#showName').text(responseJSON + " 您好  ").append('<a href="#">Logout </a>')
 
 						});
 				});
-
 			</script>
-
 
 
 

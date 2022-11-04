@@ -30,8 +30,8 @@
     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
 
-	<link href="${contextRoot}/css/style.css" rel="stylesheet">
-    <link href="${contextRoot}/css/admin_style.css" rel="stylesheet">
+	<link href="${contextRoot}/css/back_style.css" rel="stylesheet">
+   
 
     <!-- Customized Bootstrap Stylesheet -->
 
