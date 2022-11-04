@@ -28,70 +28,25 @@
                 <!-- Libraries Stylesheet -->
                 <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-                 <!-- Customized Bootstrap Stylesheet -->
-   				 <link href="${contextRoot}/css/back_style.css" rel="stylesheet">
-   				 
+                <!-- Customized Bootstrap Stylesheet -->
+                <link href="${contextRoot}/css/back_style.css" rel="stylesheet">
+
                 <style>
                     li,
                     ul {
                         list-style: none;
                         padding: 0%;
                     }
-
-                    input[type=checkbox] {
-                        height: 0;
-                        width: 0;
-                        visibility: hidden;
-
-                    }
-
-                    label {
-                        cursor: pointer;
-                        text-indent: -9999px;
-                        width: 50px;
-                        height: 25px;
-                        background: grey;
-                        /* display: block; */
-                        border-radius: 25px;
-                        position: relative;
-                    }
-
-                    label:after {
-
-                        content: '';
-                        position: absolute;
-                        top: 2px;
-                        left: 5px;
-                        width: 23px;
-                        height: 23px;
-                        background: #fff;
-                        border-radius: 23px;
-                        transition: 0.3s;
-                    }
-
-                    input+label {
-                        background: #D19C97;
-                    }
-
-                    input:checked+label {
-                        background: grey;
-                    }
-
-                    input:checked+label:after {
-
-                        left: calc(100% - 5px);
-                        transform: translateX(-100%);
-                    }
                 </style>
             </head>
 
             <body>
-            <!-- Topbar Start -->
-   			 <jsp:include page="../layout/topbar.jsp"></jsp:include>
-         		  	<div class="container-fluid mb-5">
-    					<div class="row border-top px-xl-3">
-			    <!-- Navbar Start -->
-			    <jsp:include page="../layout/navbar.jsp"></jsp:include>
+                <!-- Topbar Start -->
+                <jsp:include page="../layout/topbar.jsp"></jsp:include>
+                <div class="container-fluid mb-5">
+                    <div class="row border-top px-xl-3">
+                        <!-- Navbar Start -->
+                        <jsp:include page="../layout/navbar.jsp"></jsp:include>
                         <div class="col-lg-8 pt-3">
                             <div class="container-fluid pt-1">
                                 <div class="d-flex">
@@ -113,16 +68,20 @@
                                                 <tr>
                                                     <td class="align-middle">自動生成</td>
                                                     <td class="align-middle">
-                                                        <form:input path="shippingWay" type="text" />
+                                                        <form:input path="shippingWay" id="way" type="text" />
                                                     </td>
                                                     <td class="align-middle">
-                                                        <form:input path="shippingFee" type="text"
+                                                        <form:input path="shippingFee" id="fee" type="text"
                                                             style="width: 2em;" />
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <button type="submit" class="btn btn-primary mb-3">新建</button>
+                                        <div class="align-items-center col-lg-12 justify-content-center mb-3 pl-0">
+                                            <button type="submit" class="btn btn-primary" id="add">新建</button>
+                                            <span class="ml-5 text-primary" id="waySpan"></span>
+                                            <span class="ml-5 text-primary" id="feeSpan"></span>
+                                        </div>
                                     </form:form>
                                 </div>
                                 <table class="col-lg-9 table table-bordered text-center">
@@ -142,7 +101,6 @@
                                                 <td class="align-middle">${s.shippingWay}</td>
                                                 <td class="align-middle">${s.shippingFee}</td>
                                                 <td class="align-middle">${s.shippingState}</td>
-<!--                                                 <input type="checkbox" id="switch1" /><label for="switch1" class="mt-2">Toggle</label>  -->
                                                 <td><a href="${contextRoot}/back/updateShipping?id=${s.shippingId}"
                                                         class="btn btn-primary">修改</a></td>
                                             </tr>
@@ -152,8 +110,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                </div>
                 </div>
 
                 <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
@@ -187,13 +143,79 @@
                 </script>
 
                 <script>
-                    $(document).ready(function () {
-                        $('.example2').hide();
-                        $('a#toggle-example2').click(function () {
-                            $('.example2').slideToggle(1000);
-                            return false;
-                        });
-                    });
+                    //判斷是否新建
+                    $('#add').click(function () {
+                        var yes = confirm('確定要新建嗎?');
+                        let wayText = $('#waySpan').text();
+                        let feeText = $('#feeSpan').text();
+                        if (yes) {
+                            if (wayText == "" || feeText == "") {
+                                window.event.returnValue = false;
+                                alert("不可輸入空白")
+                            } else if (wayText == "方式不可輸入空白" || feeText == "運費不可輸入空白") {
+                                window.event.returnValue = false;
+                                alert("不可輸入空白");
+                            } else if (wayText == "輸入錯誤" || feeText == "輸入錯誤") {
+                                window.event.returnValue = false;
+                                alert("輸入錯誤")
+                            } else {
+                                alert("輸入正確,新增一筆資料")
+                            }
+
+                        } else {
+                            window.event.returnValue = false;
+                        }
+                    })
+
+                     //判斷方式輸入
+                    document.getElementById("way").addEventListener("blur", checkWay);
+                    function checkWay() {
+                        let way = document.getElementById("way");
+                        let wayValue = way.value;
+                        let sp = document.getElementById("waySpan");
+                        let len = wayValue.length;
+                        let a, b
+                        if (wayValue == "") {
+                            sp.innerHTML = "方式不可輸入空白";
+                        } else {
+                            for (let i = 0; i < len; i++) {
+                                ch = wayValue.charCodeAt(i);
+                                if (((ch >= 0x4e00 && ch <= 0x9fa5) && (ch = 47 || 40 || 41))) {
+                                    a = true;
+                                } else if (ch >= 65 && ch <= 90 || ch >= 97 && ch >= 122) {
+                                    b = true;
+                                }
+                                else {
+                                    sp.innerHTML = "輸入錯誤";
+                                }
+                            }
+                            if (a || b) {
+                                sp.innerHTML = "輸入正確";
+                            }
+                        }
+                    }
+
+                    //判斷運費輸入
+                    document.getElementById("fee").addEventListener("blur", checkFee);
+                    function checkFee() {
+                        let fee = document.getElementById("fee");
+                        let feeValue = fee.value;
+                        let sp = document.getElementById("feeSpan");
+                        let feeString = feeValue.toString();
+                        let len = feeString.length;
+                        if (feeValue == "") {
+                            sp.innerHTML = "運費不可輸入空白";
+                        } else {
+                            for (let i = 0; i < len; i++) {
+                                ch = feeString.charCodeAt(i);
+                                if (ch >= 48 && ch <= 57 && "-") {
+                                    sp.innerHTML = "輸入正確";
+                                } else {
+                                    sp.innerHTML = "輸入錯誤";
+                                }
+                            }
+                        }
+                    }
                 </script>
             </body>
 

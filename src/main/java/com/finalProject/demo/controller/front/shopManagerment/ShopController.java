@@ -1,10 +1,12 @@
 package com.finalProject.demo.controller.front.shopManagerment;
 
 
-
-
-import java.util.List;
-
+import com.finalProject.demo.model.entity.product.Products;
+import com.finalProject.demo.repository.product.ProductRepository;
+import com.finalProject.demo.service.cart.CartService;
+import com.finalProject.demo.service.product.PhotoService;
+import com.finalProject.demo.service.product.ProductService;
+import com.finalProject.demo.service.product.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -12,11 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.finalProject.demo.model.entity.product.Products;
-import com.finalProject.demo.service.product.PhotoService;
-import com.finalProject.demo.service.product.ProductService;
-import com.finalProject.demo.service.product.ShopService;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ShopController {
@@ -24,6 +25,11 @@ public class ShopController {
 	private ShopService shopService;
 	 ProductService productService;
     PhotoService photoService;
+    @Autowired
+    CartService cartservice;
+    
+    @Autowired
+    ProductRepository pDao;
 	
 	
 	/*
@@ -40,30 +46,116 @@ public class ShopController {
 		return "front/shop";
 		
 	}
-	
+
+
+
 	/*
-	 * 設定按下商品分類可跳出相對應的商品
+	for Shop頁面的Ajax
 	 */
-	@GetMapping("/shop/{category}")
-	public String viewTopProducts(@PathVariable("category")String category,Model model) {
-		List<Products> productcategory=shopService.findProductByCategory(category);
-		model.addAttribute("category", productcategory);
-		return "front/CatProduct";
-		
+	@ResponseBody
+	@GetMapping("/distinctProduct")
+	public List<Map<String,Object>> distinctProduct(){
+		List<Map<String,Object>> objList = pDao.distinctProduct();
+		return objList;
+		}
+
+	/*
+	for ShopDetail頁面Size的Ajax
+	 */
+	@ResponseBody
+	@GetMapping("/distinctSize")
+	public List<Map<String,Object>> distinctSize(@RequestParam("series") String series){
+		List<Map<String,Object>> objListSize = pDao.distinctSize(series);
+		return objListSize;
 	}
 
 	/*
-	 * 製作點擊商品名字可以進入"商品明細"
+	for ShopDetail頁面Color的Ajax
 	 */
-	@GetMapping("/shop/productDetail")
-	public String productdetail(@RequestParam("productId")String productId,Model model) {
-		Products product=shopService.findById(productId);
-		model.addAttribute("Product", product);
-		
-		List<Products> productSeries=shopService.findBySeries(product.getSeries());
-		model.addAttribute("productSeries",productSeries);
-		return "front/productDetail";
+	@ResponseBody
+	@GetMapping("/distinctColor")
+	public List<Map<String,Object>> distinctColor(@RequestParam("series") String series){
+		List<Map<String,Object>> objListColor = pDao.distinctColor(series);
+		return objListColor;
 	}
+
+	/*
+	 * 設定按下商品分類可跳出相對應的商品
+	 */
+//	@GetMapping("/shop/{category}")
+//	public String viewTopProducts(@PathVariable("category")String category, Model model) {
+//		List<Products> productcategory=shopService.findProductByCategory(category);
+//		model.addAttribute("category", productcategory);
+//		return "front/CatProduct";
+//	}
+	/*
+for Cat頁面的Ajax
+ */
+//	@ResponseBody
+	@GetMapping("/shop/{category}")
+	public String distinctCatProduct(@PathVariable String category,Model model){
+		List<Map<String,Object>> objListCat = pDao.distinctCatProduct(category);
+//		return objListCat;
+
+		System.out.println(objListCat.get(0).get("productName"));
+
+		model.addAttribute("category", objListCat);
+		return "front/CatProduct";
+	}
+
+	
+//		
+//		for(int i =0; i<objList.length; i++) {
+//			Object[] firstObjArray = objList.get(0);
+//			
+//		List<ShopDto> list= new ArrayList<ShopDto>();
+//			
+//			for(int j=0; j<list.length; i++) {
+//				ShopDto dto = new ShopDto();
+//				String name = (String) firstObjArray[0];
+//				Integer price = (Integer) firstObjArray[1];
+//				Integer photoId = (Integer) firstObjArray[2];
+//				String series = (String) firstObjArray[3];
+//			}
+//			}
+/*
+ * 製作點擊商品名字可以進入"商品明細"
+ */
+@GetMapping("/shop/productDetail")
+public String productdetail(@RequestParam("series")String series,Model model) {
+	//商品明細內頁秀出color跟size
+	List<Products> productSeries=shopService.findBySeries(series);
+	model.addAttribute("productSeries",productSeries);
+	//series陣列取出productId
+	Products productsId= shopService.findById(productSeries.get(0).getProductId());
+	model.addAttribute("productsId",productsId);
+	return "front/productDetail";
+}
+
+	/*
+	 * 找出熱銷商品
+	 */
+//	@RestController
+	
+//	@GetMapping("/")
+//	public String viewBestProducts(@RequestParam("productId")String productId,Model model) {
+//		List<OrderDetail> findBestProduct = shopService.findBestProduct(productId);
+//		model.addAttribute("bestProduct",findBestProduct);
+//		return "front/index";
+//	}
+		
+//		String best = dto.getBest();
+//		OrderDetail newOrderDetail=new OrderDetail();
+//		newOrderDetail.setProductId(best);
+//		productService.findAll(newOrderDetail);
+////		Page<OrderDetail>page=shopService.findByPageIndex(pageNumber);
+////		model.addAttribute("page", page);
+////		return "front/index";
+
+
+
+	
+	
 	
 	
 

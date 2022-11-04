@@ -31,6 +31,8 @@
 
                 <!-- Customized Bootstrap Stylesheet -->
                 <link href="${contextRoot}/css/style.css" rel="stylesheet">
+                <!-- jQ -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
             </head>
 
@@ -74,7 +76,7 @@
                                 <div class="card-header bg-secondary border-0">
                                     <h4 class="font-weight-semi-bold m-0">訂單資料</h4>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body mb-2">
                                     <div class="d-flex justify-content-between pt-1 mb-2">
                                         <h6 class=" font-weight-medium">訂單編號:
                                             <c:out value="${Orders.orderId}" />
@@ -106,6 +108,13 @@
                                 <h6 class="font-weight-medium pt-1 mb-2">我們已發送訂單明細至您的電子信箱: </h6>
                                 <h6 class="font-weight-medium pt-1 mb-2 text-primary"><c:out value="${Member.email}" /></h6>
                               </div>
+                            <div class="d-flex pt-1">
+                                <h6 class="font-weight-medium pt-1 mb-2">選擇paypal付款方式的顧客,請點選連結前往 </h6>
+                                 <h6 class=" font-weight-medium"><a
+                                            class="text-primary font-weight-medium" href="${contextRoot}/cart/paypal"
+                                            >paypal</a></h6>
+                                 <h6 class="font-weight-medium">付款</h6>
+                              </div>
                                 <div class="d-flex pt-1">
                                     <h6 class=" font-weight-medium">將於確認您的款項後出貨,出貨進度可至<a
                                             class="text-primary font-weight-medium" href="${contextRoot}/member/order"
@@ -115,7 +124,6 @@
                                     <h6 class=" font-weight-medium">蝦皮出貨請至<a
                                             class="text-primary font-weight-medium" href="https://shopee.tw/product/7915556/4083302459/"
                                             >chezmoi蝦皮賣場</a></h6>
-
                                     <h6 class="font-weight-medium">下單</h6>
                                 </div>
                             </div>

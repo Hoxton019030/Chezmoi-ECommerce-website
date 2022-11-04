@@ -22,11 +22,11 @@ public class MemberService {
 	private MemberRepository mDao;
 	
 	//找Email是否註冊過
-	public List<Member> findEmail(Member member) {
-		return mDao.findEmail(member.getEmail());
+	public Member findEmail(String email) {
+		return mDao.findEmail(email);
 	}
 	
-	//註冊新增至資料庫
+	//註冊新增至資料庫 修改資料至資料庫
 	public Member insert(Member member) {
 		return mDao.save(member);
 	}
@@ -44,26 +44,31 @@ public class MemberService {
 	}
 	
 	//登入
-	public List<Member> findLogin(Member member) {
-		return mDao.findLogin(member.getEmail(), member.getPassword());
+	public List<Member> findLogin(String email,String password) {
+		return mDao.findLogin(email,password);
 	}
 	
 	//顯示會員資料
-	public List<Member> viewUser(String email, String password){
+	public Member viewUser(String email, String password){
 		return mDao.viewUser(email, password);
 	}
 	
+	//忘記密碼
+		public Member findPassword(String email, String phone) {
+			return mDao.findPassword(email, phone);
+		}
+	
 	//修改會員資料
-	public int updateUser(Member member) {
-		String email = member.getEmail();
-		String memberName = member.getMemberName();
-		String birthday = member.getBirthday();
-		String phone = member.getPhone();
-		int result = mDao.updateUser(email, memberName, birthday, phone);
-		
-		return result;
-		
-	}
+//	public int updateUser(Member member) {
+//		String email = member.getEmail();
+//		String memberName = member.getMemberName();
+//		String birthday = member.getBirthday();
+//		String phone = member.getPhone();
+//		int result = mDao.updateUser(email, memberName, birthday, phone);
+//		
+//		return result;
+//				mDao.update(member);	
+//	}
 	
 //	public List<Member> findAll() {
 //		return mDao.findAll();
@@ -82,14 +87,16 @@ public class MemberService {
 	
 	
 	//忘記密碼
-	public Member findPassword(String email, String phone) {
-		Optional<Member> optional = mDao.findPassword(email,phone);
-		
-		if(optional.isPresent()) {
-			return optional.get();
-		}
-		
-		return null;
-	}
+//	public Member findPassword(String email, String phone) {
+//		Optional<Member> optional = mDao.findPassword(email,phone);
+//		
+//		if(optional.isPresent()) {
+//			return optional.get();
+//		}
+//		
+//		return null;
+//	}
+	
+	
 	
 }

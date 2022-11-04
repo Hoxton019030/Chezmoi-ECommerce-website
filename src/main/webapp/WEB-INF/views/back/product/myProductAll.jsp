@@ -64,22 +64,17 @@
                                     </div>
                                     <div class="card-body border-bottom">
 
-                                        <form class="btn-block" action="">
+                                        <form:form class="btn-block" action="${contextRoot}/Back/MyProduct/findByProductIdLike" method="post" >
                                             <div class="input-group justify-content-between ">
-                                                <div class="d-flex pt-1 mb-2 ">
-                                                    <select class="rounded-sm p-0 " name="commodity">
-                                                        <option value="productName">商品名稱</option>
-                                                        <option value="ProductId">商品編號</option>
-                                                    </select>
-                                                </div>
-                                                <input type="text" class="form-control p-4 m-1" placeholder="search">
+                                                
+                                                <input type="text" class="form-control p-4 m-1" placeholder="search ProductId" name="search">
                                                 <div class="submit">
                                                     <input class="btn-primary m-1 rounded-sm border-1" type="submit"
                                                         value="search">
                                                 </div>
                                             </div>
 
-                                        </form>
+                                        </form:form>
                                     </div>
 
                                     <div class="container-fluid row px-xl-4 ">
@@ -127,7 +122,7 @@
                                                         </div>
                                                         <div class="">
                                                             <button class="btn btn-primary rounded-sm" type="button"
-                                                                onclick="javascript:location.href='#'"
+                                                                onclick="deleteUser()"
                                                                 name="creatProduct" id="creatProduct">全部刪除
                                                             </button>
                                                         </div>
@@ -158,7 +153,7 @@
                                                 <tbody class="align-middle" id="tbody">
                                                 <c:forEach var="product" items="${page.content}">
                                                     <tr class="text-center">
-                                                        <td><input type="checkbox" style="zoom:150%"></td>
+                                                        <td><input type="checkbox" style="zoom:150%" id="checkb" name="checkb" value="${product.productId}"></td>
                                                         <td class="align-middle">
                                                         <img src="http://localhost:8080/Chezmoi/getMainPic/${product.photo.photoId}" style="width: 80px;height:auto">
                                                         </td>
@@ -174,6 +169,7 @@
                                                 </c:forEach>
 
                                                 </tbody>
+                                
                                             </table>
                                             <div id="pageNumber" class="align-content-center">
                                                 <c:forEach var="proPage" begin="1" end="${page.totalPages}">
@@ -225,7 +221,26 @@
                            
                         });
                     </script>
-                    
+
+                    <script>
+                  //批量删除
+                    function deleteUser(){
+                      if(!confirm("確定要刪除這些商品嗎？")){
+                        return ;
+                      }
+                      var cks=document.getElementsByName("checkb");
+                      var str="/deleteAll/";
+                      //拼接所有的图书id
+                      for(var i=0;i<cks.length;i++){
+                        if(cks[i].checked){
+                          str+=cks[i].value+",";
+                        }
+                      }
+                      //去掉字符串末尾的‘,’
+                      str=str.substring(0, str.length-1);
+                      window.location.href="http://localhost:8080/Chezmoi/Back/MyProduct"+str;
+                    }
+                    </script>
 
                 </body>
 

@@ -2,6 +2,7 @@ package com.finalProject.demo.controller.front.cartManagerment;
 
 import java.util.List;
 
+import com.finalProject.demo.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ import com.finalProject.demo.model.entity.product.Products;
 import com.finalProject.demo.service.cart.CartService;
 import com.finalProject.demo.service.product.ProductService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @SessionAttributes("Member")
 public class DeleteFromCartController {
@@ -24,6 +27,9 @@ public class DeleteFromCartController {
 	
 	@Autowired
 	private CartService cartService;
+
+	@Autowired
+	MemberService memberService;
 	
 
 	//刪除購物車商品
@@ -32,6 +38,7 @@ public class DeleteFromCartController {
 			@RequestParam("id") String productId
 			) {
 		Member member = (Member) model.getAttribute("Member");
+		assert member != null;
 		Long memberId = member.getMemberId();
 		cartService.deleteById(memberId, productId);
 		return "redirect:/cartAll";
@@ -39,9 +46,12 @@ public class DeleteFromCartController {
 	
 	//現在的會員是誰
 	@ModelAttribute("Member")
-	public Member viewMember(Model model) {
+	public Member viewMember(Model model, HttpServletRequest request) {
+		//取得memberId
+		String stringId = String.valueOf(request.getAttribute("memberId"));
+		Long memberId = Long.valueOf(stringId);
 		Member memberLogin = new Member();
-		memberLogin.setMemberId(2L);
+		memberLogin.setMemberId(memberId);
 		return memberLogin;
 	}
 		

@@ -1,17 +1,18 @@
 package com.finalProject.demo.repository.product;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.finalProject.demo.model.entity.product.Products;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.finalProject.demo.model.entity.product.Products;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Products, String> {
 
-
+	//模糊查詢
+	List<Products> findByProductIdContaining(String productId);
 
 	List<Products> findByName(String name);
 	List<Products> findByCategory(String category);
@@ -39,7 +40,12 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 			@Param("state2")String state,
 			@Param("id2")String id
 	);
-	
+//	@Query()
+//	Optional<Products> findBySeriesOne(String series);
+
+	/*
+	for productdetail取尺寸、顏色用
+	 */
 	Optional<List<Products>> findBySeries(String series);
 
 	Optional<List<Products>> findProductByCategory(String category);
@@ -47,8 +53,8 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	// public List<Products> findFirstByOrderByCreatTimesDesc();
 
 	// 按照productName同樣商品名也只取一筆
-	@Query(value = "SELECT DISTINCT series,productName,price  FROM products", nativeQuery = true)
-	public List<Products> findDistinctBySeries();
+//	@Query(value = "SELECT DISTINCT series,productName,price  FROM products", nativeQuery = true)
+//	public List<Products> findDistinctBySeries();
 
 //	@Query(value = "TOP 1 * FROM Products WHERE productId=:productId3", nativeQuery = true)
 //	public Products findTopByProductId(@Param("productId3")String productId);
@@ -63,6 +69,23 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	@Modifying
 	@Query(value="UPDATE Products SET productName=:name3 WHERE series=:series3",nativeQuery = true)
 	public void updateSeriesName(@Param("name3")String name,@Param("series3")String series);
+
+	///shop-All 頁面 單一商品不會重複
+	@Query(value="  select distinct productName, Max(UpdateTime) ,price,photoId, series from products Group by productName, price,photoId, series ORDER BY MAX(UpdateTime) DESC, productName  ", nativeQuery=true)
+	public List<Map<String,Object>> distinctProduct();
+
+	//Category 頁面  單一商品不會重複
+	@Query(value="select distinct productName, Max(UpdateTime) ,price,photoId, series from products where category=:category1 Group by productName, price,photoId, series ORDER BY MAX(UpdateTime) DESC, productName", nativeQuery=true)
+	public List<Map<String,Object>> distinctCatProduct(@Param("category1")String category);
+
+	//shop-Detail 頁面 單一size不會重複
+	@Query(value="select distinct size,series from products where series=:seriesForSize Group by size, series ORDER BY size DESC", nativeQuery=true)
+	public List<Map<String,Object>> distinctSize(@Param("seriesForSize")String series);
+
+	//shop-Detail 頁面 單一color不會重複
+	@Query(value="select distinct color,productName,price,photoId, series from products where series=:seriesForColor Group by color,productName, price,photoId, series ORDER BY color DESC", nativeQuery=true)
+	public List<Map<String,Object>> distinctColor(@Param("seriesForColor")String series);
+
 
 
 }

@@ -14,8 +14,10 @@ import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.service.cart.CartService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
-@SessionAttributes("Member")
+//@SessionAttributes("Member")
 public class UpdateCartController {
 	
 	@Autowired
@@ -23,9 +25,13 @@ public class UpdateCartController {
 	
 	@RequestMapping("/api/updateCart")
 	public Cart updateCart(@RequestBody CartDto dto,
-			Model model) {
-		Member member=(Member) model.getAttribute("Member");
-		Long memberId = member.getMemberId();
+						   Model model, HttpServletRequest request) {
+//		Member member=(Member) model.getAttribute("Member");
+//		Long memberId = member.getMemberId();
+		//取得memberId
+		String stringId = String.valueOf(request.getAttribute("memberId"));
+		Long memberId = Long.valueOf(stringId);
+
 		Integer quantity = dto.getQuantity();
 		Integer total = dto.getTotal();
 		String productId = dto.getProductId();
@@ -38,10 +44,10 @@ public class UpdateCartController {
 		return cart;
 	}
 
-	@ModelAttribute("Member")
-	public Member viewMember(Model model) {
-		Member memberLogin = new Member();
-		memberLogin.setMemberId(2L);
-		return memberLogin;
-	}
+//	@ModelAttribute("Member")
+//	public Member viewMember(Model model) {
+//		Member memberLogin = new Member();
+//		memberLogin.setMemberId(2L);
+//		return memberLogin;
+//	}
 }

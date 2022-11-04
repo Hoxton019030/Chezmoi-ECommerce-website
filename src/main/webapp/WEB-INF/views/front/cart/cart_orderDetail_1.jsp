@@ -32,6 +32,9 @@
 
                 <!-- Customized Bootstrap Stylesheet -->
                 <link href="${contextRoot}/css/style.css" rel="stylesheet">
+                
+                <!-- jQ -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
             </head>
 
@@ -73,7 +76,7 @@
                                     <div class="card-body">
                                         <div class="d-flex pt-1 mb-2">
                                             <h6 class="font-weight-medium">客戶名稱: </h6>
-                                            <h6 class="font-weight-medium ml-1" id="memberName">${Orders.member.memberName}
+                                            <h6 class="font-weight-medium ml-1" id="member">${Orders.member.memberName}
                                             </h6>
                                         </div>
                                         <div class="d-flex pt-1 mb-2">
@@ -123,16 +126,18 @@
                                             <input class="mb-2" type="checkbox" name="checkbox1" value="same_detail"
                                                 id="checkbox">
                                             <label for="checkbox1">收件人資料與客戶資料相同</label>
-                                            <div class="d-flex justify-content-between pt-1 mb-2">
-                                                <h6 class=" font-weight-medium">收件人名稱</h6>
+                                            <div class="d-flex pt-1 mb-2">
+                                                <h6 class=" font-weight-medium mr-3">收件人名稱</h6>
+                                                <span class=" font-weight-medium text-primary" id="nameSpan"></span>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="shipName" type="text" class="form-control p-4 mb-2"
-                                                    id="inputMemberName" value="" placeholder="彭建華" 
+                                                    id="inputMemberName" value="" placeholder="收件人名稱"
                                                     oninput = "value=value.replace(/[^\u4E00-\u9FA5]/g,'')"/>
                                             </div>
-                                            <div class="d-flex justify-content-between pt-1 mb-2">
-                                                <h6 class=" font-weight-medium">收件人電話號碼</h6>
+                                            <div class="d-flex pt-1 mb-2">
+                                                <h6 class=" font-weight-medium mr-3">收件人電話號碼</h6>
+                                                 <span class=" font-weight-medium text-primary" id="phoneSpan"></span>
                                             </div>
                                             <div class="input-group">
                                                 <form:input path="shipPhone" type="text" class="form-control p-4 mb-2"
@@ -169,10 +174,16 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between pt-1">
-                                                <h6 class=" font-weight-medium">已選擇的付款方式:${Payment.paymentWay} </h6>
+                                                <h6 class=" font-weight-medium">已選擇的付款方式:</h6>
                                             </div>
                                             <div class="d-flex justify-content-between pt-1">
-                                                <h6 class=" font-weight-medium">運送方式為: ${Shipping.shippingWay}</h6>
+                                                <h6 class=" font-weight-medium">${Payment.paymentWay} </h6>
+                                            </div>
+                                            <div class="d-flex justify-content-between pt-1">
+                                                <h6 class=" font-weight-medium">運送方式為:</h6>
+                                            </div>
+                                            <div class="d-flex justify-content-between pt-1">
+                                                <h6 class=" font-weight-medium">${Shipping.shippingWay}</h6>
                                             </div>
                                         </div>
 
@@ -189,11 +200,11 @@
                                                 <h5 class=" font-weight-semi-bold m-0">合計: NT$ ${Orders.total}</h5>
                                             </div>
                                         </div>
-                                        <div class="card-footer border-secondary bg-transparent">
-                                            <a href="<c:url value='/cartAll' />"><button
+                                          <div class="d-flex justify-content-center mt-2 ml-2 mr-2">
+                                            <a href="<c:url value='/cartAll' />" class="mr-3"><button
                                                     class="btn btn-block btn-primary my-3 py-3"
                                                     type="button">上一步重新選擇</button></a>
-                                            <button class="btn btn-block btn-primary my-3 py-3" type="submit">
+                                            <button class="btn btn-block btn-primary my-3 py-3" style="width:12em;" type="submit" id="add">
                                                 下一步完成訂單</button>
                                         </div>
                                     </div>
@@ -235,11 +246,15 @@
 
                 <script type="text/javascript">
                     $('#checkbox').click(function () {
-                        var memberName = $('#memberName').text();
-                        $('#inputMemberName').attr("value", memberName);
+                        var member = $('#member').text();
+                        $('#inputMemberName').attr("value", member);
+                        var nameSp = document.getElementById("nameSpan");
+                        nameSp.innerHTML = "輸入正確";
 
                         var memberPhone = $('#memberPhone').text();
                         $('#inputMemberPhone').attr("value", memberPhone);
+                        let phoneSp = document.getElementById("phoneSpan");
+                        phoneSp.innerHTML = "輸入正確";
                     })
 					window.onload = function() {
 					    if(!window.location.hash) {
@@ -247,6 +262,63 @@
 					        window.location.reload();
 					    }
 					}
+                    
+                    //判斷是否建立新訂單
+                    $('#add').click(function () {
+                        var yes = confirm('確定要送出訂單嗎?');
+                        var nemeText = $("#nameSpan").text();
+                        var phoneText = $("#phoneSpan").text();
+                        var text = "輸入正確";
+                        if (yes) {
+                            if (nemeText == text && phoneText == text) {
+                            	alert("輸入正確,送出訂單");
+                            	
+                            }else{
+                            	window.event.returnValue = false;
+                                alert("收件資訊輸入錯誤或空白");
+                            }
+                        } else {
+                            window.event.returnValue = false;
+                        }
+                    })
+                    
+                    //判斷姓名輸入
+                    document.getElementById("inputMemberName").addEventListener("blur", checkName);
+                    function checkName() {
+                       let name = document.getElementById("inputMemberName");
+                       let nameValue = name.value;
+                       let len = nameValue.length;
+                       let sp = document.getElementById("nameSpan");
+                       if(len == 0){
+                    	   sp.innerHTML = "不可輸入空白";
+                       }else if(len <2){
+                    	   sp.innerHTML = "姓名長度必須兩個字以上";
+                       }else{
+	                       sp.innerHTML = "輸入正確";
+                       }
+                    }
+                    //判斷電話輸入
+                    document.getElementById("inputMemberPhone").addEventListener("blur", checkPhone);
+                    function checkPhone() {
+                       let phone = document.getElementById("inputMemberPhone");
+                       let phoneValue = phone.value;
+                       let len = phoneValue.length;
+                       let sp = document.getElementById("phoneSpan");
+                       if(len == 0){
+                    	   sp.innerHTML = "不可輸入空白";
+                       }else if(len <10 || len >10){
+                    	   sp.innerHTML = "電話長度必須等於十碼";
+                       }else if(phoneValue.charAt(0) != 0){
+                    	   sp.innerHTML = "第一碼必須為0";
+                       }else if(phoneValue.charAt(1) != 9){
+                    	   sp.innerHTML = "第二碼必須為9";
+                       }else{
+                    	   sp.innerHTML = "輸入正確";
+                       }
+                    }
+                    
+                    
+                    
 								
                 </script>
 

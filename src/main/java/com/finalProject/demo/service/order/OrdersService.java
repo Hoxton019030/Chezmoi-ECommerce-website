@@ -69,8 +69,8 @@ public class OrdersService {
 	}
 
 
-	public String editShippingCode(Long orderId, String shippingCode) {
-		int result = ordersRepository.updateShippingCodeById(orderId, shippingCode);
+	public String editShippingCodeAndShippingDate(Long orderId, String shippingCode) {
+		int result = ordersRepository.updateShippingCodeAndShippingDateById(orderId, shippingCode);
 		
 		
 		return result > 0 ?"建立成功":"建立失敗";
@@ -80,5 +80,6 @@ public class OrdersService {
 		int result = ordersRepository.updateOrderStateToPaid(orderId);
 		return result > 0 ?"建立成功":"建立失敗";
 	}
+	
 	
 }

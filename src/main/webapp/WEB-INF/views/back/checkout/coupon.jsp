@@ -30,8 +30,8 @@
     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
 
-	<link href="${contextRoot}/css/style.css" rel="stylesheet">
-    <link href="${contextRoot}/css/admin_style.css" rel="stylesheet">
+	<link href="${contextRoot}/css/back_style.css" rel="stylesheet">
+   
 
     <!-- Customized Bootstrap Stylesheet -->
 
@@ -41,6 +41,17 @@
             list-style: none;
             padding: 0%;
         }
+        th span{
+		display: block;
+		word-break: normal;
+		white-space: pre-wrap;
+		}
+        td span{
+		display: block;
+		word-break: normal;
+		white-space: pre-wrap;
+		}
+        
     </style>
 </head>
 
@@ -49,11 +60,11 @@
 
     <!-- Navbar Start -->
     <div class="container-fluid mb-5">
-        <div class="row border-top px-xl-3">
+        <div class="row border-top">
              <jsp:include page="../layout/navbar.jsp"></jsp:include>
             <div class="row col-lg-9 justify-content-center pl-0">
             
-                <div class="col-lg-3 border-secondary border mb-5 mt-3 mr-3" style="padding-left: 0; padding-right:0;">
+                <div class="col-lg-3 border-secondary border mb-5 mt-3 mr-2" style="padding-left: 0; padding-right:0;">
 				<form:form action="${contextRoot}/Back/addCoupon" method="post" modelAttribute="couponadd">
                     <div class="card-header border bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">折扣碼設定</h4>
@@ -86,8 +97,11 @@
                         <div class="input-group">
                             <input type="text" class="form-control p-4 mb-2" placeholder="2022-11-20 23:59" name="dateEnd" required />
                         </div>
+                        <div class="d-flex justify-content-between pt-2" style="clear:both;">
+                            <h6 class=" font-weight-medium">啟用狀態</h6>
+                        </div>
                         <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
-                            <h6 class=" font-weight-medium">啟用狀態(啟用:ON/未啟用:OFF)</h6>
+                            <h6 class=" font-weight-medium">(啟用:ON/未啟用:OFF)</h6>
                         </div>
                         <div class="input-group">
                             <input type="text" class="form-control p-4 mb-2" placeholder="ON/OFF" name="couponState" value="ON" required />
@@ -96,8 +110,8 @@
                             <button class="btn btn-primary" >新增折扣碼</button>
                         </div>
                     </div>
-                </div>
               </form:form>
+                </div>
           
                 <div class="col-lg-8 border-secondary  border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
                     <div class="card-header border bg-secondary border-0">
@@ -108,17 +122,17 @@
 <!--                             <h5 class=" font-weight-medium">進行中的折扣活動</h5> -->
 <!--                         </div> -->
                         <div class="row table-responsive ml-0 mb-5 p-0">
-                            <table class="table table-bordered text-center mb-0">
+                            <table class="table table-bordered text-center mb-0" style="word-break: break-all;word-wrap: break-word;white-space: pre-wrap;">
                                 <thead class="bg-secondary text-dark">
                                     <tr>
                                         <th>名稱</th>
                                         <th>代碼</th>
                                         <th>折扣金額</th>
 <!--                                         <th>最低消費</th> -->
-                                        <th>折扣開始</th>
-                                        <th>折扣結束</th>
-                                        <th>啟用狀態(啟用:ON/未啟用:OFF)</th>
-                                      <th>編輯</th>
+                                        <th >折扣開始</th>
+                                        <th >折扣結束</th>
+                                        <th >啟用狀態(ON/OFF)</th>
+                                      <th style="width:4em;" >編輯</th>
                                     </tr>
                                 </thead>
 					<c:forEach var="workCoupon" items="${page.content}">
@@ -134,7 +148,8 @@
 <%--                                         <td class="align-middle"><a onclick="return confirm('確定刪除?')" href="${contextRoot}/Back/deleteCoupon?couponId=${workCoupon.couponId}"><button class="btn btn-sm btn-primary"><i --%>
 <!--                                                     class="fa fa-times"></i></button></a> -->
 <!--                                         </td> -->
-                                        <td class="align-middle"><a href="${contextRoot}/Back/editCoupon?couponId=${workCoupon.couponId}"><button class="btn btn-sm btn-primary"><i
+                                        <td class="align-middle"><a href="${contextRoot}/Back/editCoupon?couponId=${workCoupon.couponId}">
+                                        <button class="btn btn-sm btn-primary mb-4"><i
                                                     class="fa fa-times"></i></button></a>
                                             </td>
                                     </tr>
@@ -159,6 +174,8 @@
                     </div>
            
                 </div>
+            </div>
+            </div>
             </div>
 
             <!-- Navbar End -->

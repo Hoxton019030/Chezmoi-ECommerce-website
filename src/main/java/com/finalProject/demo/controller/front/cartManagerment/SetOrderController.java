@@ -20,6 +20,8 @@ import com.finalProject.demo.service.order.OrdersService;
 import com.finalProject.demo.service.order.PaymentService;
 import com.finalProject.demo.service.order.ShippingService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @SessionAttributes("Member")
 public class SetOrderController {
@@ -51,6 +53,7 @@ public class SetOrderController {
 			String couponCode = dto.getCouponCode();
 			Coupon coupon = couponService.findByCouponCode(couponCode);
 			Member memberLogin =(Member) model.getAttribute("Member");
+			assert memberLogin != null;
 			Long memberId = memberLogin.getMemberId();
 			Member findMember = memberService.findById(memberId);
 			Orders findTopOrder = oService.findTopOrder();
@@ -115,9 +118,12 @@ public class SetOrderController {
 		
 		//現在的會員是誰
 		@ModelAttribute("Member")
-		public Member viewMember() {
+		public Member viewMember(Model model, HttpServletRequest request) {
+			//取得memberId
+			String stringId = String.valueOf(request.getAttribute("memberId"));
+			Long memberId = Long.valueOf(stringId);
 			Member memberLogin = new Member();
-			memberLogin.setMemberId(2L);
+			memberLogin.setMemberId(memberId);
 			return memberLogin;
 		}
 

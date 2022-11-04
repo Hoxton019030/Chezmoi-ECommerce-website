@@ -197,7 +197,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <input type="submit" value="上架商品">
+                                                <input class="btn btn-sm btn-secondary" type="submit" value="上架商品">
                                             </div>
                                         </div>
 

@@ -26,6 +26,8 @@ import com.finalProject.demo.service.member.MemberService;
 import com.finalProject.demo.service.order.OrderDetailService;
 import com.finalProject.demo.service.order.OrdersService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Lazy
 @Controller
 @SessionAttributes("Member")
@@ -48,9 +50,15 @@ public class AddOrderController {
 	
 	//送出空白訂單表單
 	@GetMapping("/cartOrderDetail")
-	public String viewInputOrderDetail(Model model1,Model model2,Model model3,Model model4,Model model5){
-		Member member = (Member) model1.getAttribute("Member");
-		model2.addAttribute("Member",member);
+	public String viewInputOrderDetail(HttpServletRequest request,Model model){
+//		//取得memberId
+//		String stringId = String.valueOf(request.getAttribute("memberId"));
+//		Long memberId = Long.valueOf(stringId);
+//		//取得member
+//		Member member = memberService.findById(memberId);
+		Member member = (Member) model.getAttribute("Member");
+		model.addAttribute("Member",member);
+		assert member != null;
 		List<Cart> findCart = cService.findByMemberId(member);
 		if(findCart.size()==0) {
 			return "front/cart/cartNotFound";
@@ -59,30 +67,35 @@ public class AddOrderController {
 		if(topOrder == null) {
 			return "redirect:/cartOrderDetail";
 		}
-		model3.addAttribute("Orders",topOrder);
+		model.addAttribute("Orders",topOrder);
 		Payment payment = topOrder.getPayment();
-		model4.addAttribute("Payment",payment);
+		model.addAttribute("Payment",payment);
 		Shipping shipping = topOrder.getShipping();
-		model5.addAttribute("Shipping",shipping);
+		model.addAttribute("Shipping",shipping);
 		return "front/cart/cart_orderDetail_1";
 	}
 	
 	//送出空白訂單表單
 		@GetMapping("/cartOrderDetail#loaded")
-		public String viewInputOrderDetailLoad(Model model1,Model model2,Model model3,Model model4,Model model5){
-			Member member = (Member) model1.getAttribute("Member");
-			model2.addAttribute("Member",member);
+		public String viewInputOrderDetailLoad(HttpServletRequest request,Model model){
+//			//取得memberId
+//			String stringId = String.valueOf(request.getAttribute("memberId"));
+//			Long memberId = Long.valueOf(stringId);
+//			//取得member
+//			Member member = memberService.findById(memberId);
+			Member member = (Member) model.getAttribute("Member");
+			model.addAttribute("Member",member);
 			List<Cart> findCart = cService.findByMemberId(member);
 			if(findCart.size()==0) {
 				return "front/cart/cartNotFound";
 			}
 			Orders order = oService.findTopOrder();
-			model3.addAttribute("Orders",order);
+			model.addAttribute("Orders",order);
 			Orders topOrder = oService.findTopOrder();
 			Payment payment = topOrder.getPayment();
-			model4.addAttribute("Payment",payment);
+			model.addAttribute("Payment",payment);
 			Shipping shipping = topOrder.getShipping();
-			model5.addAttribute("Shipping",shipping);
+			model.addAttribute("Shipping",shipping);
 			
 			return "front/cart/cart_orderDetail_1";
 		}
@@ -92,11 +105,16 @@ public class AddOrderController {
 	//以及刪除購物車商品
 	@PostMapping("/cartFinish")
 	public String newOrder(@ModelAttribute(name="Orders") Orders orders, 
-			Model model1,Model model2,Model model3) {
+			Model model,HttpServletRequest request) {
 		
 		//find member
-		Member findmember = (Member) model1.getAttribute("Member");
+		Member findmember = (Member) model.getAttribute("Member");
+		assert findmember != null;
 		Long memberId = findmember.getMemberId();
+//		//取得memberId
+//		String stringId = String.valueOf(request.getAttribute("memberId"));
+//		Long memberId = Long.valueOf(stringId);
+		//取得member
 		Member member = memberService.findById(memberId);
 		
 		//add new order
@@ -138,8 +156,8 @@ public class AddOrderController {
 		Date orderDate = orders.getOrderDate();
 		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String date = dateFormat.format(orderDate);
-		model2.addAttribute("Date",date);
-		model3.addAttribute("Member",member);
+		model.addAttribute("Date",date);
+		model.addAttribute("Member",member);
 		
 		//發送訂單完成信
 		String email = member.getEmail();
@@ -166,8 +184,11 @@ public class AddOrderController {
 	
 	//現在的會員是誰
 	@ModelAttribute("Member")
-	public Member viewMember() {
-		Member memberLogin = memberService.findById(2L);
+	public Member viewMember(HttpServletRequest request) {
+		//取得memberId
+		String stringId = String.valueOf(request.getAttribute("memberId"));
+		Long memberId = Long.valueOf(stringId);
+		Member memberLogin = memberService.findById(memberId);
 		return memberLogin;
 	}
 	

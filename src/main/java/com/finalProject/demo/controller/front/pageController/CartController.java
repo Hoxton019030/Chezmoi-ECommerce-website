@@ -23,8 +23,10 @@ import com.finalProject.demo.service.order.OrdersService;
 import com.finalProject.demo.service.order.PaymentService;
 import com.finalProject.demo.service.order.ShippingService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
-@SessionAttributes("Member")
+//@SessionAttributes("Member")
 public class CartController {
 
 	@Autowired
@@ -39,16 +41,18 @@ public class CartController {
 	@Autowired
 	private ShippingService shippingService;
 	
-	@Autowired
-	private OrdersService ordersService;
-	
-	
 	//顯示所有購物車商品
+
 	@GetMapping("/cartAll")
-	public String viewAllCart(Model model1,Model model2) {
-		Member memberLogin = new Member();
-		memberLogin.setMemberId(2L);
-		Long memberId = memberLogin.getMemberId();
+	public String viewAllCart(Model model, HttpServletRequest request) {
+//		Member memberLogin = new Member();
+//		memberLogin.setMemberId(2L);
+//		Long memberId = memberLogin.getMemberId();
+
+		//取得memberId
+		String stringId = String.valueOf(request.getAttribute("memberId"));
+		Long memberId = Long.valueOf(stringId);
+
 		List<Cart> allCart = cartService.findAllCart();
 		
 		if(allCart.isEmpty()) {
@@ -64,9 +68,9 @@ public class CartController {
 			}
 			newCart.add(findCart);
 		}
-			model1.addAttribute("Carts",newCart);
+			model.addAttribute("Carts",newCart);
 			Coupon coupon = new Coupon();
-			model2.addAttribute("Coupon",coupon);
+			model.addAttribute("Coupon",coupon);
 			return "front/cart/cart";
 		}
 	}
@@ -75,20 +79,32 @@ public class CartController {
 	@PostMapping("/cartAll")
 	public String verifyCouponCode(@ModelAttribute(name="Coupon") Coupon coupon,
 			RedirectAttributes ra)  {
+		String msg="";
 		String msg1="無此折扣碼";
 		String msg2="使用成功";
 		Integer discount1=0;
 		String couponCode = coupon.getCouponCode();
+		ra.addAttribute("msg",msg);
 		Coupon findCouponCode = couponService.findByCouponCode(couponCode);
-		if(findCouponCode==null) {
+		if(findCouponCode == null) {
 			ra.addAttribute("msg",msg1);
 			ra.addAttribute("discount",discount1);
 			return "redirect:/cartAll";
 		}
-		Integer discountPrice = findCouponCode.getDiscountPrice();
-		ra.addAttribute("couponCode",couponCode);
-		ra.addAttribute("msg",msg2);
-		ra.addAttribute("discount",discountPrice);
+		String couponState = findCouponCode.getCouponState();
+		String state = "ON";
+		if(!(couponState.equals(state))){
+			ra.addAttribute("msg",msg1);
+			ra.addAttribute("discount",discount1);
+			return "redirect:/cartAll";
+		}
+		if((findCouponCode!=null) && (couponState.equals(state))) {
+			Integer discountPrice = findCouponCode.getDiscountPrice();
+			ra.addAttribute("couponCode",couponCode);
+			ra.addAttribute("msg",msg2);
+			ra.addAttribute("discount",discountPrice);
+			return "redirect:/cartAll";
+		}
 		return "redirect:/cartAll";
 	}
 		
@@ -135,6 +151,16 @@ public class CartController {
 	public String viewCartFinish() {
 		return "front/cart/cart_finish";
 	}
+	
+//	@GetMapping("cartQuantity")
+//	public String viewCartQuantity(Model model) {
+//		Member memberLogin = new Member();
+//		memberLogin.setMemberId(2L);
+//		List<Cart> allCart = cartService.findByMemberId(memberLogin);
+//		int cartQuantity = allCart.size();
+//		model.addAttribute("cartQuantity",cartQuantity);
+//		return "front/cart/cart";
+//	}
 	
 	
 }

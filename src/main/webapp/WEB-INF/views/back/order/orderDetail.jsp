@@ -61,7 +61,7 @@
                                     <div class="card-header bg-secondary border-0">
                         				<h4 class="font-weight-semi-bold m-0">訂單出貨</h4>
                                 	</div>
-                                	<div class="card-body border-bottom">
+                                	<div class="card-body border-bottom" style="width:2000px;overflow-x:auto">
                                     <div class="row">
                                         <!-- column -->
                                         <div class="col-12">
@@ -88,8 +88,16 @@
                                                                 <th class="border-top-0">訂單號碼</th>
                                                                 <th class="border-top-0">訂單日期</th>
                                                                 <th class="border-top-0">訂單狀態</th>
-                                                                <th class="border-top-0">送件單號</th>
                                                                 <th class="border-top-0">訂購人</th>
+                                                                <th class="border-top-0">收件人</th>
+                                                                <th class="border-top-0">收件人電話</th>
+                                                                <th class="border-top-0">寄件方式</th>
+                                                                <th class="border-top-0">收件店名</th>
+                                                                <th class="border-top-0">收件店號</th>
+                                                                <th class="border-top-0">送件單號</th>
+                                                                <th class="border-top-0">送件日期</th>
+                                                                <th class="border-top-0">折扣碼</th>
+                                                                <th class="border-top-0">付款方式</th>
                                                                 <th class="border-top-0">合計</th>
                                                             </tr>
                                                         </thead>
@@ -187,12 +195,23 @@
             	        $('#orders').empty();
             	        for(order of res){
                                
-                            $('#orders').append('<tr><td>' + '<a href="#" onclick="openDetail('+order.orderId+')">' + order.orderId + '</a>' + '</td><td>' + order.orderDate + '</td><td>' + getOrderStateUi(order) + '</td><td>' + getShippingCodeColumeValue(order) + '</td><td>' + (order?.member?.memberName?order?.member?.memberName:'') + '</td><td>' + order.total + '</td></tr>')
+                            $('#orders').append('<tr><td>' + '<a href="#" onclick="openDetail('+order.orderId+')">' + order.orderId + '</a>' + '</td><td>' + order.orderDate + '</td><td>' + getOrderStateUi(order) + '</td><td>' + (order?.member?.memberName?order?.member?.memberName:'') + '</td><td>' + order.shipName + '</td><td>' + order.shipPhone + '</td><td>' + order.shippingWay + '</td><td>' + order.storeName + '</td><td>' + order.storeNumber + '</td><td>' + getShippingCodeColumeValue(order) + '</td><td>' + getShippingDateUi(order) + '</td><td>' + order.couponCode + '</td><td>' + order.paymentWay + '</td><td>' + order.total + '</td><td>')
+                            		
             		            
                         }
                     }).fail(function(err){
             	        });
                         
+                }
+                
+                function getShippingDateUi(order) {
+                	//已出貨->顯示時間
+                
+                	let shippingDate = order.shippingDate;
+                	
+                	if(shippingDate === null){
+                        return '';
+                	}return shippingDate;
                 }
 
                 function getOrderStateUi(order) {
@@ -274,7 +293,7 @@
 
 
                         $('#dialog').append(
-                            '<div class="modal-dialog">' +
+                            '<div class="modal-dialog modal-lg">' +
                                 '<div class="modal-content">' +
                                 '<div class="modal-header">' +
                                     '<h5 class="modal-title" id="exampleModalLabel">訂單明細</h5>' +
@@ -284,9 +303,12 @@
                                         '<thead>' +
                                             '<tr>' +
                                                 '<th>訂單號碼</th>'+
+                                                '<th>商品號碼</th>'+
                                                 '<th>商品名稱</th>'+
+                                                '<th>商品顏色</th>'+
+                                                '<th>商品尺碼</th>'+
                                                 '<th>數量</th>'+
-                                                '<th>價格</th>'+
+                                                '<th>單價</th>'+
                                             '</tr>' +
                                         '</thead>' +
                                         '<tbody>'+ 
@@ -311,7 +333,10 @@
                         table += 
                             '<tr>'+
                                 '<td>'+ orderDetail.orderId + '</td>' +
+                                '<td>'+ orderDetail.productId + '</td>' +
                                 '<td>'+ orderDetail.productName + '</td>' +
+                                '<td>'+ orderDetail.productColor + '</td>' +
+                                '<td>'+ orderDetail.productSize + '</td>' +
                                 '<td>'+ orderDetail.quantity + '</td>' +
                                 '<td>'+ orderDetail.price + '</td>' +
                             '</tr>';
