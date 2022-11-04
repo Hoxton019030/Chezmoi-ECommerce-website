@@ -148,7 +148,7 @@ span.price {
 <jsp:include page="../layout/navbar.jsp"></jsp:include>
  <div class="container-fluid mt-5">
   <div class=" px-xl-5 border-0">
-    <h3 class="font-weight-semi-bold mb-2">訂購資料</h3>
+    <h3 class="font-weight-semi-bold">訂購資料</h3>
   </div>
    <div class="row px-xl-5 table-responsive">
             <table class="table table-bordered text-center mb-5">
@@ -222,17 +222,17 @@ span.price {
                     <div class="input-group">
                     <form:input class="form-control p-4 mb-2" path="price" type="text"  value="${Order.total}" onfocus="this.blur();"/>
                     </div>
-                    <div class="d-flex justify-content-between pt-1 mb-2">
-                     <h6 class=" font-weight-medium">使用貨幣</h6>
-                    </div>
+<!--                     <div class="d-flex justify-content-between pt-1 mb-2"> -->
+<!--                      <h6 class=" font-weight-medium">使用貨幣</h6> -->
+<!--                     </div> -->
                     <div class="input-group">
-                    <form:input class="form-control p-4 mb-2" path="currency" type="text" id="currency" name="currency" value="USD" onfocus="this.blur();"/>
+                    <form:input class="form-control p-4 mb-2" path="currency" type="hidden" id="currency" name="currency" value="USD" onfocus="this.blur();"/>
                     </div>
-                    <div class="d-flex justify-content-between pt-1 mb-2">
-                     <h6 class=" font-weight-medium">付款方式</h6>
-                    </div>
+<!--                     <div class="d-flex justify-content-between pt-1 mb-2"> -->
+<!--                      <h6 class=" font-weight-medium">付款方式</h6> -->
+<!--                     </div> -->
                     <div class="input-group">
-                    <form:input class="form-control p-4 mb-2" path="method" type="text" id="method" name="method" value="paypal" onfocus="this.blur();" />
+                    <form:input class="form-control p-4 mb-2" path="method" type="hidden" id="method" name="method" value="paypal" onfocus="this.blur();" />
                     </div>
                     <div class="d-flex justify-content-between pt-1 mb-2">
                      <h6 class=" font-weight-medium">本次交易目的</h6>
@@ -248,20 +248,18 @@ span.price {
                     </div>
                 </div>
  				<div class="d-flex justify-content-center mt-2">
-                <button type="submit" class="btn btn-block btn-primary my-4 py-4" style="width:15em;">確認資料無誤前往付款</button>
+                <button type="submit" class="btn btn-block btn-primary my-4 py-4" id="submit" style="width:15em;">確認資料無誤前往付款</button>
                 </div>
             </form:form>
         </div>
     </div>
     </div>
     </div>
- 				<!-- Footer Start -->
-                <jsp:include page="../layout/footer.jsp"></jsp:include>
-                <!-- Footer End -->
-
+<!--  				Footer Start -->
+<%--                 <jsp:include page="../layout/footer.jsp"></jsp:include> --%>
+<!--                 Footer End -->
 
                 <!-- Back to Top -->
-
                 <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
                 <!--JavaScript & Jquery-->
@@ -283,8 +281,11 @@ span.price {
                 <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
                 <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
 
-                <!-- Ajax & other function -->
-                <script src="${contextRoot}/js/cartAjax.js"></script>
+                <script type="text/javascript">
+                	$('#submit').click(function(){
+                		alert('您將前往paypal網站付款')
+                	})
+                </script>
 
 </body>
 </html>

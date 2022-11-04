@@ -31,15 +31,40 @@
 
                 <!-- Customized Bootstrap Stylesheet -->
                 <link href="${contextRoot}/css/style.css" rel="stylesheet">
-                
                 <!-- jQ -->
                 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
             </head>
-<body>
-	<h1>Payment Success</h1>
-	 			<!-- Footer Start -->
-                <jsp:include page="../layout/footer.jsp"></jsp:include>
+
+            <body>
+
+                <!-- Topbar Start -->
+                <jsp:include page="../layout/navbar.jsp"></jsp:include>
+                <!-- Topbar End -->
+
+               <!-- Page Header Start -->
+    <div class="container-fluid  mb-0 mt-5">
+        <div class="align-items-center justify-content-center" style="min-height: 500px; display: flex;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">您的付款已成功,將於確認款項後出貨</h1>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <a style="text-decoration: none;" href="${contextRoot}/member/order">
+                        <h2 class="text-primary font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
+                            按此查詢訂單處理進度</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+
+
+                <!-- Footer Start -->
+               <jsp:include page="../layout/footer.jsp"></jsp:include>
                 <!-- Footer End -->
 
 
@@ -48,10 +73,11 @@
                 <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
                 <!--JavaScript & Jquery-->
-                <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+                <script src="https://code.jquery.com/jquery-3.6.1.js"
+                    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
                 <!-- JavaScript Libraries -->
-               
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
                 <script src="${contextRoot}/lib/easing/easing.min.js"></script>
                 <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
@@ -66,7 +92,6 @@
                 <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
                 <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
 
-                <!-- Ajax & other function -->
-                <script src="${contextRoot}/js/cartAjax.js"></script>
-</body>
-</html>
+            </body>
+
+            </html>

@@ -96,7 +96,7 @@
                         <td class="align-middle">${Date[count]}</td>
                         <td class="align-middle">${o.total}</td>
                         <td class="align-middle">${o.orderState}</td>
-                        <td class="align-middle">${o.payment.paymentWay}</td>
+                        <td class="align-middle" id="paymentWay">${o.payment.paymentWay}</td>
                         <td class="align-middle">${o.shipping.shippingWay}</td>
                         <td class="align-middle">${o.shippingDate}</td>
                         <td class="align-middle">${o.shippingCode}</td>
@@ -149,6 +149,15 @@
     <!-- Contact Javascript File -->
     <script src="${contextRoot}/mail/jqBootstrapValidation.min.js" type="text/javascript"></script>
     <script src="${contextRoot}/mail/contact.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+    	$('#paymentWay').mouseover(function(){
+    		var state = $(this).parent().parent().text();
+    		console.log(state);
+    		
+    	})
+    })	
+    </script>
 </body>
 
 </html>
