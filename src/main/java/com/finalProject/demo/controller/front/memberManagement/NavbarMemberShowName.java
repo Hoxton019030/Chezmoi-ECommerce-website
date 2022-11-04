@@ -10,6 +10,7 @@ public class NavbarMemberShowName {
 
     @GetMapping(value = "/member/showName")
     public String navbarShowName(HttpServletRequest request){
+    	System.out.println("request.getAttribute====="+request.getAttribute("memberName"));
         return (String) request.getAttribute("memberName");
     }
 }
