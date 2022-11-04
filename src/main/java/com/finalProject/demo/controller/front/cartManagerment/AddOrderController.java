@@ -50,14 +50,14 @@ public class AddOrderController {
 	
 	//送出空白訂單表單
 	@GetMapping("/cartOrderDetail")
-	public String viewInputOrderDetail(HttpServletRequest request,Model model1, Model model2, Model model3, Model model4, Model model5){
+	public String viewInputOrderDetail(HttpServletRequest request,Model model){
 //		//取得memberId
 //		String stringId = String.valueOf(request.getAttribute("memberId"));
 //		Long memberId = Long.valueOf(stringId);
 //		//取得member
 //		Member member = memberService.findById(memberId);
-		Member member = (Member) model1.getAttribute("Member");
-		model2.addAttribute("Member",member);
+		Member member = (Member) model.getAttribute("Member");
+		model.addAttribute("Member",member);
 		assert member != null;
 		List<Cart> findCart = cService.findByMemberId(member);
 		if(findCart.size()==0) {
@@ -67,35 +67,35 @@ public class AddOrderController {
 		if(topOrder == null) {
 			return "redirect:/cartOrderDetail";
 		}
-		model3.addAttribute("Orders",topOrder);
+		model.addAttribute("Orders",topOrder);
 		Payment payment = topOrder.getPayment();
-		model4.addAttribute("Payment",payment);
+		model.addAttribute("Payment",payment);
 		Shipping shipping = topOrder.getShipping();
-		model5.addAttribute("Shipping",shipping);
+		model.addAttribute("Shipping",shipping);
 		return "front/cart/cart_orderDetail_1";
 	}
 	
 	//送出空白訂單表單
 		@GetMapping("/cartOrderDetail#loaded")
-		public String viewInputOrderDetailLoad(HttpServletRequest request,Model model1,Model model2,Model model3,Model model4,Model model5){
+		public String viewInputOrderDetailLoad(HttpServletRequest request,Model model){
 //			//取得memberId
 //			String stringId = String.valueOf(request.getAttribute("memberId"));
 //			Long memberId = Long.valueOf(stringId);
 //			//取得member
 //			Member member = memberService.findById(memberId);
-			Member member = (Member) model1.getAttribute("Member");
-			model2.addAttribute("Member",member);
+			Member member = (Member) model.getAttribute("Member");
+			model.addAttribute("Member",member);
 			List<Cart> findCart = cService.findByMemberId(member);
 			if(findCart.size()==0) {
 				return "front/cart/cartNotFound";
 			}
 			Orders order = oService.findTopOrder();
-			model3.addAttribute("Orders",order);
+			model.addAttribute("Orders",order);
 			Orders topOrder = oService.findTopOrder();
 			Payment payment = topOrder.getPayment();
-			model4.addAttribute("Payment",payment);
+			model.addAttribute("Payment",payment);
 			Shipping shipping = topOrder.getShipping();
-			model5.addAttribute("Shipping",shipping);
+			model.addAttribute("Shipping",shipping);
 			
 			return "front/cart/cart_orderDetail_1";
 		}
@@ -105,10 +105,10 @@ public class AddOrderController {
 	//以及刪除購物車商品
 	@PostMapping("/cartFinish")
 	public String newOrder(@ModelAttribute(name="Orders") Orders orders, 
-			Model model1,Model model2,Model model3,HttpServletRequest request) {
+			Model model,HttpServletRequest request) {
 		
 		//find member
-		Member findmember = (Member) model1.getAttribute("Member");
+		Member findmember = (Member) model.getAttribute("Member");
 		assert findmember != null;
 		Long memberId = findmember.getMemberId();
 //		//取得memberId
@@ -156,8 +156,8 @@ public class AddOrderController {
 		Date orderDate = orders.getOrderDate();
 		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String date = dateFormat.format(orderDate);
-		model2.addAttribute("Date",date);
-		model3.addAttribute("Member",member);
+		model.addAttribute("Date",date);
+		model.addAttribute("Member",member);
 		
 		//發送訂單完成信
 		String email = member.getEmail();
