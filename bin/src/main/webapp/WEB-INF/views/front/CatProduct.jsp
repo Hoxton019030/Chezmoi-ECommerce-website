@@ -65,7 +65,8 @@
 										<div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
 											<a
 												href="${contextRoot}/shop/productDetail?productId=${product.productId}">
-												<h6 class="text-truncate mb-3">${product.name}</h6>
+<%--												<h6 class="text-truncate mb-3">looper</h6>--%>
+
 											</a>
 											<div class="d-flex justify-content-center">
 												<h6 id="saleprice">${product.price}</h6>
@@ -108,7 +109,10 @@
 
 				<!-- footer頁面 -->
 				<jsp:include page="layout/footer.jsp"></jsp:include>
-
+				<!-- Contact Jquery File -->
+				<script src="${contextRoot}/js/jquery-3.6.1.min.js" type="text/javascript"></script>
+				<!-- Template Javascript -->
+				<script src="${contextRoot}/js/catAjax.js"></script>
 
 
 			</body>
