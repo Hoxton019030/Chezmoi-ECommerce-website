@@ -9,7 +9,7 @@ $(document).ready(function () {
     fetch("http://localhost:8080/Chezmoi/distinctColor?"+parametersColor).then(function (response) {
         return response.json();
     }).then(function (array) {
-
+        console.log((array));
         $.each(array, function (index, value) {
 
             $('#colorBody')

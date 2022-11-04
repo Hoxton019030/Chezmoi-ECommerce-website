@@ -34,37 +34,6 @@
 
 <body>
 <!-- Topbar Start -->
-<%--<nav>--%>
-<%--    <input type="checkbox" id="check"> <label for="check"--%>
-<%--                                              class="checkbtn"> <i class="fa fa-bars"></i>--%>
-<%--</label> <label class="logo" style="padding-left: 30px"><a href="${contextRoot}/"><img--%>
-<%--        src="https://img.onl/fUrHvw" width="50" height="50"></a></label>--%>
-<%--    <ul style="margin-bottom: 0px;z-index:20">--%>
-<%--        <li class="nav-item dropdown"><a--%>
-<%--                class="nav-link dropdown-toggle" href="" role="button"--%>
-<%--                data-toggle="dropdown" aria-expanded="false"> Shop </a>--%>
-<%--            <ul class="dropdown-menu"--%>
-<%--                style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 96px, 0px); margin-top: 0px; border-top-width: 0px; padding-top: 0px;">--%>
-<%--                <li><a class="dropdown-item" href="${contextRoot}/shop">All</a></li>--%>
-<%--                <li><a class="dropdown-item" href="${contextRoot}/shop/top" id="loadTopProduct">Top</a></li>--%>
-<%--                <li><a class="dropdown-item" href="${contextRoot}/shop/bottom">Bottom</a></li>--%>
-<%--                <li><a class="dropdown-item" href="${contextRoot}/shop/outer">Outer</a></li>--%>
-<%--                <li><a class="dropdown-item" href="${contextRoot}/shop/dress">Dress</a></li>--%>
-<%--                <li><a class="dropdown-item" href="${contextRoot}/shop/acc">Accessories</a></li>--%>
-<%--            </ul>--%>
-<%--        </li>--%>
-<%--        <li><a href="${contextRoot}/notice">Notice</a></li>--%>
-<%--        <li><a href="${contextRoot}/contact">Contact</a></li>--%>
-<%--        <li><a href="https://www.instagram.com/chezmoiiiiiii/?hl=en">Instagram</a></li>--%>
-<%--        <li><a class="position-relative" href="${contextRoot}/cartAll"> <i--%>
-<%--                class="fas fa-shopping-cart fa-1x" style="font-size:20px"></i> <span--%>
-<%--                class="cartQuantity text-white bg-warning"></span>--%>
-<%--        </a></li>--%>
-<%--        <li><a href="#" class="nav-item nav-link fas fa-user fa-1x" style="font-size:20px"></a></li>--%>
-<%--    </ul>--%>
-
-<%--</nav>--%>
-<%--<section></section>--%>
 <jsp:include page="layout/navbar.jsp"></jsp:include>
 
 <!-- Shop Product Start -->
@@ -72,25 +41,25 @@
     <ul class="pros-ul justify-content-around align-items-center">
         <div class="row px-xl-5 pb-3" id="tbody">
             <!-- Controller傳來的model -->
-                        <c:forEach var="product" items="${category}">
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-300"
-                             src="http://localhost:8080/Chezmoi/getMainPic/${product.photo.photoId}"
-                             style="height:278px; width:226px" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <a href="${contextRoot}/shop/productDetail?series=${product.series}">
-                            <h6 class="text-truncate mb-3">${product.name}</h6>
-                        </a>
-                        <div class="d-flex justify-content-center">
-                            <h6 id="saleprice">${product.price}</h6>
+                                    <c:forEach var="product" items="${category}">
+                        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-300"
+                                         src="http://localhost:8080/Chezmoi/getMainPic/${product.photoId}"
+                                         style="height:278px; width:226px" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <a href="${contextRoot}/shop/productDetail?series=${product.series}">
+                                        <h6 class="text-truncate mb-3">${product.productName}</h6>
+                                    </a>
+                                    <div class="d-flex justify-content-center">
+                                        <h6 id="saleprice">${product.price}</h6>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-                        </c:forEach>
+                                    </c:forEach>
         </div>
     </ul>
 </div>
@@ -108,24 +77,21 @@
 
     </c:forEach>
 </div>
-=======
-				<!-- Customized Bootstrap Stylesheet -->
-				<link href="${contextRoot}/css/style.css" rel="stylesheet">
-				<!-- jQ -->
-                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-			</head>
 
-			<body>
-				<!-- Topbar Start -->
-				<jsp:include page="layout/navbar.jsp"></jsp:include>
-				<br>
-				<!-- category start -->
+<!-- Customized Bootstrap Stylesheet -->
+<link href="${contextRoot}/css/style.css" rel="stylesheet">
+<!-- jQ -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+
+<!-- category start -->
 <%-- 				<jsp:include page="layout/category.jsp"></jsp:include> --%>
 <!-- 				<br> -->
-				<!-- accounce start -->
-				<jsp:include page="layout/announce.jsp"></jsp:include>
-				<br>
->>>>>>> 7d49475180256c85907a184ed8fcac49b9757b6c
+<!-- accounce start -->
+<jsp:include page="layout/announce.jsp"></jsp:include>
+<br>
 
 
 <!-- footer頁面 -->

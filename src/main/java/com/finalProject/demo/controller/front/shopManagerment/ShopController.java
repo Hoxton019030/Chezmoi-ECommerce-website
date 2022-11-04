@@ -47,15 +47,7 @@ public class ShopController {
 		
 	}
 
-	/*
-	 * 設定按下商品分類可跳出相對應的商品
-	 */
-	@GetMapping("/shop/{category}")
-	public String viewTopProducts(@PathVariable("category")String category,Model model) {
-		List<Products> productcategory=shopService.findProductByCategory(category);
-		model.addAttribute("category", productcategory);
-		return "front/CatProduct";
-	}
+
 
 	/*
 	for Shop頁面的Ajax
@@ -88,13 +80,27 @@ public class ShopController {
 	}
 
 	/*
+	 * 設定按下商品分類可跳出相對應的商品
+	 */
+//	@GetMapping("/shop/{category}")
+//	public String viewTopProducts(@PathVariable("category")String category, Model model) {
+//		List<Products> productcategory=shopService.findProductByCategory(category);
+//		model.addAttribute("category", productcategory);
+//		return "front/CatProduct";
+//	}
+	/*
 for Cat頁面的Ajax
  */
-	@ResponseBody
-	@GetMapping("/objListCat")
-	public List<Map<String,Object>> distinctCatProduct(String category){
+//	@ResponseBody
+	@GetMapping("/shop/{category}")
+	public String distinctCatProduct(@PathVariable String category,Model model){
 		List<Map<String,Object>> objListCat = pDao.distinctCatProduct(category);
-		return objListCat;
+//		return objListCat;
+
+		System.out.println(objListCat.get(0).get("productName"));
+
+		model.addAttribute("category", objListCat);
+		return "front/CatProduct";
 	}
 
 	
