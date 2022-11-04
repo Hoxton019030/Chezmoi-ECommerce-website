@@ -43,8 +43,8 @@
 
             
                 <!-- Page Header Start -->
-                <div class="container-fluid  mb-0 mt-3">
-                    <div class="align-items-center justify-content-center" style="min-height: 500px; display: flex;">
+                <div class="container-fluid  mb-0 mt-5">
+       			 <div class="align-items-center justify-content-center" style="min-height: 500px; display: flex;">
                         <div class="row">
                          <div class="col-lg-12 text-center">
                                 <h1 class="font-weight-semi-bold text-uppercase mb-3" style="margin-right: 1em;">
