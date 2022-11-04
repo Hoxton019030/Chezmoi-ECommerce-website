@@ -33,8 +33,8 @@
 			<link href="${contextRoot}/css/style.css" rel="stylesheet">
 		</head>
 
-		<body>
 
+		<body>
 			<nav>
 				<div class="text-right" style="background-color: #F1EDE6;">
 					<span class=" mr-3" style="color:#393833;" id="showName">000</span>
@@ -87,6 +87,7 @@
 
 			</script>
 
+
 			<script type="text/javascript">
 				$(document).ready(function () {
 					fetch("http://localhost:8080/Chezmoi/showName")
@@ -99,6 +100,6 @@
 				});
 			</script>
 
-		</body>
+			</body>
 
 		</html>
