@@ -43,12 +43,7 @@ public class RegisterController {
 				mService.insert(member);
 				re.addAttribute("Msg", "註冊成功!");
 				System.out.println("註冊成功!");
-
 				return "redirect:/member/login";
 			}
 		}
-		
-		
-
-	
 }

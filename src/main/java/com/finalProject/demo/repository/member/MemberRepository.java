@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.finalProject.demo.model.entity.member.Member;
 
@@ -16,16 +17,16 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 	public Member findEmail(String email);
 	
 	//登入
-	@Query(value = "from Member where email = :email and password = :password")
+	@Query(value = "from Member where email = ?1 and password = ?2")
 	public List<Member> findLogin(String email, String password);
 	
-	//忘記密碼
-	@Query(value = "from Member where email = :email and phone = :phone")
-	public Optional<Member> findPassword(String email, String phone);
-
 	//顯示會員資料
 	@Query(value = "from Member where email = :email and password = :password")
 	public Member viewUser(String email, String password);
+
+	//忘記密碼
+	@Query(value = "from Member where email = :email and phone = :phone")
+	public Member findPassword(@Param("email")String email,@Param("phone") String phone); //用@Param或上面改 = ?1 ,= ?2
 
 //	//修改會員資料
 //	@Modifying
