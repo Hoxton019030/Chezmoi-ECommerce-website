@@ -37,9 +37,9 @@
 
 <body>
 
-       <!-- Topbar Start -->
-       <jsp:include page="../layout/navbar.jsp"></jsp:include>
-       <!-- Topbar End -->
+<!-- Topbar Start -->
+<jsp:include page="../layout/navbar.jsp"></jsp:include>
+<!-- Topbar End -->
 
 
 

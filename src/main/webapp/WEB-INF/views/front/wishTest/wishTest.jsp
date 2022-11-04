@@ -37,11 +37,11 @@
             </head>
 
             <body>
+              <!-- Topbar Start -->
+			<jsp:include page="../layout/navbar.jsp"></jsp:include>
+			<!-- Topbar End -->
 
-                <!-- Topbar Start -->
-                <jsp:include page="../layout/navbar.jsp"></jsp:include>
-                <!-- Topbar End -->
-
+            
                 <!-- Page Header Start -->
                 <div class="container-fluid  mb-0 mt-3">
                     <div class="align-items-center justify-content-center" style="min-height: 500px; display: flex;">

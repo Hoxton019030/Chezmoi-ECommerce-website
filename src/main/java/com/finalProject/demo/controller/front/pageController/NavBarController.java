@@ -33,9 +33,9 @@ public class NavBarController {
 //		memberLogin.setMemberId(1L);
 
 		Member member = (Member) model.getAttribute("Member");
+		assert member != null;
 		List<Cart> findCart = cartService.findByMemberId(member);
-		int cartQuantity = findCart.size();
-		return cartQuantity;
+		return findCart.size();
 	}
 	//現在的會員是誰
 	@ModelAttribute("Member")
@@ -43,7 +43,12 @@ public class NavBarController {
 		//取得memberId
 		String stringId = String.valueOf(request.getAttribute("memberId"));
 		Long memberId = Long.valueOf(stringId);
-		Member memberLogin = memberService.findById(memberId);
-		return memberLogin;
+		return memberService.findById(memberId);
+	}
+	@GetMapping(value = "/showName")
+	public String showName(Model model){
+		Member member = (Member) model.getAttribute("Member");
+		assert member!=null;
+		return (member.getMemberName());
 	}
 }
