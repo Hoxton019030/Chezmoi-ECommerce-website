@@ -72,7 +72,7 @@ public class LoginController {
 	
 	// ============================================== jwt token  ==========================================
 	@GetMapping("/member/login") 								
-	public String login(HttpServletRequest request,@ModelAttribute(name = "loginsubmit") Member member){   						
+	public String login(HttpServletRequest request,@ModelAttribute(name = "loginsubmit") Member member){
 			return "front/member/login"; 			
 		
 	}

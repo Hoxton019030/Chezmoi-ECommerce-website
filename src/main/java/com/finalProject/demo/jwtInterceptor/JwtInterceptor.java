@@ -3,6 +3,7 @@ package com.finalProject.demo.jwtInterceptor;
 import com.finalProject.demo.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,8 +12,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static com.finalProject.demo.util.CookieUtil.getCookieByName;
+
 @Component
-public class jwtInterceptor implements HandlerInterceptor {
+public class JwtInterceptor implements HandlerInterceptor {
 
 
     //請求在進入controller前執行
@@ -30,7 +33,6 @@ public class jwtInterceptor implements HandlerInterceptor {
                     assert claims != null;
                     Integer memberId = (Integer) claims.get("id");
                     String name = (String) claims.get("name");
-//                    System.out.println("memberId===="+memberId);//之後member應該要轉成Long類別
                     if (memberId != 0){
                         request.setAttribute("memberId",memberId);
                         request.setAttribute("memberName",name);
@@ -45,7 +47,7 @@ public class jwtInterceptor implements HandlerInterceptor {
                 }
             }else {
 
-                String requestURI = request.getRequestURI();
+//                String requestURI = request.getRequestURI();
 //                request.setAttribute("uri",requestURI);
 //                request.getRequestDispatcher("/member/login").forward(request,response);
                 response.sendRedirect(request.getContextPath()+"/member/login");
@@ -66,18 +68,5 @@ public class jwtInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
-    
 
-    //取得特定cookie的值
-    public static Cookie getCookieByName(HttpServletRequest request,String name){
-        Cookie[] cookies = request.getCookies();
-        if(cookies!=null){
-            for (Cookie cookie : cookies){
-                if (name.equals(cookie.getName())){
-                    return cookie;
-                }
-            }
-        }
-        return null;
-    }
 }
