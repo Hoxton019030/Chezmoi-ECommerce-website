@@ -72,7 +72,7 @@ public class ShopController {
 	 */
 	@ResponseBody
 	@GetMapping("/distinctSize")
-	public List<Map<String,Object>> distinctSize(String series){
+	public List<Map<String,Object>> distinctSize(@RequestParam("series") String series){
 		List<Map<String,Object>> objListSize = pDao.distinctSize(series);
 		return objListSize;
 	}
@@ -82,8 +82,8 @@ public class ShopController {
 	 */
 	@ResponseBody
 	@GetMapping("/distinctColor")
-	public List<Map<String,Object>> distinctColor(){
-		List<Map<String,Object>> objListColor = pDao.distinctColor();
+	public List<Map<String,Object>> distinctColor(@RequestParam("series") String series){
+		List<Map<String,Object>> objListColor = pDao.distinctColor(series);
 		return objListColor;
 	}
 

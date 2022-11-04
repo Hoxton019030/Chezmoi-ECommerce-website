@@ -2,7 +2,6 @@
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,15 +100,14 @@
 <%--                                class="round button">${Product.size}</span></label>--%>
 <%--                    </c:forEach>--%>
                 </div>
-                <div class="color border-b1" style="padding-bottom:12px" id="colorId">
-
+                <div class="color border-b1" style="padding-bottom:12px" id="colorBody">
                     <span style="padding-right:15px ; font-weight:bold" >color</span>
-                    <c:forEach var="Product" items="${productSeries}">
-                        <label id="ColorUrl" style="padding-right:15px">
-                            <input type="radio" name="color" value="${Product.color}"/><span
-                                class="round button">${Product.color}</span></label>
-                    </c:forEach>
-                </div>
+<%--                    <c:forEach var="Product" items="${productSeries}">--%>
+<%--                        <label id="ColorUrl" style="padding-right:15px">--%>
+<%--                            <input type="radio" name="color" value="${Product.color}"/><span--%>
+<%--                                class="round button">${Product.color}</span></label>--%>
+<%--                    </c:forEach>--%>
+               </div>
                 <div class="addTo">
                     <div class="add-inner" style="padding-top: 10px">
                         <a id="addCart" >

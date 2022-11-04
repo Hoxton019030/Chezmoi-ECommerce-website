@@ -75,17 +75,15 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	public List<Map<String,Object>> distinctProduct();
 
 	//shop-Detail 頁面 單一size不會重複
-	@Query(value="select distinct size, Max(UpdateTime) ,productName,price,photoId, series from products where series=:series1 Group by size,productName, price,photoId, series ORDER BY MAX(UpdateTime) DESC, size", nativeQuery=true)
-	public List<Map<String,Object>> distinctSize(@Param("series1")String series);
+	@Query(value="select distinct size,series from products where series=:seriesForSize Group by size, series ORDER BY size DESC", nativeQuery=true)
+	public List<Map<String,Object>> distinctSize(@Param("seriesForSize")String series);
 
 	//shop-Detail 頁面 單一color不會重複
-	@Query(value="select distinct color, Max(UpdateTime) ,productName,price,photoId, series from products Group by color,productName, price,photoId, series ORDER BY MAX(UpdateTime) DESC, color", nativeQuery=true)
-	public List<Map<String,Object>> distinctColor();
+	@Query(value="select distinct color,productName,price,photoId, series from products where series=:seriesForColor Group by color,productName, price,photoId, series ORDER BY color DESC", nativeQuery=true)
+	public List<Map<String,Object>> distinctColor(@Param("seriesForColor")String series);
 
 	//Category 頁面  單一商品不會重複
 	@Query(value="select distinct productName, Max(UpdateTime) ,price,photoId, series from products where category=:category1 Group by productName, price,photoId, series ORDER BY MAX(UpdateTime) DESC, productName", nativeQuery=true)
 	public List<Map<String,Object>> distinctCatProduct(@Param("category1")String category);
 
-
-	
 }

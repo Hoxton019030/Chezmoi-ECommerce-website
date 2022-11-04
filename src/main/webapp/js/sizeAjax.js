@@ -5,7 +5,8 @@ $(document).ready(function () {
     // $('#loadTopProduct').click(function () {
     // $('#sizeBody').empty();
 
-    fetch("http://localhost:8080/Chezmoi/distinctSize").then(function (response) {
+         parametersSize=new URLSearchParams(window.location.search);
+    fetch("http://localhost:8080/Chezmoi/distinctSize?"+parametersSize).then(function (response) {
         return response.json();
     }).then(function (array) {
 
@@ -14,7 +15,7 @@ $(document).ready(function () {
             $('#sizeBody')
                 // .append('<span style="padding-right:15px ; font-weight:bold">size</span>')
                 .append('<label style="padding-right:15px">' +
-                    '\n <input type="radio" name="size" value="${series.size}"/>' +
+                    '\n <input type="radio" name="size" value="${product.series}"/>' +
                     '\n<span class="round button">'+value.size+'</span>')
 
         })
