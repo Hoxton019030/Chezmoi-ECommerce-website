@@ -23,10 +23,8 @@
 
                     <div class="container" id="login-inside">
                         <h1 class="text-dark">Login</h1>
-                        <form:form action="${contextRoot}/member/login" method="post"
-                          modelAttribute="loginsubmit">
-                            <h5 class="Msg">${param.Msg}</h5>
-                            <!-- <form method="post" action="login.js"> -->
+                        <form:form action="${contextRoot}/member/login" method="post" modelAttribute="loginsubmit">
+                            <h5 class="Msg">${Msg}</h5>
                                 <div class="row">
                                     <div class="col">
                                         <div>

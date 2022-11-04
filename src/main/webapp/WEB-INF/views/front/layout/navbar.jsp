@@ -37,7 +37,9 @@
 		<body>
 			<nav>
 				<div class="text-right" style="background-color: #F1EDE6;">
-					<span class=" mr-3" style="color:#393833;" id="showName">000</span>
+					<span class=" mr-3" style="color:#393833;" id="showName">
+						<span>您好</span>
+					</span>
 
 				</div>
 
@@ -94,8 +96,10 @@
 						.then((response) => {
 							return response.text();
 						}).then((responseJSON) => {
-							$('#showName').text(responseJSON + " 您好  ").append('<a href="#">Logout </a>')
-
+							if(responseJSON!=null){
+								alert(responseJSON)
+								$('#showName').text(responseJSON).append('<a href="#">Logout </a>')
+							}
 						});
 				});
 			</script>
