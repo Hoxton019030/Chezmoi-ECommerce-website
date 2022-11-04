@@ -44,14 +44,19 @@ public class MemberService {
 	}
 	
 	//登入
-	public List<Member> findLogin(Member member) {
-		return mDao.findLogin(member.getEmail(), member.getPassword());
+	public List<Member> findLogin(String email,String password) {
+		return mDao.findLogin(email,password);
 	}
 	
 	//顯示會員資料
 	public Member viewUser(String email, String password){
 		return mDao.viewUser(email, password);
 	}
+	
+	//忘記密碼
+		public Member findPassword(String email, String phone) {
+			return mDao.findPassword(email, phone);
+		}
 	
 	//修改會員資料
 //	public int updateUser(Member member) {
@@ -82,14 +87,16 @@ public class MemberService {
 	
 	
 	//忘記密碼
-	public Member findPassword(String email, String phone) {
-		Optional<Member> optional = mDao.findPassword(email,phone);
-		
-		if(optional.isPresent()) {
-			return optional.get();
-		}
-		
-		return null;
-	}
+//	public Member findPassword(String email, String phone) {
+//		Optional<Member> optional = mDao.findPassword(email,phone);
+//		
+//		if(optional.isPresent()) {
+//			return optional.get();
+//		}
+//		
+//		return null;
+//	}
+	
+	
 	
 }
