@@ -27,6 +27,8 @@
                         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
                 <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
                 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+                  <link href="${pageContext.request.contextPath}/datePick/css/bootstrap-datepicker3.standalone.css"
+                rel="stylesheet">
 
                 <!-- Font Awesome -->
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
@@ -107,9 +109,15 @@
                                     <div class="d-flex justify-content-between pt-1 mb-2">
                                         <h6 class=" font-weight-medium">會員生日</h6>
                                     </div>
-                                    <div class="input-group">
-                                        <form:input type="text" class="form-control p-4 mb-2" path="birthday" />
-                                    </div>
+                                     
+                                
+                                    <div class="" id="sandbox-container">
+                                        <input type="text" class="form-control p-4 mb-2" placeholder="出生日期" name="birthday"
+                                            id="birthday" path="birthday" required="required" inputmode="none" data-date-end-date="0d" />
+                      
+                                	</div>
+                            
+                           
                                     <div class="d-flex justify-content-between pt-1 mb-2">
                                         <h6 class=" font-weight-medium">手機號碼</h6>
                                     </div>
@@ -165,6 +173,20 @@
                 <!-- Template Javascript -->
                 <script type="text/javascript" src="${contextRoot}/js/main.js"></script>
                 <script type="text/javascript" src="${contextRoot}/js/register.js"></script>
+                <script type="text/javascript"
+                src="${pageContext.request.contextPath}/datePick/js/bootstrap-datepicker.js"></script>
+            <script type="text/javascript"
+                src="${pageContext.request.contextPath}/datePick/js/bootstrap-datepicker.zh-TW.min.js"></script>
+            <script>
+                $('#sandbox-container input').datepicker({
+                    format: "yyyy-mm-dd",
+                    todayBtn: 'linked',
+                    language: "zh-TW",
+                    autoclose: true,
+                    startDate:"-80y",
+                    endDate:"1"
+                });
+            </script>
             </body>
 
             </html>

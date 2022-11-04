@@ -87,6 +87,18 @@
                                         autocomplete>
                                 </div>
                             </div>
+                            
+                            <div class="row my-0">
+                                    <div class="col">
+                                        <div style="display: flex;
+                                        align-items: center;justify-content: end;">
+                                            <input type="checkbox" style="width:1rem ;" onclick="myFunction()" name=""
+                                                id="pwd_show" value="">
+                                            <label style="    margin-left: 0.5rem;" class="" for="pwd_show">顯示密碼</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             <div class="row">
                                 <div class="col d-flex" style="justify-content:center ;">
                                     <input type="submit" id="btn_create_acc" class="btn-primary text-dark" value="註冊">
@@ -134,10 +146,18 @@
                     todayBtn: 'linked',
                     language: "zh-TW",
                     autoclose: true,
-                    todayHighlight: true,
-                    maxDate: '0',
-					minDate: '-50Y',
+                    startDate:"-80y",
+                    endDate:"1"
                 });
+                
+                function myFunction() {
+                    var x = document.getElementById("password");
+                    if (x.type === "password") {
+                        x.type = "text";
+                    } else {
+                        x.type = "password";
+                    }
+                }
 
             </script>
         </body>
