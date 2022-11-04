@@ -72,11 +72,11 @@ public class LoginController {
 	
 	// ============================================== jwt token  ==========================================
 	@GetMapping("/member/login") 								
-	public String login(HttpServletRequest request) {   						
+	public String login(HttpServletRequest request,@ModelAttribute(name = "loginsubmit") Member member){
 			return "front/member/login"; 			
 		
 	}
-	
+		
 	@PostMapping("/member/login")
 	public String loginsubmit(HttpServletRequest request, HttpServletResponse response, @ModelAttribute(name = "loginsubmit") Member member,
 							  RedirectAttributes re,Model model) {

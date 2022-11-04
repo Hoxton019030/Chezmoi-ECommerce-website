@@ -33,7 +33,6 @@ public class JwtUtil {
                 .setSubject(name)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+EXPIRE))
-                .claim("email",email)
                 .claim("name",name)
                 .claim("id",id)
                 .signWith(secretKey,SignatureAlgorithm.HS256)

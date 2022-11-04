@@ -248,10 +248,13 @@
                     $('#checkbox').click(function () {
                         var member = $('#member').text();
                         $('#inputMemberName').attr("value", member);
+                        var nameSp = document.getElementById("nameSpan");
+                        nameSp.innerHTML = "輸入正確";
 
                         var memberPhone = $('#memberPhone').text();
                         $('#inputMemberPhone').attr("value", memberPhone);
-                        
+                        let phoneSp = document.getElementById("phoneSpan");
+                        phoneSp.innerHTML = "輸入正確";
                     })
 					window.onload = function() {
 					    if(!window.location.hash) {
@@ -260,23 +263,19 @@
 					    }
 					}
                     
-                   
-                    
                     //判斷是否建立新訂單
                     $('#add').click(function () {
                         var yes = confirm('確定要送出訂單嗎?');
-                        var nemeSp = $("#nameSpan").text();
-                        var phoneSp = $("#phoneSpan").text();
-                        var text = "不可輸入空白";
+                        var nemeText = $("#nameSpan").text();
+                        var phoneText = $("#phoneSpan").text();
+                        var text = "輸入正確";
                         if (yes) {
-                            if (nameSp == text) {
-                                window.event.returnValue = false;
-                                alert("收件資訊不可輸入空白");
-                            } else if(nameSp == "" || phoneSp == "") {
-                            	window.event.returnValue = false;
-                                alert("收件資訊不可輸入空白");
-                            }else{
+                            if (nemeText == text && phoneText == text) {
                             	alert("輸入正確,送出訂單");
+                            	
+                            }else{
+                            	window.event.returnValue = false;
+                                alert("收件資訊輸入錯誤或空白");
                             }
                         } else {
                             window.event.returnValue = false;
@@ -292,6 +291,10 @@
                        let sp = document.getElementById("nameSpan");
                        if(len == 0){
                     	   sp.innerHTML = "不可輸入空白";
+                       }else if(len <2){
+                    	   sp.innerHTML = "姓名長度必須兩個字以上";
+                       }else{
+	                       sp.innerHTML = "輸入正確";
                        }
                     }
                     //判斷電話輸入
@@ -303,8 +306,15 @@
                        let sp = document.getElementById("phoneSpan");
                        if(len == 0){
                     	   sp.innerHTML = "不可輸入空白";
+                       }else if(len <10 || len >10){
+                    	   sp.innerHTML = "電話長度必須等於十碼";
+                       }else if(phoneValue.charAt(0) != 0){
+                    	   sp.innerHTML = "第一碼必須為0";
+                       }else if(phoneValue.charAt(1) != 9){
+                    	   sp.innerHTML = "第二碼必須為9";
+                       }else{
+                    	   sp.innerHTML = "輸入正確";
                        }
-                       
                     }
                     
                     
