@@ -29,9 +29,11 @@ public class jwtInterceptor implements HandlerInterceptor {
                     Claims claims = JwtUtil.verify(tokenValue);
                     assert claims != null;
                     Integer memberId = (Integer) claims.get("id");
-                    System.out.println("memberId===="+memberId);//之後member應該要轉成Long類別
+                    String name = (String) claims.get("name");
+//                    System.out.println("memberId===="+memberId);//之後member應該要轉成Long類別
                     if (memberId != 0){
                         request.setAttribute("memberId",memberId);
+                        request.setAttribute("memberName",name);
                         return true;
                     }
                 }catch (JwtException jwtException){
@@ -64,7 +66,9 @@ public class jwtInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
+    
 
+    //取得特定cookie的值
     public static Cookie getCookieByName(HttpServletRequest request,String name){
         Cookie[] cookies = request.getCookies();
         if(cookies!=null){
