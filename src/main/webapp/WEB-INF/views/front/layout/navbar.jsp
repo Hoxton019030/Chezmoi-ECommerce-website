@@ -85,24 +85,7 @@
 
 				});
 			</script>
-		<script>
-			$(document).ready(function () {
-			fetch("http://localhost:8080/Chezmoi/showName")
-					.then((response)=>response.json())
-					.then((data)=>{
-						alert(11111)
-						if (data!=null && data!==""){
-							$('#memberName').text(data+' 您好')
-							alert(responseJSON)
-						}else {
-
-						}
-
-					});
-			});
-
-		</script>
-
+		
 
 
 		</body>
