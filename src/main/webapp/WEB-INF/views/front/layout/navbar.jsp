@@ -37,7 +37,7 @@
 
 			<nav>
 				<div class="text-right" style="background-color: #F1EDE6;">
-					<span class=" mr-3" style="color:#393833;" id="memberName"></span>
+					<span class=" mr-3" style="color:#393833;" id="showName">000</span>
 
 				</div>
 
@@ -65,7 +65,7 @@
 						</a></li>
 					<li><a class="position-relative" href="${contextRoot}/cartAll"> <i
 								class="fas fa-shopping-cart fa-1x" style="font-size:20px"></i> <span
-								class="cartQuantity text-white bg-primary" >0</span>
+								class="cartQuantity text-white bg-primary">0</span>
 						</a></li>
 					<li><a href="${contextRoot}/member" class="nav-item nav-link fas fa-user fa-1x"
 							style="font-size:20px"></a></li>
@@ -77,16 +77,27 @@
 					fetch("http://localhost:8080/Chezmoi/cartQuantity")
 						.then((response) => response.json())
 						.then((responseJSON) => {
-							if (responseJSON!=null){
+							if (responseJSON != null) {
 								$('.cartQuantity').text(responseJSON)
-							}else{}
+							} else { }
 
 						});
 
 				});
-			</script>
-		
 
+			</script>
+
+			<script type="text/javascript">
+				$(document).ready(function () {
+					fetch("http://localhost:8080/Chezmoi/showName")
+						.then((response) => {
+							return response.text();
+						}).then((responseJSON) => {
+							$('#showName').text(responseJSON + " 您好  ").append('<a href="#">Logout </a>')
+
+						});
+				});
+			</script>
 
 		</body>
 
