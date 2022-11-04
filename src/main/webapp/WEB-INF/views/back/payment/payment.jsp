@@ -184,20 +184,24 @@
                         let feeText = $('#feeSpan').text();
                         if (yes) {
                             if (wayText == "") {
-                                window.event.returnValue = false;
+//                                 window.event.returnValue = false;
+									return false;
                                 alert("不可輸入空白")
                             } else if (wayText == "方式不可輸入空白") {
-                                window.event.returnValue = false;
+//                                 window.event.returnValue = false;
+									return false;
                                 alert("不可輸入空白");
                             } else if (wayText == "輸入錯誤") {
-                                window.event.returnValue = false;
+//                                 window.event.returnValue = false;
+									return false;
                                 alert("輸入錯誤")
                             } else {
                                 alert("輸入正確,新增一筆資料")
                             }
 
                         } else {
-                            window.event.returnValue = false;
+//                             window.event.returnValue = false;
+								return false;
                         }
                     })
 
