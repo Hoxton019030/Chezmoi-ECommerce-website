@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
@@ -25,8 +27,6 @@ import com.finalProject.demo.service.cart.CartService;
 import com.finalProject.demo.service.member.MemberService;
 import com.finalProject.demo.service.order.OrderDetailService;
 import com.finalProject.demo.service.order.OrdersService;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Lazy
 @Controller
@@ -51,22 +51,18 @@ public class AddOrderController {
 	//送出空白訂單表單
 	@GetMapping("/cartOrderDetail")
 	public String viewInputOrderDetail(HttpServletRequest request,Model model){
-//		//取得memberId
-//		String stringId = String.valueOf(request.getAttribute("memberId"));
-//		Long memberId = Long.valueOf(stringId);
 //		//取得member
 //		Member member = memberService.findById(memberId);
 		Member member = (Member) model.getAttribute("Member");
 		model.addAttribute("Member",member);
 		assert member != null;
 		List<Cart> findCart = cService.findByMemberId(member);
+		List<Orders> findOrders = oService.findOrderByMember(member);
 		if(findCart.size()==0) {
 			return "front/cart/cartNotFound";
 		}
-		Orders topOrder = oService.findTopOrder();
-		if(topOrder == null) {
-			return "redirect:/cartOrderDetail";
-		}
+		Integer last = findOrders.size()-1;
+		Orders topOrder = findOrders.get(last);
 		model.addAttribute("Orders",topOrder);
 		Payment payment = topOrder.getPayment();
 		model.addAttribute("Payment",payment);
@@ -78,25 +74,23 @@ public class AddOrderController {
 	//送出空白訂單表單
 		@GetMapping("/cartOrderDetail#loaded")
 		public String viewInputOrderDetailLoad(HttpServletRequest request,Model model){
-//			//取得memberId
-//			String stringId = String.valueOf(request.getAttribute("memberId"));
-//			Long memberId = Long.valueOf(stringId);
 //			//取得member
 //			Member member = memberService.findById(memberId);
 			Member member = (Member) model.getAttribute("Member");
 			model.addAttribute("Member",member);
+			assert member != null;
 			List<Cart> findCart = cService.findByMemberId(member);
 			if(findCart.size()==0) {
 				return "front/cart/cartNotFound";
 			}
-			Orders order = oService.findTopOrder();
-			model.addAttribute("Orders",order);
-			Orders topOrder = oService.findTopOrder();
+			List<Orders> findOrders = oService.findOrderByMember(member);
+			Integer last = findOrders.size()-1;
+			Orders topOrder = findOrders.get(last);
+			model.addAttribute("Orders",topOrder);
 			Payment payment = topOrder.getPayment();
 			model.addAttribute("Payment",payment);
 			Shipping shipping = topOrder.getShipping();
 			model.addAttribute("Shipping",shipping);
-			
 			return "front/cart/cart_orderDetail_1";
 		}
 	
@@ -111,16 +105,13 @@ public class AddOrderController {
 		Member findmember = (Member) model.getAttribute("Member");
 		assert findmember != null;
 		Long memberId = findmember.getMemberId();
-//		//取得memberId
-//		String stringId = String.valueOf(request.getAttribute("memberId"));
-//		Long memberId = Long.valueOf(stringId);
-		//取得member
-		Member member = memberService.findById(memberId);
 		
 		//add new order
-		Orders topOrder = oService.findTopOrder();
+		List<Orders> findOrders = oService.findOrderByMember(findmember);
+		Integer last= findOrders.size()-1;
+		Orders topOrder = findOrders.get(last);
 		orders.setOrderId(topOrder.getOrderId());
-		orders.setMember(member);
+		orders.setMember(findmember);
 		orders.setOrderState("未付款");
 		orders.setPayment(topOrder.getPayment());
 		orders.setShipping(topOrder.getShipping());
@@ -130,7 +121,7 @@ public class AddOrderController {
 	
 		//add new orderDetail
 		OrderDetail orderDetail = new OrderDetail();
-		List<Cart> findCart = cService.findAllCart();
+		List<Cart> findCart = cService.findByMemberId(findmember);
 		List<Cart> carts= new ArrayList<>();
 		for(Cart cart:findCart) {
 			orderDetail.setOrderId(newOrder.getOrderId());
@@ -157,11 +148,11 @@ public class AddOrderController {
 		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String date = dateFormat.format(orderDate);
 		model.addAttribute("Date",date);
-		model.addAttribute("Member",member);
+		model.addAttribute("Member",findmember);
 		
 		//發送訂單完成信
-		String email = member.getEmail();
-		String memberName = member.getMemberName();
+		String email = findmember.getEmail();
+		String memberName = findmember.getMemberName();
 		Long newOrderId=newOrder.getOrderId();
 		Integer total = newOrder.getTotal();
 		String orderState = newOrder.getOrderState();

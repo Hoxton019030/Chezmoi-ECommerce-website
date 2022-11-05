@@ -44,6 +44,9 @@ public class OrderController {
 		Member member = memberService.findById(memberId);
 		//findOrderByMember
 		List<Orders> orders = ordersService.findOrderByMember(member);
+		if(orders == null) {
+			return "front/member/orderNotFound";
+		}
 		List<String> dates = new ArrayList<>();
 		model.addAttribute("Orders",orders);
 		for(Orders order: orders) {

@@ -61,7 +61,12 @@ public class OrdersService {
 	
 	
 	public List<Orders> findOrderByMember(Member member){
-		return ordersRepository.findByMember(member);
+		List<Orders> findOrders = ordersRepository.findByMember(member);
+		if(findOrders.size()==0) {
+			return null;
+		}else {
+			return findOrders;
+		}
 	}
 	
 	
