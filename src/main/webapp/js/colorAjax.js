@@ -15,7 +15,7 @@ $(document).ready(function () {
             $('#colorBody')
                 // .append('<span style="padding-right:15px ; font-weight:bold">size</span>')
                 .append('<label style="padding-right:15px">' +
-                    '\n <input type="radio" name="size" value="${product.series}"/>' +
+                    '\n <input type="radio" name="color" id="color" value="'+value.color+'"/>' +
                     '\n<span class="round button">'+value.color+'</span>')
 
         })

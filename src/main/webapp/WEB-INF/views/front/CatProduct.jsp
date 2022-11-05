@@ -47,14 +47,14 @@
                                 <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                     <img class="img-fluid w-300"
                                          src="http://localhost:8080/Chezmoi/getMainPic/${product.photoId}"
-                                         style="height:278px; width:226px" alt="">
+                                         style="width: 500px;height:auto" alt="">
                                 </div>
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                     <a href="${contextRoot}/shop/productDetail?series=${product.series}">
                                         <h6 class="text-truncate mb-3">${product.productName}</h6>
                                     </a>
                                     <div class="d-flex justify-content-center">
-                                        <h6 id="saleprice">${product.price}</h6>
+                                        <h6 id="saleprice">$${product.price}</h6>
                                     </div>
                                 </div>
                             </div>

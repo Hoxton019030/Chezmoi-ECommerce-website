@@ -20,6 +20,13 @@ import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.service.cart.CartService;
 import com.finalProject.demo.service.member.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import java.util.List;
 
 
 @RestController
@@ -35,7 +42,7 @@ public class NavBarController {
 
 	//找購物車有幾項商品,回傳數字顯示在navbar上
 	@GetMapping(value = {"/cartQuantity"})
-	public Integer viewCartQuantity(Model model, HttpServletRequest request) {
+	public String viewCartQuantity(Model model, HttpServletRequest request) {
 //		Member memberLogin = new Member();
 //		memberLogin.setMemberId(1L);
 //		Member member = (Member) model.getAttribute("Member");
@@ -44,10 +51,11 @@ public class NavBarController {
 			Member member = memberService.findById(memberId);
 			if (member != null){
 				List<Cart> findCart = cartService.findByMemberId(member);
-				return findCart.size();
+				int size = findCart.size();
+				return String.valueOf(size);
 			}
 		}
-		return 0 ;
+		return "0" ;
 	}
 	
 	@GetMapping(value = "/showName")
@@ -57,7 +65,7 @@ public class NavBarController {
 		if (name!=null){
 			return name;
 		}
-		return "顧客 ";
+		return "顧客";
 	}
 
 }

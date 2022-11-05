@@ -28,10 +28,10 @@ checkChName(jsName);
 //         }
 //     });
 // });
-$('#birthday').datetimepicker({
-    date: null,
-    format: 'YYYY-MM-DD',
-    locale: moment.locale('zh-tw'),
-    minDate: moment().add(-99999, 'days'), //顯示最小天數
-    maxDate: moment().add(0, 'days'), //顯示最大天數，30為最大的顯示範圍為一個月為限
-});
+//$('#birthday').datetimepicker({
+//    date: null,
+//    format: 'YYYY-MM-DD',
+//    locale: moment.locale('zh-tw'),
+//    minDate: moment().add(-99999, 'days'), //顯示最小天數
+//    maxDate: moment().add(0, 'days'), //顯示最大天數，30為最大的顯示範圍為一個月為限
+//});

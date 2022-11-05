@@ -181,19 +181,26 @@
 </script>
 <%--尺寸/顏色選取並加入購物車，利用字串拼接--%>
 <script>
-    let size=$("input[name=size]:checked").val();
-    let color=$("input[name=color]:checked").val();
+    $(document).ready(function () {
+        // let size=$("input[name='size']:checked").val();
+        //
+        // let color=$("input[name='color']:checked").val();
+        // $("input[name=size]").change(function(){
+        //     size=$("input[name=size]:checked").val()
+        // })
+        // $("input[name=color]").change(function(){
+        //     color=$("input[name=color]:checked").val()
+        // })
 
-    $("input[name=size]").change(function(){
-        size=$("input[name=size]:checked").val()
-    })
-    $("input[name=color]").change(function(){
-        color=$("input[name=color]:checked").val()
-    })
 
-    $("#addCart").click(function(){
-        window.location='${contextRoot}/shop/addToCart?id='+"${productsId.series}"+"-"+size+"-"+color;
-    })
+        $("#addCart").click(function(){
+            let size=$("input[name='size']:checked").val();
+            let color=$("input[name='color']:checked").val();
+            window.location='${contextRoot}/shop/addToCart?id='+"${productsId.series}"+"-"+size+"-"+color;
+
+        })
+    });
+
 
 </script>
 

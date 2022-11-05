@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.order.Orders;
+import com.finalProject.demo.model.entity.order.Payment;
 import com.finalProject.demo.repository.order.OrderDetailRepository;
 import com.finalProject.demo.repository.order.OrdersRepository;
 
@@ -62,6 +63,7 @@ public class OrdersService {
 	public List<Orders> findOrderByMember(Member member){
 		return ordersRepository.findByMember(member);
 	}
+	
 	
 	public List<OrderDetail> findOrderDetail(Long id) {
 		
