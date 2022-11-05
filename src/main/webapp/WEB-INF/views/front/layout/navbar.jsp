@@ -37,9 +37,7 @@
 		<body>
 			<nav>
 				<div class="text-right" style="background-color: #F1EDE6;">
-					<span class=" mr-3" style="color:#393833;" id="showName">
-						<span>您好</span>
-					</span>
+					<span class=" mr-3" style="color:#393833;" id="showName"></span>
 
 				</div>
 
@@ -77,12 +75,12 @@
 			<script type="text/javascript">
 				$(document).ready(function () {
 					fetch("http://localhost:8080/Chezmoi/cartQuantity")
-						.then((response) => response.json())
-						.then((responseJSON) => {
+						.then((response) => {
+							return response.text();
+						}).then((responseJSON) => {
 							if (responseJSON != null) {
 								$('.cartQuantity').text(responseJSON)
 							} else { }
-
 						});
 
 				});
@@ -96,8 +94,12 @@
 							return response.text();
 						}).then((responseJSON) => {
 							if (responseJSON != null) {
-								alert(responseJSON)
-								$('#showName').text(responseJSON).append('<a href="#">Logout </a>')
+								if (responseJSON === '顧客') {
+									$('#showName').text(responseJSON + ' 您好 ').append('<a href="http://localhost:8080/Chezmoi/member/login" >Login</a>')
+								} else {
+									$('#showName').text(responseJSON + ' 您好 ').append('<a href="#">Logout</a>')
+								}
+
 							}
 						});
 				});

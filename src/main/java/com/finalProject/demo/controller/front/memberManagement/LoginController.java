@@ -94,7 +94,6 @@ public class LoginController {
 					response.addCookie(cookie);
 					return "redirect:/";
 				}
-
 			} else {
 				model.addAttribute("Msg", "帳號或密碼輸入錯誤!");
 			}

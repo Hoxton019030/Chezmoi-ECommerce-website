@@ -3,6 +3,7 @@ package com.finalProject.demo.controller.front.pageController;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.finalProject.demo.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,6 +41,9 @@ public class CartController {
 	
 	@Autowired
 	private ShippingService shippingService;
+
+	@Autowired
+	private MemberService memberService;
 	
 	//顯示所有購物車商品
 
@@ -52,8 +56,9 @@ public class CartController {
 		//取得memberId
 		String stringId = String.valueOf(request.getAttribute("memberId"));
 		Long memberId = Long.valueOf(stringId);
+		Member member = memberService.findById(memberId);
 
-		List<Cart> allCart = cartService.findAllCart();
+		List<Cart> allCart = cartService.findByMemberId(member);
 		
 		if(allCart.isEmpty()) {
 			return"front/cart/cartNotFound";
