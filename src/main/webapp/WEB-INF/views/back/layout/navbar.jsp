@@ -61,6 +61,15 @@
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <a
+                                    class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">權限管理</a>
+                            <ul class="inmenu">
+                                <li><a href="${contextRoot}/Back/#"
+                                       class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">權限管理</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

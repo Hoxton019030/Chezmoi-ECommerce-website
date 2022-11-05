@@ -3,7 +3,6 @@ package com.finalProject.demo.jwtInterceptor;
 import com.finalProject.demo.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,7 +15,7 @@ import static com.finalProject.demo.util.CookieUtil.getCookieByName;
 import static com.finalProject.demo.util.CookieUtil.removeCookieToken;
 
 @Component
-public class JwtInterceptor implements HandlerInterceptor {
+public class FrontInterceptor implements HandlerInterceptor {
 
 
     //請求在進入controller前執行
