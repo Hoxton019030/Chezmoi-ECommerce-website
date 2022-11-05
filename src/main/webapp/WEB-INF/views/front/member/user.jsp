@@ -112,8 +112,8 @@
                                      
                                 
                                     <div class="" id="sandbox-container">
-                                        <input type="text" class="form-control p-4 mb-2" placeholder="出生日期" name="birthday"
-                                            id="birthday" path="birthday" required="required" inputmode="none" data-date-end-date="0d" />
+                                        <form:input type="text" class="form-control p-4 mb-2" placeholder="出生日期" name="birthday"
+                                            id="birthday" path="birthday" required="required" inputmode="none" />
                       
                                 	</div>
                             
