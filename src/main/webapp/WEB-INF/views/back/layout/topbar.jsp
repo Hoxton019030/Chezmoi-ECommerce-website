@@ -16,15 +16,15 @@
         <div class="row">
             <div class="col-lg-1 d-none d-lg-block pt-1">
                 <div class="container-fluid">
-                    <a href="admin_index.html" class="nav-item nav-link active"><img src="https://i.imgur.com/11vzfsu.jpg" width="50"
+                    <a href="#" class="nav-item nav-link active"><img src="https://i.imgur.com/11vzfsu.jpg" width="50"
                             height="50"></a>
 
                 </div>
             </div>
             <div class="col-lg-5 d-none d-lg-block pt-3" style="padding-left:1em;">
 
-                <a href="admin_index.html" class="text-decoration-none">
-                    <h1 class="display-5 font-weight-semi-bold">後台管理中心</h1>
+                <a href="#" class="text-decoration-none">
+                    <h1 class="display-5 font-weight-semi-bold">Chezmoi 後台管理中心</h1>
                 </a>
             </div>
         </div>

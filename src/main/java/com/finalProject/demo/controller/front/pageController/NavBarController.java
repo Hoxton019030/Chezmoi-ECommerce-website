@@ -10,6 +10,8 @@ import com.finalProject.demo.util.CookieUtil;
 import com.finalProject.demo.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -59,13 +61,13 @@ public class NavBarController {
 	}
 	
 	@GetMapping(value = "/showName")
-	public String showName(HttpServletRequest request,Model model){
+	public ResponseEntity<String> showName(HttpServletRequest request, Model model){
 //		Member member = (Member) model.getAttribute("Member");
 		String name = CookieUtil.getMemberNameByCookie(request, "token");
 		if (name!=null){
-			return name;
+			return new ResponseEntity<>(name, HttpStatus.OK);
 		}
-		return "顧客";
+		return new ResponseEntity<>("顧客", HttpStatus.OK);
 	}
 
 }

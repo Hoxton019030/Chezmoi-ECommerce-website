@@ -37,6 +37,14 @@
     
     <!-- jQ -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--JavaScript & Jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="${contextRoot}/lib/easing/easing.min.js"></script>
+    <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
     
 </head>
 <body>
@@ -69,7 +77,7 @@
         <div class="detail-info">
             <div class="info-inner">
                 <div class="page-index align-items-center justify-content-center">
-                    <a href="${contextRoot}/index"
+                    <a href="${contextRoot}/"
                        class="align-items-center justify-content-center">Home</a><span>
 							></span> <a href="${contextRoot}/shop"
                                         class="align-items-center justify-content-center">All</a> <span>>
@@ -131,20 +139,20 @@
     <div>
         <p>
             <img class="img-fluid w-300" style="width:60%; text-align; margin:auto"
-                 src="http://localhost:8080/Chezmoi/getPic1/${productsId.photo.photoId}"></p>
+                 src="http://localhost:8080/Chezmoi/getPic1/${productsId.photo.photoId}" alt="${productsId.productId}"></p>
         <br>
         <p>
 
             <img class="img-fluid w-300" style="width:60%; text-align; margin:auto"
-                 src="http://localhost:8080/Chezmoi/getPic2/${productsId.photo.photoId}"></p>
-        <br>
-        <p>s
-            <img class="img-fluid w-300"
-                 src="http://localhost:8080/Chezmoi/getPic3/${productsId.photo.photoId}"></p>
+                 src="http://localhost:8080/Chezmoi/getPic2/${productsId.photo.photoId}" alt="${productsId.productId}"></p>
         <br>
         <p>
             <img class="img-fluid w-300"
-                 src="http://localhost:8080/Chezmoi/getPic4/${productsId.photo.photoId}"></p>
+                 src="http://localhost:8080/Chezmoi/getPic3/${productsId.photo.photoId}" alt="${productsId.productId}" ></p>
+        <br>
+        <p>
+            <img class="img-fluid w-300"
+                 src="http://localhost:8080/Chezmoi/getPic4/${productsId.photo.photoId}"alt="${productsId.productId}" ></p>
         <br>
     </div>
 
@@ -181,7 +189,7 @@
 </script>
 <%--尺寸/顏色選取並加入購物車，利用字串拼接--%>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function (font, text) {
         // let size=$("input[name='size']:checked").val();
         //
         // let color=$("input[name='color']:checked").val();
@@ -197,7 +205,6 @@
             let size=$("input[name='size']:checked").val();
             let color=$("input[name='color']:checked").val();
             window.location='${contextRoot}/shop/addToCart?id='+"${productsId.series}"+"-"+size+"-"+color;
-
         })
     });
 

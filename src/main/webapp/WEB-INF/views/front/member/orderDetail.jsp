@@ -32,6 +32,15 @@
     <link href="${contextRoot}/css/style.css" rel="stylesheet">
     <!-- jQ -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--JavaScript & Jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="${contextRoot}/lib/easing/easing.min.js"></script>
+    <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
 
 </head>
 

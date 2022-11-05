@@ -4,8 +4,11 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.finalProject.demo.util.CookieUtil;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +21,7 @@ import com.finalProject.demo.service.member.MemberService;
 import com.finalProject.demo.util.JwtUtil;
 
 @Controller
-public class LoginController {
+public class LoginOutController {
 
 	@Autowired
 	private MemberService mService;
@@ -87,9 +90,9 @@ public class LoginController {
 				boolean check = BCrypt.checkpw(member.getPassword(), hasMemberPassword);//確認pwd是否正確
 				if (check){
 					String jwtToken = JwtUtil.getJwtToken(hasMember.getEmail(), hasMember.getMemberName(),hasMember.getMemberId());
-					response.setHeader("Authorization", jwtToken);
+//					response.setHeader("Authorization", jwtToken);
 					Cookie cookie = new Cookie("token", jwtToken);
-					cookie.setMaxAge(3600*12);//有效期限12小時:3600*12
+					cookie.setMaxAge(60*10);//有效期限12小時:60*60*12
 					cookie.setPath("/Chezmoi"); //設置Domain(重要!!!!)
 					response.addCookie(cookie);
 					return "redirect:/";
@@ -99,17 +102,11 @@ public class LoginController {
 			}
 		return "front/member/login";
 	}
-	
-		
-		
-		
-//		@GetMapping("/member/logout")
-//		public String logout(HttpServletRequest request) { // 進入方法(login)
-//			HttpSession session = request.getSession();    // 使用 session
-////			session.removeAttribute("email"); 		       // 刪掉
-////			session.removeAttribute("password");
-//			return "redirect:index";
-//		}
 
-
+		@GetMapping("/member/logout")
+		public String logout(HttpServletRequest request, HttpServletResponse response) {
+			String cookieName = "token";
+			boolean b = CookieUtil.removeCookieToken(request, response, cookieName);
+			return "redirect:/";
+		}
 }

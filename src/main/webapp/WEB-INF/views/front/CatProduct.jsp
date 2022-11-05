@@ -28,8 +28,12 @@
 
     <!-- Libraries Stylesheet -->
     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
     <!-- Customized Bootstrap Stylesheet -->
     <link href="${contextRoot}/css/style.css" rel="stylesheet">
+
+    <!-- jQ -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>

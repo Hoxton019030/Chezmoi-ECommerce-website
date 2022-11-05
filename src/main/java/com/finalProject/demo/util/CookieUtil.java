@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 @Component
@@ -52,5 +53,17 @@ public class CookieUtil {
             return (String) claims.get("name");
         }
         return null;
+    }
+
+    public  static  boolean removeCookieToken(HttpServletRequest request, HttpServletResponse response, String cookieName){
+        Cookie token = getCookieByName(request, cookieName);
+        if (token!=null){
+            token.setValue(null);
+            token.setMaxAge(0);
+            token.setPath("/Chezmoi");
+            response.addCookie(token);
+            return true;
+        }
+        return false;
     }
 }

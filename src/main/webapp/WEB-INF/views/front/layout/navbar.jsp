@@ -14,6 +14,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
+<%--    <meta http-equiv="refresh" content="20">--%>
     <!-- Favicon -->
     <link href="${contextRoot}/img/logo.jpg" rel="icon">
 
@@ -31,6 +32,7 @@
     <!-- <navbar> -->
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link href="${contextRoot}/css/style.css" rel="stylesheet">
+
 </head>
 
 
@@ -49,12 +51,12 @@
                                          data-toggle="dropdown" aria-expanded="false"> Shop </a>
             <ul class="dropdown-menu"
                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 96px, 0px); margin-top: 0px; border-top-width: 0px; padding-top: 0px;">
-                <li><a class="dropdown-item" href="${contextRoot}/shop">All</a></li>
-                <li><a class="dropdown-item" href="${contextRoot}/shop/Top">Top</a></li>
-                <li><a class="dropdown-item" href="${contextRoot}/shop/Bottom">Bottom</a></li>
-                <li><a class="dropdown-item" href="${contextRoot}/shop/Outer">Outer</a></li>
-                <li><a class="dropdown-item" href="${contextRoot}/shop/Dress">Dress</a></li>
-                <li><a class="dropdown-item" href="${contextRoot}/shop/Acc">Accessories</a></li>
+                <li class="btn-block"><a class="dropdown-item" href="${contextRoot}/shop">All</a></li>
+                <li class="btn-block"><a class="dropdown-item" href="${contextRoot}/shop/Top">Top</a></li>
+                <li class="btn-block"><a class="dropdown-item" href="${contextRoot}/shop/Bottom">Bottom</a></li>
+                <li class="btn-block"><a class="dropdown-item" href="${contextRoot}/shop/Outer">Outer</a></li>
+                <li class="btn-block"><a class="dropdown-item" href="${contextRoot}/shop/Dress">Dress</a></li>
+                <li class="btn-block"><a class="dropdown-item" href="${contextRoot}/shop/Acc">Accessories</a></li>
             </ul>
         </li>
         <li><a href="${contextRoot}/notice">Notice</a></li>
@@ -89,18 +91,28 @@
 			<script type="text/javascript">
 				$(document).ready(function () {
 					fetch("http://localhost:8080/Chezmoi/showName")
-						.then((response) => {
+                        .then((response) => {
 							return response.text();
 						}).then((responseJSON) => {
 							if (responseJSON != null) {
 								if (responseJSON === '顧客') {
-									$('#showName').text(responseJSON + ' 您好 ').append('<a href="http://localhost:8080/Chezmoi/member/login" >Login</a>')
+									$('#showName').text(responseJSON + ' 您好 ').append('<a href="${contextRoot}/member/login" id="login" >Login</a>')
 								} else {
-									$('#showName').text(responseJSON + ' 您好 ').append('<a href="#">Logout</a>')
+									$('#showName').text(responseJSON + ' 您好 ').append('<a href="${contextRoot}/member/logout" id="logout">Logout</a>')
 								}
 
 							}
-						});
+                        });
+
+                    $('#logout').click(function (){
+                        window.location.assign(window.location.href);
+                    });
+                    // fetch("http://localhost:8080/Chezmoi/member/logout")
+                    //     .then((response)=>{
+                    //        alert(response.text());
+                    //     });
+
+
 				});
 			</script>
 

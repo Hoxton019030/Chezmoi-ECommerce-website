@@ -6,6 +6,8 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.Objects;
 
@@ -49,9 +51,8 @@ public class JwtUtil {
             return claimsJws.getBody();
 
     }
-    public static String getMemberName(String token){
-        return Objects.requireNonNull(verify(token)).getSubject();
-    }
+
+
 
 
 

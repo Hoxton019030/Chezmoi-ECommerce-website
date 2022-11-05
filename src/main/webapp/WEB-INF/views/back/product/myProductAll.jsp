@@ -223,20 +223,19 @@
                     </script>
 
                     <script>
-                  //批量删除
+                  //批次删除
                     function deleteUser(){
                       if(!confirm("確定要刪除這些商品嗎？")){
                         return ;
                       }
                       var cks=document.getElementsByName("checkb");
                       var str="/deleteAll/";
-                      //拼接所有的图书id
                       for(var i=0;i<cks.length;i++){
                         if(cks[i].checked){
                           str+=cks[i].value+",";
                         }
                       }
-                      //去掉字符串末尾的‘,’
+                      //去掉String最後的‘,’
                       str=str.substring(0, str.length-1);
                       window.location.href="http://localhost:8080/Chezmoi/Back/MyProduct"+str;
                     }

@@ -188,8 +188,7 @@ public class AddOrderController {
 		//取得memberId
 		String stringId = String.valueOf(request.getAttribute("memberId"));
 		Long memberId = Long.valueOf(stringId);
-		Member memberLogin = memberService.findById(memberId);
-		return memberLogin;
+		return memberService.findById(memberId);
 	}
 	
 		
