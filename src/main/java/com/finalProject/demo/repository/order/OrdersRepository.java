@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.entity.order.Orders;
+import com.finalProject.demo.model.entity.order.Payment;
 
 public interface OrdersRepository extends JpaRepository<Orders, Long> {
 
@@ -24,7 +25,6 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
 	@Modifying
 	@Query(value="update orders set orderState = '已付款' where orderId = ?1", nativeQuery = true)
 	int updateOrderStateToPaid(Long orderId);
-	
 	
 }
 

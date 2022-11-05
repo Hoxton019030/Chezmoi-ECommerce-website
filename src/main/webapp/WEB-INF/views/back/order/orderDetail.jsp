@@ -195,7 +195,7 @@
             	        $('#orders').empty();
             	        for(order of res){
                                
-                            $('#orders').append('<tr><td>' + '<a href="#" onclick="openDetail('+order.orderId+')">' + order.orderId + '</a>' + '</td><td>' + order.orderDate + '</td><td>' + getOrderStateUi(order) + '</td><td>' + (order?.member?.memberName?order?.member?.memberName:'') + '</td><td>' + order.shipName + '</td><td>' + order.shipPhone + '</td><td>' + order.shippingWay + '</td><td>' + order.storeName + '</td><td>' + order.storeNumber + '</td><td>' + getShippingCodeColumeValue(order) + '</td><td>' + getShippingDateUi(order) + '</td><td>' + order.couponCode + '</td><td>' + order.paymentWay + '</td><td>' + order.total + '</td><td>')
+                            $('#orders').append('<tr><td>' + '<a href="#" onclick="openDetail('+order.orderId+')">' + order.orderId + '</a>' + '</td><td>' + order.orderDate + '</td><td>' + getOrderStateUi(order) + '</td><td>' + (order.member?.memberName||'') + '</td><td>' + order.shipName + '</td><td>' + order.shipPhone + '</td><td>' + (order.shipping?.shippingWay||'') + '</td><td>' + order.storeName + '</td><td>' + order.storeNumber + '</td><td>' + getShippingCodeColumeValue(order) + '</td><td>' + getShippingDateUi(order) + '</td><td>' + (order.coupon?.couponCode||'') + '</td><td>' + (order.payment?.paymentWay||'') + '</td><td>' + order.total + '</td><td>')
                             		
             		            
                         }
