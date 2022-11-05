@@ -95,83 +95,44 @@
 </div>
 
 
-<!-- Products Start -->
-<div class="container-fluid pt-5">
+<!-- Best Selling Products Start -->
+<div class="container-fluid pt-5" >
     <div class="text-center" style="padding-top:40px;margin-bottom:20px">
         <h2 class="section-title px-5"><span class="px-2" style="font-family:Georgia, serif;font-style:italic">Weekly Best</span>
         </h2>
     </div>
-
-    <div class="row px-xl-5 pb-3">
-        <c:forEach var="products" items="${page.content}">
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100"
-                         src="http://localhost:8080/Chezmoi/getMainPic/${products.photo.photoId}" alt="">
-                </div>
-                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <a href="${contextRoot}/shop/productDetail?productId=${products.productId}">
-                        <h6 class="text-truncate mb-3">${products.name}</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>${products.price}</h6>
-                            <!-- <h6 class="text-muted ml-2"><del>$1380</del></h6> -->
-                        </div>
-                </div>
-            </div>
-
-            <!--  foreach  foreach foreach foreach foreach foreach foreach foreach foreach foreach foreach  -->
-                <%--            <!--         <div class="container-products align-items-center"> -->--%>
-                <%--            <!-- 					<ul class="pros-ul justify-content-around align-items-center"> -->--%>
-                <%--            <!-- 						Shop Product Start -->--%>
-
-                <%--            <!-- 						<div class="row px-xl-5 pb-3"> -->--%>
-                <%--            &lt;%&ndash; 							<c:forEach var="products" items="${bestProduct}"> &ndash;%&gt;--%>
-                <%--            <!-- 								<div class="col-lg-3 col-md-6 col-sm-12 pb-1"> -->--%>
-                <%--            <!-- 									<div class="card product-item border-0 mb-4"> -->--%>
-                <%--            <!-- 										<div -->--%>
-                <%--            <!-- 											class="card-header product-img position-relative overflow-hidden bg-transparent border p-0"> -->--%>
-
-
-                <%--            &lt;%&ndash; 											<img class="img-fluid w-300" src="http://localhost:8080/Chezmoi/getMainPic/${products.photo.photoId}" style="height:278; weight:226" alt=""> &ndash;%&gt;--%>
-                <%--            <!-- 										</div> -->--%>
-                <%--            <!-- 										<div class="card-body border-left border-right text-center p-0 pt-4 pb-3"> -->--%>
-                <%--            <!-- 											<a -->--%>
-                <%--            &lt;%&ndash; 												href="${contextRoot}/shop/productDetail?productId=${products.productId}"> &ndash;%&gt;--%>
-                <%--            &lt;%&ndash; 												<h6 class="text-truncate mb-3">${products.name}</h6> &ndash;%&gt;--%>
-                <%--            <!-- 											</a> -->--%>
-                <%--            <!-- 											<div class="d-flex justify-content-center"> -->--%>
-                <%--            &lt;%&ndash; 												<h6 id="saleprice">${products.price}</h6> &ndash;%&gt;--%>
-                <%--            <!-- <!-- 												<h6 class="text-muted ml-2"> -->--%>
-                <%--            <!-- <!-- 													<del>$1150</del> -->--%>
-                <%--            <!-- <!-- 												</h6> -->--%>
-
-            <!-- 											</div> -->
-            <!-- 										</div> -->
-            <!-- 										<div class="card-footer d-flex justify-content-between bg-light border"> -->
-            <!-- 											<a href="" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary -->
-            <!--                                 mr-1"></i>Wishlist</a> -->
-            <!-- 											<a href="" class="btn btn-sm text-dark p-0"><i -->
-            <!-- 													class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a> -->
-            <!-- 										</div> -->
-        </div>
+    <div class="row px-xl-5 pb-3" id="BestItem">
+<%--        <c:forEach var="products" items="${page.content}">--%>
+<%--        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">--%>
+<%--            <div class="card product-item border-0 mb-4">--%>
+<%--                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">--%>
+<%--                    <img class="img-fluid w-100"--%>
+<%--                         src="http://localhost:8080/Chezmoi/getMainPic/${products.photo.photoId}" alt="">--%>
+<%--                </div>--%>
+<%--                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">--%>
+<%--                    <a href="${contextRoot}/shop/productDetail?productId=${products.productId}">--%>
+<%--                        <h6 class="text-truncate mb-3">${products.name}</h6>--%>
+<%--                        <div class="d-flex justify-content-center">--%>
+<%--                            <h6>${products.price}</h6>--%>
+<%--                            <!-- <h6 class="text-muted ml-2"><del>$1380</del></h6> -->--%>
+<%--                        </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
     </div>
-    </c:forEach>
-    <!-- foreach foreach foreach foreach foreach foreach foreach foreach foreach foreach foreach foreach foreach  -->
+<%--    </c:forEach>--%>
 </div>
-<!-- 					</ul> -->
-<!-- 				</div> -->
-<!--     </div> -->
-<!-- Products End -->
+
+<!-- Best Selling Products End -->
 
 
-<!-- Products Start -->
+<!-- Recommended Products Start -->
 <div class="container-fluid pt-5">
     <div class="text-center " style="padding-top:0px;margin-bottom:20px">
-        <h2 class="section-title px-5"><span class="px-2" style="font-family:Georgia, serif;font-style:italic">Just Arrived</span>
+        <h2 class="section-title px-5"><span class="px-2" style="font-family:Georgia, serif;font-style:italic">Recommend !</span>
         </h2>
     </div>
-    <div class="row px-xl-5 pb-3">
+    <div class="row px-xl-5 pb-3" id="RecommendedItem">
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
             <div class="card product-item border-0 mb-4">
                 <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
@@ -186,51 +147,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
-                </div>
-                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <h6 class="text-truncate mb-3">約會必備！小姊姊約會必備洋裝</h6>
-                    <div class="d-flex justify-content-center">
-                        <h6>$1545</h6>
-                        <!-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> -->
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
-                </div>
-                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <h6 class="text-truncate mb-3">浪漫小姊姊抽鬚小香外套</h6>
-                    <div class="d-flex justify-content-center">
-                        <h6>$2340</h6>
-                        <!-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> -->
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">
-                </div>
-                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <h6 class="text-truncate mb-3">可鹽可甜經典小香背心</h6>
-                    <div class="d-flex justify-content-center">
-                        <h6>$1920</h6>
-                        <!-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> -->
-                    </div>
-                </div>
-
-            </div>
-        </div>
 
     </div>
 </div>
@@ -238,6 +154,9 @@
 
 <!-- Footer Start -->
 <jsp:include page="layout/footer.jsp"></jsp:include>
+<!-- Template Javascript -->
+<script src="${contextRoot}/js/bestSellingAjax.js"></script>
+<script src="${contextRoot}/js/RecommendedAjax.js"></script>
 </body>
 
 </html>
