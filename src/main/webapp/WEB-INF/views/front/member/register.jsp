@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+    
         <!DOCTYPE html>
         <html>
 
@@ -15,28 +18,24 @@
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
 
-            <link href="${pageContext.request.contextPath}/datePick/css/bootstrap-datepicker3.standalone.css"
+            <link href="${contextRoot}/datePick/css/bootstrap-datepicker3.standalone.css"
                 rel="stylesheet">
-            <link href="${pageContext.request.contextPath}/datePick/css/charliecss.css" rel="stylesheet">
+            <link href="${contextRoot}/datePick/css/charliecss.css" rel="stylesheet">
             <!-- <link href="${pageContext.request.contextPath}/css/register.css" rel="stylesheet"> -->
             <title>註冊</title>
 
         </head>
 
         <body>
-
             <div id="login-box" class=" container">
-
-                
                 <div class="container" id="login-inside">
                     <h1>Register</h1>
                     <h5 class="Msg">${param.Msg}</h5>
-                    <form:form action="${pageContext.request.contextPath}/member/register" method="post"
+                    <form:form action="${contextRoot}/member/register" method="post"
                         modelAttribute="registersubmit">
-                        <form method="post" action="login.js">
+                        
                             <div class="row">
                                 <div class="col">
-
                                     <input type="text" class="text-field-Register" name="memberName" path="memberName"
                                         id="name" placeholder="中文姓名" minlength="2" required="required" autofocus
                                         oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的姓名');">
@@ -108,18 +107,16 @@
                             <div class="row mt-2"style="margin: 0">
                                 <div class="col">
                                     <p class="text-center " style="padding: 0">
-                                        <a href="${pageContext.request.contextPath}/member/login"
+                                        <a href="${contextRoot}/member/login"
                                             id="customer_register_link" class="text-primary">登入帳號</a>
                                     </p>
                                 </div>
                             </div>
                             <div class="row mt-0" style="text-align:center ;">
                                 <div class="col">
-                                        <a href="${pageContext.request.contextPath}/" class="text-primary">返回首頁</a>
+                                        <a href="${contextRoot}/" class="text-primary">返回首頁</a>
                                 </div>
                             </div>
-
-                        </form>
                     </form:form>
                 </div>
 
@@ -134,12 +131,12 @@
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
                 crossorigin="anonymous"></script>
 
-            <script type="text/javascript" src="${pageContext.request.contextPath}/js/register.js"></script>
+            <script type="text/javascript" src="${contextRoot}/js/register.js"></script>
 
             <script type="text/javascript"
-                src="${pageContext.request.contextPath}/datePick/js/bootstrap-datepicker.js"></script>
+                src="${contextRoot}/datePick/js/bootstrap-datepicker.js"></script>
             <script type="text/javascript"
-                src="${pageContext.request.contextPath}/datePick/js/bootstrap-datepicker.zh-TW.min.js"></script>
+                src="${contextRoot}/datePick/js/bootstrap-datepicker.zh-TW.min.js"></script>
             <script>
                 $('#sandbox-container .input-group.date').datepicker({
                     format: "yyyy-mm-dd",

@@ -22,6 +22,7 @@
                     <div class="container" id="login-inside">
 
                         <h1 class="text-dark">修改密碼</h1>
+                        <h5 class="Msg">${Msg}</h5>
 
                         <form:form action="${contextRoot}/member/updatepassword" method="post"
                             modelAttribute="updatepassword">
@@ -32,13 +33,14 @@
                                         <div>
                                             <input type="password" class="text-field-Register" name="password"
                                                 path="password" id="password" placeholder="new password"
-                                                pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$" required="required"
+                                                pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
                                                 oninput="setCustomValidity('');"
                                                 oninvalid="setCustomValidity('請輸入正確的密碼格式：需含英數至少六個字元')"
                                                 required="required" autocomplete>
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="row my-0">
                                     <div class="col">
                                         <div style="display: flex;
@@ -51,19 +53,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="col  d-flex" style="justify-content:center ;">
-                                        
                                             <input type="submit" id="btn-login" class="btn-primary text-dark" value="提交">
-
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col d-flex" style="justify-content:center ;">
                                         <a href="${contextRoot}/member/login" class="text-primary">取消</a>
-                                    </p>
                                     </div>
                                 </div>
-                                <p>
-
                         </form:form>
                     </div>
                 </div>
