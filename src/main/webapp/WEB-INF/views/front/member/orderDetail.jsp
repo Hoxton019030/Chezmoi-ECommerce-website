@@ -53,8 +53,8 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid">
-        <div class="row  px-xl-5">
+    <div class="container-fluid mt-3">
+        <div class="row">
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
 <%--                    <a href="" class="text-decoration-none d-block d-lg-none">--%>

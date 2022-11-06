@@ -1,6 +1,8 @@
 package com.finalProject.demo.paypal;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.finalProject.demo.mail.EmailSenderSerivce;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.model.entity.order.OrderDetail;
 import com.finalProject.demo.model.entity.order.Orders;
 import com.finalProject.demo.model.entity.order.Payment;
+import com.finalProject.demo.model.entity.order.Shipping;
 import com.finalProject.demo.service.member.MemberService;
 import com.finalProject.demo.service.order.OrdersService;
 import com.paypal.api.payments.Links;
@@ -36,6 +40,9 @@ public class PaypalController {
 	
 	@Autowired
 	private OrdersService ordersService;
+	
+	@Autowired
+	private EmailSenderSerivce emailSenderSerivce;
 	
 	public static final String SUCCESS_URL = "cart/paypal/success";
 	public static final String CANCEL_URL = "cart/paypal/cancel";
@@ -105,6 +112,24 @@ public class PaypalController {
         		Orders order = findOrders.get(last);
         		order.setOrderState("已付款");
         		ordersService.insert(order);
+        		//發送付款完成信
+        		String email = member.getEmail();
+        		String memberName = member.getMemberName();
+        		Date orderDate = order.getOrderDate();
+        		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        		String date = dateFormat.format(orderDate);
+        		Long newOrderId=order.getOrderId();
+        		Integer total = order.getTotal();
+        		String orderState = order.getOrderState();
+        		
+        		String text1 ="親愛的買家"+" "+memberName+" "+"您好，您於Chezmoi韓國女裝訂購的新訂單已付款成功，";
+        		String text2 ="訂單編號:"+newOrderId;
+        		String text3 ="訂單日期:"+date;
+        		String text4 ="訂單總金額:"+total;
+        		String text5 ="訂單狀態:"+orderState;
+        		String text6 ="我們會盡速至paypal確認您的款項，待款項確認後將商品出貨，謝謝您的購買。";
+        		emailSenderSerivce.sendPaymentMail(email, "您於Chezmoi韓國女裝訂購的新訂單，訂單編號:"+newOrderId+"已付款成功",text1,
+        				text2,text3,text4,text5,text6);
                 return "front/cart/success";
             }
         } catch (PayPalRESTException e) {
