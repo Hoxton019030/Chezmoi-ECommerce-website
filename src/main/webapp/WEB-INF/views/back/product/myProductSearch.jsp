@@ -156,7 +156,7 @@
                                                 <tbody class="align-middle" id="tbody">
                                                 <c:forEach var="product" items="${list}">
                                                     <tr class="text-center">
-                                                        <td><input type="checkbox" id="checkb" name="checkb" style="zoom:150%"></td>
+                                                        <td><input type="checkbox" id="checkb" name="checkb" style="zoom:150%" value="${product.productId}"></td>
                                                         <td class="align-middle">
                                                         <img src="http://localhost:8080/Chezmoi/getMainPic/${product.photo.photoId}" style="width: 80px;height:auto">
                                                         </td>
