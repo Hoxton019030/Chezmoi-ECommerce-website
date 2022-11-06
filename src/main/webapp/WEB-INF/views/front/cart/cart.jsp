@@ -26,6 +26,8 @@
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
                     rel="stylesheet">
 
+                <script src="https://kit.fontawesome.com/fda1db8ac4.js" crossorigin="anonymous"></script>
+
                 <!-- Libraries Stylesheet -->
                 <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
@@ -105,9 +107,7 @@
                                         <td class="align-middle" id="price">${c.price}</td>
                                         <td class="align-middle" id="total">${c.total}</td>
                                         <td class="align-middle"><a
-                                                href="${contextRoot}/cart/deleteFromCart?id=${c.productId}"><img
-                                                    class="delete" src="https://img.onl/fl2hzD" alt=""
-                                                    style="width: 1em; height: 1em;"></a>
+                                                href="${contextRoot}/cart/deleteFromCart?id=${c.productId}"><i class="fa-solid fa-trash-can"></i></a>
                                         </td>
                                         <c:set var="total" value="${total+c.total}" />
                                     </tr>

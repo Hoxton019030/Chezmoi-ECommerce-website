@@ -68,28 +68,26 @@
                                 <input type="hidden" name="productId" value="${product.productId}"/>
                             </div>
 
-	                        <div class="d-flex justify-content-between pt-1 mb-2">
-	                            <h6 class=" font-weight-medium">商品圖片</h6>
-	                        </div>
-	
-	                        <div>
-	                            <input  type="file" name="mainProduct_pic"/><label class="title">主要商品圖片</label>
-	                        </div>
-	                        <div>
-	                            <input type="file" name="fit_pic"/><label class="title">品牌圖片</label>
-	                        </div>
-	                        <div>
-	                            <input  type="file" name="detail_pic" multiple/><label class="title" >其他圖片</label>
-	                        </div>             
+<%--	                        <div class="d-flex justify-content-between pt-1 mb-2">--%>
+<%--	                            <h6 class=" font-weight-medium">商品圖片</h6>--%>
+<%--	                        </div>--%>
+<%--	--%>
+<%--	                        <div>--%>
+<%--	                            <input  type="file" name="mainProduct_pic"/><label class="title">主要商品圖片</label>--%>
+<%--	                        </div>--%>
+<%--	                        <div>--%>
+<%--	                            <input type="file" name="fit_pic"/><label class="title">品牌圖片</label>--%>
+<%--	                        </div>--%>
+<%--	                        <div>--%>
+<%--	                            <input  type="file" name="detail_pic" multiple/><label class="title" >其他圖片</label>--%>
+<%--	                        </div>             --%>
 
                         <div class="d-flex pt-1 mb-2 mt-2 align-items-center ">
                             <h6 class=" font-weight-medium">類別:</h6>
                             <span class="ml-2 mb-2">${product.category}</span>
                             <input type="hidden" name="category" value="${product.category}"/>
                         </div>
-                        
-                           
-                        
+
                         <div class="d-flex justify-content-between pt-2 mb-2" style="clear:both;">
                             <h6 class=" font-weight-medium">商品名稱</h6>
                         </div>

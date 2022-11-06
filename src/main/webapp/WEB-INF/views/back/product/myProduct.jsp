@@ -25,6 +25,7 @@
                     <!-- Font Awesome -->
                     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
                         rel="stylesheet">
+                    <script src="https://kit.fontawesome.com/fda1db8ac4.js" crossorigin="anonymous"></script>
 
                     <!-- Libraries Stylesheet -->
                     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -128,7 +129,7 @@
                                                         <div class="">
                                                             <button class="btn btn-primary rounded-sm" type="button"
                                                                 onclick="javascript:location.href='#'"
-                                                                name="creatProduct" id="creatProduct">全部刪除
+                                                                name="creatProduct" id="creatProduct"><i class="fa-solid fa-trash-can"></i>
                                                             </button>
                                                         </div>
                                                     </div>
