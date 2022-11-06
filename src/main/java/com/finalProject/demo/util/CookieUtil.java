@@ -17,7 +17,7 @@ public class CookieUtil {
 
     }
 
-    public static String getMemberNameByCookie(HttpServletRequest request,String cookieName ){
+    public static String getUserNameByCookie(HttpServletRequest request, String cookieName ){
         return getaName(getCookieByName(request,cookieName));
     }
 

@@ -23,7 +23,8 @@ public class webConfig  implements WebMvcConfigurer {
 
 
         registry.addInterceptor(new BackInterceptor())//後台
-                .excludePathPatterns("/Back/manager/login","/Back/manager/register","/Back/manager/logout")
-                .addPathPatterns("/Back/**","/back/**");
+                .excludePathPatterns("/Back/manager/login","/Back/manager/logout")
+                .addPathPatterns("/Back/**");
+        //因為url的關係:沒有攔金流跟物流頁面
     }
 }

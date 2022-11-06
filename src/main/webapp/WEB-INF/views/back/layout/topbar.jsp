@@ -47,7 +47,7 @@
 
             </div>
             <div class="col-lg-6 d-none d-lg-block text-right mt-2 " style="padding-left:1em;">
-                <span class="text-right" style="color:#393833;" id="showName">000</span>
+                <span class="text-right" style="color:#393833;" id="showName"></span>
             </div>
 
         </div>

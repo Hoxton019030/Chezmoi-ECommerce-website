@@ -58,6 +58,7 @@
                     <div class="card-header border bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">管理員權限</h4>
                     </div>
+                    <div><a href="${contextRoot}/Back/manager/register"><button class="btn btn-primary rounded-sm ml-4 mt-4">新增權限</button></a></div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered text-center mb-0">

@@ -25,6 +25,7 @@
                         <h1 class="text-dark">Manager Login</h1>
                         <form:form action="${contextRoot}/Back/manager/login" method="post" modelAttribute="manager">
                             <h5 class="Msg">${Msg}</h5>
+                            <h5 class="Msg">${param.Msg}</h5>
                                 <div class="row">
                                     <div class="col">
                                         <div>
@@ -70,12 +71,12 @@
 
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col" style="text-align:center ;">
-                                        <a href="${contextRoot}/Back/manager/register" id="customer_register_link"
-                                            class="text-primary">註冊帳號</a>
-                                    </div>
-                                </div>
+<%--                                <div class="row">--%>
+<%--                                    <div class="col" style="text-align:center ;">--%>
+<%--                                        <a href="${contextRoot}/Back/manager/register" id="customer_register_link"--%>
+<%--                                            class="text-primary">註冊帳號</a>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
                         </form:form>
                     </div>
                 </div>

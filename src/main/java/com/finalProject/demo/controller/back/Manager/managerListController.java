@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("Back")
@@ -34,9 +35,12 @@ public class managerListController {
 
     @GetMapping("manager/delete/{id}")
     public String delete(@PathVariable("id")Long id, HttpServletRequest request, HttpServletResponse response){
-        managerService.delete(id);
         String cookieName ="tokenM";
-        CookieUtil.removeManagerCookieToken(request, response, cookieName);
+        Long idByCookie = CookieUtil.getIdByCookie(request, cookieName);
+        if(Objects.equals(idByCookie, id)){
+            CookieUtil.removeManagerCookieToken(request, response, cookieName);
+        }
+        managerService.delete(id);
         return"redirect:/Back/manager";
     }
 
