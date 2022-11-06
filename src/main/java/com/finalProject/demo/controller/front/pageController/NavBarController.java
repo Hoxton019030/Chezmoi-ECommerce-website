@@ -2,19 +2,15 @@ package com.finalProject.demo.controller.front.pageController;
 
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 
 import com.finalProject.demo.util.CookieUtil;
-import com.finalProject.demo.util.JwtUtil;
-import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -22,13 +18,6 @@ import com.finalProject.demo.model.entity.cart.Cart;
 import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.service.cart.CartService;
 import com.finalProject.demo.service.member.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
-import java.util.List;
 
 
 @RestController
@@ -63,7 +52,7 @@ public class NavBarController {
 	@GetMapping(value = "/showName")
 	public ResponseEntity<String> showName(HttpServletRequest request, Model model){
 //		Member member = (Member) model.getAttribute("Member");
-		String name = CookieUtil.getMemberNameByCookie(request, "token");
+		String name = CookieUtil.getUserNameByCookie(request, "token");
 		if (name!=null){
 			return new ResponseEntity<>(name, HttpStatus.OK);
 		}

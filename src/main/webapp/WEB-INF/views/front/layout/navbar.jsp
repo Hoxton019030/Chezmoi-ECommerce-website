@@ -16,7 +16,7 @@
     <meta content="Free HTML Templates" name="description">
 <%--    <meta http-equiv="refresh" content="20">--%>
     <!-- Favicon -->
-    <link href="${contextRoot}/img/logo.jpg" rel="icon">
+    <link href="https://img.onl/fUrHvw" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -64,9 +64,9 @@
         <li><a href="https://www.instagram.com/chezmoiiiiiii/?hl=en">Instagram</a></li>
         <li><a href="${contextRoot}/wishTest" class="nav-item nav-link fas fa-heart fa-1x"
                style="font-size:20px"></a></li>
-        <li><a class="position-relative" href="${contextRoot}/cartAll"> <i
-                class="fas fa-shopping-cart fa-1x" style="font-size:20px"></i> <span
-                class="cartQuantity text-white bg-primary">0</span>
+        <li><a class="position-relative" href="${contextRoot}/cartAll">
+            <i class="fas fa-shopping-cart fa-1x" style="font-size:20px"></i>
+            <span class="cartQuantity text-white bg-primary">0</span>
         </a></li>
         <li><a href="${contextRoot}/member" class="nav-item nav-link fas fa-user fa-1x"
                style="font-size:20px"></a></li>
@@ -107,12 +107,6 @@
                     $('#logout').click(function (){
                         window.location.assign(window.location.href);
                     });
-                    // fetch("http://localhost:8080/Chezmoi/member/logout")
-                    //     .then((response)=>{
-                    //        alert(response.text());
-                    //     });
-
-
 				});
 			</script>
 

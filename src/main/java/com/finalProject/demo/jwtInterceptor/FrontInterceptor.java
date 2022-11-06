@@ -3,7 +3,6 @@ package com.finalProject.demo.jwtInterceptor;
 import com.finalProject.demo.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.finalProject.demo.util.CookieUtil.getCookieByName;
-import static com.finalProject.demo.util.CookieUtil.removeCookieToken;
+import static com.finalProject.demo.util.CookieUtil.removeUserCookieToken;
 
 @Component
-public class JwtInterceptor implements HandlerInterceptor {
+public class FrontInterceptor implements HandlerInterceptor {
 
 
     //請求在進入controller前執行
@@ -51,7 +50,7 @@ public class JwtInterceptor implements HandlerInterceptor {
 //                String requestURI = request.getRequestURI();
 //                request.setAttribute("uri",requestURI);
 //                request.getRequestDispatcher("/member/login").forward(request,response);
-                boolean b = removeCookieToken(request,response, "token");
+                boolean b = removeUserCookieToken(request,response, "token");
                 response.sendRedirect(request.getContextPath()+"/member/login");
                 return false;
             }

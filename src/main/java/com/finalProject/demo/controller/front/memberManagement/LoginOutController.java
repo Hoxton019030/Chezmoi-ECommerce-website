@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.finalProject.demo.util.CookieUtil;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -89,10 +87,10 @@ public class LoginOutController {
 				String hasMemberPassword = hasMember.getPassword();
 				boolean check = BCrypt.checkpw(member.getPassword(), hasMemberPassword);//確認pwd是否正確
 				if (check){
-					String jwtToken = JwtUtil.getJwtToken(hasMember.getEmail(), hasMember.getMemberName(),hasMember.getMemberId());
+					String jwtToken = JwtUtil.getUserJwtToken(hasMember.getEmail(), hasMember.getMemberName(),hasMember.getMemberId());
 //					response.setHeader("Authorization", jwtToken);
 					Cookie cookie = new Cookie("token", jwtToken);
-					cookie.setMaxAge(60*10);//有效期限12小時:60*60*12
+					cookie.setMaxAge(60*60*12);//有效期限12小時:60*60*12
 					cookie.setPath("/Chezmoi"); //設置Domain(重要!!!!)
 					response.addCookie(cookie);
 					return "redirect:/";
@@ -106,7 +104,7 @@ public class LoginOutController {
 		@GetMapping("/member/logout")
 		public String logout(HttpServletRequest request, HttpServletResponse response) {
 			String cookieName = "token";
-			boolean b = CookieUtil.removeCookieToken(request, response, cookieName);
+			boolean b = CookieUtil.removeUserCookieToken(request, response, cookieName);
 			return "redirect:/";
 		}
 }
