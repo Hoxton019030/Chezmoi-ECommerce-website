@@ -1,7 +1,6 @@
 package com.finalProject.demo.controller.front.memberManagement;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,7 +49,7 @@ public class ForgotPwdController {
 					} else {
 						re.addAttribute("Msg", "驗證失敗!"); 			   // 畫面顯示：驗證失敗!
 //						System.out.println("驗證忘記密碼失敗!");
-						return "redirect:/member/forgotpassword"; 				   // 返回登入畫面
+						return "redirect:/member/forgotpassword"; 		   // 返回登入畫面
 					}
 			}
 			
@@ -73,7 +72,7 @@ public class ForgotPwdController {
 //					model = getViewUser(request, model);		// 如果要顯示更新成功這三段就要開啟getViewUser方法
 //					model.addAttribute("Msg", "更新成功!");
 //					return "user/user";
-					return "front/member/login";				// 使用此return是不會顯示更新成功
+					return "redirect:member/login";				// 使用此return是不會顯示更新成功
 				}
 				else {
 //					System.out.println("更新失敗!");

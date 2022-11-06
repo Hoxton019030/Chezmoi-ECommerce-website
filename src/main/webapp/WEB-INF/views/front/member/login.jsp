@@ -19,8 +19,6 @@
 
             <body>
                 <div id="login-box" class="container">
-
-
                     <div class="container" id="login-inside">
                         <h1 class="text-dark">Login</h1>
                         <form:form action="${contextRoot}/member/login" method="post" modelAttribute="loginsubmit">
@@ -31,7 +29,6 @@
                                             <form:input type="text" path="email" class="text-field" placeholder="e-mail"
                                                 inputmode="email" autocorrect="off"
                                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required="required"
-                                                oninput="setCustomValidity('');"
                                                 oninvalid="setCustomValidity('請輸入正確的email 例：abc@gmail.com')" />
                                         </div>
                                     </div>
@@ -49,10 +46,10 @@
 
                                 <div class="row my-0">
                                     <div class="col d-flex" style="justify-content:start;align-items:center;">
-
                                         <a href="${contextRoot}/member/forgotpassword" id="forget-pwd"
                                             class="text-primary">忘記密碼？</a>
                                     </div>
+                                    
                                     <div class="col">
                                         <div style="display: flex;
                                         align-items: center;justify-content: end;">
@@ -65,9 +62,7 @@
 
                                 <div class="row">
                                     <div class="col d-flex" style="justify-content:center ;">
-
                                         <input type="submit" id="btn-login" class="btn-primary text-dark" value="登入">
-
                                     </div>
                                 </div>
                                 <div class="row">
@@ -81,12 +76,8 @@
                                         <p>
                                             <a href="${contextRoot}/" class="text-primary">返回首頁</a>
                                         </p>
-
                                     </div>
                                 </div>
-
-
-                            </form>
                         </form:form>
                     </div>
                 </div>
