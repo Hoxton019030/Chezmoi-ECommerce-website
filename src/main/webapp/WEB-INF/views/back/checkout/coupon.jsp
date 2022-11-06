@@ -181,7 +181,7 @@
 
                                                 <c:choose>
                                                     <c:when test="${page.number != pageNumber-1}">
-                                                        <a href="${contextRoot}/view?p=${pageNumber}">${pageNumber}</a>
+                                                        <a href="${contextRoot}/Back/Coupon?p=${pageNumber}">${pageNumber}</a>
                                                     </c:when>
 
                                                     <c:otherwise>
