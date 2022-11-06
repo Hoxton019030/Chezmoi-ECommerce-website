@@ -2,6 +2,7 @@ package com.finalProject.demo.controller.front.memberManagement;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,6 +68,8 @@ public class ForgotPwdController {
 				Member mb = mService.findById(member.getMemberId());
 				if(mb != null) {
 					mb.setPassword(member.getPassword());
+					String hashpw = BCrypt.hashpw(member.getPassword(), BCrypt.gensalt());
+					mb.setPassword(hashpw);
 					mService.insert(mb);
 //					System.out.println("更新成功!");
 //					model = getViewUser(request, model);		// 如果要顯示更新成功這三段就要開啟getViewUser方法
