@@ -39,7 +39,17 @@
     
     <!-- jQ -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+	<style type="text/css">
+	#popWindow{ 
+		width:508px; 
+		height:508px; 
+		background:url(popWindow.png) no-repeat; 
+		box-shadow:5px 5px 10px black; 
+		border:2px gray solid; 
+		border-radius:20px;
+		position:fixed;
+	}
+	</style>
 
 </head>
 
@@ -150,13 +160,35 @@
 
     </div>
 </div>
-
+<div id="popWindow" style="background-color:white;z-index:100;position: relative;background:url('https://img.onl/RjOGus') 0 0 repeat; position:relative;" >
+	<div class="text-right mr-2 mt-2" style="height:3em;"> <button class="btn btn-sm btn-primary" id="close" style="border-radius:10px">
+		<i class="fa fa-times"></i></button>
+	</div>
+	<div class="text-right mr-2 mt-2" style=""> <a href="${contextRoot}/wishTest"><button class="btn btn-sm btn-primary" id="close" style="border-radius:10px;position:absolute; left:224px; top:464px;">
+		  馬上玩</button></a>
+	</div>
+<!-- 	<div class="ml-3"><img style="width:458px; height:458px;" src="https://img.onl/D6bW2M" /></div> -->
+</div>
 
 <!-- Footer Start -->
 <jsp:include page="layout/footer.jsp"></jsp:include>
 <!-- Template Javascript -->
 <script src="${contextRoot}/js/bestSellingAjax.js"></script>
 <script src="${contextRoot}/js/RecommendedAjax.js"></script>
+<script type="text/javascript">
+	function centerHandler(){/*設定置中*/
+	var scrollDist=$(window).scrollTop();/*取得捲動長度*/
+	var myTop=($(window).height()-$("#popWindow").height())/2+scrollDist;
+	var myLeft=($(window).width()-$("#popWindow").width())/2;
+	$("#popWindow").offset({top:myTop,left:myLeft});
+	}
+	centerHandler (); 
+	$(window).scroll(centerHandler);
+	$(window).resize(centerHandler);
+	$('#close').click(function(){
+		$('#popWindow').css("display", "none");
+	})
+</script>
 </body>
 
 </html>
