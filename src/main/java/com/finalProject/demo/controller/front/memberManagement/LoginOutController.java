@@ -104,7 +104,7 @@ public class LoginOutController {
 		@GetMapping("/member/logout")
 		public String logout(HttpServletRequest request, HttpServletResponse response) {
 			String cookieName = "token";
-			boolean b = CookieUtil.removeCookieToken(request, response, cookieName);
+			boolean b = CookieUtil.removeUserCookieToken(request, response, cookieName);
 			return "redirect:/";
 		}
 }

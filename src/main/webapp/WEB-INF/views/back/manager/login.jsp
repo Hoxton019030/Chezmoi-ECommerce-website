@@ -24,7 +24,7 @@
                     <div class="container" id="login-inside">
                         <h1 class="text-dark">Manager Login</h1>
                         <form:form action="${contextRoot}/Back/manager/login" method="post" modelAttribute="manager">
-                            <h5 class="Msg">${param.Msg}</h5>
+                            <h5 class="Msg">${Msg}</h5>
                                 <div class="row">
                                     <div class="col">
                                         <div>

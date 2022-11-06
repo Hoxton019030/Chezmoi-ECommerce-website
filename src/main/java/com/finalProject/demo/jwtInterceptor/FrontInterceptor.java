@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.finalProject.demo.util.CookieUtil.getCookieByName;
-import static com.finalProject.demo.util.CookieUtil.removeCookieToken;
+import static com.finalProject.demo.util.CookieUtil.removeUserCookieToken;
 
 @Component
 public class FrontInterceptor implements HandlerInterceptor {
@@ -50,7 +50,7 @@ public class FrontInterceptor implements HandlerInterceptor {
 //                String requestURI = request.getRequestURI();
 //                request.setAttribute("uri",requestURI);
 //                request.getRequestDispatcher("/member/login").forward(request,response);
-                boolean b = removeCookieToken(request,response, "token");
+                boolean b = removeUserCookieToken(request,response, "token");
                 response.sendRedirect(request.getContextPath()+"/member/login");
                 return false;
             }

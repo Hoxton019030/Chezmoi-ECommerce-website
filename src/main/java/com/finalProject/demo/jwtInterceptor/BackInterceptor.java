@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.finalProject.demo.util.CookieUtil.getCookieByName;
-import static com.finalProject.demo.util.CookieUtil.removeCookieToken;
+import static com.finalProject.demo.util.CookieUtil.removeUserCookieToken;
 
 @Component
 public class BackInterceptor implements HandlerInterceptor {
@@ -24,7 +24,7 @@ public class BackInterceptor implements HandlerInterceptor {
         //從http請求頭獲取token
         Cookie[] cookies = request.getCookies();
         if (cookies.length>0){
-            Cookie tokenByCookie = getCookieByName(request, "token");
+            Cookie tokenByCookie = getCookieByName(request, "tokenM");
             if (tokenByCookie!=null){
                 String tokenValue = tokenByCookie.getValue();
                 try {
@@ -55,13 +55,14 @@ public class BackInterceptor implements HandlerInterceptor {
 //                String requestURI = request.getRequestURI();
 //                request.setAttribute("uri",requestURI);
 //                request.getRequestDispatcher("/member/login").forward(request,response);
-                boolean b = removeCookieToken(request,response, "token");
+                boolean b = removeUserCookieToken(request,response, "token");
                 response.sendRedirect(request.getContextPath()+"/Back/manager/login");
                 return false;
             }
 
         }
-        return true;
+        response.sendRedirect(request.getContextPath()+"/Back/manager/login");
+        return false;
 
     }
     //controller之後執行

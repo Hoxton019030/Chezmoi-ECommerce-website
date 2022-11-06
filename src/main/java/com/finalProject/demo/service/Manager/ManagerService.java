@@ -2,8 +2,13 @@ package com.finalProject.demo.service.Manager;
 
 
 import com.finalProject.demo.model.entity.manager.Manager;
+import com.finalProject.demo.model.entity.member.Member;
 import com.finalProject.demo.repository.manager.ManagerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -35,5 +40,14 @@ public class ManagerService {
         Optional<Manager> optional =managerRepository.findById(managerId);
         return optional.orElse(null);
 
+    }
+
+    public Page<Manager> findByPage(Integer pageNumber){
+        Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.ASC, "managerId");
+        return managerRepository.findAll(pgb);
+    }
+
+    public void delete(Long id){
+        managerRepository.deleteById(id);
     }
 }

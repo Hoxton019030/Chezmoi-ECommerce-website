@@ -23,7 +23,7 @@ public class webConfig  implements WebMvcConfigurer {
 
 
         registry.addInterceptor(new BackInterceptor())//後台
-                .excludePathPatterns("/Back/manager/login","/Back/manager/register","/Back/manager/logout") //"/Back/manager/register",
+                .excludePathPatterns("/Back/manager/login","/Back/manager/register","/Back/manager/logout")
                 .addPathPatterns("/Back/**","/back/**");
     }
 }

@@ -42,7 +42,7 @@ public class backLoginController {
             if (check){
                 String jwtToken = JwtUtil.getManagerJwtToken(manager1.getEmail(),manager1.getManagerName(),manager1.getManagerId());
 //					response.setHeader("Authorization", jwtToken);
-                Cookie cookie = new Cookie("token", jwtToken);
+                Cookie cookie = new Cookie("tokenM", jwtToken);
                 cookie.setMaxAge(60*10);//有效期限2小時:60*60*12
                 cookie.setPath("/Chezmoi/Back"); //設置Domain(重要!!!!)
                 response.addCookie(cookie);
@@ -53,5 +53,7 @@ public class backLoginController {
         }
         return "back/manager/login";
     }
+
+
 
 }

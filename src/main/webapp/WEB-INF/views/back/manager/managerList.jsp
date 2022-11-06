@@ -3,6 +3,7 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +24,8 @@
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/fda1db8ac4.js" crossorigin="anonymous"></script>
 
     <!-- Libraries Stylesheet -->
     <link href="${pageContext.request.contextPath}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -53,7 +56,7 @@
                 <div class="col-lg-12 border-secondary  border mb-5 mt-3" style="padding-left: 0; padding-right:0;">
 
                     <div class="card-header border bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">會員資料表</h4>
+                        <h4 class="font-weight-semi-bold m-0">管理員權限</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -63,21 +66,19 @@
                                         <th>管理者ID</th>
                                         <th>姓名</th>
                                         <th>電話</th>
-                                        <th>E-mail</th>
-                                        <th>編輯</th>
+                                        <th>帳號</th>
                                         <th>刪除</th>
                                     </tr>
                                 </thead>
                                 
-                                <c:forEach var="showMember" items="${page.content}" >
+                                <c:forEach var="mana" items="${page.content}" >
                                 <tbody class="align-middle">
                                     <tr>
-                                        <td class="align-middle">${showMember.memberId}</td>
-                                        <td class="align-middle">${showMember.memberName}</td>
-                                        <td class="align-middle">${showMember.phone}</td>
-                                        <td class="align-middle">${showMember.email}</td>
-                                        <td><a>編輯</a></td>
-                                        <td><a>刪除</a></td>
+                                        <td class="align-middle">${mana.managerId}</td>
+                                        <td class="align-middle">${mana.managerName}</td>
+                                        <td class="align-middle">${mana.phone}</td>
+                                        <td class="align-middle">${mana.email}</td>
+                                        <td><a href="${contextRoot}/Back/manager/delete/${mana.managerId}"onClick="return confirm(`確定要刪除此管理員嗎?`);"><i class="fa-solid fa-trash-can"></i></a></td>
                                     </tr>
                                 </tbody>
                                 </c:forEach>

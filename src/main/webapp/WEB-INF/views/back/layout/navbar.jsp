@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+    <script src="https://kit.fontawesome.com/fda1db8ac4.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="col-lg-3 d-none d-lg-block pt-3">
@@ -65,7 +66,7 @@
                             <a
                                     class="btn shadow-none d-flex border-bottom align-items-center justify-content-between bg-primary text-white w-100">權限管理</a>
                             <ul class="inmenu">
-                                <li><a href="${contextRoot}/Back/#"
+                                <li><a href="${contextRoot}/Back/manager"
                                        class="btn d-flex border-bottom align-items-center justify-content-between text-black w-100">權限管理</a>
                                 </li>
                             </ul>
