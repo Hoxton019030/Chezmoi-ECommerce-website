@@ -87,11 +87,11 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	public List<Map<String,Object>> distinctColor(@Param("seriesForColor")String series);
 
 	//Index Weekly best
-	@Query(value="select Top 8 productName , Sum(quantity),price, photoId,productId from OrderDetail  Group by productName,price,photoId,productId ORDER BY  Sum(Quantity) DESC ,productName ", nativeQuery=true)
+	@Query(value=" select Top 8 productName , Sum(quantity),price, photoId,productId from OrderDetail  Group by productName,price,photoId,productId ORDER BY  Sum(Quantity) DESC ,productName ", nativeQuery=true)
 	public List<Map<String,Object>> BestSelling();
 
 	//Index Recommended Items
-	@Query(value="  select distinct productName, Max(UpdateTime) ,price,photoId, productState  from products WHERE productState='ON'  Group by productName, price,photoId, productState   ORDER BY MAX(UpdateTime) DESC, productName  \n", nativeQuery=true)
+	@Query(value="select distinct Top 8 productName, Max(UpdateTime) ,price,photoId, productState,series from products WHERE productState='ON'  Group by productName, price,photoId, productState,series   ORDER BY MAX(UpdateTime) DESC, productName", nativeQuery=true)
 	public List<Map<String,Object>> RecommendedItems();
 
 
