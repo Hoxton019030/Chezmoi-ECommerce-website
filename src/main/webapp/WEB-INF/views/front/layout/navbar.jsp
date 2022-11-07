@@ -56,7 +56,7 @@
                 <li class="btn-block"><a class="dropdown-item" href="${contextRoot}/shop/Bottom">Bottom</a></li>
                 <li class="btn-block"><a class="dropdown-item" href="${contextRoot}/shop/Outer">Outer</a></li>
                 <li class="btn-block"><a class="dropdown-item" href="${contextRoot}/shop/Dress">Dress</a></li>
-                <li class="btn-block"><a class="dropdown-item" href="${contextRoot}/shop/Acc">Accessories</a></li>
+                <li class="btn-block"><a class="dropdown-item" href="${contextRoot}/shop/Accessories">Accessories</a></li>
             </ul>
         </li>
         <li><a href="${contextRoot}/notice">Notice</a></li>
