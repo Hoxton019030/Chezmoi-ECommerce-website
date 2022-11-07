@@ -50,13 +50,19 @@
 <%--		</div>--%>
 <%--	</div>--%>
 	<!-- Page Header End -->
+	<div class="container-fluid mb-0 mt-0 text-center">
+		<div class="align-items-center justify-content-center w-100" style="min-height: 100px; display: flex;">
+			<h2 class="font-weight-semi-bold text-uppercase" style="">Contact
+			</h2>
+		</div>
+	</div>
 	<div>
-		<img style="margin: auto; display: flex; width:600px" class="w-35"
+		<img style="margin: auto; display: block; width:600px" class="w-35"
 			src="https://img.onl/pt23FT" alt="">
 	</div>
 
 	<!-- Cart Start -->
-	<div class="container-fluid border-0">
+	<div class="container-fluid border-0 w-100">
 		<div class="row px-xl-5 justify-content-center">
 			<div class="col-lg-5 border-secondary border-0 mb-5"
 				style="margin: 20px; padding-left: 0; padding-right: 0;">
