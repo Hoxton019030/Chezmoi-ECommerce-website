@@ -38,11 +38,13 @@
     <link href="${contextRoot}/css/style.css" rel="stylesheet">
     </script>
 
+    <!-- jQ -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
     </script>
 
-    <!-- jQ -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
     <style type="text/css">
         #popWindow {
             width: 508px;
@@ -67,7 +69,7 @@
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="img-fluid" src="https://img.onl/T9wODj" alt="Image">
+                <img class="img-fluid" src="${contextRoot}/img/carousel1.jpg" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3 rwdtxt" style="max-width: 100%;">
                         <h4 class="text-light text-uppercase font-weight-medium "
@@ -81,7 +83,7 @@
                 </div>
             </div>h
             <div class="carousel-item">
-                <img class="img-fluid" src="https://img.onl/WFe8Aj" alt="Image">
+                <img class="img-fluid" src="${contextRoot}/img/carousel2.jpg" alt="Image"><!--https://img.onl/WFe8Aj-->
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3 rwdtxt" style="max-width: 100%;">
                         <h4 class="text-light text-uppercase font-weight-medium "
@@ -95,7 +97,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="img-fluid" src="https://img.onl/UyuC5k" alt="Image">
+                <img class="img-fluid" src="${contextRoot}/img/carousel3.jpg" alt="Image"><!--https://img.onl/UyuC5k-->
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3 rwdtxt" style="max-width: 100%;">
                         <h4 class="text-light text-uppercase font-weight-medium "

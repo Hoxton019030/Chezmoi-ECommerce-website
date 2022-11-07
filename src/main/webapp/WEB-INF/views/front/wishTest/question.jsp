@@ -244,7 +244,7 @@
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
 	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                    	推薦妳這件${p.name}</a></h4>
-	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <a href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
 	                                </a>
 	                            </div>
@@ -260,7 +260,7 @@
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
 	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                    	推薦妳這件${p.name}</a></h4>
-	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <a href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
 	                                </a>
 	                            </div>
@@ -276,7 +276,7 @@
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
 	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                    	推薦妳這件${p.name}</a></h4>
-	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <a href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
 	                                </a>
 	                            </div>
@@ -292,7 +292,7 @@
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
 	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                    	推薦妳這件${p.name}</a></h4>
-	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <a href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
 	                                </a>
 	                            </div>
@@ -308,7 +308,7 @@
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
 	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                    	推薦妳這件${p.name}</a></h4>
-	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <a href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
 	                                </a>
 	                            </div>
