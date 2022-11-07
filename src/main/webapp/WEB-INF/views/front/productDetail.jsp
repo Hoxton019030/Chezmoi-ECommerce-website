@@ -67,7 +67,7 @@
 
     <!-- title -->
     <!-- product descript start-->
-    <div class="detailArea border-b1" style="width:900px; padding-bottom:70px; margin:auto">
+    <div class="detailArea border-b1" style="width:900px; padding-bottom:70px; margin:auto;">
         <div class="detail-img-box ">
             <div class="detail-img">
                 <img src="http://localhost:8080/Chezmoi/getMainPic/${productsId.photo.photoId}" alt=""

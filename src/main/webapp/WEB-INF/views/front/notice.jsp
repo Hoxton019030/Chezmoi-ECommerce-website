@@ -47,8 +47,8 @@
 
  <!-- Page Header Start -->
     <div class="container-fluid mb-0 mt-0 text-center">
-        <div class="align-items-center justify-content-center" style="min-height: 100px; display: flex;">
-            <h2 class="font-weight-semi-bold text-uppercase" style="margin-right: 1em;">Notice
+        <div class="align-items-center justify-content-center w-100" style="min-height: 100px; display: flex;">
+            <h2 class="font-weight-semi-bold text-uppercase" style="">Notice
             </h2>
         </div>
     </div>

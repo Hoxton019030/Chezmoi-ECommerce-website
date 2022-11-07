@@ -36,20 +36,24 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="${contextRoot}/css/style.css" rel="stylesheet">
-    
+    </script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    </script>
+
     <!-- jQ -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<style type="text/css">
-	#popWindow{ 
-		width:508px; 
-		height:508px; 
-		background:url(popWindow.png) no-repeat; 
-		box-shadow:5px 5px 10px black; 
-		border:2px gray solid; 
-		border-radius:20px;
-		position:fixed;
-	}
-	</style>
+    <style type="text/css">
+        #popWindow {
+            width: 508px;
+            height: 508px;
+            background: url(popWindow.png) no-repeat;
+            box-shadow: 5px 5px 10px black;
+            border: 2px gray solid;
+            border-radius: 20px;
+            position: fixed;
+        }
+    </style>
 
 </head>
 
@@ -63,13 +67,27 @@
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="img-fluid" src=" https://img.onl/RYAXsY " alt="Image">
+                <img class="img-fluid" src="https://img.onl/T9wODj" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3 rwdtxt" style="max-width: 100%;">
-                        <h4 class="text-light text-uppercase font-weight-medium mb-3"
+                        <h4 class="text-light text-uppercase font-weight-medium "
                             style="font-size:4em; font-family:Georgia, serif">Look Book
                         </h4>
-                        <h3 class="display-4 text-white font-weight-semi-bold mb-4"
+                        <h3 class="display-4 text-white font-weight-semi-bold "
+                            style="font-size:2em; font-family:Georgia, serif;font-style:italic">All from
+                            Korea</h3>
+                        <a href="${contextRoot}/shop" class="btn btn-light py-2 px-3">Shop Now</a>
+                    </div>
+                </div>
+            </div>h
+            <div class="carousel-item">
+                <img class="img-fluid" src="https://img.onl/WFe8Aj" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3 rwdtxt" style="max-width: 100%;">
+                        <h4 class="text-light text-uppercase font-weight-medium "
+                            style="font-size:4em; font-family:Georgia, serif; margin:auto">Look Book
+                        </h4>
+                        <h3 class="display-4 text-white font-weight-semi-bold "
                             style="font-size:2em; font-family:Georgia, serif;font-style:italic">All from
                             Korea</h3>
                         <a href="${contextRoot}/shop" class="btn btn-light py-2 px-3">Shop Now</a>
@@ -77,13 +95,13 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="img-fluid" src=" https://img.onl/RYAXsY " alt="Image">
+                <img class="img-fluid" src="https://img.onl/UyuC5k" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 100%;">
-                        <h4 class="text-light text-uppercase font-weight-medium mb-3"
-                            style="font-size:4em; font-family:Georgia, serif">Look Book
+                    <div class="p-3 rwdtxt" style="max-width: 100%;">
+                        <h4 class="text-light text-uppercase font-weight-medium "
+                            style="font-size:4em; font-family:Georgia, serif; margin:auto">Look Book
                         </h4>
-                        <h3 class="display-4 text-white font-weight-semi-bold mb-4"
+                        <h3 class="display-4 text-white font-weight-semi-bold "
                             style="font-size:2em; font-family:Georgia, serif;font-style:italic">All from
                             Korea</h3>
                         <a href="${contextRoot}/shop" class="btn btn-light py-2 px-3">Shop Now</a>
@@ -106,31 +124,31 @@
 
 
 <!-- Best Selling Products Start -->
-<div class="container-fluid pt-5" >
+<div class="container-fluid pt-5">
     <div class="text-center" style="padding-top:40px;margin-bottom:20px">
         <h2 class="section-title px-5"><span class="px-2" style="font-family:Georgia, serif;font-style:italic">Weekly Best</span>
         </h2>
     </div>
     <div class="row px-xl-5 pb-3" id="BestItem">
-<%--        <c:forEach var="products" items="${page.content}">--%>
-<%--        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">--%>
-<%--            <div class="card product-item border-0 mb-4">--%>
-<%--                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">--%>
-<%--                    <img class="img-fluid w-100"--%>
-<%--                         src="http://localhost:8080/Chezmoi/getMainPic/${products.photo.photoId}" alt="">--%>
-<%--                </div>--%>
-<%--                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">--%>
-<%--                    <a href="${contextRoot}/shop/productDetail?productId=${products.productId}">--%>
-<%--                        <h6 class="text-truncate mb-3">${products.name}</h6>--%>
-<%--                        <div class="d-flex justify-content-center">--%>
-<%--                            <h6>${products.price}</h6>--%>
-<%--                            <!-- <h6 class="text-muted ml-2"><del>$1380</del></h6> -->--%>
-<%--                        </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        <%--        <c:forEach var="products" items="${page.content}">--%>
+        <%--        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">--%>
+        <%--            <div class="card product-item border-0 mb-4">--%>
+        <%--                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">--%>
+        <%--                    <img class="img-fluid w-100"--%>
+        <%--                         src="http://localhost:8080/Chezmoi/getMainPic/${products.photo.photoId}" alt="">--%>
+        <%--                </div>--%>
+        <%--                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">--%>
+        <%--                    <a href="${contextRoot}/shop/productDetail?productId=${products.productId}">--%>
+        <%--                        <h6 class="text-truncate mb-3">${products.name}</h6>--%>
+        <%--                        <div class="d-flex justify-content-center">--%>
+        <%--                            <h6>${products.price}</h6>--%>
+        <%--                            <!-- <h6 class="text-muted ml-2"><del>$1380</del></h6> -->--%>
+        <%--                        </div>--%>
+        <%--                </div>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
     </div>
-<%--    </c:forEach>--%>
+    <%--    </c:forEach>--%>
 </div>
 
 <!-- Best Selling Products End -->
@@ -160,14 +178,20 @@
 
     </div>
 </div>
-<div id="popWindow" style="background-color:white;z-index:100;position: relative;background:url('https://img.onl/RjOGus') 0 0 repeat; position:relative;" >
-	<div class="text-right mr-2 mt-2" style="height:3em;"> <button class="btn btn-sm btn-primary" id="close" style="border-radius:10px">
-		<i class="fa fa-times"></i></button>
-	</div>
-	<div class="text-right mr-2 mt-2" style=""> <a href="${contextRoot}/wishTest"><button class="btn btn-sm btn-primary" id="close" style="border-radius:10px;position:absolute; left:224px; top:464px;">
-		  馬上玩</button></a>
-	</div>
-<!-- 	<div class="ml-3"><img style="width:458px; height:458px;" src="https://img.onl/D6bW2M" /></div> -->
+<div id="popWindow"
+     style="background-color:white;z-index:100;position: relative;background:url('https://img.onl/RjOGus') 0 0 repeat; position:relative;">
+    <div class="text-right mr-2 mt-2" style="height:3em;">
+        <button class="btn btn-sm btn-primary" id="close" style="border-radius:10px">
+            <i class="fa fa-times"></i></button>
+    </div>
+    <div class="text-right mr-2 mt-2" style=""><a href="${contextRoot}/wishTest">
+        <button class="btn btn-sm btn-primary" id="close"
+                style="border-radius:10px;position:absolute; left:224px; top:464px;">
+            馬上玩
+        </button>
+    </a>
+    </div>
+    <!-- 	<div class="ml-3"><img style="width:458px; height:458px;" src="https://img.onl/D6bW2M" /></div> -->
 </div>
 
 <!-- Footer Start -->
@@ -176,19 +200,21 @@
 <script src="${contextRoot}/js/bestSellingAjax.js"></script>
 <script src="${contextRoot}/js/RecommendedAjax.js"></script>
 <script type="text/javascript">
-	function centerHandler(){/*設定置中*/
-	var scrollDist=$(window).scrollTop();/*取得捲動長度*/
-	var myTop=($(window).height()-$("#popWindow").height())/2+scrollDist;
-	var myLeft=($(window).width()-$("#popWindow").width())/2;
-	$("#popWindow").offset({top:myTop,left:myLeft});
-	}
-	centerHandler (); 
-	$(window).scroll(centerHandler);
-	$(window).resize(centerHandler);
-	$('#close').click(function(){
-		$('#popWindow').css("display", "none");
-	})
+    function centerHandler() {/*設定置中*/
+        var scrollDist = $(window).scrollTop();/*取得捲動長度*/
+        var myTop = ($(window).height() - $("#popWindow").height()) / 2 + scrollDist;
+        var myLeft = ($(window).width() - $("#popWindow").width()) / 2;
+        $("#popWindow").offset({top: myTop, left: myLeft});
+    }
+
+    centerHandler();
+    $(window).scroll(centerHandler);
+    $(window).resize(centerHandler);
+    $('#close').click(function () {
+        $('#popWindow').css("display", "none");
+    })
 </script>
+
 </body>
 
 </html>
