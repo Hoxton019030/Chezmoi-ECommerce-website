@@ -147,11 +147,11 @@
                  src="http://localhost:8080/Chezmoi/getPic2/${productsId.photo.photoId}" alt="${productsId.productId}"></p>
         <br>
         <p>
-            <img class="img-fluid w-300"
+            <img class="img-fluid w-300" style="width:60%; text-align; margin:auto"
                  src="http://localhost:8080/Chezmoi/getPic3/${productsId.photo.photoId}" alt="${productsId.productId}" ></p>
         <br>
         <p>
-            <img class="img-fluid w-300"
+            <img class="img-fluid w-300" style="width:60%; text-align; margin:auto"
                  src="http://localhost:8080/Chezmoi/getPic4/${productsId.photo.photoId}"alt="${productsId.productId}" ></p>
         <br>
     </div>

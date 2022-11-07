@@ -84,5 +84,6 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	//Index Recommended Items
 	@Query(value="select distinct Top 8 productName, Max(UpdateTime) ,price,photoId, productState,series from products WHERE productState='ON'  Group by productName, price,photoId, productState,series   ORDER BY MAX(UpdateTime) DESC, productName", nativeQuery=true)
 	public List<Map<String,Object>> RecommendedItems();
+	
 
 }
