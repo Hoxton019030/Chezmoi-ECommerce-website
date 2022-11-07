@@ -12,7 +12,7 @@ $(document).ready(function () {
             $.each(array, function (index, value) {
 
                 $('#tbody')
-                    .append('<div class="col-lg-3 col-md-6 col-sm-12 pb-1">'+
+                    .append('<div class="col-lg-3 col-6 pb-1">'+
                         '\n <div class="card product-item border-0 mb-4">'+
                         '\n <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">' +
                         '\n <img class="img-fluid w-300" src="http://localhost:8080/Chezmoi/getMainPic/' + value.photoId + '" ' +
