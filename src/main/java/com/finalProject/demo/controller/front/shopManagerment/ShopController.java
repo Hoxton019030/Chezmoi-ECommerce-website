@@ -41,8 +41,6 @@ public class ShopController {
     public String viewProducts(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
         Page<Products> page = shopService.findByPage(pageNumber);
         model.addAttribute("page", page);
-//		Photo photo=photoService.findById(photoId);
-//		model.addAttribute("Photo", photo);
         return "front/shop";
 
     }
@@ -54,7 +52,7 @@ public class ShopController {
     @ResponseBody
     @GetMapping("/BestSelling")
     public List<Map<String, Object>> BestSelling() {
-        List<Map<String, Object>> objList = productRepository.BestSelling();
+        List<Map<String, Object>> objList = shopService.BestSelling();
         return objList;
     }
 
@@ -64,7 +62,7 @@ public class ShopController {
     @ResponseBody
     @GetMapping("/RecommendedItems")
     public List<Map<String, Object>> RecommendedItems() {
-        List<Map<String, Object>> objList = productRepository.RecommendedItems();
+        List<Map<String, Object>> objList = shopService.RecommendedItems();
         return objList;
     }
 
@@ -74,38 +72,16 @@ public class ShopController {
     @ResponseBody
     @GetMapping("/distinctProduct")
     public List<Map<String, Object>> distinctProduct() {
-        List<Map<String, Object>> objList = productRepository.distinctProduct();
+        List<Map<String, Object>> objList = shopService.distinctProduct();
         return objList;
     }
 
     /*
-    for ShopDetail頁面Size的Ajax
-     */
-    @ResponseBody
-    @GetMapping("/distinctSize")
-    public List<Map<String, Object>> distinctSize(@RequestParam("series") String series) {
-        List<Map<String, Object>> objListSize = productRepository.distinctSize(series);
-        return objListSize;
-    }
-
-    /*
-    for ShopDetail頁面Color的Ajax
-     */
-    @ResponseBody
-    @GetMapping("/distinctColor")
-    public List<Map<String, Object>> distinctColor(@RequestParam("series") String series) {
-        List<Map<String, Object>> objListColor = productRepository.distinctColor(series);
-        return objListColor;
-    }
-
-
-/*
-設定按下商品分類可跳出相對應的商品
- */
+     設定按下商品分類可跳出相對應的商品
+    */
     @GetMapping("/shop/{category}")
     public String distinctCatProduct(@PathVariable String category, Model model) {
-        List<Map<String, Object>> objListCat = productRepository.distinctCatProduct(category);
-//		System.out.println(objListCat.get(0).get("productName"));
+        List<Map<String, Object>> objListCat = shopService.distinctCatProduct(category);
         model.addAttribute("category", objListCat);
         return "front/CatProduct";
     }
@@ -127,19 +103,24 @@ public class ShopController {
     }
 
     /*
-     * 設定按下商品分類可跳出相對應的商品
+for ShopDetail頁面Size的Ajax
+ */
+    @ResponseBody
+    @GetMapping("/distinctSize")
+    public List<Map<String, Object>> distinctSize(@RequestParam("series") String series) {
+        List<Map<String, Object>> objListSize = shopService.distinctSize(series);
+        return objListSize;
+    }
+
+    /*
+    for ShopDetail頁面Color的Ajax
      */
-//	@GetMapping("/shop/{category}")
-//	public String viewTopProducts(@PathVariable("category")String category, Model model) {
-//		List<Products> productcategory=shopService.findProductByCategory(category);
-//		model.addAttribute("category", productcategory);
-//		return "front/CatProduct";
-//	}
-
-
-
-
-
+    @ResponseBody
+    @GetMapping("/distinctColor")
+    public List<Map<String, Object>> distinctColor(@RequestParam("series") String series) {
+        List<Map<String, Object>> objListColor = shopService.distinctColor(series);
+        return objListColor;
+    }
 
 }
 

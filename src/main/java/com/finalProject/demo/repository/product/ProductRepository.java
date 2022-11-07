@@ -40,8 +40,7 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 			@Param("state2")String state,
 			@Param("id2")String id
 	);
-//	@Query()
-//	Optional<Products> findBySeriesOne(String series);
+
 
 	/*
 	for productdetail取尺寸、顏色用
@@ -50,14 +49,6 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 
 	Optional<List<Products>> findProductByCategory(String category);
 
-	// public List<Products> findFirstByOrderByCreatTimesDesc();
-
-	// 按照productName同樣商品名也只取一筆
-//	@Query(value = "SELECT DISTINCT series,productName,price  FROM products", nativeQuery = true)
-//	public List<Products> findDistinctBySeries();
-
-//	@Query(value = "TOP 1 * FROM Products WHERE productId=:productId3", nativeQuery = true)
-//	public Products findTopByProductId(@Param("productId3")String productId);
 	
 	//update price  by series
 	@Modifying
@@ -93,10 +84,6 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	//Index Recommended Items
 	@Query(value="select distinct Top 8 productName, Max(UpdateTime) ,price,photoId, productState,series from products WHERE productState='ON'  Group by productName, price,photoId, productState,series   ORDER BY MAX(UpdateTime) DESC, productName", nativeQuery=true)
 	public List<Map<String,Object>> RecommendedItems();
-
-
-
-
 
 
 }

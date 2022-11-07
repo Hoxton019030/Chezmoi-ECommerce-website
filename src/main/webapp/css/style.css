@@ -168,7 +168,7 @@ nav ul li a {
  nav a:hover,
  nav a.active {
     background: none;
-    color: aqua;
+    color: brown;
   }
 
   #check:checked~ul {
