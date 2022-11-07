@@ -6,9 +6,12 @@ $(document).ready(function () {
     fetch("http://localhost:8080/Chezmoi/RecommendedItems").then(function (response) {
         return response.json();
     }).then(function (array) {
+
         alert(value.productId.substring(0, 4))
         $.each(array, function (index, value) {
+            alert(123123123123123)
             $('#RecommendedItem')
+
                 .append(
                     '<div class="col-lg-3 col-6 pb-1">' +
                     '\n <div class="card product-item border-0 mb-4">' +

@@ -63,6 +63,9 @@ public class ShopController {
     @GetMapping("/RecommendedItems")
     public List<Map<String, Object>> RecommendedItems() {
         List<Map<String, Object>> objList = shopService.RecommendedItems();
+        for (Map<String, Object> stringObjectMap : objList) {
+            System.out.println("stringObjectMap = " + stringObjectMap);
+        }
         return objList;
     }
 

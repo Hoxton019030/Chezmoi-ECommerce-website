@@ -10,11 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Map;
@@ -102,14 +97,14 @@ public class ShopService {
     public List<Map<String, Object>> distinctProduct() {
         List<Map<String, Object>> objList = productRepository.distinctProduct();
         return objList;
-
+    }
 
 	 /*
      設定按下商品分類可跳出相對應的商品
     */
-        public String distinctCatProduct (String category){
-//            List<Map<String, Object>> objListCat = productRepository.distinctCatProduct(category);
-//            return objListCat;
+        public List<Map<String,Object>> distinctCatProduct (String category){
+            List<Map<String, Object>> objListCat = productRepository.distinctCatProduct(category);
+            return objListCat;
         }
 
 
@@ -125,9 +120,9 @@ public class ShopService {
     for ShopDetail頁面Color的Ajax
      */
         public List<Map<String, Object>> distinctColor(String series) {
-//            List<Map<String, Object>> objListColor = productRepository.distinctColor(series);
-//            return objListColor;
+            List<Map<String, Object>> objListColor = productRepository.distinctColor(series);
+            return objListColor;
         }
 
-    }
+
 }
