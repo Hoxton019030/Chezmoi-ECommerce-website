@@ -91,7 +91,7 @@ public interface ProductRepository extends JpaRepository<Products, String> {
 	public List<Map<String,Object>> BestSelling();
 
 	//Index Recommended Items
-	@Query(value="  select distinct productName, Max(UpdateTime) ,price,photoId, productState  from products WHERE productState='ON'  Group by productName, price,photoId, productState   ORDER BY MAX(UpdateTime) DESC, productName  \n", nativeQuery=true)
+	@Query(value="  select distinct productName, Max(UpdateTime) ,price,photoId,productState  from products WHERE productState='ON'  Group by productName, price,photoId, productState   ORDER BY MAX(UpdateTime) DESC, productName  \n", nativeQuery=true)
 	public List<Map<String,Object>> RecommendedItems();
 
 

@@ -43,7 +43,7 @@ public class backLoginController {
                 String jwtToken = JwtUtil.getManagerJwtToken(manager1.getEmail(),manager1.getManagerName(),manager1.getManagerId());
 //					response.setHeader("Authorization", jwtToken);
                 Cookie cookie = new Cookie("tokenM", jwtToken);
-                cookie.setMaxAge(60*10);//有效期限2小時:60*60*12
+                cookie.setMaxAge(60*60*12);//有效期限2小時:60*60*12
                 cookie.setPath("/Chezmoi/Back"); //設置Domain(重要!!!!)
                 response.addCookie(cookie);
                 return "redirect:/Back/member/showMember";
