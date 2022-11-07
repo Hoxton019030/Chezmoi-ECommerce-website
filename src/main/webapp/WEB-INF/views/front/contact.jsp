@@ -43,17 +43,16 @@
 <body>
 	<jsp:include page="layout/navbar.jsp"></jsp:include>
 	<!-- Page Header Start -->
-	<div class="container-fluid mb-0 mt-0">
-		<div class="align-items-center justify-content-center"
-			style="min-height: 100px; display: flex;">
-			<h2 class="font-weight-semi-bold text-uppercase"
-				style="margin-right: 1em;">Contact</h2>
-		</div>
-	</div>
+<%--	<div class="container-fluid mb-0 mt-0">--%>
+<%--		<div class="margin:auto align-items-center justify-content-center"--%>
+<%--			style="min-height: 100px;display: flex;">--%>
+<%--			<h2 class="font-weight-medium mr-2">Contact</h2>--%>
+<%--		</div>--%>
+<%--	</div>--%>
 	<!-- Page Header End -->
 	<div>
-		<img style="margin: auto; display: flex;" class="w-35"
-			src="img/contactpic.jpg" alt="">
+		<img style="margin: auto; display: flex; width:600px" class="w-35"
+			src="https://img.onl/pt23FT" alt="">
 	</div>
 
 	<!-- Cart Start -->
@@ -65,28 +64,28 @@
 				<div class="card-body bordernocolor">
 					<div class="d-flex pt-1 mb-2">
 						<h6 class=" font-weight-medium mr-2">
-							<img src="img/ig.png" width="20" height="20"> Instagram:
+							<img src="https://img.onl/yrK3CD" width="20" height="20"> Instagram:
 						</h6>
 						<a class="a" href="https://www.instagram.com/chezmoiiiiiii/?hl=en"
 							target="_blank"> chezmoiiiiiii</a>
 					</div>
 					<div class="d-flex pt-1 mb-2">
 						<h6 class=" font-weight-medium mr-2">
-							<img src="img/fb.jpg" width="20" height="20"> Facebook:
+							<img src="https://img.onl/WHMaGD" width="20" height="20"> Facebook:
 						</h6>
 						<a class="a" href="https://www.facebook.com/chezmoiiiiiii"
 							target="_blank"> chezmoiiiiiii</a>
 					</div>
 					<div class="d-flex pt-1 mb-2">
 						<h6 class=" font-weight-medium mr-2">
-							<img src="img/shopee.png" width="20" height="20"> Shopee:
+							<img src="https://img.onl/u5bfBN" width="20" height="20"> Shopee:
 						</h6>
 						<a class="a" href="https://shopee.tw/shine2570" target="_blank">
 							chezmoiiiiiii</a>
 					</div>
 					<div class="d-flex pt-1 mb-2">
 						<h6 class=" font-weight-medium mr-2">
-							<img src="img/gmail.jpg" width="20" height="20"> Email:
+							<img src="https://img.onl/PBtKjd" width="20" height="20"> Email:
 						</h6>
 						<a class="a"> chezmoiiiiiii@gmail.com</a>
 					</div>

@@ -86,8 +86,8 @@ public class Orders {
 	private Integer total;
 	//增加在orderdetail中
 	
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="orderDate",nullable = false)
 	private Date orderDate;
 		

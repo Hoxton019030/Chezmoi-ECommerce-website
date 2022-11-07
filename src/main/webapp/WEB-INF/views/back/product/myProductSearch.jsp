@@ -125,7 +125,7 @@
                                                         </div>
                                                         <div class="">
                                                             <button class="btn btn-primary rounded-sm" type="button"
-                                                                onclick="javascript:location.href='#'"
+                                                                onclick="deleteUser()"
                                                                 name="creatProduct" id="creatProduct">全部刪除
                                                             </button>
                                                         </div>
@@ -156,7 +156,7 @@
                                                 <tbody class="align-middle" id="tbody">
                                                 <c:forEach var="product" items="${list}">
                                                     <tr class="text-center">
-                                                        <td><input type="checkbox" style="zoom:150%"></td>
+                                                        <td><input type="checkbox" id="checkb" name="checkb" style="zoom:150%" value="${product.productId}"></td>
                                                         <td class="align-middle">
                                                         <img src="http://localhost:8080/Chezmoi/getMainPic/${product.photo.photoId}" style="width: 80px;height:auto">
                                                         </td>
@@ -209,7 +209,24 @@
                            
                         });
                     </script>
-                    
+                       <script>
+                  //批次删除
+                    function deleteUser(){
+                      if(!confirm("確定要刪除這些商品嗎？")){
+                        return ;
+                      }
+                      var cks=document.getElementsByName("checkb");
+                      var str="/deleteAll/";
+                      for(var i=0;i<cks.length;i++){
+                        if(cks[i].checked){
+                          str+=cks[i].value+",";
+                        }
+                      }
+                      //去掉String最後的‘,’
+                      str=str.substring(0, str.length-1);
+                      window.location.href="http://localhost:8080/Chezmoi/Back/MyProduct"+str;
+                    }
+                    </script>
 
                 </body>
 

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
-import java.util.Objects;
 
 
 @Service
@@ -22,7 +21,7 @@ public class JwtUtil {
      * @param name
      * @return
      */
-    public static String getJwtToken(String email,String name,Long id){
+    public static String getUserJwtToken(String email, String name, Long id){
 
 
         byte[] key = Decoders.BASE64.decode((TOKEN_SECRET));
@@ -33,9 +32,27 @@ public class JwtUtil {
                 .setSubject(name)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+EXPIRE))
-                .claim("email",email)
                 .claim("name",name)
                 .claim("id",id)
+                .claim("role","user")
+                .signWith(secretKey,SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public static String getManagerJwtToken(String email, String name, Long id){
+
+
+        byte[] key = Decoders.BASE64.decode((TOKEN_SECRET));
+        SecretKey secretKey = Keys.hmacShaKeyFor(key);
+        return Jwts.builder()
+                .setHeaderParam("typ","JWT")//標頭
+                .setHeaderParam("alg","HS256")
+                .setSubject(name)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis()+EXPIRE))
+                .claim("name",name)
+                .claim("id",id)
+                .claim("role","manager")
                 .signWith(secretKey,SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -50,9 +67,8 @@ public class JwtUtil {
             return claimsJws.getBody();
 
     }
-    public static String getMemberName(String token){
-        return Objects.requireNonNull(verify(token)).getSubject();
-    }
+
+
 
 
 

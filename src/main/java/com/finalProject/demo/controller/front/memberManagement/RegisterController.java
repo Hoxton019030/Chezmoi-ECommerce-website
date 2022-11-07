@@ -21,10 +21,8 @@ public class RegisterController {
 	
 	@GetMapping("/member/register")
 	public String addRegister(Model model) {
-		
 		Member m1 = new Member();
 		model.addAttribute("register",m1);
-		
 		return "front/member/register";
 	}
 	
@@ -43,12 +41,7 @@ public class RegisterController {
 				mService.insert(member);
 				re.addAttribute("Msg", "註冊成功!");
 				System.out.println("註冊成功!");
-
 				return "redirect:/member/login";
 			}
 		}
-		
-		
-
-	
 }

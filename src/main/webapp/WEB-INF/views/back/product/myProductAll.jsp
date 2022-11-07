@@ -26,6 +26,8 @@
                     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
                         rel="stylesheet">
 
+                    <script src="https://kit.fontawesome.com/fda1db8ac4.js" crossorigin="anonymous"></script>
+
                     <!-- Libraries Stylesheet -->
                     <link href="${contextRoot}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
@@ -163,8 +165,8 @@
                                                         <td class="align-middle" >${product.size}</td>
                                                         <td class="align-middle" >${product.price}</td>
                                                         <td class="align-middle" >${product.productState}</td>
-                                                        <td class="align-middle"><a href="MyProduct/edit/${product.productId}"><button class="btn btn-sm btn-primary">修改</button></a></td>
-                                                        <td class="align-middle"><a id="remove" href="MyProduct/delete/${product.productId}"  onClick="return confirm(`確定要刪除此商品嗎?`);" ><button class="btn btn-sm btn-primary">刪除</button></a></td>
+                                                        <td class="align-middle"><a href="MyProduct/edit/${product.productId}"><i class="fa-regular fa-pen-to-square"></i></a></td>
+                                                        <td class="align-middle"><a id="remove" href="MyProduct/delete/${product.productId}"  onClick="return confirm(`確定要刪除此商品嗎?`);" ><i class="fa-solid fa-trash-can"></i></a></td>
                                                     </tr>
                                                 </c:forEach>
 
@@ -223,20 +225,19 @@
                     </script>
 
                     <script>
-                  //批量删除
+                  //批次删除
                     function deleteUser(){
                       if(!confirm("確定要刪除這些商品嗎？")){
                         return ;
                       }
                       var cks=document.getElementsByName("checkb");
                       var str="/deleteAll/";
-                      //拼接所有的图书id
                       for(var i=0;i<cks.length;i++){
                         if(cks[i].checked){
                           str+=cks[i].value+",";
                         }
                       }
-                      //去掉字符串末尾的‘,’
+                      //去掉String最後的‘,’
                       str=str.substring(0, str.length-1);
                       window.location.href="http://localhost:8080/Chezmoi/Back/MyProduct"+str;
                     }

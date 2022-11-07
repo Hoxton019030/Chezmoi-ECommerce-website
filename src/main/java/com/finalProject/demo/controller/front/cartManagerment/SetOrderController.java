@@ -20,6 +20,8 @@ import com.finalProject.demo.service.order.OrdersService;
 import com.finalProject.demo.service.order.PaymentService;
 import com.finalProject.demo.service.order.ShippingService;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -45,6 +47,8 @@ public class SetOrderController {
 		@PostMapping("/api/postOrders")
 		public Orders postOrdersApi(@RequestBody OrdersDto dto,
 				Model model){
+			
+			//取得dto資料
 			Integer paymentId = dto.getPaymentId();
 			Payment payment = paymentService.findById(paymentId);
 			Integer shippingId = dto.getShippingId();
@@ -52,18 +56,51 @@ public class SetOrderController {
 			Integer total = dto.getTotal();
 			String couponCode = dto.getCouponCode();
 			Coupon coupon = couponService.findByCouponCode(couponCode);
+			//取得會員
 			Member memberLogin =(Member) model.getAttribute("Member");
 			assert memberLogin != null;
-			Long memberId = memberLogin.getMemberId();
-			Member findMember = memberService.findById(memberId);
-			Orders findTopOrder = oService.findTopOrder();
-			if(findTopOrder == null) {
+			//取得會員最新一筆訂單
+			List<Orders> orders = oService.findOrderByMember(memberLogin);
+			//情況1.無歷史訂單時新增訂單
+			if(orders == null) {
 				Orders order = new Orders();
 				order.setPayment(payment);
 				order.setShipping(shipping);
 				order.setTotal(total);
 				order.setCoupon(coupon);
-				order.setMember(findMember);
+				order.setMember(memberLogin);
+				order.setShipName("");
+				order.setShipPhone("");
+				order.setStoreName("");
+				order.setStoreNumber("");
+				oService.insert(order);
+				return order;
+			}else {
+				Integer last =orders.size()-1;
+				Orders findTopOrder = orders.get(last);
+				
+				//情況2.要回上一步重新選擇付款跟運送時
+				String orderState = findTopOrder.getOrderState();
+				if(orderState==null) {
+					findTopOrder.setPayment(payment);
+					findTopOrder.setShipping(shipping);
+					findTopOrder.setTotal(total);
+					findTopOrder.setCoupon(coupon);
+					findTopOrder.setMember(memberLogin);
+					findTopOrder.setShipName("");
+					findTopOrder.setShipPhone("");
+					findTopOrder.setStoreName("");
+					findTopOrder.setStoreNumber("");
+					oService.insert(findTopOrder);
+					return findTopOrder;
+				}
+				//情控3.新增一筆訂單
+				Orders order = new Orders();
+				order.setPayment(payment);
+				order.setShipping(shipping);
+				order.setTotal(total);
+				order.setCoupon(coupon);
+				order.setMember(memberLogin);
 				order.setShipName("");
 				order.setShipPhone("");
 				order.setStoreName("");
@@ -71,49 +108,7 @@ public class SetOrderController {
 				oService.insert(order);
 				return order;
 			}
-			String orderState = findTopOrder.getOrderState();
-			Member member = findTopOrder.getMember();
-			if(orderState!=null) {
-				Orders order = new Orders();
-				order.setPayment(payment);
-				order.setShipping(shipping);
-				order.setTotal(total);
-				order.setCoupon(coupon);
-				order.setMember(member);
-				order.setShipName("");
-				order.setShipPhone("");
-				order.setStoreName("");
-				order.setStoreNumber("");
-				oService.insert(order);
-				return order;
-			}
-			Long memberId2 = member.getMemberId();
-			if(memberId.equals(memberId2)) {
-				findTopOrder.setPayment(payment);
-				findTopOrder.setShipping(shipping);
-				findTopOrder.setTotal(total);
-				findTopOrder.setCoupon(coupon);
-				findTopOrder.setMember(findMember);
-				findTopOrder.setShipName("");
-				findTopOrder.setShipPhone("");
-				findTopOrder.setStoreName("");
-				findTopOrder.setStoreNumber("");
-				oService.insert(findTopOrder);
-				return findTopOrder;
-			}
-				Orders order = new Orders();
-				order.setPayment(payment);
-				order.setShipping(shipping);
-				order.setTotal(total);
-				order.setCoupon(coupon);
-				order.setMember(findMember);
-				order.setShipName("");
-				order.setShipPhone("");
-				order.setStoreName("");
-				order.setStoreNumber("");
-				oService.insert(order);
-				return order;
-			}
+		}
 		
 		
 		//現在的會員是誰
@@ -122,8 +117,7 @@ public class SetOrderController {
 			//取得memberId
 			String stringId = String.valueOf(request.getAttribute("memberId"));
 			Long memberId = Long.valueOf(stringId);
-			Member memberLogin = new Member();
-			memberLogin.setMemberId(memberId);
+			Member memberLogin = memberService.findById(memberId);
 			return memberLogin;
 		}
 

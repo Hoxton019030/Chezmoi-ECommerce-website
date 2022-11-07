@@ -59,7 +59,7 @@ public class CouponService {
 	
 	//page
 	public Page<Coupon> findByPage(Integer pageNumber){
-		Pageable pgb= PageRequest.of(pageNumber-1, 10, Sort.Direction.DESC, "couponId");
+		Pageable pgb= PageRequest.of(pageNumber-1, 5, Sort.Direction.DESC, "couponId");
 		Page<Coupon> page = couponRepository.findAll(pgb);
 		return page;
 	}

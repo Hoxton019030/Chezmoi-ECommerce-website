@@ -77,7 +77,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <div class="align-items-center col-lg-12 justify-content-center mb-3">
+                                        <div class="align-items-center col-lg-12 justify-content-center mb-3 pl-0">
                                             <button type="submit" class="btn btn-primary" id="add">新建</button>
                                             <span class="ml-5 text-primary" id="waySpan"></span>
                                             <span class="ml-5 text-primary" id="feeSpan"></span>

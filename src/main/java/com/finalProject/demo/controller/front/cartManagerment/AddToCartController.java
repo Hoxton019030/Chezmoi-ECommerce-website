@@ -34,6 +34,7 @@ public class AddToCartController {
 							HttpServletRequest request
 			) {
 		Products product = productService.findById(productId);
+		String series = product.getSeries();
 		String stringId = String.valueOf(request.getAttribute("memberId"));
 		Long memberId = Long.valueOf(stringId);
 //		Member member = (Member) model.getAttribute("Member");
@@ -57,7 +58,7 @@ public class AddToCartController {
 			cart.setPrice(price);
 			cart.setTotal(price);
 			cartService.insert(cart);
-			return "redirect:/shop";
+			return "redirect:/shop/productDetail?series="+series;
 		}else {
 			findCart.setProductName(productName);
 			findCart.setPhotoId(photoId);
@@ -71,7 +72,9 @@ public class AddToCartController {
 			Integer total = price2*quantity; 
 			findCart.setTotal(total);
 			cartService.insert(findCart);
-			return "redirect:/shop";
+//			return "redirect:/shop";
+			return "redirect:/shop/productDetail?series="+series;
+
 		}
 		
 	}
