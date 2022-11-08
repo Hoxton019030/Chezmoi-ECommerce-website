@@ -67,7 +67,7 @@
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="img-fluid" src="https://img.onl/T9wODj" alt="Image">
+                <img class="img-fluid" src="${contextRoot}/img/1.jpg" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3 rwdtxt" style="max-width: 100%;">
                         <h4 class="text-light text-uppercase font-weight-medium "
@@ -79,9 +79,10 @@
                         <a href="${contextRoot}/shop" class="btn btn-light py-2 px-3">Shop Now</a>
                     </div>
                 </div>
-            </div>h
+            </div>
+            h
             <div class="carousel-item">
-                <img class="img-fluid" src="https://img.onl/WFe8Aj" alt="Image">
+                <img class="img-fluid" src="${contextRoot}/img/2.jpg" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3 rwdtxt" style="max-width: 100%;">
                         <h4 class="text-light text-uppercase font-weight-medium "
@@ -95,7 +96,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="img-fluid" src="https://img.onl/UyuC5k" alt="Image">
+                <img class="img-fluid" src="${contextRoot}/img/3.jpg" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3 rwdtxt" style="max-width: 100%;">
                         <h4 class="text-light text-uppercase font-weight-medium "
@@ -161,23 +162,25 @@
         </h2>
     </div>
     <div class="row px-xl-5 pb-3" id="RecommendedItem">
-<%--        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">--%>
-<%--            <div class="card product-item border-0 mb-4">--%>
-<%--                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">--%>
-<%--                    <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">--%>
-<%--                </div>--%>
-<%--                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">--%>
-<%--                    <h6 class="text-truncate mb-3">最熱賣！女孩金色愛心針織</h6>--%>
-<%--                    <div class="d-flex justify-content-center">--%>
-<%--                        <h6>$1380</h6>--%>
-<%--                        <!-- <h6 class="text-muted ml-2"><del>$1380</del></h6> -->--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        <%--        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">--%>
+        <%--            <div class="card product-item border-0 mb-4">--%>
+        <%--                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">--%>
+        <%--                    <img class="img-fluid w-100" src="https://img.onl/huL3Xa" alt="">--%>
+        <%--                </div>--%>
+        <%--                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">--%>
+        <%--                    <h6 class="text-truncate mb-3">最熱賣！女孩金色愛心針織</h6>--%>
+        <%--                    <div class="d-flex justify-content-center">--%>
+        <%--                        <h6>$1380</h6>--%>
+        <%--                        <!-- <h6 class="text-muted ml-2"><del>$1380</del></h6> -->--%>
+        <%--                    </div>--%>
+        <%--                </div>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
 
     </div>
 </div>
+
+<!-- Pop-up -->
 <div id="popWindow"
      style="background-color:white;z-index:100;position: relative;background:url('https://img.onl/RjOGus') 0 0 repeat; position:relative;">
     <div class="text-right mr-2 mt-2" style="height:3em;">
@@ -199,6 +202,7 @@
 <!-- Template Javascript -->
 <script src="${contextRoot}/js/bestSellingAjax.js"></script>
 <script src="${contextRoot}/js/RecommendedAjax.js"></script>
+<!-- Pop-up script -->
 <script type="text/javascript">
     function centerHandler() {/*設定置中*/
         var scrollDist = $(window).scrollTop();/*取得捲動長度*/

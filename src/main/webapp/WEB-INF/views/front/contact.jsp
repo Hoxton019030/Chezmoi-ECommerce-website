@@ -72,7 +72,7 @@
 						<h6 class=" font-weight-medium mr-2">
 							<img src="https://img.onl/yrK3CD" width="20" height="20"> Instagram:
 						</h6>
-						<a class="a" href="https://www.instagram.com/chezmoiiiiiii/?hl=en"
+						<a class="a" href="https://www.instagram.com/chezmoiiiiiii/"
 							target="_blank"> chezmoiiiiiii</a>
 					</div>
 					<div class="d-flex pt-1 mb-2">

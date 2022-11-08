@@ -45,35 +45,37 @@
     <ul class="pros-ul justify-content-around align-items-center">
         <div class="row px-xl-5 pb-3" id="tbody">
             <!-- Controller傳來的model -->
-                                    <c:forEach var="product" items="${category}">
-                        <div class="col-lg-3 col-6 pb-1">
-                            <div class="card product-item border-0 mb-4">
-                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                    <img class="img-fluid w-300"
-                                         src="http://localhost:8080/Chezmoi/getMainPic/${product.photoId}"
-                                         style="width: 500px;height:auto" alt="">
-                                </div>
-                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                    <a href="${contextRoot}/shop/productDetail?series=${product.series}">
-                                        <h6 class="text-truncate mb-3">${product.productName}</h6>
-                                    </a>
-                                    <div class="d-flex justify-content-center">
-                                        <h6 id="saleprice">$${product.price}</h6>
-                                    </div>
-                                </div>
+            <c:forEach var="product" items="${category.content}">
+                <div class="col-lg-3 col-6 pb-1">
+                    <div class="card product-item border-0 mb-4">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            <img class="img-fluid w-300"
+                                 src="http://localhost:8080/Chezmoi/getMainPic/${product.photo.photoId}"
+                                 style="width: 500px;height:auto" alt="">
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3 w-100"
+                             style="display:inline">
+                            <div style="height: 3rem">
+                                <a class="h6" href="${contextRoot}/shop/productDetail?series=${product.series}">
+                                        ${product.name}
+                                </a>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <h6 id="saleprice">$${product.price}</h6>
                             </div>
                         </div>
-                                    </c:forEach>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </ul>
 </div>
 <!-- 分頁功能 -->
 <div class="pageNumberhover">
-    <c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+    <c:forEach var="pageNumber" begin="1" end="${category.totalPages}">
         <c:choose>
-            <c:when test="${page.number !=pageNumber-1}">
-                <a href="${contextRoot}/shop?p=${pageNumber}">${pageNumber}</a>
-
+            <c:when test="${category.number !=pageNumber-1}">
+                <a href="${contextRoot}/shop/${category}?p=${pageNumber}">${pageNumber}</a>
             </c:when>
             <c:otherwise>${pageNumber}</c:otherwise>
 
@@ -90,9 +92,6 @@
 
 <body>
 
-<!-- category start -->
-<%-- 				<jsp:include page="layout/category.jsp"></jsp:include> --%>
-<!-- 				<br> -->
 <!-- accounce start -->
 <jsp:include page="layout/announce.jsp"></jsp:include>
 <br>
