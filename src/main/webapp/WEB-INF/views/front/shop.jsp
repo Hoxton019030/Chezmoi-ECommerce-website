@@ -125,7 +125,7 @@
                         <div class="pageNumberhover" id="pageNumber">
                             <c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
                                 <c:choose>
-                                    <c:when test="${page.number !=pageNumber-1}">
+                                    <c:when test="${pageNumber !=pageNumber+1}">
                                         <a href="${contextRoot}/shop?p=${pageNumber}">${pageNumber}</a>
 
                                     </c:when>
@@ -135,6 +135,8 @@
 
                             </c:forEach>
                         </div>
+
+
 
 
                         <!-- footer頁面 -->

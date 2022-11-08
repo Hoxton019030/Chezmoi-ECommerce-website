@@ -181,7 +181,7 @@
     </div>
 </div>
 <div id="popWindow"
-     style="background-color:white;z-index:100;position: relative;background:url('https://img.onl/RjOGus') 0 0 repeat; position:relative;">
+     style="background-color:white;z-index:100;position: relative;background:url('${contextRoot}/img/wishTestAd.png') 0 0 repeat; position:relative;">
     <div class="text-right mr-2 mt-2" style="height:3em;">
         <button class="btn btn-sm btn-primary" id="close" style="border-radius:10px">
             <i class="fa fa-times"></i></button>
