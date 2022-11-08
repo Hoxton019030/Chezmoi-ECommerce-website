@@ -68,7 +68,7 @@ public class ShopService {
      * Products按頁數撈資料-for Shop頁面
      */
     public Page<Products> findByPage(Integer pageNumber) {
-        Pageable pgb = PageRequest.of(pageNumber - 1, 16, Sort.Direction.DESC, "updateTime");
+        Pageable pgb = PageRequest.of(pageNumber - 1, 12, Sort.Direction.DESC, "updateTime");
         Page<Products> page = productRepository.findAll(pgb);
         return page;
     }
