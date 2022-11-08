@@ -72,7 +72,7 @@
                             <div
                                     class="d-flex justify-content-center" style="margin-top: 1rem">
                                 <h6 id="saleprice">
-                                       $${products.price}</h6>
+                                    $${products.price}</h6>
                             </div>
                         </div>
                     </div>

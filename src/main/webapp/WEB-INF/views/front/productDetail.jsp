@@ -34,9 +34,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="${contextRoot}/css/style.css" rel="stylesheet">
-    
+
     <!-- jQ -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!--JavaScript & Jquery-->
     <script src="https://code.jquery.com/jquery-3.6.1.js"
             integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
@@ -45,7 +45,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="${contextRoot}/lib/easing/easing.min.js"></script>
     <script src="${contextRoot}/lib/owlcarousel/owl.carousel.min.js"></script>
-    
+
 </head>
 <body>
 <!-- Topbar Start -->
@@ -72,7 +72,7 @@
         ail-img-box ">
             <div class="detail-img">
                 <img src="http://localhost:8080/Chezmoi/getMainPic/${productsId.photo.photoId}" alt=""
-                     style="margin:auto;height: 450px; width:auto">
+                     style="margin:auto;height: auto; width:450px">
             </div>
         </div>
         <div class="detail-info">
@@ -84,7 +84,7 @@
                                         class="align-items-center justify-content-center">All</a> <span>>
 <%--                      <c:forEach var="Product" items="${productSeries}">--%>
 						</span><a href="${contextRoot}/shop/${productsId.category}">${productsId.category}</a>
-<%--                    </c:forEach>--%>
+                    <%--                    </c:forEach>--%>
 
                 </div>
                 <h4 class="detail-name" name="product_name">${productsId.name}</h4>
@@ -104,19 +104,19 @@
 
                 <div class="color border-b1" style="padding-bottom:12px" id="sizeBody">
                     <span style="padding-right:15px ; font-weight:bold">size</span>
-<%--                    <c:forEach var="Product" items="${productSeries}">--%>
-<%--                        <label id="SizeURL" style="padding-right:15px"><input type="radio" name="size" value="${Product.size}"/><span--%>
-<%--                                class="round button">${Product.size}</span></label>--%>
-<%--                    </c:forEach>--%>
+                    <%--                    <c:forEach var="Product" items="${productSeries}">--%>
+                    <%--                        <label id="SizeURL" style="padding-right:15px"><input type="radio" name="size" value="${Product.size}"/><span--%>
+                    <%--                                class="round button">${Product.size}</span></label>--%>
+                    <%--                    </c:forEach>--%>
                 </div>
                 <div class="color border-b1" style="padding-bottom:12px" id="colorBody">
                     <span style="padding-right:15px ; font-weight:bold" >color</span>
-<%--                    <c:forEach var="Product" items="${productSeries}">--%>
-<%--                        <label id="ColorUrl" style="padding-right:15px">--%>
-<%--                            <input type="radio" name="color" value="${Product.color}"/><span--%>
-<%--                                class="round button">${Product.color}</span></label>--%>
-<%--                    </c:forEach>--%>
-               </div>
+                    <%--                    <c:forEach var="Product" items="${productSeries}">--%>
+                    <%--                        <label id="ColorUrl" style="padding-right:15px">--%>
+                    <%--                            <input type="radio" name="color" value="${Product.color}"/><span--%>
+                    <%--                                class="round button">${Product.color}</span></label>--%>
+                    <%--                    </c:forEach>--%>
+                </div>
                 <div class="addTo">
                     <div class="add-inner" style="padding-top: 10px">
                         <a id="addCart" >
@@ -139,20 +139,20 @@
     </div>
     <div>
         <p>
-            <img class="img-fluid w-300" style="width:60%; text-align; margin:auto"
+            <img class="img-fluid w-300" style="width:60%; text-align:center; margin:auto"
                  src="http://localhost:8080/Chezmoi/getPic1/${productsId.photo.photoId}" alt="${productsId.productId}"></p>
         <br>
         <p>
 
-            <img class="img-fluid w-300" style="width:60%; text-align; margin:auto"
+            <img class="img-fluid w-300" style="width:60%; text-align:center; margin:auto"
                  src="http://localhost:8080/Chezmoi/getPic2/${productsId.photo.photoId}" alt="${productsId.productId}"></p>
         <br>
         <p>
-            <img class="img-fluid w-300"
+            <img class="img-fluid w-300" style="width:60%; text-align:center; margin:auto"
                  src="http://localhost:8080/Chezmoi/getPic3/${productsId.photo.photoId}" alt="${productsId.productId}" ></p>
         <br>
         <p>
-            <img class="img-fluid w-300"
+            <img class="img-fluid w-300" style="width:60%; text-align:center; margin:auto"
                  src="http://localhost:8080/Chezmoi/getPic4/${productsId.photo.photoId}"alt="${productsId.productId}" ></p>
         <br>
     </div>

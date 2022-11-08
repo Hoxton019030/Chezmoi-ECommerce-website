@@ -242,9 +242,9 @@
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
 	                                妳的魅力在於氣質出眾、待人溫和，談吐優雅又通情達理!</h4>
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
-	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=T002">
+	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                    	推薦妳這件${p.name}</a></h4>
-	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <a href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
 	                                </a>
 	                            </div>
@@ -258,9 +258,9 @@
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
 	                                妳的魅力在於氣質出眾，且自帶女人味!</h4>
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
-	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=T003">
+	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                    	推薦妳這件${p.name}</a></h4>
-	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <a href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
 	                                </a>
 	                            </div>
@@ -274,9 +274,9 @@
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
 	                                妳的魅力在於活潑可愛，讓人想好好疼愛妳!</h4>
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
-	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=T004">
+	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                    	推薦妳這件${p.name}</a></h4>
-	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <a href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
 	                                </a>
 	                            </div>
@@ -290,9 +290,9 @@
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
 	                                妳的魅力在於專情堅定，讓另一半很有安全感喔!</h4>
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
-	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=T005">
+	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                    	推薦妳這件${p.name}</a></h4>
-	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <a href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
 	                                </a>
 	                            </div>
@@ -306,9 +306,9 @@
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
 	                                妳的魅力在於自信且充滿熱情，戀愛中的女人最美麗!</h4>
 	                                <h4 class="font-weight-semi-bold text-uppercase mb-2" style="margin-right: 1em;">
-	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=T006">
+	                               		 <a class="a text-primary" href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                    	推薦妳這件${p.name}</a></h4>
-	                                <a href="${contextRoot}/shop/productDetail?productId=${p.productId}">
+	                                <a href="${contextRoot}/shop/productDetail?series=${p.series}">
 	                                <img src="http://localhost:8080/Chezmoi/getMainPic/${p.photo.photoId}" style="width: 15em;">
 	                                </a>
 	                            </div>
