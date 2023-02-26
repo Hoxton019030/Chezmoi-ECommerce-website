@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  db:
+    container_name: postgres-for-dockerpractice
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: root
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+
+  backend:
+    container_name: backend-for-dockerpractice
+    image:  hoxton019030/chezmoi:1.0.0
+    depends_on:
+      - db
+    ports:
+      - '8080:8080'
